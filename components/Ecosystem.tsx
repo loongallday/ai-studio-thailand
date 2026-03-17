@@ -172,10 +172,10 @@ export default function Ecosystem() {
         </motion.div>
 
         {/* Connection Lines (SVG) + Brand Cards */}
-        <div className="relative">
+        <div className="relative mt-8 md:mt-12">
           {/* SVG connection lines behind cards */}
           <svg
-            className="absolute -top-[30px] left-0 right-0 w-full h-10 z-0 hidden md:block"
+            className="absolute -top-[50px] left-0 right-0 w-full h-10 z-0 hidden md:block pointer-events-none"
           >
             <style>{`@keyframes dashFlow { to { stroke-dashoffset: -24; } }`}</style>
             <line

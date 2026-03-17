@@ -34,7 +34,7 @@ function WorkshopVisual() {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: 0.2 }}
-      className="rounded-xl md:rounded-3xl overflow-hidden relative aspect-[4/3] flex flex-col items-center justify-center shadow-lg md:shadow-xl pb-16"
+      className="rounded-xl md:rounded-3xl overflow-hidden relative aspect-[4/3] md:aspect-[3/2] flex flex-col items-center justify-center shadow-lg md:shadow-xl"
       style={{ background: "linear-gradient(145deg, #f5f5f7, #e8e8ed)" }}
     >
       {/* Badge */}
@@ -258,7 +258,7 @@ function ContentGridVisual() {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: 0.2 }}
-      className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-full overflow-hidden shadow-lg md:shadow-xl rounded-xl md:rounded-2xl"
+      className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-full overflow-hidden rounded-xl md:rounded-2xl"
     >
       {cards.map((card, i) => {
         const CardIcon = card.icon;

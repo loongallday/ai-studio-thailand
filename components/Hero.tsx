@@ -8,7 +8,7 @@ export default function Hero() {
       <div className="max-w-[980px] mx-auto px-6 text-center">
         {/* Animated Logo */}
         <div className="flex justify-center mb-8">
-          <AnimatedLogo size={1.2} />
+          <AnimatedLogo />
         </div>
 
         {/* Main headline — Apple Education K-12 size */}

@@ -2,21 +2,19 @@
 import { motion } from "framer-motion";
 
 export default function AnimatedLogo({ size = 1 }: { size?: number }) {
-  const scale = size;
-
   return (
     <motion.svg
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 320 70"
+      viewBox="0 0 380 80"
       fill="none"
-      style={{ width: 320 * scale, height: 70 * scale }}
+      className="w-full max-w-[380px] sm:max-w-[460px] h-auto mx-auto"
+      style={{ transform: `scale(${size})` }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.3 }}
     >
       <defs>
-        {/* Animated gradient */}
-        <linearGradient id="studioGradAnim" x1="0%" y1="0%" x2="100%" y2="100%">
+        <linearGradient id="studioGrad" x1="0%" y1="0%" x2="100%" y2="0%">
           <motion.stop
             offset="0%"
             animate={{ stopColor: ["#e8590c", "#d4a017", "#e8590c"] }}
@@ -28,116 +26,67 @@ export default function AnimatedLogo({ size = 1 }: { size?: number }) {
             transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
         </linearGradient>
-
-        {/* Clip paths for letter-by-letter reveal */}
-        <clipPath id="clipA">
-          <motion.rect
-            x="0" y="0" width="40" height="70"
-            initial={{ width: 0 }}
-            animate={{ width: 40 }}
-            transition={{ delay: 0.2, duration: 0.4, ease: "easeOut" }}
-          />
-        </clipPath>
-        <clipPath id="clipI">
-          <motion.rect
-            x="42" y="0" width="20" height="70"
-            initial={{ width: 0 }}
-            animate={{ width: 20 }}
-            transition={{ delay: 0.35, duration: 0.3, ease: "easeOut" }}
-          />
-        </clipPath>
-        <clipPath id="clipStudio">
-          <motion.rect
-            x="72" y="0" width="250" height="70"
-            initial={{ width: 0 }}
-            animate={{ width: 250 }}
-            transition={{ delay: 0.5, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-          />
-        </clipPath>
       </defs>
 
-      {/* "A" — slides in */}
-      <g clipPath="url(#clipA)">
-        <motion.text
-          x="0" y="52"
-          fontFamily="Bai Jamjuree, -apple-system, sans-serif"
-          fontWeight="700"
-          fontSize="54"
-          letterSpacing="-2"
-          fill="#1d1d1f"
-          initial={{ y: 70 }}
-          animate={{ y: 52 }}
-          transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
-        >
-          A
-        </motion.text>
-      </g>
+      {/* "AI" — fade + slide up */}
+      <motion.text
+        x="10" y="58"
+        fontFamily="Bai Jamjuree, -apple-system, sans-serif"
+        fontWeight="700"
+        fontSize="56"
+        letterSpacing="-1"
+        fill="#1d1d1f"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+      >
+        AI
+      </motion.text>
 
-      {/* "I" — slides in */}
-      <g clipPath="url(#clipI)">
-        <motion.text
-          x="38" y="52"
-          fontFamily="Bai Jamjuree, -apple-system, sans-serif"
-          fontWeight="700"
-          fontSize="54"
-          letterSpacing="-2"
-          fill="#1d1d1f"
-          initial={{ y: 70 }}
-          animate={{ y: 52 }}
-          transition={{ delay: 0.35, duration: 0.5, ease: "easeOut" }}
-        >
-          I
-        </motion.text>
-      </g>
+      {/* "Studio" — fade + slide up with gradient */}
+      <motion.text
+        x="100" y="58"
+        fontFamily="Bai Jamjuree, -apple-system, sans-serif"
+        fontWeight="700"
+        fontSize="56"
+        letterSpacing="-1"
+        fill="url(#studioGrad)"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.45, duration: 0.6, ease: "easeOut" }}
+      >
+        Studio
+      </motion.text>
 
-      {/* Space */}
-
-      {/* "Studio" — gradient, reveals left-to-right */}
-      <g clipPath="url(#clipStudio)">
-        <motion.text
-          x="72" y="52"
-          fontFamily="Bai Jamjuree, -apple-system, sans-serif"
-          fontWeight="700"
-          fontSize="54"
-          letterSpacing="-2"
-          fill="url(#studioGradAnim)"
-          initial={{ y: 70 }}
-          animate={{ y: 52 }}
-          transition={{ delay: 0.5, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-        >
-          Studio
-        </motion.text>
-      </g>
-
-      {/* Underline that draws itself */}
+      {/* Underline under "Studio" — draws itself */}
       <motion.line
-        x1="72" y1="58" x2="248" y2="58"
-        stroke="url(#studioGradAnim)"
-        strokeWidth="2.5"
+        x1="100" y1="66" x2="340" y2="66"
+        stroke="url(#studioGrad)"
+        strokeWidth="3"
         strokeLinecap="round"
         initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ delay: 1, duration: 0.6, ease: "easeOut" }}
+        animate={{ pathLength: 1, opacity: 0.6 }}
+        transition={{ delay: 1, duration: 0.7, ease: "easeOut" }}
       />
 
-      {/* Subtle glow dot after "Studio" */}
+      {/* Dot accent */}
       <motion.circle
-        cx="255" cy="42"
-        r="3"
+        cx="348" cy="48"
+        r="4"
         fill="#e8590c"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 1.4, duration: 0.3, type: "spring", stiffness: 300 }}
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        transition={{ delay: 1.3, duration: 0.3, type: "spring", stiffness: 300 }}
       />
       <motion.circle
-        cx="255" cy="42"
-        r="8"
+        cx="348" cy="48"
+        r="10"
         fill="none"
         stroke="#e8590c"
         strokeWidth="1"
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
-        transition={{ delay: 1.5, duration: 1, repeat: Infinity }}
+        initial={{ opacity: 0 }}
+        animate={{ scale: [1, 1.8], opacity: [0.4, 0] }}
+        transition={{ delay: 1.5, duration: 1.5, repeat: Infinity }}
       />
     </motion.svg>
   );

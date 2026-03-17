@@ -644,13 +644,13 @@ export default function Workshop() {
         >
           {/* Featured badge */}
           <div
-            className="absolute top-3 right-3 md:top-4 md:right-4 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide z-10"
+            className="absolute top-3 right-3 md:top-4 md:right-4 px-2.5 py-1 rounded-full text-[10px] md:text-xs font-bold tracking-wide z-10"
             style={{ background: "#06c", color: "#fff" }}
           >
             MOST POPULAR
           </div>
 
-          <div className="p-4 md:p-6 lg:p-8">
+          <div className="p-4 pt-12 md:p-6 md:pt-6 lg:p-8">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 md:gap-5 mb-5">
               <div className="flex items-center gap-3 md:gap-4">
                 <div
@@ -1263,15 +1263,15 @@ export default function Workshop() {
                   style={{ background: "#fff", borderColor: isLow ? "rgba(245,158,11,0.2)" : "rgba(0,0,0,0.06)", borderLeft: `3px solid ${isLow ? "#f59e0b" : "#34c759"}` }}
                 >
                   {/* Workshop name + status */}
-                  <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center justify-between gap-2 mb-2">
                     <div
-                      className="text-[15px] font-bold"
+                      className="text-[14px] md:text-[15px] font-bold truncate min-w-0"
                       style={{ color: "#1d1d1f" }}
                     >
                       {row.workshop}
                     </div>
                     <span
-                      className="text-[10px] font-bold px-2 py-0.5 rounded-full"
+                      className="text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 whitespace-nowrap"
                       style={{
                         background: isLow ? "rgba(245,158,11,0.1)" : "rgba(52,199,89,0.1)",
                         color: isLow ? "#f59e0b" : "#34c759",

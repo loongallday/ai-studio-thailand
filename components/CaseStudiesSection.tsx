@@ -288,7 +288,7 @@ function CaseStudyCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.7, delay: 0.1 }}
-      className="apple-card bg-white rounded-2xl overflow-hidden border border-black/[0.04] shadow-[0_4px_24px_rgba(0,0,0,0.04)] border-l-4"
+      className="apple-card bg-white rounded-2xl overflow-hidden border border-black/[0.04] shadow-[0_4px_24px_rgba(0,0,0,0.04)] border-l-4 overflow-hidden"
       style={{ borderLeftColor: study.accentColor }}
     >
       {/* Header / Visual */}
@@ -304,10 +304,10 @@ function CaseStudyCard({
           }}
         />
 
-        <div className="flex items-center justify-between flex-wrap gap-4 mb-6 relative">
-          <div className="flex items-center gap-3">
+        <div className="flex items-center justify-between flex-wrap gap-3 mb-6 relative">
+          <div className="flex items-center gap-2 flex-wrap min-w-0">
             <span
-              className="inline-flex items-center gap-1.5 text-[12px] font-bold px-3.5 py-1.5 rounded-[20px] tracking-[0.04em] backdrop-blur-md"
+              className="inline-flex items-center gap-1.5 text-[11px] md:text-[12px] font-bold px-2.5 md:px-3.5 py-1 md:py-1.5 rounded-[20px] tracking-[0.04em] backdrop-blur-md shrink-0"
               style={{
                 color: study.serviceColor,
                 background: "rgba(255,255,255,0.7)",
@@ -316,7 +316,7 @@ function CaseStudyCard({
               <ServiceIcon size={14} />
               {study.service}
             </span>
-            <span className="text-[12px] font-semibold text-[#6e6e73] bg-white/50 px-3.5 py-1.5 rounded-[20px]">
+            <span className="text-[11px] md:text-[12px] font-semibold text-[#6e6e73] bg-white/50 px-2.5 md:px-3.5 py-1 md:py-1.5 rounded-[20px] truncate max-w-[200px]">
               {study.client}
             </span>
           </div>
@@ -432,7 +432,7 @@ function CaseStudyCard({
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.6 }}
-        className="px-4 md:px-6 lg:px-10 py-4 md:py-5 flex flex-wrap gap-1.5 items-center"
+        className="px-4 md:px-6 lg:px-10 py-4 md:py-5 flex flex-wrap gap-1.5 items-center overflow-hidden"
       >
         <span className="text-[12px] font-semibold text-[#6e6e73] mr-1">
           Tech Stack:

@@ -125,13 +125,13 @@ export default function Hero() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.9 + i * 0.1 }}
-                  className="apple-card p-5 sm:p-8 text-center group min-w-[260px] shrink-0 snap-start sm:min-w-0 sm:shrink"
+                  className="apple-card p-5 sm:p-8 text-center group min-w-[240px] shrink-0 snap-start sm:min-w-0 sm:shrink overflow-hidden"
                 >
-                  <span className="text-4xl mb-4 block">{item.emoji}</span>
-                  <h3 className="text-[17px] font-semibold text-[#1d1d1f] mb-2 group-hover:text-[#06c] transition-colors">
+                  <span className="text-3xl sm:text-4xl mb-3 sm:mb-4 block">{item.emoji}</span>
+                  <h3 className="text-[15px] sm:text-[17px] font-semibold text-[#1d1d1f] mb-2 group-hover:text-[#06c] transition-colors truncate">
                     {item.title}
                   </h3>
-                  <p className="text-[14px] text-[#6e6e73] leading-relaxed">
+                  <p className="text-[13px] sm:text-[14px] text-[#6e6e73] leading-relaxed line-clamp-3">
                     {item.desc}
                   </p>
                 </motion.a>

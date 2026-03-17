@@ -158,19 +158,7 @@ function FeaturedCard({ article }: { article: Article }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
-      className="apple-card featured-card"
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: 0,
-        background: "#fff",
-        borderRadius: 24,
-        overflow: "hidden",
-        border: "1px solid rgba(0,0,0,0.06)",
-        boxShadow: "0 2px 20px rgba(0,0,0,0.04)",
-        cursor: "pointer",
-        position: "relative",
-      }}
+      className="apple-card grid grid-cols-1 md:grid-cols-2 bg-white rounded-3xl overflow-hidden border border-black/[0.06] shadow-sm cursor-pointer relative"
     >
       {/* Featured Badge */}
       <span className="absolute top-4 left-4 bg-[#06c] text-white text-[11px] font-bold px-3 py-1 rounded-full z-10">
@@ -179,15 +167,9 @@ function FeaturedCard({ article }: { article: Article }) {
 
       {/* Image placeholder */}
       <div
+        className="flex flex-col items-center justify-center p-8 md:p-12 min-h-[240px] md:min-h-[360px] relative"
         style={{
           background: "linear-gradient(145deg, #f5f5f7, #e8e8ed)",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: 48,
-          minHeight: 360,
-          position: "relative",
         }}
       >
         <motion.div
@@ -195,49 +177,23 @@ function FeaturedCard({ article }: { article: Article }) {
           whileInView={{ scale: 1, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3, duration: 0.5 }}
-          style={{
-            width: 100,
-            height: 100,
-            borderRadius: 28,
-            background: "rgba(0,102,204,0.08)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            marginBottom: 20,
-          }}
+          className="w-[100px] h-[100px] rounded-[28px] flex items-center justify-center mb-5"
+          style={{ background: "rgba(0,102,204,0.08)" }}
         >
           <Icon size={48} style={{ color: "#06c" }} />
         </motion.div>
-        <div
-          style={{
-            fontSize: 14,
-            fontWeight: 600,
-            color: "#6e6e73",
-            letterSpacing: "0.04em",
-          }}
-        >
+        <div className="text-[14px] font-semibold text-[#6e6e73] tracking-[0.04em]">
           Featured Article
         </div>
 
         {/* Decorative dots */}
-        <div
-          style={{
-            position: "absolute",
-            top: 20,
-            left: 20,
-            display: "flex",
-            gap: 6,
-          }}
-        >
+        <div className="absolute top-5 left-5 flex gap-1.5">
           {[0, 1, 2].map((i) => (
             <div
               key={i}
+              className="w-2 h-2 rounded-full opacity-30"
               style={{
-                width: 8,
-                height: 8,
-                borderRadius: "50%",
                 background: ["#06c", "#3b82f6", "#8b5cf6"][i],
-                opacity: 0.3,
               }}
             />
           ))}
@@ -245,89 +201,32 @@ function FeaturedCard({ article }: { article: Article }) {
       </div>
 
       {/* Content */}
-      <div
-        className="featured-content"
-        style={{
-          padding: "48px 40px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-        }}
-      >
+      <div className="p-6 md:px-10 md:py-12 flex flex-col justify-center">
         <span
+          className="inline-flex items-center gap-1.5 text-[12px] font-bold px-3.5 py-1 rounded-full w-fit mb-5 tracking-[0.04em]"
           style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 6,
-            fontSize: 12,
-            fontWeight: 700,
             color: article.categoryColor,
             background: article.categoryBg,
-            padding: "5px 14px",
-            borderRadius: 20,
-            width: "fit-content",
-            marginBottom: 20,
-            letterSpacing: "0.04em",
           }}
         >
           <Sparkles size={12} />
           {article.category}
         </span>
 
-        <h2
-          style={{
-            fontSize: "clamp(22px, 3vw, 32px)",
-            fontWeight: 700,
-            color: "#1d1d1f",
-            lineHeight: 1.25,
-            marginBottom: 16,
-          }}
-        >
+        <h2 className="text-[22px] md:text-[28px] lg:text-[32px] font-bold text-[#1d1d1f] leading-[1.25] mb-4">
           {article.title}
         </h2>
 
-        <p
-          style={{
-            fontSize: 16,
-            color: "#6e6e73",
-            lineHeight: 1.7,
-            marginBottom: 28,
-          }}
-        >
+        <p className="text-[14px] md:text-[16px] text-[#6e6e73] leading-[1.7] mb-7">
           {article.excerpt}
         </p>
 
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 20,
-            marginBottom: 28,
-          }}
-        >
-          <span
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 6,
-              fontSize: 13,
-              color: "#6e6e73",
-              fontWeight: 500,
-            }}
-          >
+        <div className="flex items-center gap-5 mb-7">
+          <span className="flex items-center gap-1.5 text-[13px] text-[#6e6e73] font-medium">
             <Clock size={14} />
             {article.readTime}
           </span>
-          <span
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 6,
-              fontSize: 13,
-              color: "#6e6e73",
-              fontWeight: 500,
-            }}
-          >
+          <span className="flex items-center gap-1.5 text-[13px] text-[#6e6e73] font-medium">
             <Calendar size={14} />
             {article.date}
           </span>
@@ -335,15 +234,7 @@ function FeaturedCard({ article }: { article: Article }) {
 
         <motion.span
           whileHover={{ x: 6 }}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
-            fontSize: 16,
-            fontWeight: 600,
-            color: "#06c",
-            cursor: "pointer",
-          }}
+          className="inline-flex items-center gap-2 text-[14px] md:text-[16px] font-semibold text-[#06c] cursor-pointer"
         >
           อ่านบทความ <ArrowRight size={16} />
         </motion.span>
@@ -371,57 +262,28 @@ function ArticleCard({
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.08 }}
       whileHover={{ y: -4 }}
-      className="apple-card hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-      style={{
-        background: "#fff",
-        borderRadius: 16,
-        overflow: "hidden",
-        border: "1px solid rgba(0,0,0,0.04)",
-        cursor: "pointer",
-        display: "flex",
-        flexDirection: "column",
-      }}
+      className="apple-card p-0 overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 bg-white rounded-2xl border border-black/[0.04] cursor-pointer flex flex-col"
     >
       {/* Image placeholder */}
       <div
+        className="aspect-[16/9] flex items-center justify-center relative"
         style={{
           background: "linear-gradient(145deg, #f5f5f7, #e8e8ed)",
-          padding: "36px 24px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          position: "relative",
-          minHeight: 160,
         }}
       >
         <div
-          style={{
-            width: 64,
-            height: 64,
-            borderRadius: 18,
-            background: `${article.categoryColor}12`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+          className="w-16 h-16 rounded-[18px] flex items-center justify-center"
+          style={{ background: `${article.categoryColor}12` }}
         >
           <Icon size={32} style={{ color: article.categoryColor }} />
         </div>
 
         {/* Category badge */}
         <span
+          className="absolute top-4 left-4 text-[11px] font-bold px-3 py-1 rounded-full tracking-[0.04em] backdrop-blur-sm"
           style={{
-            position: "absolute",
-            top: 16,
-            left: 16,
-            fontSize: 11,
-            fontWeight: 700,
             color: article.categoryColor,
             background: "rgba(255,255,255,0.85)",
-            backdropFilter: "blur(8px)",
-            padding: "4px 12px",
-            borderRadius: 16,
-            letterSpacing: "0.04em",
           }}
         >
           {article.category}
@@ -429,80 +291,27 @@ function ArticleCard({
       </div>
 
       {/* Content */}
-      <div
-        style={{
-          padding: "24px 24px 28px",
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <h3
-          style={{
-            fontSize: 18,
-            fontWeight: 700,
-            color: "#1d1d1f",
-            lineHeight: 1.35,
-            marginBottom: 10,
-          }}
-        >
+      <div className="p-5 md:p-6 pb-6 md:pb-7 flex-1 flex flex-col">
+        <h3 className="text-[15px] md:text-[18px] font-bold text-[#1d1d1f] leading-[1.3] mb-2.5 line-clamp-3">
           {article.title}
         </h3>
 
-        <p
-          style={{
-            fontSize: 14,
-            color: "#6e6e73",
-            lineHeight: 1.65,
-            marginBottom: 20,
-            flex: 1,
-            display: "-webkit-box",
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: "vertical",
-            overflow: "hidden",
-          }}
-        >
+        <p className="text-[13px] md:text-[14px] text-[#6e6e73] leading-[1.65] mb-5 flex-1 line-clamp-2">
           {article.excerpt}
         </p>
 
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            borderTop: "1px solid rgba(0,0,0,0.05)",
-            paddingTop: 16,
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-            <span
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 5,
-                fontSize: 12,
-                color: "#6e6e73",
-                fontWeight: 500,
-              }}
-            >
+        <div className="flex items-center justify-between border-t border-black/5 pt-4">
+          <div className="flex items-center gap-4">
+            <span className="flex items-center gap-1.5 text-[12px] text-[#6e6e73] font-medium">
               <Clock size={12} />
               {article.readTime}
             </span>
-            <span
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 5,
-                fontSize: 12,
-                color: "#6e6e73",
-                fontWeight: 500,
-              }}
-            >
+            <span className="flex items-center gap-1.5 text-[12px] text-[#6e6e73] font-medium">
               <Calendar size={12} />
               {article.date}
             </span>
           </div>
-          <ArrowRight size={14} style={{ color: "#6e6e73" }} />
+          <ArrowRight size={14} className="text-[#6e6e73]" />
         </div>
       </div>
     </motion.article>
@@ -526,13 +335,7 @@ function CategoryFilter({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: 0.2 }}
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: 10,
-        justifyContent: "center",
-        marginBottom: 60,
-      }}
+      className="flex flex-wrap gap-2 justify-center mb-10 md:mb-14"
     >
       {categories.map((cat) => (
         <motion.button
@@ -540,15 +343,8 @@ function CategoryFilter({
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
           onClick={() => onSelect(cat.key)}
-          className="min-h-[40px] px-4"
+          className="min-h-[40px] px-4 py-2 md:px-5 md:py-2.5 rounded-full border-none text-[13px] md:text-[14px] font-semibold cursor-pointer transition-all duration-200"
           style={{
-            padding: "10px 22px",
-            borderRadius: 50,
-            border: "none",
-            fontSize: 14,
-            fontWeight: 600,
-            cursor: "pointer",
-            transition: "all 0.25s ease",
             background:
               activeCategory === cat.key ? "#06c" : "rgba(0,0,0,0.04)",
             color: activeCategory === cat.key ? "#fff" : "#6e6e73",
@@ -556,7 +352,6 @@ function CategoryFilter({
               activeCategory === cat.key
                 ? "0 2px 12px rgba(0,102,204,0.25)"
                 : "none",
-            minHeight: 40,
           }}
         >
           {cat.label}
@@ -577,27 +372,16 @@ function NewsletterCTA() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
+      className="p-6 md:p-10 lg:p-14 rounded-2xl md:rounded-3xl text-center mt-14 md:mt-20 relative overflow-hidden"
       style={{
         background: "linear-gradient(145deg, #1d1d1f, #2d2d2f)",
-        borderRadius: 28,
-        padding: "clamp(32px, 6vw, 64px) clamp(20px, 5vw, 48px)",
-        textAlign: "center",
-        marginTop: 80,
-        position: "relative",
-        overflow: "hidden",
       }}
     >
       {/* Decorative gradient orb */}
       <div
+        className="absolute -top-[60px] -right-[60px] w-[200px] h-[200px] rounded-full blur-[40px]"
         style={{
-          position: "absolute",
-          top: -60,
-          right: -60,
-          width: 200,
-          height: 200,
-          borderRadius: "50%",
           background: "radial-gradient(circle, rgba(0,102,204,0.3), transparent)",
-          filter: "blur(40px)",
         }}
       />
 
@@ -606,82 +390,30 @@ function NewsletterCTA() {
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2 }}
-        style={{
-          width: 64,
-          height: 64,
-          borderRadius: 18,
-          background: "rgba(0,102,204,0.15)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          margin: "0 auto 24px",
-        }}
+        className="w-16 h-16 rounded-[18px] flex items-center justify-center mx-auto mb-6"
+        style={{ background: "rgba(0,102,204,0.15)" }}
       >
         <FileText size={28} style={{ color: "#06c" }} />
       </motion.div>
 
-      <h3
-        style={{
-          fontSize: "clamp(24px, 3vw, 34px)",
-          fontWeight: 700,
-          color: "#fff",
-          lineHeight: 1.25,
-          marginBottom: 12,
-        }}
-      >
+      <h3 className="text-[24px] md:text-[30px] lg:text-[34px] font-bold text-white leading-[1.25] mb-3">
         ไม่อยากพลาดบทความใหม่?
       </h3>
-      <p
-        style={{
-          fontSize: 16,
-          color: "rgba(255,255,255,0.6)",
-          maxWidth: 460,
-          margin: "0 auto 32px",
-          lineHeight: 1.65,
-        }}
-      >
+      <p className="text-[14px] md:text-[16px] text-white/60 max-w-[460px] mx-auto mb-8 leading-[1.65]">
         สมัครรับ Newsletter เพื่อรับบทความ AI ใหม่ทุกสัปดาห์
         พร้อมเทคนิคและ use case ที่ใช้ได้จริงในธุรกิจไทย
       </p>
 
-      <div
-        style={{
-          display: "flex",
-          gap: 12,
-          maxWidth: 440,
-          margin: "0 auto",
-          flexWrap: "wrap",
-          justifyContent: "center",
-        }}
-      >
+      <div className="flex flex-wrap gap-3 max-w-[440px] mx-auto justify-center">
         <input
           type="email"
           placeholder="อีเมลของคุณ"
-          style={{
-            flex: 1,
-            minWidth: 220,
-            padding: "14px 20px",
-            borderRadius: 14,
-            border: "1px solid rgba(255,255,255,0.12)",
-            background: "rgba(255,255,255,0.08)",
-            color: "#fff",
-            fontSize: 15,
-            outline: "none",
-          }}
+          className="flex-1 min-w-[220px] px-5 py-3.5 rounded-xl border border-white/10 bg-white/[0.08] text-white text-[14px] md:text-[15px] outline-none placeholder:text-white/40"
         />
         <motion.button
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
-          style={{
-            padding: "14px 28px",
-            borderRadius: 14,
-            border: "none",
-            background: "#06c",
-            color: "#fff",
-            fontSize: 15,
-            fontWeight: 600,
-            cursor: "pointer",
-          }}
+          className="px-7 py-3.5 rounded-xl border-none bg-[#06c] text-white text-[14px] md:text-[15px] font-semibold cursor-pointer"
         >
           สมัครเลย
         </motion.button>
@@ -760,29 +492,12 @@ export default function BlogSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginBottom: 40,
-            }}
+            className="flex items-center justify-between mb-8 md:mb-10"
           >
-            <h2
-              style={{
-                fontSize: "clamp(24px, 3vw, 32px)",
-                fontWeight: 700,
-                color: "#1d1d1f",
-              }}
-            >
+            <h2 className="text-[24px] md:text-[28px] lg:text-[32px] font-bold text-[#1d1d1f]">
               บทความล่าสุด
             </h2>
-            <span
-              style={{
-                fontSize: 14,
-                color: "#6e6e73",
-                fontWeight: 500,
-              }}
-            >
+            <span className="text-[13px] md:text-[14px] text-[#6e6e73] font-medium">
               {filteredArticles.length} บทความ
             </span>
           </motion.div>
@@ -794,12 +509,7 @@ export default function BlogSection() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(2, 1fr)",
-                gap: 28,
-              }}
-              className="blog-grid"
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
             >
               {filteredArticles.map((article, i) => (
                 <ArticleCard key={article.id} article={article} index={i} />
@@ -811,13 +521,10 @@ export default function BlogSection() {
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              style={{
-                textAlign: "center",
-                padding: "80px 24px",
-              }}
+              className="text-center py-20 px-6"
             >
-              <Bot size={48} style={{ color: "#c7c7cc", marginBottom: 16 }} />
-              <p style={{ fontSize: 17, color: "#6e6e73" }}>
+              <Bot size={48} className="text-[#c7c7cc] mx-auto mb-4" />
+              <p className="text-[15px] md:text-[17px] text-[#6e6e73]">
                 ยังไม่มีบทความในหมวดนี้
               </p>
             </motion.div>
@@ -833,31 +540,6 @@ export default function BlogSection() {
           <NewsletterCTA />
         </div>
       </div>
-
-      {/* ============================================================ */}
-      {/*  Responsive Styles                                            */}
-      {/* ============================================================ */}
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .blog-grid {
-            grid-template-columns: 1fr !important;
-            gap: 16px !important;
-          }
-          .featured-card {
-            grid-template-columns: 1fr !important;
-          }
-          .featured-card > div:first-child {
-            min-height: 200px !important;
-          }
-          .featured-content {
-            padding: 24px 20px !important;
-          }
-          .blog-grid article > div:first-child {
-            padding: 24px 16px !important;
-            min-height: 140px !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

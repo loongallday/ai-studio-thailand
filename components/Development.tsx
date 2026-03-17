@@ -1349,14 +1349,14 @@ export default function Development() {
                     className={isLeft ? "md:order-1" : "md:order-2"}
                   >
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="w-14 h-14 rounded-2xl bg-[#06c] flex items-center justify-center shadow-[0_4px_16px_rgba(0,102,204,0.35)]">
-                        <span className="text-xl font-bold text-white">{i + 1}</span>
+                      <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-[#06c] flex items-center justify-center shrink-0 shadow-[0_4px_16px_rgba(0,102,204,0.35)]">
+                        <span className="text-base md:text-xl font-bold text-white">{i + 1}</span>
                       </div>
-                      <div>
-                        <div className="text-xs font-bold text-[#06c] uppercase tracking-widest flex items-center gap-1.5">
-                          <StepIcon size={14} color="#06c" /> Step {i + 1} — {step.label}
+                      <div className="min-w-0">
+                        <div className="text-[10px] md:text-xs font-bold text-[#06c] uppercase tracking-widest flex items-center gap-1.5 truncate">
+                          <StepIcon size={14} color="#06c" className="shrink-0" /> Step {i + 1} — {step.label}
                         </div>
-                        <div className="text-[13px] text-[#6e6e73] font-medium">{step.thai}</div>
+                        <div className="text-[12px] md:text-[13px] text-[#6e6e73] font-medium truncate">{step.thai}</div>
                       </div>
                     </div>
                     <h4 className="text-2xl font-bold text-[#1d1d1f] mb-3 leading-tight">

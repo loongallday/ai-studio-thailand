@@ -188,21 +188,21 @@ export default function Creator() {
               className="apple-card min-w-[280px] shrink-0 snap-start md:min-w-0 md:shrink bg-white rounded-3xl border border-black/[0.06] overflow-hidden cursor-pointer"
             >
               {/* Article header image placeholder */}
-              <div className="h-[180px] bg-gradient-to-br from-[#f5f5f7] to-[#e8e8ed] flex items-center justify-center relative">
+              <div className="h-[180px] bg-gradient-to-br from-[#f5f5f7] to-[#e8e8ed] flex items-center justify-center relative overflow-hidden">
                 <PenTool size={48} className="text-[#6e6e73] opacity-30" />
-                <div className="absolute top-4 left-4 bg-[#06c] text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">
+                <div className="absolute top-3 left-3 bg-[#06c] text-white text-[10px] font-bold px-2 py-0.5 rounded-lg truncate max-w-[calc(100%-24px)]">
                   AI Automation
                 </div>
               </div>
               <div className="p-6 pb-7">
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-7 h-7 rounded-full bg-[#06c] flex items-center justify-center">
+                <div className="flex items-center gap-2 mb-3 overflow-hidden">
+                  <div className="w-7 h-7 rounded-full bg-[#06c] flex items-center justify-center shrink-0">
                     <span className="text-white text-[10px] font-bold">AI</span>
                   </div>
-                  <span className="text-[13px] font-semibold text-[#1d1d1f]">
+                  <span className="text-[13px] font-semibold text-[#1d1d1f] truncate">
                     AI Studio Thailand
                   </span>
-                  <span className="text-xs text-[#6e6e73]">
+                  <span className="text-xs text-[#6e6e73] shrink-0">
                     14 มี.ค. 2026
                   </span>
                 </div>
@@ -249,11 +249,11 @@ export default function Creator() {
                 <Play size={28} className="text-white ml-0.5" />
               </motion.div>
               {/* TikTok badge */}
-              <div className="absolute top-4 right-4 bg-white/15 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px] font-bold text-white z-[2]">
+              <div className="absolute top-3 right-3 bg-white/15 backdrop-blur-md px-2 py-0.5 rounded-lg text-[10px] font-bold text-white z-[2] truncate max-w-[calc(100%-24px)]">
                 TikTok / Reels
               </div>
               {/* Right-side engagement buttons */}
-              <div className="absolute right-4 bottom-24 flex flex-col items-center gap-5 z-[2]">
+              <div className="absolute right-3 bottom-24 flex flex-col items-center gap-4 z-[2]">
                 {[
                   { icon: Heart, label: "8.2K" },
                   { icon: MessageCircle, label: "342" },
@@ -275,7 +275,7 @@ export default function Creator() {
                 })}
               </div>
               {/* Bottom overlay info */}
-              <div className="relative z-[2] p-5">
+              <div className="relative z-[2] p-4 md:p-5 overflow-hidden">
                 <div className="flex items-center gap-2.5 mb-2.5">
                   <div className="w-8 h-8 rounded-full bg-[#06c] flex items-center justify-center border-2 border-white">
                     <span className="text-white text-[9px] font-bold">AI</span>
@@ -284,7 +284,7 @@ export default function Creator() {
                     @aistudiothailand
                   </span>
                 </div>
-                <p className="text-sm text-white leading-normal mb-2.5">
+                <p className="text-sm text-white leading-normal mb-2.5 line-clamp-2">
                   5 AI Tools ที่ช่วยให้ธุรกิจ SME ประหยัดเวลา 10 ชม./สัปดาห์
                 </p>
                 <div className="flex items-center gap-1 text-xs text-white/70">

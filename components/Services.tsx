@@ -34,7 +34,7 @@ function WorkshopVisual() {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: 0.2 }}
-      className="rounded-xl md:rounded-3xl overflow-hidden relative aspect-[4/3] flex flex-col items-center justify-center shadow-lg md:shadow-xl"
+      className="rounded-xl md:rounded-3xl overflow-hidden relative aspect-[4/3] flex flex-col items-center justify-center shadow-lg md:shadow-xl pb-16"
       style={{ background: "linear-gradient(145deg, #f5f5f7, #e8e8ed)" }}
     >
       {/* Badge */}
@@ -43,7 +43,7 @@ function WorkshopVisual() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.5 }}
-        className="absolute top-5 right-5 flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-[11px] font-bold tracking-wide text-white"
+        className="absolute top-3 right-3 flex items-center gap-1.5 rounded-full px-2 py-1 text-[9px] font-bold tracking-wide text-white"
         style={{ background: "#06c" }}
       >
         <div
@@ -68,13 +68,13 @@ function WorkshopVisual() {
       </div>
 
       {/* Floating participant badges */}
-      <div className="absolute bottom-6 left-6 right-6 flex justify-between items-center">
+      <div className="mt-4 pt-4 border-t border-black/[0.04] mx-6 flex justify-between items-center pb-6">
         <div className="flex items-center gap-2">
           <div className="flex">
             {[0, 1, 2, 3].map((i) => (
               <div
                 key={i}
-                className="w-7 h-7 rounded-full border-2 border-white flex items-center justify-center text-[11px] text-white font-semibold"
+                className="w-6 h-6 rounded-full border-2 border-white flex items-center justify-center text-[10px] text-white font-semibold"
                 style={{
                   background: ["#06c", "#3b82f6", "#8b5cf6", "#ec4899"][i],
                   marginLeft: i > 0 ? -8 : 0,
@@ -84,11 +84,11 @@ function WorkshopVisual() {
               </div>
             ))}
           </div>
-          <span className="text-xs font-medium" style={{ color: "#6e6e73" }}>
+          <span className="text-[11px] font-medium truncate" style={{ color: "#6e6e73" }}>
             +20 ผู้เข้าร่วม
           </span>
         </div>
-        <div className="bg-white rounded-[10px] px-3 py-1.5 text-[11px] font-semibold shadow-sm"
+        <div className="bg-white rounded-[10px] px-2 py-1 text-[10px] font-semibold shadow-sm shrink-0"
           style={{ color: "#1d1d1f" }}
         >
           3 Days

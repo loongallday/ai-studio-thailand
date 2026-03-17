@@ -68,7 +68,7 @@ function WorkshopVisual() {
       </div>
 
       {/* Floating participant badges */}
-      <div className="mt-4 pt-4 border-t border-black/[0.04] mx-6 flex justify-between items-center pb-6">
+      <div className="mt-4 pt-4 border-t border-black/[0.04] mx-4 sm:mx-6 flex justify-between items-center pb-4 sm:pb-6">
         <div className="flex items-center gap-2">
           <div className="flex">
             {[0, 1, 2, 3].map((i) => (
@@ -258,7 +258,7 @@ function ContentGridVisual() {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: 0.2 }}
-      className="grid grid-cols-2 gap-3.5 max-w-full overflow-hidden shadow-lg md:shadow-xl rounded-xl md:rounded-2xl"
+      className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-full overflow-hidden shadow-lg md:shadow-xl rounded-xl md:rounded-2xl"
     >
       {cards.map((card, i) => {
         const CardIcon = card.icon;
@@ -269,7 +269,7 @@ function ContentGridVisual() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 + i * 0.1 }}
-            className="rounded-[18px] px-4 py-5 flex flex-col gap-2.5 border border-black/[0.04]"
+            className="rounded-2xl px-4 py-4 sm:py-5 flex flex-col gap-2 sm:gap-2.5 border border-black/[0.04]"
             style={{ background: card.bg }}
           >
             <div className="flex items-center justify-between">

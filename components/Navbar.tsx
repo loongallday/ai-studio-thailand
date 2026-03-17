@@ -204,7 +204,7 @@ export default function Navbar() {
           {/* Mobile Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 text-[#1d1d1f] hover:text-[#06c] transition-colors"
+            className="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#1d1d1f] hover:text-[#06c] transition-colors"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -222,7 +222,7 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="lg:hidden bg-white border-t border-gray-100 overflow-hidden"
           >
-            <div className="container-wide py-4 space-y-1">
+            <div className="container-wide py-4 space-y-1 max-h-[calc(100vh-64px)] overflow-y-auto">
               {navGroups.map((group) => (
                 <div key={group.label}>
                   <button
@@ -231,7 +231,7 @@ export default function Navbar() {
                         mobileAccordion === group.label ? null : group.label
                       )
                     }
-                    className="flex items-center justify-between w-full px-4 py-3 text-sm font-semibold text-[#1d1d1f] rounded-xl hover:bg-[#f0f5ff] transition-colors"
+                    className="flex items-center justify-between w-full px-4 py-3 min-h-[44px] text-sm font-semibold text-[#1d1d1f] rounded-xl hover:bg-[#f0f5ff] transition-colors"
                   >
                     {group.label}
                     <ChevronDown
@@ -257,7 +257,7 @@ export default function Navbar() {
                               key={item.href}
                               href={item.href}
                               onClick={() => setMobileOpen(false)}
-                              className="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-[#f0f5ff] transition-colors"
+                              className="flex items-center gap-3 px-4 py-2.5 min-h-[44px] rounded-xl hover:bg-[#f0f5ff] transition-colors"
                             >
                               <div className="w-8 h-8 rounded-lg bg-[#f0f5ff] text-[#06c] flex items-center justify-center flex-shrink-0">
                                 {item.icon}
@@ -284,7 +284,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileOpen(false)}
-                  className="flex items-center gap-2 px-4 py-3 text-sm font-semibold text-[#1d1d1f] rounded-xl hover:bg-[#f0f5ff] transition-colors"
+                  className="flex items-center gap-2 px-4 py-3 min-h-[44px] text-sm font-semibold text-[#1d1d1f] rounded-xl hover:bg-[#f0f5ff] transition-colors"
                 >
                   {link.icon}
                   {link.label}

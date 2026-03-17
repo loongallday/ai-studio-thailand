@@ -63,7 +63,7 @@ function BrandCard({
         boxShadow: isDark
           ? "0 20px 60px rgba(0,0,0,0.3)"
           : "0 8px 32px rgba(0,0,0,0.06)",
-        padding: "44px 32px 36px",
+        padding: "clamp(28px, 4vw, 44px) clamp(20px, 3vw, 32px) clamp(24px, 3vw, 36px)",
         textAlign: "center",
         position: "relative",
         overflow: "hidden",
@@ -241,7 +241,7 @@ export default function Ecosystem() {
       id="ecosystem"
       style={{
         background: "#fff",
-        padding: "120px 24px",
+        padding: "clamp(60px, 10vw, 120px) 16px",
         overflow: "hidden",
       }}
     >
@@ -459,7 +459,7 @@ export default function Ecosystem() {
           style={{
             background: "#f5f5f7",
             borderRadius: 28,
-            padding: "64px 48px",
+            padding: "clamp(32px, 6vw, 64px) clamp(20px, 5vw, 48px)",
             textAlign: "center",
             position: "relative",
             overflow: "hidden",

@@ -1710,7 +1710,7 @@ export default function Workshop() {
           </div>
 
           <div
-            className="apple-card"
+            className="apple-card workshop-schedule-wrapper"
             style={{
               background: "#fff",
               borderRadius: 20,
@@ -1718,6 +1718,7 @@ export default function Workshop() {
               overflow: "hidden",
             }}
           >
+           <div>
             {/* Table header */}
             <div
               style={{
@@ -1837,6 +1838,7 @@ export default function Workshop() {
                 </motion.div>
               );
             })}
+           </div>
           </div>
         </motion.div>
 
@@ -1951,15 +1953,16 @@ export default function Workshop() {
           .workshop-labs-grid {
             grid-template-columns: 1fr !important;
           }
+          .workshop-schedule-wrapper {
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch;
+          }
+          .workshop-schedule-wrapper > div {
+            min-width: 600px;
+          }
           .workshop-schedule-header,
           .workshop-schedule-row {
-            grid-template-columns: 1fr !important;
-            gap: 8px !important;
-          }
-          .workshop-schedule-header > div:nth-child(3),
-          .workshop-schedule-header > div:nth-child(4),
-          .workshop-schedule-header > div:nth-child(5) {
-            display: none !important;
+            min-width: 600px;
           }
         }
         @media (max-width: 480px) {

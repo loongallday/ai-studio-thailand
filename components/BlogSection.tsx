@@ -158,7 +158,7 @@ function FeaturedCard({ article }: { article: Article }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
-      className="apple-card"
+      className="apple-card featured-card"
       style={{
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
@@ -240,6 +240,7 @@ function FeaturedCard({ article }: { article: Article }) {
 
       {/* Content */}
       <div
+        className="featured-content"
         style={{
           padding: "48px 40px",
           display: "flex",
@@ -572,7 +573,7 @@ function NewsletterCTA() {
       style={{
         background: "linear-gradient(145deg, #1d1d1f, #2d2d2f)",
         borderRadius: 28,
-        padding: "64px 48px",
+        padding: "clamp(32px, 6vw, 64px) clamp(20px, 5vw, 48px)",
         textAlign: "center",
         marginTop: 80,
         position: "relative",
@@ -864,6 +865,15 @@ export default function BlogSection() {
         @media (max-width: 768px) {
           .blog-grid {
             grid-template-columns: 1fr !important;
+          }
+          .featured-card {
+            grid-template-columns: 1fr !important;
+          }
+          .featured-card > div:first-child {
+            min-height: 200px !important;
+          }
+          .featured-content {
+            padding: 24px 20px !important;
           }
         }
       `}</style>

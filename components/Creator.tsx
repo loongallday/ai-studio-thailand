@@ -169,7 +169,7 @@ export default function Creator() {
       id="creator"
       style={{
         background: "#fff",
-        padding: "120px 24px",
+        padding: "clamp(60px, 10vw, 120px) 16px",
       }}
     >
       <div style={{ maxWidth: 1080, margin: "0 auto" }}>

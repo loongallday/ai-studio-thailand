@@ -588,7 +588,7 @@ export default function Services() {
       <div
         style={{
           background: "#fff",
-          padding: "120px 24px 80px",
+          padding: "clamp(60px, 10vw, 120px) 16px clamp(40px, 8vw, 80px)",
         }}
       >
         <div style={{ maxWidth: 980, margin: "0 auto" }}>
@@ -641,7 +641,7 @@ export default function Services() {
       {/* ============================================================ */}
       {/*  Service 1: AI Workshop & Training — white bg                 */}
       {/* ============================================================ */}
-      <div style={{ background: "#fff", padding: "40px 24px 100px" }}>
+      <div style={{ background: "#fff", padding: "40px 16px 60px" }}>
         <div style={{ maxWidth: 1080, margin: "0 auto" }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -764,7 +764,7 @@ export default function Services() {
       {/* ============================================================ */}
       {/*  Service 2: Custom AI Development — #f5f5f7 bg                */}
       {/* ============================================================ */}
-      <div style={{ background: "#f5f5f7", padding: "100px 24px" }}>
+      <div style={{ background: "#f5f5f7", padding: "clamp(48px, 8vw, 100px) 16px" }}>
         <div style={{ maxWidth: 1080, margin: "0 auto" }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -888,7 +888,7 @@ export default function Services() {
       {/* ============================================================ */}
       {/*  Service 3: AI Content Creation — white bg                    */}
       {/* ============================================================ */}
-      <div style={{ background: "#fff", padding: "100px 24px" }}>
+      <div style={{ background: "#fff", padding: "clamp(48px, 8vw, 100px) 16px" }}>
         <div style={{ maxWidth: 1080, margin: "0 auto" }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -1012,7 +1012,7 @@ export default function Services() {
       {/* ============================================================ */}
       {/*  Bottom Stats Bar                                             */}
       {/* ============================================================ */}
-      <div style={{ background: "#f5f5f7", padding: "80px 24px" }}>
+      <div style={{ background: "#f5f5f7", padding: "clamp(40px, 7vw, 80px) 16px" }}>
         <div style={{ maxWidth: 1080, margin: "0 auto" }}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -1095,11 +1095,16 @@ export default function Services() {
         @media (max-width: 768px) {
           .service-row {
             grid-template-columns: 1fr !important;
-            gap: 40px !important;
+            gap: 32px !important;
           }
           .service-row > div {
             order: unset !important;
           }
+          .stats-grid {
+            grid-template-columns: 1fr !important;
+          }
+        }
+        @media (max-width: 480px) {
           .stats-grid {
             grid-template-columns: 1fr !important;
           }

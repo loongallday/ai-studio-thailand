@@ -519,9 +519,10 @@ function CodeMockup() {
       style={{
         background: "#1d1d1f",
         borderRadius: 16,
-        padding: 20,
+        padding: "16px 14px",
         fontFamily: "'SF Mono', 'Fira Code', monospace",
-        overflow: "hidden",
+        overflowX: "auto",
+        WebkitOverflowScrolling: "touch",
       }}
     >
       <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
@@ -1895,6 +1896,14 @@ export default function Development() {
           }
           .cases-grid {
             grid-template-columns: 1fr !important;
+          }
+          .terminal-mockup {
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch;
+          }
+          .terminal-mockup pre,
+          .terminal-mockup code {
+            font-size: 11px !important;
           }
         }
       `}</style>

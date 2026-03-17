@@ -5,7 +5,7 @@ import AnimatedLogo from "./AnimatedLogo";
 export default function Hero() {
   return (
     <section className="bg-white pt-28 sm:pt-36 pb-20 sm:pb-28">
-      <div className="max-w-[980px] mx-auto px-6 text-center">
+      <div className="max-w-[980px] mx-auto px-4 sm:px-6 text-center">
         {/* Animated Logo */}
         <div className="flex justify-center mb-8">
           <AnimatedLogo />
@@ -16,7 +16,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.7 }}
-          className="text-[44px] sm:text-[64px] md:text-[80px] font-semibold leading-[1.05] tracking-[-0.04em] text-[#1d1d1f] mb-6"
+          className="text-[32px] sm:text-[64px] md:text-[80px] font-semibold leading-[1.05] tracking-[-0.04em] text-[#1d1d1f] mb-6"
         >
           สอน. สร้าง. ให้คำปรึกษา.
           <br />
@@ -47,7 +47,7 @@ export default function Hero() {
         </motion.div>
 
         {/* 3 Pillars — Apple Education card style */}
-        <div className="grid sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
           {[
             {
               emoji: "🎓",
@@ -74,7 +74,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 + i * 0.1 }}
-              className="apple-card p-8 text-center group"
+              className="apple-card p-5 sm:p-8 text-center group"
             >
               <span className="text-4xl mb-4 block">{item.emoji}</span>
               <h3 className="text-[17px] font-semibold text-[#1d1d1f] mb-2 group-hover:text-[#06c] transition-colors">

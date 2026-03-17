@@ -307,6 +307,7 @@ function CaseStudyCard({
     >
       {/* ── Header / Visual ── */}
       <div
+        className="case-header"
         style={{
           background: study.gradient,
           padding: "48px 40px 40px",
@@ -620,6 +621,7 @@ function CaseStudyCard({
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.6 }}
+        className="case-tech-stack"
         style={{
           padding: "20px 40px",
           display: "flex",
@@ -662,6 +664,7 @@ function CaseStudyCard({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.65 }}
+        className="case-roi"
         style={{
           margin: "0 40px",
           background: `linear-gradient(135deg, ${study.accentColor}08, ${study.accentColor}04)`,
@@ -719,6 +722,7 @@ function CaseStudyCard({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.75 }}
+        className="case-testimonial"
         style={{
           padding: "28px 40px 36px",
         }}
@@ -912,7 +916,7 @@ function CTASection() {
       style={{
         background: "linear-gradient(145deg, #1d1d1f, #2d2d2f)",
         borderRadius: 28,
-        padding: "64px 48px",
+        padding: "clamp(32px, 6vw, 64px) clamp(20px, 5vw, 48px)",
         textAlign: "center",
         position: "relative",
         overflow: "hidden",
@@ -1144,6 +1148,22 @@ export default function CaseStudiesSection() {
         @media (max-width: 768px) {
           .case-flow-grid {
             grid-template-columns: 1fr !important;
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
+          .case-header {
+            padding: 28px 20px 24px !important;
+          }
+          .case-tech-stack {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+          }
+          .case-roi {
+            margin-left: 20px !important;
+            margin-right: 20px !important;
+          }
+          .case-testimonial {
+            padding: 20px 20px 28px !important;
           }
           .stats-bar-grid {
             grid-template-columns: repeat(2, 1fr) !important;

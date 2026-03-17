@@ -64,7 +64,7 @@ export default function Contact() {
       id="contact"
       style={{
         background: "white",
-        padding: "120px 24px",
+        padding: "clamp(60px, 10vw, 120px) 16px",
       }}
     >
       <div style={{ maxWidth: 1080, margin: "0 auto" }}>
@@ -133,7 +133,7 @@ export default function Contact() {
             style={{
               background: "#fff",
               borderRadius: 28,
-              padding: "40px",
+              padding: "clamp(20px, 4vw, 40px)",
               border: "1px solid rgba(0,0,0,0.06)",
             }}
           >
@@ -537,6 +537,7 @@ export default function Contact() {
                     alignItems: "center",
                     gap: 16,
                     padding: "22px 24px",
+                    minHeight: 44,
                     background: "#fff",
                     borderRadius: 20,
                     border: "1px solid rgba(0,0,0,0.06)",

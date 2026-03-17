@@ -79,8 +79,8 @@ export default function ScrollVideo() {
   }, [drawFrame]);
 
   return (
-    <section ref={sectionRef} className="relative" style={{ height: "400vh" }}>
-      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden bg-white">
+    <section ref={sectionRef} className="relative h-[300vh] sm:h-[400vh]">
+      <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden bg-white px-0">
         {/* Progress bar */}
         <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#e5e5ea] z-20">
           <div

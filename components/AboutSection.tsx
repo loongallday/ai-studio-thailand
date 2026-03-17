@@ -215,12 +215,12 @@ export default function AboutSection() {
           style={{
             background: "#f5f5f7",
             borderRadius: 24,
-            padding: "48px 40px",
+            padding: "clamp(24px, 4vw, 48px) clamp(20px, 4vw, 40px)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: 56,
-            marginBottom: 100,
+            gap: "clamp(20px, 4vw, 56px)",
+            marginBottom: "clamp(48px, 8vw, 100px)",
             flexWrap: "wrap",
           }}
         >
@@ -702,7 +702,7 @@ export default function AboutSection() {
             style={{
               background: "#f5f5f7",
               borderRadius: 28,
-              padding: "56px 48px",
+              padding: "clamp(32px, 5vw, 56px) clamp(20px, 4vw, 48px)",
               textAlign: "center",
               position: "relative",
               overflow: "hidden",

@@ -617,7 +617,7 @@ export default function PricingSection() {
             style={{
               background: "#f5f5f7",
               borderRadius: 24,
-              padding: "40px 48px",
+              padding: "clamp(24px, 4vw, 40px) clamp(20px, 4vw, 48px)",
               textAlign: "center",
               marginBottom: 48,
             }}

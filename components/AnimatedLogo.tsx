@@ -9,7 +9,7 @@ export default function AnimatedLogo({ className = "" }: { className?: string })
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
-        className="text-[56px] sm:text-[72px] md:text-[88px] font-bold tracking-[-0.04em] text-[#1d1d1f] leading-none"
+        className="text-[40px] sm:text-[72px] md:text-[88px] font-bold tracking-[-0.04em] text-[#1d1d1f] leading-none"
       >
         AI
       </motion.span>
@@ -22,7 +22,7 @@ export default function AnimatedLogo({ className = "" }: { className?: string })
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.6, ease: "easeOut" }}
-        className="text-[56px] sm:text-[72px] md:text-[88px] font-bold tracking-[-0.04em] leading-none relative"
+        className="text-[40px] sm:text-[72px] md:text-[88px] font-bold tracking-[-0.04em] leading-none relative"
         style={{
           background: "linear-gradient(135deg, #e8590c 0%, #d4a017 50%, #e8590c 100%)",
           backgroundSize: "200% 100%",
@@ -45,7 +45,7 @@ export default function AnimatedLogo({ className = "" }: { className?: string })
 
       {/* Dot */}
       <motion.div
-        className="relative ml-1 self-start mt-[18px] sm:mt-[22px] md:mt-[28px]"
+        className="relative ml-1 self-start mt-[12px] sm:mt-[22px] md:mt-[28px]"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 1.2, type: "spring", stiffness: 300, damping: 15 }}

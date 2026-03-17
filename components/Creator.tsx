@@ -179,6 +179,7 @@ export default function Creator() {
           </h3>
 
           {/* All 5 cards in one horizontal scroll on mobile, grid on desktop */}
+          <div className="relative">
           <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-3">
 
             {/* ── Card 1: Blog Card (Medium-style) ── */}
@@ -242,10 +243,14 @@ export default function Creator() {
             >
               {/* Simulated video background gradient */}
               <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/70 z-[1]" />
-              {/* Centered play button */}
-              <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/20 backdrop-blur-[10px] flex items-center justify-center z-[2]">
+              {/* Centered play button with pulse */}
+              <motion.div
+                animate={{ scale: [1, 1.15, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+                className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/20 backdrop-blur-[10px] flex items-center justify-center z-[2]"
+              >
                 <Play size={28} className="text-white ml-0.5" />
-              </div>
+              </motion.div>
               {/* TikTok badge */}
               <div className="absolute top-4 right-4 bg-white/15 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px] font-bold text-white z-[2]">
                 TikTok / Reels
@@ -444,6 +449,10 @@ export default function Creator() {
               </div>
             </motion.div>
           </div>
+          {/* Gradient fade edges */}
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-24 bg-gradient-to-r from-white to-transparent z-10 md:hidden" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-24 bg-gradient-to-l from-white to-transparent z-10 md:hidden" />
+          </div>
         </motion.div>
 
         {/* ════════════════════════════════════════════
@@ -474,7 +483,7 @@ export default function Creator() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="apple-card bg-white rounded-3xl py-8 px-6 border border-black/[0.06]"
+              className="apple-card bg-white rounded-2xl py-8 px-6 border border-black/[0.04] hover:shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-shadow"
             >
               <div className="w-12 h-12 rounded-[14px] bg-[rgba(0,102,204,0.08)] flex items-center justify-center mb-[18px]">
                 <FileText size={22} className="text-[#06c]" />
@@ -506,7 +515,7 @@ export default function Creator() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="apple-card bg-white rounded-3xl py-8 px-6 border border-black/[0.06]"
+              className="apple-card bg-white rounded-2xl py-8 px-6 border border-black/[0.04] hover:shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-shadow"
             >
               <div className="w-12 h-12 rounded-[14px] bg-[rgba(0,102,204,0.08)] flex items-center justify-center mb-[18px]">
                 <Camera size={22} className="text-[#06c]" />
@@ -538,7 +547,7 @@ export default function Creator() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="apple-card bg-white rounded-3xl py-8 px-6 border border-black/[0.06]"
+              className="apple-card bg-white rounded-2xl py-8 px-6 border border-black/[0.04] hover:shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-shadow"
             >
               <div className="w-12 h-12 rounded-[14px] bg-[rgba(0,102,204,0.08)] flex items-center justify-center mb-[18px]">
                 <Play size={22} className="text-[#06c]" />
@@ -570,7 +579,7 @@ export default function Creator() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="apple-card bg-white rounded-3xl py-8 px-6 border border-black/[0.06]"
+              className="apple-card bg-white rounded-2xl py-8 px-6 border border-black/[0.04] hover:shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-shadow"
             >
               <div className="w-12 h-12 rounded-[14px] bg-[rgba(0,102,204,0.08)] flex items-center justify-center mb-[18px]">
                 <Mail size={22} className="text-[#06c]" />
@@ -630,7 +639,7 @@ export default function Creator() {
                   className="text-center py-8 px-4 bg-white rounded-[20px] border border-black/[0.04]"
                 >
                   <StatIcon size={24} className="text-[#06c] mb-3.5 mx-auto" />
-                  <div className="text-[clamp(32px,4vw,44px)] font-bold text-[#1d1d1f] leading-[1.1] mb-1.5">
+                  <div className="text-[clamp(32px,4vw,44px)] font-bold text-[#1d1d1f] leading-[1.1] mb-1.5" style={{ fontFeatureSettings: '"tnum"' }}>
                     <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                   </div>
                   <div className="text-sm text-[#6e6e73] font-medium">
@@ -664,6 +673,7 @@ export default function Creator() {
                 followers: "25K followers",
                 bgClass: "bg-gradient-to-br from-[#1d1d1f] to-[#424245]",
                 icon: Play,
+                accentColor: "#fe2c55",
               },
               {
                 name: "Instagram",
@@ -671,6 +681,7 @@ export default function Creator() {
                 followers: "12K followers",
                 bgClass: "bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#F77737]",
                 icon: Camera,
+                accentColor: "#833AB4",
               },
               {
                 name: "YouTube",
@@ -678,6 +689,7 @@ export default function Creator() {
                 followers: "8K subscribers",
                 bgClass: "bg-gradient-to-br from-red-600 to-red-500",
                 icon: Youtube,
+                accentColor: "#ff0000",
               },
               {
                 name: "LINE OA",
@@ -685,6 +697,7 @@ export default function Creator() {
                 followers: "5K friends",
                 bgClass: "bg-gradient-to-br from-[#06c] to-[#5ac8fa]",
                 icon: Send,
+                accentColor: "#06c200",
               },
             ].map((social, i) => {
               const SocialIcon = social.icon;
@@ -698,7 +711,8 @@ export default function Creator() {
                   transition={{ delay: 0.1 + i * 0.1 }}
                   whileHover={{ y: -4, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className={`${social.bgClass} rounded-3xl py-8 px-6 no-underline flex flex-col items-center text-center cursor-pointer relative overflow-hidden`}
+                  className={`${social.bgClass} rounded-3xl py-8 px-6 no-underline flex flex-col items-center text-center cursor-pointer relative overflow-hidden border-l-4`}
+                  style={{ borderLeftColor: social.accentColor }}
                 >
                   <div className="w-[52px] h-[52px] rounded-2xl bg-white/20 flex items-center justify-center mb-4">
                     <SocialIcon size={24} className="text-white" />
@@ -730,11 +744,13 @@ export default function Creator() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-center bg-gradient-to-br from-[#06c] to-[#5ac8fa] rounded-[32px] py-16 px-8 relative overflow-hidden"
+          className="text-center bg-gradient-to-br from-[#06c] via-[#2997ff] to-[#5ac8fa] rounded-[32px] py-16 px-8 relative overflow-hidden"
         >
-          {/* Decorative circles */}
+          {/* Decorative radial gradients */}
           <div className="absolute -top-10 -right-10 w-[200px] h-[200px] rounded-full bg-white/[0.08]" />
           <div className="absolute -bottom-[60px] -left-5 w-40 h-40 rounded-full bg-white/[0.06]" />
+          <div className="absolute top-0 left-1/4 w-[300px] h-[300px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(88,86,214,0.15) 0%, transparent 70%)" }} />
+          <div className="absolute bottom-0 right-1/4 w-[250px] h-[250px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(175,82,222,0.12) 0%, transparent 70%)" }} />
           <div className="relative z-[1]">
             <h3 className="text-[clamp(28px,4vw,40px)] font-bold text-white mb-4 leading-tight">
               พร้อมสร้าง Content

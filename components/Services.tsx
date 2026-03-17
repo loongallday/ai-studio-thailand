@@ -34,7 +34,7 @@ function WorkshopVisual() {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: 0.2 }}
-      className="rounded-3xl overflow-hidden relative aspect-[4/3] flex flex-col items-center justify-center"
+      className="rounded-xl md:rounded-3xl overflow-hidden relative aspect-[4/3] flex flex-col items-center justify-center shadow-lg md:shadow-xl"
       style={{ background: "linear-gradient(145deg, #f5f5f7, #e8e8ed)" }}
     >
       {/* Badge */}
@@ -115,7 +115,7 @@ function ArchitectureVisual() {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: 0.2 }}
-      className="rounded-3xl overflow-hidden relative pt-10 px-6 pb-8"
+      className="rounded-xl md:rounded-3xl overflow-hidden relative pt-10 px-6 pb-8 shadow-lg md:shadow-xl"
       style={{ background: "#f5f5f7" }}
     >
       {/* Title bar */}
@@ -258,7 +258,7 @@ function ContentGridVisual() {
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7, delay: 0.2 }}
-      className="grid grid-cols-2 gap-3.5"
+      className="grid grid-cols-2 gap-3.5 max-w-full overflow-hidden shadow-lg md:shadow-xl rounded-xl md:rounded-2xl"
     >
       {cards.map((card, i) => {
         const CardIcon = card.icon;
@@ -368,7 +368,7 @@ function ServiceSection({
   reversed?: boolean;
 }) {
   return (
-    <div className={`py-12 md:py-24 px-4 md:px-6 ${bgClass}`} style={bgColor ? { background: bgColor } : undefined}>
+    <div className={`py-16 md:py-28 px-4 md:px-6 ${bgClass}`} style={bgColor ? { background: bgColor } : undefined}>
       <div className="max-w-[1080px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -384,8 +384,8 @@ function ServiceSection({
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 mb-6"
-              style={{ background: badgeBg }}
+              className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 mb-6 border"
+              style={{ background: badgeBg, borderColor: `${badgeColor}15` }}
             >
               <BadgeIcon size={16} style={{ color: badgeColor }} />
               <span className="text-[13px] font-semibold" style={{ color: badgeColor }}>
@@ -422,10 +422,10 @@ function ServiceSection({
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.55 }}
-              className="inline-flex items-center gap-2 text-[17px] font-semibold no-underline cursor-pointer mt-7"
+              className="inline-flex items-center gap-2 text-[17px] font-semibold no-underline cursor-pointer mt-7 group"
               style={{ color: badgeColor }}
             >
-              {linkText} <ArrowRight size={18} />
+              {linkText} <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </motion.a>
           </div>
 
@@ -519,6 +519,9 @@ export default function Services() {
         visual={<WorkshopVisual />}
       />
 
+      {/* Divider */}
+      <div className="max-w-[200px] mx-auto h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
+
       {/* ============================================================ */}
       {/*  Service 2: Custom AI Development — #f5f5f7 bg                */}
       {/* ============================================================ */}
@@ -541,6 +544,9 @@ export default function Services() {
         visual={<ArchitectureVisual />}
         reversed
       />
+
+      {/* Divider */}
+      <div className="max-w-[200px] mx-auto h-px bg-gradient-to-r from-transparent via-black/10 to-transparent" />
 
       {/* ============================================================ */}
       {/*  Service 3: AI Content Creation — white bg                    */}
@@ -589,7 +595,7 @@ export default function Services() {
                   className="mx-auto mb-3.5"
                   style={{ color: stat.color }}
                 />
-                <div className="text-[32px] md:text-[44px] font-bold leading-none"
+                <div className="text-[28px] md:text-[40px] font-bold leading-none"
                   style={{ color: "#1d1d1f" }}
                 >
                   {stat.value}

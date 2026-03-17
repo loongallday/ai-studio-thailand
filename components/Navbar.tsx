@@ -102,6 +102,18 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [openDropdown]);
 
+  // Body scroll lock when mobile menu is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -156,7 +168,7 @@ export default function Navbar() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.97 }}
                       transition={{ duration: 0.2, ease: "easeOut" }}
-                      className="absolute top-full left-0 mt-2 w-72 bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden"
+                      className="absolute top-full left-0 mt-2 w-72 bg-white rounded-2xl shadow-[0_12px_48px_rgba(0,0,0,0.12)] border border-black/[0.04] overflow-hidden"
                     >
                       <div className="p-2">
                         {group.items.map((item) => (
@@ -204,7 +216,7 @@ export default function Navbar() {
           {/* Mobile Toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="lg:hidden p-2 min-w-[44px] min-h-[44px] flex items-center justify-center text-[#1d1d1f] hover:text-[#06c] transition-colors"
+            className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl text-[#1d1d1f] hover:text-[#06c] active:bg-black/5 transition-colors"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -222,9 +234,9 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="lg:hidden bg-white border-t border-gray-100 overflow-hidden"
           >
-            <div className="container-wide py-4 space-y-1 max-h-[calc(100vh-64px)] overflow-y-auto pb-[calc(16px+env(safe-area-inset-bottom))]">
-              {navGroups.map((group) => (
-                <div key={group.label}>
+            <div className="container-wide py-4 space-y-1 max-h-[calc(100dvh-56px)] overflow-y-auto overscroll-contain pb-[calc(16px+env(safe-area-inset-bottom))]">
+              {navGroups.map((group, groupIndex) => (
+                <div key={group.label} className={groupIndex > 0 ? "border-t border-black/[0.06] pt-1" : ""}>
                   <button
                     onClick={() =>
                       setMobileAccordion(
@@ -279,6 +291,7 @@ export default function Navbar() {
                 </div>
               ))}
 
+              <div className="border-t border-black/[0.06] pt-1">
               {directLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -290,6 +303,7 @@ export default function Navbar() {
                   {link.label}
                 </Link>
               ))}
+              </div>
 
               <div className="pt-3 px-4">
                 <Link

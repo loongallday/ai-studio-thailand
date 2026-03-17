@@ -373,6 +373,7 @@ function CodeMockup() {
           style={{ color: line.color || "transparent" }}
         >
           {line.text || "\u00A0"}
+          {i === 7 && <span className="inline-block w-[7px] h-[15px] bg-[#34d399] ml-0.5 rounded-[1px]" style={{ animation: "blink 1s step-end infinite" }} />}
         </motion.div>
       ))}
     </div>
@@ -626,7 +627,7 @@ export default function Development() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 auto-rows-fr">
           {/* Large: AI Chatbot (spans 2 cols) */}
           <motion.div
             initial="hidden"
@@ -634,7 +635,7 @@ export default function Development() {
             viewport={{ once: true, margin: "-40px" }}
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.05 }}
-            className="md:col-span-2 bg-white rounded-3xl p-7 md:px-7 md:py-8 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)]"
+            className="md:col-span-2 bg-white rounded-2xl p-7 md:px-7 md:py-8 border border-black/[0.04] shadow-[0_2px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-shadow relative overflow-hidden"
           >
             <div className="flex items-center gap-2.5 mb-1">
               <div className="w-10 h-10 rounded-xl bg-[rgba(0,102,204,0.08)] flex items-center justify-center">
@@ -650,6 +651,7 @@ export default function Development() {
               </div>
             </div>
             <ChatMockup />
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent pointer-events-none" />
           </motion.div>
 
           {/* Small: RAG Knowledge Base */}
@@ -659,7 +661,7 @@ export default function Development() {
             viewport={{ once: true, margin: "-40px" }}
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="bg-white rounded-3xl px-5 pt-7 pb-5 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)]"
+            className="bg-white rounded-2xl px-5 pt-7 pb-5 border border-black/[0.04] shadow-[0_2px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-shadow"
           >
             <div className="w-9 h-9 rounded-[10px] bg-[rgba(124,58,237,0.08)] flex items-center justify-center mb-3">
               <Database size={18} color="#7c3aed" />
@@ -680,7 +682,7 @@ export default function Development() {
             viewport={{ once: true, margin: "-40px" }}
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="bg-white rounded-3xl px-5 pt-7 pb-5 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)]"
+            className="bg-white rounded-2xl px-5 pt-7 pb-5 border border-black/[0.04] shadow-[0_2px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-shadow"
           >
             <div className="w-9 h-9 rounded-[10px] bg-[rgba(234,88,12,0.08)] flex items-center justify-center mb-3">
               <Workflow size={18} color="#ea580c" />
@@ -701,7 +703,7 @@ export default function Development() {
             viewport={{ once: true, margin: "-40px" }}
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white rounded-3xl px-5 pt-7 pb-5 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)]"
+            className="bg-white rounded-2xl px-5 pt-7 pb-5 border border-black/[0.04] shadow-[0_2px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-shadow"
           >
             <div className="w-9 h-9 rounded-[10px] bg-[rgba(5,150,105,0.08)] flex items-center justify-center mb-3">
               <BarChart3 size={18} color="#059669" />
@@ -722,7 +724,7 @@ export default function Development() {
             viewport={{ once: true, margin: "-40px" }}
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="bg-white rounded-3xl px-5 pt-7 pb-5 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)]"
+            className="bg-white rounded-2xl px-5 pt-7 pb-5 border border-black/[0.04] shadow-[0_2px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-shadow"
           >
             <div className="w-9 h-9 rounded-[10px] bg-[rgba(0,102,204,0.08)] flex items-center justify-center mb-3">
               <Plug size={18} color="#06c" />
@@ -743,7 +745,7 @@ export default function Development() {
             viewport={{ once: true, margin: "-40px" }}
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="md:col-span-2 bg-white rounded-3xl p-7 md:px-7 md:py-8 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)]"
+            className="md:col-span-2 bg-white rounded-3xl p-7 md:px-7 md:py-8 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)] relative overflow-hidden"
           >
             <div className="flex items-center gap-2.5 mb-1">
               <div className="w-10 h-10 rounded-xl bg-black/[0.04] flex items-center justify-center">
@@ -759,6 +761,7 @@ export default function Development() {
               </div>
             </div>
             <ArchitectureDiagram />
+            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent pointer-events-none" />
           </motion.div>
         </div>
       </div>
@@ -801,12 +804,12 @@ export default function Development() {
                     className={isLeft ? "md:order-1" : "md:order-2"}
                   >
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-[14px] bg-white border-2 border-[rgba(0,102,204,0.15)] flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-                        <StepIcon size={22} color="#06c" />
+                      <div className="w-14 h-14 rounded-2xl bg-[#06c] flex items-center justify-center shadow-[0_4px_16px_rgba(0,102,204,0.35)]">
+                        <span className="text-xl font-bold text-white">{i + 1}</span>
                       </div>
                       <div>
-                        <div className="text-xs font-bold text-[#06c] uppercase tracking-widest">
-                          Step {i + 1} — {step.label}
+                        <div className="text-xs font-bold text-[#06c] uppercase tracking-widest flex items-center gap-1.5">
+                          <StepIcon size={14} color="#06c" /> Step {i + 1} — {step.label}
                         </div>
                         <div className="text-[13px] text-[#86868b] font-medium">{step.thai}</div>
                       </div>
@@ -826,7 +829,7 @@ export default function Development() {
                     viewport={{ once: true, margin: "-60px" }}
                     variants={isLeft ? fadeRight : fadeLeft}
                     transition={{ duration: 0.7, delay: 0.2 }}
-                    className={isLeft ? "md:order-2" : "md:order-1"}
+                    className={`${isLeft ? "md:order-2" : "md:order-1"} max-h-[200px] md:max-h-none overflow-hidden rounded-xl md:rounded-2xl`}
                   >
                     {step.mockup}
                   </motion.div>
@@ -863,7 +866,7 @@ export default function Development() {
             viewport={{ once: true }}
             variants={fadeLeft}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="bg-[#1d1d1f] rounded-3xl p-8 md:p-9 relative overflow-hidden"
+            className="bg-[#1d1d1f] rounded-3xl p-8 md:p-9 relative overflow-hidden hover:scale-[1.02] hover:shadow-lg transition-all duration-300"
           >
             {/* Subtle gradient overlay */}
             <div
@@ -924,7 +927,7 @@ export default function Development() {
             viewport={{ once: true }}
             variants={fadeRight}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="bg-white rounded-3xl p-8 md:p-9 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)] relative overflow-hidden"
+            className="bg-white rounded-3xl p-8 md:p-9 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)] relative overflow-hidden hover:scale-[1.02] hover:shadow-lg transition-all duration-300"
           >
             <div
               className="absolute top-0 right-0 w-[200px] h-[200px] pointer-events-none"
@@ -1032,7 +1035,8 @@ export default function Development() {
                 viewport={{ once: true }}
                 variants={fadeUp}
                 transition={{ duration: 0.6, delay: 0.1 + i * 0.1 }}
-                className="bg-white rounded-3xl p-7 md:p-8 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)] flex flex-col"
+                className="bg-white rounded-3xl p-7 md:p-8 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)] flex flex-col border-l-4"
+                style={{ borderLeftColor: ex.color }}
               >
                 <div className="flex items-center gap-2 mb-4">
                   <span

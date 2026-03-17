@@ -287,10 +287,10 @@ export default function PricingSection() {
                   key={plan.name}
                   variants={fadeUp}
                   whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                  className={`apple-card rounded-3xl p-6 md:p-8 relative overflow-hidden flex flex-col ${
+                  className={`apple-card rounded-2xl p-6 md:p-8 relative overflow-hidden flex flex-col ${
                     plan.recommended
-                      ? "bg-gradient-to-br from-[#1d1d1f] to-[#2d2d2f] border border-white/[0.08]"
-                      : "bg-white border border-black/[0.06]"
+                      ? "bg-gradient-to-br from-[#1d1d1f] to-[#2d2d2f] border border-white/[0.08] ring-2 ring-[#06c] shadow-[0_12px_48px_rgba(0,102,204,0.2)]"
+                      : "bg-white border border-black/[0.04] hover:shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-shadow"
                   }`}
                 >
                   {plan.recommended && (
@@ -325,7 +325,7 @@ export default function PricingSection() {
                   <div className="flex items-baseline gap-1 mb-1">
                     <span
                       className={`font-bold ${plan.recommended ? "text-white" : "text-[#1d1d1f]"} ${
-                        plan.price === "ติดต่อราคา" ? "text-[22px] md:text-[24px]" : "text-[28px] md:text-[32px]"
+                        plan.price === "ติดต่อราคา" ? "text-[22px] md:text-[24px]" : "text-[32px] md:text-[40px]"
                       }`}
                     >
                       {plan.price === "ติดต่อราคา" ? plan.price : `฿${plan.price}`}
@@ -425,16 +425,18 @@ export default function PricingSection() {
             <h3 className="text-[20px] md:text-[22px] font-bold text-[#1d1d1f] text-center mb-8 md:mb-9">
               กระบวนการทำงาน
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 relative">
+              {/* Connecting line behind steps (desktop) */}
+              <div className="absolute top-[26px] left-[10%] right-[10%] h-[2px] bg-gradient-to-r from-[#06c]/10 via-[#06c]/20 to-[#06c]/10 hidden lg:block z-0" />
               {devProcess.map((step, i) => {
                 const StepIcon = step.icon;
                 return (
                   <motion.div
                     key={step.step}
                     variants={fadeUp}
-                    className="text-center relative"
+                    className="text-center relative z-[1]"
                   >
-                    <div className="w-[52px] h-[52px] rounded-2xl bg-[rgba(0,102,204,0.06)] flex items-center justify-center mx-auto mb-3">
+                    <div className="w-[52px] h-[52px] rounded-2xl bg-[rgba(0,102,204,0.06)] flex items-center justify-center mx-auto mb-3 border-2 border-white">
                       <StepIcon size={22} className="text-[#06c]" />
                     </div>
                     <div className="text-[11px] font-bold text-[#06c] tracking-[0.06em] mb-1">
@@ -447,7 +449,7 @@ export default function PricingSection() {
                       {step.desc}
                     </div>
                     {i < devProcess.length - 1 && (
-                      <div className="absolute top-[26px] -right-3 text-[#d1d5db] hidden lg:block">
+                      <div className="absolute top-[26px] -right-3 text-[#06c]/40 hidden lg:block z-[2]">
                         <ArrowRight size={16} />
                       </div>
                     )}
@@ -544,7 +546,7 @@ export default function PricingSection() {
                   key={plan.name}
                   variants={fadeUp}
                   whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                  className="apple-card bg-white rounded-3xl border border-black/[0.06] p-6 md:p-8 flex flex-col"
+                  className="apple-card bg-white rounded-2xl border border-black/[0.04] p-6 md:p-8 flex flex-col hover:shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-shadow"
                 >
                   <div className="w-12 h-12 rounded-[14px] bg-[rgba(0,102,204,0.06)] flex items-center justify-center mb-5">
                     <Icon size={24} className="text-[#06c]" />
@@ -617,7 +619,7 @@ export default function PricingSection() {
               >
                 <button
                   onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  className="flex items-center justify-between w-full py-6 bg-transparent border-none cursor-pointer text-left"
+                  className="flex items-center justify-between w-full py-6 bg-transparent border-none cursor-pointer text-left min-h-[48px]"
                 >
                   <span className="text-[15px] md:text-[17px] font-semibold text-[#1d1d1f] pr-4">
                     {faq.q}

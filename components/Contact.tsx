@@ -93,7 +93,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="apple-card bg-white rounded-[28px] p-4 md:p-6 lg:p-8 border border-black/[0.06]"
+            className="apple-card bg-white rounded-2xl p-5 md:p-6 lg:p-8 border border-black/[0.04] shadow-[0_2px_16px_rgba(0,0,0,0.04)]"
           >
             {submitted ? (
               <motion.div
@@ -139,7 +139,7 @@ export default function Contact() {
                       type="text"
                       required
                       placeholder="ชื่อของคุณ"
-                      className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none transition-colors focus:border-[#06c] focus:shadow-[0_0_0_3px_rgba(232,89,12,0.1)] placeholder:text-[#c7c7cc] box-border"
+                      className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none focus:ring-2 focus:ring-[#06c]/30 focus:border-[#06c] transition-all placeholder:text-[#c7c7cc] box-border"
                     />
                   </div>
                   <div>
@@ -155,7 +155,7 @@ export default function Contact() {
                       name="company"
                       type="text"
                       placeholder="ชื่อบริษัท (ถ้ามี)"
-                      className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none transition-colors focus:border-[#06c] focus:shadow-[0_0_0_3px_rgba(232,89,12,0.1)] placeholder:text-[#c7c7cc] box-border"
+                      className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none focus:ring-2 focus:ring-[#06c]/30 focus:border-[#06c] transition-all placeholder:text-[#c7c7cc] box-border"
                     />
                   </div>
                 </div>
@@ -176,7 +176,7 @@ export default function Contact() {
                       type="email"
                       required
                       placeholder="your@email.com"
-                      className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none transition-colors focus:border-[#06c] focus:shadow-[0_0_0_3px_rgba(232,89,12,0.1)] placeholder:text-[#c7c7cc] box-border"
+                      className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none focus:ring-2 focus:ring-[#06c]/30 focus:border-[#06c] transition-all placeholder:text-[#c7c7cc] box-border"
                     />
                   </div>
                   <div>
@@ -192,7 +192,7 @@ export default function Contact() {
                       name="phone"
                       type="tel"
                       placeholder="08X-XXX-XXXX"
-                      className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none transition-colors focus:border-[#06c] focus:shadow-[0_0_0_3px_rgba(232,89,12,0.1)] placeholder:text-[#c7c7cc] box-border"
+                      className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none focus:ring-2 focus:ring-[#06c]/30 focus:border-[#06c] transition-all placeholder:text-[#c7c7cc] box-border"
                     />
                   </div>
                 </div>
@@ -210,7 +210,7 @@ export default function Contact() {
                     id="service"
                     name="service"
                     required
-                    className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none cursor-pointer appearance-none bg-[url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22%2386868b%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8%2012l-6-6h12z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[right_16px_center] box-border focus:border-[#06c] focus:shadow-[0_0_0_3px_rgba(232,89,12,0.1)]"
+                    className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none cursor-pointer appearance-none bg-[url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22%2386868b%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8%2012l-6-6h12z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[right_16px_center] box-border focus:ring-2 focus:ring-[#06c]/30 focus:border-[#06c] transition-all"
                   >
                     {serviceOptions.map((opt) => (
                       <option key={opt.value} value={opt.value}>
@@ -235,7 +235,7 @@ export default function Contact() {
                     required
                     rows={5}
                     placeholder="บอกเราเกี่ยวกับโปรเจ็กต์หรือความต้องการของคุณ..."
-                    className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none resize-y min-h-[120px] leading-relaxed box-border font-[inherit] focus:border-[#06c] focus:shadow-[0_0_0_3px_rgba(232,89,12,0.1)] placeholder:text-[#c7c7cc]"
+                    className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none resize-y min-h-[120px] leading-relaxed box-border font-[inherit] focus:ring-2 focus:ring-[#06c]/30 focus:border-[#06c] transition-all placeholder:text-[#c7c7cc]"
                   />
                 </div>
 
@@ -244,7 +244,7 @@ export default function Contact() {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full py-4 rounded-full bg-[#1d1d1f] text-white font-medium flex items-center justify-center gap-2 text-[15px] md:text-[16px] border-none cursor-pointer mt-1"
+                  className="w-full py-4 md:py-4 rounded-full bg-[#1d1d1f] text-white font-medium flex items-center justify-center gap-2 text-[16px] md:text-[16px] border-none cursor-pointer mt-1 min-h-[52px] hover:scale-[1.01] hover:shadow-lg active:scale-[0.99] transition-all"
                   style={{
                     background: "linear-gradient(135deg, #06c, #ea580c)",
                   }}
@@ -284,7 +284,7 @@ export default function Contact() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.35 + i * 0.08 }}
                   whileHover={{ y: -2 }}
-                  className="apple-card flex items-center gap-4 p-4 md:p-6 min-h-[44px] bg-white rounded-[20px] border border-black/[0.06] no-underline cursor-pointer transition-shadow"
+                  className="apple-card flex items-center gap-4 p-4 md:p-6 min-h-[44px] bg-white rounded-[20px] border border-black/[0.06] no-underline cursor-pointer hover:shadow-md hover:border-[#06c]/20 transition-all"
                 >
                   <div
                     className="w-12 h-12 rounded-[14px] flex items-center justify-center shrink-0"
@@ -311,7 +311,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6 }}
-              className="apple-card p-4 md:p-6 bg-white rounded-[20px] border border-black/[0.06]"
+              className="apple-card p-4 md:p-6 bg-white rounded-[20px] border border-black/[0.06] hover:shadow-md hover:border-[#06c]/20 transition-all"
             >
               <div className="flex items-center gap-2.5 mb-3.5">
                 <Clock size={18} className="text-[#06c]" />
@@ -341,7 +341,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.7 }}
-              className="apple-card p-4 md:p-6 rounded-[20px] border border-[rgba(232,89,12,0.1)]"
+              className="apple-card p-4 md:p-6 rounded-[20px] border border-[rgba(232,89,12,0.1)] hover:shadow-md hover:border-[#06c]/20 transition-all"
               style={{
                 background: "linear-gradient(135deg, rgba(232,89,12,0.04), rgba(232,89,12,0.02))",
               }}

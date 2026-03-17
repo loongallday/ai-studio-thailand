@@ -127,21 +127,25 @@ const whyUs = [
     icon: Lightbulb,
     title: "ผู้สอนมีประสบการณ์จริง",
     desc: "สร้าง LocalAI + CloudAI ให้ลูกค้าจริง ไม่ใช่แค่ทฤษฎี",
+    color: "#f59e0b",
   },
   {
     icon: Monitor,
     title: "Hands-on 70% ทฤษฎี 30%",
     desc: "ลงมือทำจริงตลอดทั้งวัน กลับไปทำงานต่อได้ทันที",
+    color: "#06c",
   },
   {
     icon: Shield,
     title: "ใช้ tools จริง ไม่ใช่ demo",
     desc: "n8n, Flowise, ChromaDB, Docker — เครื่องมือที่ใช้ใน production จริง",
+    color: "#34c759",
   },
   {
     icon: Award,
     title: "ได้ certificate + materials กลับไป",
     desc: "Certificate of Completion, workshop materials, templates, 30 วัน support",
+    color: "#8b5cf6",
   },
 ];
 
@@ -196,9 +200,9 @@ function DayTimeline({
         </div>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.35, ease: [0.25, 0.1, 0.25, 1] }}
         >
-          <ChevronDown size={20} style={{ color: "#6e6e73" }} />
+          <ChevronDown size={20} style={{ color: isOpen ? "#06c" : "#6e6e73", transition: "color 0.3s" }} />
         </motion.div>
       </motion.button>
 
@@ -357,10 +361,10 @@ export default function Workshop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.6 }}
-          className="apple-card rounded-[20px] md:rounded-3xl border border-black/[0.06] overflow-hidden mb-4 md:mb-6"
+          className="apple-card rounded-2xl md:rounded-3xl border border-black/[0.04] overflow-hidden mb-4 md:mb-6 hover:shadow-md transition-shadow"
           style={{ background: "#fff" }}
         >
-          <div className="p-4 md:p-6 lg:p-8">
+          <div className="p-5 md:p-6 lg:p-8">
             <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 md:gap-5 mb-5 md:mb-6">
               <div className="flex items-center gap-3 md:gap-4">
                 <div
@@ -563,8 +567,8 @@ export default function Workshop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="apple-card rounded-[20px] md:rounded-3xl overflow-hidden mb-4 md:mb-6 relative"
-          style={{ background: "#fff", border: "2px solid #06c" }}
+          className="apple-card rounded-2xl md:rounded-3xl border border-black/[0.04] overflow-hidden mb-4 md:mb-6 relative ring-2 ring-[#06c]/20 shadow-lg hover:shadow-xl transition-shadow"
+          style={{ background: "#fff" }}
         >
           {/* Featured badge */}
           <div
@@ -761,10 +765,10 @@ export default function Workshop() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="apple-card rounded-[20px] md:rounded-3xl border border-black/[0.06] overflow-hidden flex flex-col"
+            className="apple-card rounded-2xl border border-black/[0.04] overflow-hidden flex flex-col hover:shadow-md transition-shadow"
             style={{ background: "#fff" }}
           >
-            <div className="p-4 md:p-6 lg:p-7 flex-1">
+            <div className="p-5 md:p-6 lg:p-7 flex-1">
               <div className="flex items-center justify-between mb-5">
                 <div
                   className="w-11 h-11 md:w-12 md:h-12 rounded-[14px] flex items-center justify-center"
@@ -891,13 +895,14 @@ export default function Workshop() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="apple-card rounded-[20px] md:rounded-3xl overflow-hidden flex flex-col"
+            className="apple-card rounded-2xl border border-black/[0.04] overflow-hidden flex flex-col hover:shadow-md transition-shadow"
             style={{
               background: "linear-gradient(160deg, #fff 0%, rgba(124,58,237,0.03) 100%)",
-              border: "1px dashed rgba(124,58,237,0.3)",
+              borderStyle: "dashed",
+              borderColor: "rgba(124,58,237,0.3)",
             }}
           >
-            <div className="p-4 md:p-6 lg:p-7 flex-1">
+            <div className="p-5 md:p-6 lg:p-7 flex-1">
               <div className="flex items-center justify-between mb-5">
                 <div
                   className="w-11 h-11 md:w-12 md:h-12 rounded-[14px] flex items-center justify-center"
@@ -1058,10 +1063,10 @@ export default function Workshop() {
                   style={{ background: "#fff" }}
                 >
                   <div
-                    className="w-[52px] h-[52px] rounded-2xl flex items-center justify-center mx-auto mb-4"
-                    style={{ background: "rgba(0,102,204,0.06)" }}
+                    className="w-[52px] h-[52px] rounded-full flex items-center justify-center mx-auto mb-4"
+                    style={{ background: `${item.color}12` }}
                   >
-                    <Icon size={24} style={{ color: "#06c" }} />
+                    <Icon size={24} style={{ color: item.color }} />
                   </div>
                   <div
                     className="text-base font-bold mb-2 leading-snug"
@@ -1101,6 +1106,10 @@ export default function Workshop() {
             </p>
           </div>
 
+          <div className="relative">
+            {/* Gradient fade edges on mobile */}
+            <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none md:hidden" />
+            <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none md:hidden" />
           <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 scrollbar-hide md:grid md:grid-cols-3">
             {testimonials.map((t, i) => (
               <motion.div
@@ -1113,9 +1122,9 @@ export default function Workshop() {
                 style={{ background: "#fff" }}
               >
                 <Quote
-                  size={24}
+                  size={28}
                   className="mb-3"
-                  style={{ color: "rgba(0,102,204,0.15)" }}
+                  style={{ color: "rgba(0,102,204,0.25)" }}
                 />
                 <div
                   className="text-sm leading-relaxed flex-1 mb-5"
@@ -1145,6 +1154,7 @@ export default function Workshop() {
                 </div>
               </motion.div>
             ))}
+          </div>
           </div>
         </motion.div>
 
@@ -1180,15 +1190,27 @@ export default function Workshop() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  className="apple-card rounded-2xl border border-black/[0.06] p-4 md:p-5"
-                  style={{ background: "#fff" }}
+                  whileHover={{ y: -3, transition: { duration: 0.2 } }}
+                  className="apple-card rounded-2xl border p-4 md:p-5 transition-shadow hover:shadow-md"
+                  style={{ background: "#fff", borderColor: isLow ? "rgba(245,158,11,0.2)" : "rgba(0,0,0,0.06)", borderLeft: `3px solid ${isLow ? "#f59e0b" : "#34c759"}` }}
                 >
-                  {/* Workshop name */}
-                  <div
-                    className="text-[15px] font-bold mb-2"
-                    style={{ color: "#1d1d1f" }}
-                  >
-                    {row.workshop}
+                  {/* Workshop name + status */}
+                  <div className="flex items-center justify-between mb-2">
+                    <div
+                      className="text-[15px] font-bold"
+                      style={{ color: "#1d1d1f" }}
+                    >
+                      {row.workshop}
+                    </div>
+                    <span
+                      className="text-[10px] font-bold px-2 py-0.5 rounded-full"
+                      style={{
+                        background: isLow ? "rgba(245,158,11,0.1)" : "rgba(52,199,89,0.1)",
+                        color: isLow ? "#f59e0b" : "#34c759",
+                      }}
+                    >
+                      {isLow ? "เกือบเต็ม" : "ว่าง"}
+                    </span>
                   </div>
 
                   {/* Date + Location row */}

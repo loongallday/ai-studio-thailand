@@ -179,16 +179,16 @@ export default function AboutSection() {
           className="apple-card bg-[#f5f5f7] rounded-3xl p-6 md:p-8 lg:p-12 flex items-center justify-center gap-5 md:gap-10 lg:gap-14 flex-wrap mb-12 md:mb-20 lg:mb-[100px]"
         >
           {[
-            { icon: Heart, label: "Passion for AI", sublabel: "หลงใหลในเทคโนโลยี" },
-            { icon: Users, label: "People First", sublabel: "เข้าใจคนก่อนเข้าใจเทค" },
-            { icon: Lightbulb, label: "Practical AI", sublabel: "AI ที่ใช้งานได้จริง" },
-            { icon: Globe, label: "Thai Market Focus", sublabel: "เข้าใจตลาดไทย" },
+            { icon: Heart, label: "Passion for AI", sublabel: "หลงใหลในเทคโนโลยี", color: "#ff375f" },
+            { icon: Users, label: "People First", sublabel: "เข้าใจคนก่อนเข้าใจเทค", color: "#06c" },
+            { icon: Lightbulb, label: "Practical AI", sublabel: "AI ที่ใช้งานได้จริง", color: "#ff9500" },
+            { icon: Globe, label: "Thai Market Focus", sublabel: "เข้าใจตลาดไทย", color: "#30d158" },
           ].map((v) => {
             const VIcon = v.icon;
             return (
               <div key={v.label} className="flex items-center gap-3.5">
-                <div className="w-11 h-11 rounded-[14px] bg-white flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
-                  <VIcon size={22} className="text-[#06c]" />
+                <div className="w-12 h-12 rounded-full flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.04)]" style={{ background: `${v.color}12` }}>
+                  <VIcon size={22} style={{ color: v.color }} />
                 </div>
                 <div>
                   <div className="text-[14px] md:text-[15px] font-bold text-[#1d1d1f]">
@@ -329,8 +329,8 @@ export default function AboutSection() {
                   whileHover={{ y: -6, transition: { duration: 0.3 } }}
                   className={`apple-card rounded-3xl p-6 md:p-8 lg:p-10 text-center relative overflow-hidden ${
                     isCenter
-                      ? "bg-gradient-to-br from-[#1d1d1f] to-[#2d2d2f] border border-white/[0.08]"
-                      : "bg-white border border-black/[0.06]"
+                      ? "bg-gradient-to-br from-[#1d1d1f] to-[#2d2d2f] border border-white/[0.08] shadow-2xl scale-[1.02] md:scale-105 z-10"
+                      : "bg-white border border-black/[0.06] hover:shadow-lg hover:scale-[1.01] transition-all cursor-pointer"
                   }`}
                 >
                   {isCenter && (

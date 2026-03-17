@@ -43,7 +43,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#1d1d1f] text-white">
       <div className="container-wide py-16 lg:py-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-10">
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-4">
@@ -81,10 +81,10 @@ export default function Footer() {
           {/* Link columns */}
           {footerColumns.map((col) => (
             <div key={col.title}>
-              <h4 className="text-sm font-semibold text-white mb-4 tracking-wide">
+              <h4 className="text-sm font-semibold text-white mb-5 tracking-wide uppercase">
                 {col.title}
               </h4>
-              <ul className="space-y-0.5 sm:space-y-1">
+              <ul className="space-y-1 sm:space-y-1.5">
                 {col.links.map((link) => (
                   <li key={link.href}>
                     {"external" in link && link.external ? (

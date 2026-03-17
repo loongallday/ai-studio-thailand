@@ -111,8 +111,8 @@ const caseStudies: CaseStudy[] = [
       author: "คุณสมชาย",
       role: "IT Director, Manufacturing Corp",
     },
-    accentColor: "#8b5cf6",
-    gradient: "linear-gradient(145deg, #ede9fe, #f5f3ff)",
+    accentColor: "#059669",
+    gradient: "linear-gradient(145deg, #d1fae5, #ecfdf5)",
   },
   {
     id: "case-2",
@@ -214,8 +214,8 @@ const caseStudies: CaseStudy[] = [
       author: "คุณธนา",
       role: "CEO, AI Startup",
     },
-    accentColor: "#059669",
-    gradient: "linear-gradient(145deg, #d1fae5, #ecfdf5)",
+    accentColor: "#8b5cf6",
+    gradient: "linear-gradient(145deg, #ede9fe, #f5f3ff)",
   },
   {
     id: "case-4",
@@ -265,8 +265,8 @@ const caseStudies: CaseStudy[] = [
       author: "ภก.สุดา",
       role: "หัวหน้าเภสัชกร, คลินิกเครือ",
     },
-    accentColor: "#06c",
-    gradient: "linear-gradient(145deg, #e0f2fe, #dbeafe)",
+    accentColor: "#dc2626",
+    gradient: "linear-gradient(145deg, #fee2e2, #fef2f2)",
   },
 ];
 
@@ -288,11 +288,12 @@ function CaseStudyCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.7, delay: 0.1 }}
-      className="apple-card bg-white rounded-[28px] overflow-hidden border border-black/[0.06] shadow-[0_4px_24px_rgba(0,0,0,0.04)]"
+      className="apple-card bg-white rounded-2xl overflow-hidden border border-black/[0.04] shadow-[0_4px_24px_rgba(0,0,0,0.04)] border-l-4"
+      style={{ borderLeftColor: study.accentColor }}
     >
       {/* Header / Visual */}
       <div
-        className="p-6 md:p-8 lg:p-10 pt-8 md:pt-12 relative overflow-hidden"
+        className="p-4 md:p-8 lg:p-10 pt-6 md:pt-12 relative overflow-hidden"
         style={{ background: study.gradient }}
       >
         {/* Decorative elements */}
@@ -330,7 +331,7 @@ function CaseStudyCard({
       </div>
 
       {/* Problem - Solution - Result */}
-      <div className="p-4 md:p-6 lg:px-10 lg:pt-10 lg:pb-5 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+      <div className="p-3 md:p-6 lg:px-10 lg:pt-10 lg:pb-5 grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
         {/* Problem */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -431,7 +432,7 @@ function CaseStudyCard({
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.6 }}
-        className="px-4 md:px-6 lg:px-10 py-4 md:py-5 flex flex-wrap gap-2 items-center"
+        className="px-4 md:px-6 lg:px-10 py-4 md:py-5 flex flex-wrap gap-1.5 items-center"
       >
         <span className="text-[12px] font-semibold text-[#86868b] mr-1">
           Tech Stack:
@@ -439,7 +440,7 @@ function CaseStudyCard({
         {study.techStack.map((tech) => (
           <span
             key={tech}
-            className="text-[11px] font-semibold text-[#6e6e73] bg-[#f5f5f7] px-3 py-1 rounded-lg border border-black/[0.04]"
+            className="text-[11px] font-semibold text-[#6e6e73] bg-[#f5f5f7] px-3 py-1 rounded-full border border-black/[0.04]"
           >
             {tech}
           </span>
@@ -480,7 +481,7 @@ function CaseStudyCard({
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.75 }}
-        className="p-4 md:p-6 lg:px-10 lg:py-8"
+        className="p-3 md:p-6 lg:px-10 lg:py-8"
       >
         <div className="bg-[#fafafa] rounded-[20px] p-5 md:p-7 relative">
           <Quote
@@ -488,8 +489,8 @@ function CaseStudyCard({
             className="absolute top-5 left-5 md:left-6 opacity-30"
             style={{ color: study.accentColor }}
           />
-          <p className="text-[14px] md:text-[15px] text-[#1d1d1f] leading-[1.75] italic mb-4 pl-2">
-            &ldquo;{study.testimonial.quote}&rdquo;
+          <p className="text-[14px] md:text-[15px] text-[#1d1d1f] leading-[1.75] italic mb-4 pl-8">
+            <span className="text-[48px] font-serif leading-[0] align-top mr-1 -ml-6 inline-block" style={{ color: study.accentColor, opacity: 0.3 }}>&ldquo;</span>{study.testimonial.quote}
           </p>
           <div className="flex items-center gap-3 pl-2">
             <div

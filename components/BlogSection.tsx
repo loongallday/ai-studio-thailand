@@ -169,8 +169,14 @@ function FeaturedCard({ article }: { article: Article }) {
         border: "1px solid rgba(0,0,0,0.06)",
         boxShadow: "0 2px 20px rgba(0,0,0,0.04)",
         cursor: "pointer",
+        position: "relative",
       }}
     >
+      {/* Featured Badge */}
+      <span className="absolute top-4 left-4 bg-[#06c] text-white text-[11px] font-bold px-3 py-1 rounded-full z-10">
+        Featured
+      </span>
+
       {/* Image placeholder */}
       <div
         style={{
@@ -365,13 +371,12 @@ function ArticleCard({
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay: index * 0.08 }}
       whileHover={{ y: -4 }}
-      className="apple-card"
+      className="apple-card hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
       style={{
         background: "#fff",
-        borderRadius: 20,
+        borderRadius: 16,
         overflow: "hidden",
-        border: "1px solid rgba(0,0,0,0.06)",
-        boxShadow: "0 2px 16px rgba(0,0,0,0.03)",
+        border: "1px solid rgba(0,0,0,0.04)",
         cursor: "pointer",
         display: "flex",
         flexDirection: "column",
@@ -535,6 +540,7 @@ function CategoryFilter({
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
           onClick={() => onSelect(cat.key)}
+          className="min-h-[40px] px-4"
           style={{
             padding: "10px 22px",
             borderRadius: 50,
@@ -544,12 +550,13 @@ function CategoryFilter({
             cursor: "pointer",
             transition: "all 0.25s ease",
             background:
-              activeCategory === cat.key ? "#1d1d1f" : "rgba(0,0,0,0.04)",
+              activeCategory === cat.key ? "#06c" : "rgba(0,0,0,0.04)",
             color: activeCategory === cat.key ? "#fff" : "#6e6e73",
             boxShadow:
               activeCategory === cat.key
-                ? "0 2px 12px rgba(0,0,0,0.15)"
+                ? "0 2px 12px rgba(0,102,204,0.25)"
                 : "none",
+            minHeight: 40,
           }}
         >
           {cat.label}
@@ -865,6 +872,7 @@ export default function BlogSection() {
         @media (max-width: 768px) {
           .blog-grid {
             grid-template-columns: 1fr !important;
+            gap: 16px !important;
           }
           .featured-card {
             grid-template-columns: 1fr !important;
@@ -874,6 +882,10 @@ export default function BlogSection() {
           }
           .featured-content {
             padding: 24px 20px !important;
+          }
+          .blog-grid article > div:first-child {
+            padding: 24px 16px !important;
+            min-height: 140px !important;
           }
         }
       `}</style>

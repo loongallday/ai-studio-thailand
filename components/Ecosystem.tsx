@@ -53,8 +53,8 @@ function BrandCard({
       whileHover={{ y: -6, transition: { duration: 0.3 } }}
       className={`apple-card flex-1 min-w-0 rounded-[28px] p-6 md:p-8 lg:p-10 text-center relative overflow-hidden ${
         isDark
-          ? "bg-gradient-to-br from-[#1d1d1f] to-[#2d2d2f] border border-white/[0.08] shadow-[0_20px_60px_rgba(0,0,0,0.3)] z-[2] scale-[1.04] order-first md:order-none"
-          : "bg-white border border-black/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.06)] z-[1]"
+          ? "bg-gradient-to-br from-[#1d1d1f] to-[#2d2d2f] border border-white/[0.08] shadow-2xl scale-[1.02] md:scale-105 z-10 relative order-first md:order-none ring-1 ring-white/10"
+          : "bg-white border border-black/[0.04] shadow-[0_8px_32px_rgba(0,0,0,0.06)] z-[1] hover:shadow-lg hover:scale-[1.01] transition-all cursor-pointer"
       }`}
     >
       {/* Glow effect for center card */}
@@ -120,13 +120,13 @@ function BrandCard({
           rel="noopener noreferrer"
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
-          className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-[13px] font-semibold no-underline"
+          className="group inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-[13px] font-semibold no-underline hover:opacity-90 transition-all"
           style={{
             background: isDark ? "white" : color,
             color: isDark ? "#1d1d1f" : "white",
           }}
         >
-          เยี่ยมชมเว็บไซต์ <ExternalLink size={14} />
+          เยี่ยมชมเว็บไซต์ <ExternalLink size={14} className="group-hover:translate-x-0.5 transition-transform" />
         </motion.a>
       ) : (
         <div
@@ -177,23 +177,26 @@ export default function Ecosystem() {
           <svg
             className="absolute -top-[30px] left-0 right-0 w-full h-10 z-0 hidden md:block"
           >
+            <style>{`@keyframes dashFlow { to { stroke-dashoffset: -24; } }`}</style>
             <line
               x1="25%"
               y1="20"
               x2="50%"
               y2="20"
-              stroke="rgba(0,102,204,0.15)"
+              stroke="rgba(0,102,204,0.2)"
               strokeWidth="2"
               strokeDasharray="8,4"
+              style={{ animation: "dashFlow 2s linear infinite" }}
             />
             <line
               x1="50%"
               y1="20"
               x2="75%"
               y2="20"
-              stroke="rgba(0,102,204,0.15)"
+              stroke="rgba(0,102,204,0.2)"
               strokeWidth="2"
               strokeDasharray="8,4"
+              style={{ animation: "dashFlow 2s linear infinite" }}
             />
             <circle cx="25%" cy="20" r="4" fill="#06c" opacity="0.3" />
             <circle cx="50%" cy="20" r="6" fill="#06c" opacity="0.4" />

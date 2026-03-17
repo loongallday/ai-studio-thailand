@@ -25,7 +25,7 @@ import {
   Zap,
 } from "lucide-react";
 
-/* ─── Animation Variants ─── */
+/* --- Animation Variants --- */
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 },
@@ -35,7 +35,7 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.1 } },
 };
 
-/* ─── Data ─── */
+/* --- Data --- */
 const threeThings = [
   {
     icon: GraduationCap,
@@ -140,62 +140,29 @@ const contactDetails = [
 /* ================================================================== */
 export default function AboutSection() {
   return (
-    <section
-      style={{
-        background: "#fff",
-        paddingTop: 120,
-        paddingBottom: 0,
-      }}
-    >
-      <div style={{ maxWidth: 1120, margin: "0 auto", padding: "0 24px" }}>
-        {/* ============================================================ */}
-        {/*  Hero: เราคือใคร                                               */}
-        {/* ============================================================ */}
+    <section className="bg-white pt-20 md:pt-[120px] pb-0">
+      <div className="max-w-[1120px] mx-auto px-4 md:px-6">
+        {/* Hero: เราคือใคร */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          style={{ textAlign: "center", marginBottom: 100 }}
+          className="text-center mb-16 md:mb-[100px]"
         >
-          <div
-            style={{
-              fontSize: 14,
-              fontWeight: 600,
-              color: "#06c",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              marginBottom: 12,
-            }}
-          >
+          <div className="text-[13px] md:text-[14px] font-semibold text-[#06c] tracking-[0.08em] uppercase mb-3">
             About Us
           </div>
-          <h1
-            style={{
-              fontSize: "clamp(36px, 5vw, 60px)",
-              fontWeight: 700,
-              color: "#1d1d1f",
-              lineHeight: 1.1,
-              marginBottom: 24,
-            }}
-          >
+          <h1 className="text-[36px] md:text-[48px] lg:text-[60px] font-bold text-[#1d1d1f] leading-[1.1] mb-6">
             เราคือใคร
           </h1>
-          <p
-            style={{
-              fontSize: 19,
-              color: "#86868b",
-              maxWidth: 680,
-              margin: "0 auto",
-              lineHeight: 1.7,
-            }}
-          >
+          <p className="text-[16px] md:text-[19px] text-[#86868b] max-w-[680px] mx-auto leading-[1.7]">
             AI Studio Thailand คือทีมพัฒนาเบื้องหลัง{" "}
-            <span style={{ color: "#1d1d1f", fontWeight: 600 }}>
+            <span className="text-[#1d1d1f] font-semibold">
               LocalAI Thailand
             </span>{" "}
             และ{" "}
-            <span style={{ color: "#1d1d1f", fontWeight: 600 }}>
+            <span className="text-[#1d1d1f] font-semibold">
               CloudAI Thailand
             </span>{" "}
             เราเชื่อว่า AI ไม่ใช่แค่เทคโนโลยี แต่เป็นเครื่องมือที่ช่วยให้ธุรกิจไทย
@@ -203,26 +170,13 @@ export default function AboutSection() {
           </p>
         </motion.div>
 
-        {/* ============================================================ */}
-        {/*  Values / Philosophy Strip                                     */}
-        {/* ============================================================ */}
+        {/* Values / Philosophy Strip */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="apple-card"
-          style={{
-            background: "#f5f5f7",
-            borderRadius: 24,
-            padding: "clamp(24px, 4vw, 48px) clamp(20px, 4vw, 40px)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "clamp(20px, 4vw, 56px)",
-            marginBottom: "clamp(48px, 8vw, 100px)",
-            flexWrap: "wrap",
-          }}
+          className="apple-card bg-[#f5f5f7] rounded-3xl p-6 md:p-8 lg:p-12 flex items-center justify-center gap-5 md:gap-10 lg:gap-14 flex-wrap mb-12 md:mb-20 lg:mb-[100px]"
         >
           {[
             { icon: Heart, label: "Passion for AI", sublabel: "หลงใหลในเทคโนโลยี" },
@@ -232,39 +186,15 @@ export default function AboutSection() {
           ].map((v) => {
             const VIcon = v.icon;
             return (
-              <div
-                key={v.label}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 14,
-                }}
-              >
-                <div
-                  style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: 14,
-                    background: "white",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-                  }}
-                >
-                  <VIcon size={22} style={{ color: "#06c" }} />
+              <div key={v.label} className="flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-[14px] bg-white flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+                  <VIcon size={22} className="text-[#06c]" />
                 </div>
                 <div>
-                  <div
-                    style={{
-                      fontSize: 15,
-                      fontWeight: 700,
-                      color: "#1d1d1f",
-                    }}
-                  >
+                  <div className="text-[14px] md:text-[15px] font-bold text-[#1d1d1f]">
                     {v.label}
                   </div>
-                  <div style={{ fontSize: 13, color: "#86868b" }}>
+                  <div className="text-[12px] md:text-[13px] text-[#86868b]">
                     {v.sublabel}
                   </div>
                 </div>
@@ -273,52 +203,24 @@ export default function AboutSection() {
           })}
         </motion.div>
 
-        {/* ============================================================ */}
-        {/*  3 สิ่งที่เราทำ                                                  */}
-        {/* ============================================================ */}
+        {/* 3 สิ่งที่เราทำ */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={stagger}
-          style={{ marginBottom: 100 }}
+          className="mb-16 md:mb-[100px]"
         >
-          <motion.div
-            variants={fadeUp}
-            style={{ textAlign: "center", marginBottom: 56 }}
-          >
-            <h2
-              style={{
-                fontSize: "clamp(28px, 4vw, 44px)",
-                fontWeight: 700,
-                color: "#1d1d1f",
-                lineHeight: 1.15,
-                marginBottom: 14,
-              }}
-            >
+          <motion.div variants={fadeUp} className="text-center mb-10 md:mb-14">
+            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] font-bold text-[#1d1d1f] leading-[1.15] mb-3.5">
               3 สิ่งที่เราทำ
             </h2>
-            <p
-              style={{
-                fontSize: 17,
-                color: "#86868b",
-                maxWidth: 520,
-                margin: "0 auto",
-                lineHeight: 1.6,
-              }}
-            >
+            <p className="text-[15px] md:text-[17px] text-[#86868b] max-w-[520px] mx-auto leading-relaxed">
               สอน สร้าง และสร้างสรรค์ AI ให้กับธุรกิจไทย
             </p>
           </motion.div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 24,
-            }}
-            className="about-grid-3"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {threeThings.map((item) => {
               const ItemIcon = item.icon;
               return (
@@ -326,74 +228,27 @@ export default function AboutSection() {
                   key={item.title}
                   variants={fadeUp}
                   whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                  className="apple-card"
-                  style={{
-                    background: "white",
-                    borderRadius: 24,
-                    border: "1px solid rgba(0,0,0,0.06)",
-                    padding: "40px 32px",
-                  }}
+                  className="apple-card bg-white rounded-3xl border border-black/[0.06] p-6 md:p-8"
                 >
-                  <div
-                    style={{
-                      width: 56,
-                      height: 56,
-                      borderRadius: 18,
-                      background: "rgba(0,102,204,0.06)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      marginBottom: 24,
-                    }}
-                  >
-                    <ItemIcon size={28} style={{ color: "#06c" }} />
+                  <div className="w-14 h-14 rounded-[18px] bg-[rgba(0,102,204,0.06)] flex items-center justify-center mb-6">
+                    <ItemIcon size={28} className="text-[#06c]" />
                   </div>
 
-                  <h3
-                    style={{
-                      fontSize: 22,
-                      fontWeight: 700,
-                      color: "#1d1d1f",
-                      marginBottom: 12,
-                    }}
-                  >
+                  <h3 className="text-[20px] md:text-[22px] font-bold text-[#1d1d1f] mb-3">
                     {item.title}
                   </h3>
 
-                  <p
-                    style={{
-                      fontSize: 15,
-                      color: "#6e6e73",
-                      lineHeight: 1.7,
-                      marginBottom: 24,
-                    }}
-                  >
+                  <p className="text-[14px] md:text-[15px] text-[#6e6e73] leading-[1.7] mb-6">
                     {item.description}
                   </p>
 
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: 8,
-                    }}
-                  >
+                  <div className="flex flex-col gap-2">
                     {item.highlights.map((h) => (
                       <div
                         key={h}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 8,
-                          fontSize: 14,
-                          color: "#1d1d1f",
-                          fontWeight: 500,
-                        }}
+                        className="flex items-center gap-2 text-[14px] text-[#1d1d1f] font-medium"
                       >
-                        <CheckCircle
-                          size={15}
-                          style={{ color: "#06c", flexShrink: 0 }}
-                        />
+                        <CheckCircle size={15} className="text-[#06c] shrink-0" />
                         {h}
                       </div>
                     ))}
@@ -404,98 +259,39 @@ export default function AboutSection() {
           </div>
         </motion.div>
 
-        {/* ============================================================ */}
-        {/*  หลักการ                                                        */}
-        {/* ============================================================ */}
+        {/* หลักการ */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={stagger}
-          style={{ marginBottom: 100 }}
+          className="mb-16 md:mb-[100px]"
         >
-          <motion.div
-            variants={fadeUp}
-            style={{ textAlign: "center", marginBottom: 56 }}
-          >
-            <h2
-              style={{
-                fontSize: "clamp(28px, 4vw, 44px)",
-                fontWeight: 700,
-                color: "#1d1d1f",
-                lineHeight: 1.15,
-                marginBottom: 14,
-              }}
-            >
+          <motion.div variants={fadeUp} className="text-center mb-10 md:mb-14">
+            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] font-bold text-[#1d1d1f] leading-[1.15] mb-3.5">
               หลักการของเรา
             </h2>
-            <p
-              style={{
-                fontSize: 17,
-                color: "#86868b",
-                maxWidth: 520,
-                margin: "0 auto",
-                lineHeight: 1.6,
-              }}
-            >
+            <p className="text-[15px] md:text-[17px] text-[#86868b] max-w-[520px] mx-auto leading-relaxed">
               สิ่งที่เราเชื่อและยึดมั่นในทุกโปรเจกต์
             </p>
           </motion.div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 24,
-            }}
-            className="about-grid-3"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {principles.map((p) => {
               const PIcon = p.icon;
               return (
                 <motion.div
                   key={p.title}
                   variants={fadeUp}
-                  className="apple-card"
-                  style={{
-                    background: "#f5f5f7",
-                    borderRadius: 24,
-                    padding: "40px 32px",
-                    textAlign: "center",
-                  }}
+                  className="apple-card bg-[#f5f5f7] rounded-3xl p-6 md:p-8 lg:p-10 text-center"
                 >
-                  <div
-                    style={{
-                      width: 56,
-                      height: 56,
-                      borderRadius: 18,
-                      background: "white",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      margin: "0 auto 24px",
-                      boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-                    }}
-                  >
-                    <PIcon size={28} style={{ color: "#06c" }} />
+                  <div className="w-14 h-14 rounded-[18px] bg-white flex items-center justify-center mx-auto mb-6 shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+                    <PIcon size={28} className="text-[#06c]" />
                   </div>
-                  <h3
-                    style={{
-                      fontSize: 20,
-                      fontWeight: 700,
-                      color: "#1d1d1f",
-                      marginBottom: 12,
-                    }}
-                  >
+                  <h3 className="text-[18px] md:text-[20px] font-bold text-[#1d1d1f] mb-3">
                     {p.title}
                   </h3>
-                  <p
-                    style={{
-                      fontSize: 15,
-                      color: "#6e6e73",
-                      lineHeight: 1.7,
-                    }}
-                  >
+                  <p className="text-[14px] md:text-[15px] text-[#6e6e73] leading-[1.7]">
                     {p.description}
                   </p>
                 </motion.div>
@@ -504,53 +300,25 @@ export default function AboutSection() {
           </div>
         </motion.div>
 
-        {/* ============================================================ */}
-        {/*  Ecosystem                                                     */}
-        {/* ============================================================ */}
+        {/* Ecosystem */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={stagger}
-          style={{ marginBottom: 100 }}
+          className="mb-16 md:mb-[100px]"
         >
-          <motion.div
-            variants={fadeUp}
-            style={{ textAlign: "center", marginBottom: 56 }}
-          >
-            <h2
-              style={{
-                fontSize: "clamp(28px, 4vw, 44px)",
-                fontWeight: 700,
-                color: "#1d1d1f",
-                lineHeight: 1.15,
-                marginBottom: 14,
-              }}
-            >
+          <motion.div variants={fadeUp} className="text-center mb-10 md:mb-14">
+            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] font-bold text-[#1d1d1f] leading-[1.15] mb-3.5">
               Ecosystem
             </h2>
-            <p
-              style={{
-                fontSize: 17,
-                color: "#86868b",
-                maxWidth: 600,
-                margin: "0 auto",
-                lineHeight: 1.6,
-              }}
-            >
+            <p className="text-[15px] md:text-[17px] text-[#86868b] max-w-[600px] mx-auto leading-relaxed">
               AI Studio Thailand เป็นศูนย์กลางที่เชื่อมโยง LocalAI และ CloudAI
               เข้าด้วยกัน เพื่อตอบโจทย์ทุกรูปแบบของ AI
             </p>
           </motion.div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 24,
-            }}
-            className="about-grid-3"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {ecosystemBrands.map((brand, i) => {
               const BrandIcon = brand.icon;
               const isCenter = i === 1;
@@ -559,49 +327,22 @@ export default function AboutSection() {
                   key={brand.name}
                   variants={fadeUp}
                   whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                  className="apple-card"
-                  style={{
-                    background: isCenter
-                      ? "linear-gradient(160deg, #1d1d1f, #2d2d2f)"
-                      : "white",
-                    borderRadius: 24,
-                    border: isCenter
-                      ? "1px solid rgba(255,255,255,0.08)"
-                      : "1px solid rgba(0,0,0,0.06)",
-                    padding: "40px 32px",
-                    textAlign: "center",
-                    position: "relative",
-                    overflow: "hidden",
-                  }}
+                  className={`apple-card rounded-3xl p-6 md:p-8 lg:p-10 text-center relative overflow-hidden ${
+                    isCenter
+                      ? "bg-gradient-to-br from-[#1d1d1f] to-[#2d2d2f] border border-white/[0.08]"
+                      : "bg-white border border-black/[0.06]"
+                  }`}
                 >
                   {isCenter && (
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: -40,
-                        left: "50%",
-                        transform: "translateX(-50%)",
-                        width: 180,
-                        height: 180,
-                        background:
-                          "radial-gradient(circle, rgba(0,102,204,0.15), transparent 70%)",
-                        pointerEvents: "none",
-                      }}
-                    />
+                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[180px] h-[180px] bg-[radial-gradient(circle,rgba(0,102,204,0.15),transparent_70%)] pointer-events-none" />
                   )}
 
                   <div
+                    className="w-14 h-14 rounded-[18px] flex items-center justify-center mx-auto mb-5"
                     style={{
-                      width: 56,
-                      height: 56,
-                      borderRadius: 18,
                       background: isCenter
                         ? "linear-gradient(135deg, #06c, #3b82f6)"
                         : `${brand.color}10`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      margin: "0 auto 20px",
                     }}
                   >
                     <BrandIcon
@@ -610,34 +351,13 @@ export default function AboutSection() {
                     />
                   </div>
 
-                  <h3
-                    style={{
-                      fontSize: 20,
-                      fontWeight: 700,
-                      color: isCenter ? "white" : "#1d1d1f",
-                      marginBottom: 6,
-                    }}
-                  >
+                  <h3 className={`text-[18px] md:text-[20px] font-bold mb-1.5 ${isCenter ? "text-white" : "text-[#1d1d1f]"}`}>
                     {brand.name}
                   </h3>
-                  <p
-                    style={{
-                      fontSize: 14,
-                      fontWeight: 600,
-                      color: isCenter ? "rgba(255,255,255,0.7)" : "#06c",
-                      marginBottom: 12,
-                    }}
-                  >
+                  <p className={`text-[14px] font-semibold mb-3 ${isCenter ? "text-white/70" : "text-[#06c]"}`}>
                     {brand.tagline}
                   </p>
-                  <p
-                    style={{
-                      fontSize: 14,
-                      color: isCenter ? "rgba(255,255,255,0.5)" : "#6e6e73",
-                      lineHeight: 1.6,
-                      marginBottom: 24,
-                    }}
-                  >
+                  <p className={`text-[14px] leading-relaxed mb-6 ${isCenter ? "text-white/50" : "text-[#6e6e73]"}`}>
                     {brand.description}
                   </p>
 
@@ -648,35 +368,13 @@ export default function AboutSection() {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.04 }}
                       whileTap={{ scale: 0.97 }}
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 6,
-                        padding: "10px 22px",
-                        background: brand.color,
-                        color: "white",
-                        borderRadius: 12,
-                        fontSize: 13,
-                        fontWeight: 600,
-                        textDecoration: "none",
-                      }}
+                      className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-[13px] font-semibold no-underline text-white"
+                      style={{ background: brand.color }}
                     >
                       เยี่ยมชม <ExternalLink size={14} />
                     </motion.a>
                   ) : (
-                    <div
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 6,
-                        padding: "10px 22px",
-                        background: "rgba(255,255,255,0.1)",
-                        color: "rgba(255,255,255,0.6)",
-                        borderRadius: 12,
-                        fontSize: 13,
-                        fontWeight: 600,
-                      }}
-                    >
+                    <div className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-white/10 text-white/60 rounded-xl text-[13px] font-semibold">
                       คุณอยู่ที่นี่
                     </div>
                   )}
@@ -686,74 +384,28 @@ export default function AboutSection() {
           </div>
         </motion.div>
 
-        {/* ============================================================ */}
-        {/*  Contact Info                                                  */}
-        {/* ============================================================ */}
+        {/* Contact Info */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={stagger}
-          style={{ marginBottom: 100 }}
+          className="mb-16 md:mb-[100px]"
         >
           <motion.div
             variants={fadeUp}
-            className="apple-card"
-            style={{
-              background: "#f5f5f7",
-              borderRadius: 28,
-              padding: "clamp(32px, 5vw, 56px) clamp(20px, 4vw, 48px)",
-              textAlign: "center",
-              position: "relative",
-              overflow: "hidden",
-            }}
+            className="apple-card bg-[#f5f5f7] rounded-[28px] p-6 md:p-10 lg:p-14 text-center relative overflow-hidden"
           >
-            <div
-              style={{
-                position: "absolute",
-                top: -60,
-                right: -60,
-                width: 200,
-                height: 200,
-                borderRadius: "50%",
-                background:
-                  "radial-gradient(circle, rgba(0,102,204,0.04), transparent 70%)",
-                pointerEvents: "none",
-              }}
-            />
+            <div className="absolute -top-[60px] -right-[60px] w-[200px] h-[200px] rounded-full bg-[radial-gradient(circle,rgba(0,102,204,0.04),transparent_70%)] pointer-events-none" />
 
-            <h2
-              style={{
-                fontSize: "clamp(24px, 4vw, 36px)",
-                fontWeight: 700,
-                color: "#1d1d1f",
-                marginBottom: 12,
-              }}
-            >
+            <h2 className="text-[24px] md:text-[30px] lg:text-[36px] font-bold text-[#1d1d1f] mb-3">
               ติดต่อเรา
             </h2>
-            <p
-              style={{
-                fontSize: 17,
-                color: "#86868b",
-                maxWidth: 500,
-                margin: "0 auto 40px",
-                lineHeight: 1.6,
-              }}
-            >
+            <p className="text-[15px] md:text-[17px] text-[#86868b] max-w-[500px] mx-auto mb-8 md:mb-10 leading-relaxed">
               พร้อมรับฟังและช่วยเหลือ ปรึกษาเบื้องต้นฟรี
             </p>
 
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
-                gap: 16,
-                maxWidth: 800,
-                margin: "0 auto",
-              }}
-              className="about-contact-grid"
-            >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-[800px] mx-auto">
               {contactDetails.map((c) => {
                 const CIcon = c.icon;
                 const Wrapper = c.href ? "a" : "div";
@@ -770,50 +422,17 @@ export default function AboutSection() {
                   <Wrapper
                     key={c.label}
                     {...linkProps}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      gap: 10,
-                      padding: "24px 16px",
-                      background: "white",
-                      borderRadius: 18,
-                      textDecoration: "none",
-                      boxShadow: "0 2px 8px rgba(0,0,0,0.03)",
-                      cursor: c.href ? "pointer" : "default",
-                    }}
+                    className={`flex flex-col items-center gap-2.5 p-4 md:p-6 bg-white rounded-[18px] no-underline shadow-[0_2px_8px_rgba(0,0,0,0.03)] ${
+                      c.href ? "cursor-pointer" : "cursor-default"
+                    }`}
                   >
-                    <div
-                      style={{
-                        width: 44,
-                        height: 44,
-                        borderRadius: 14,
-                        background: "rgba(0,102,204,0.06)",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                    >
-                      <CIcon size={20} style={{ color: "#06c" }} />
+                    <div className="w-11 h-11 rounded-[14px] bg-[rgba(0,102,204,0.06)] flex items-center justify-center">
+                      <CIcon size={20} className="text-[#06c]" />
                     </div>
-                    <div
-                      style={{
-                        fontSize: 12,
-                        fontWeight: 600,
-                        color: "#86868b",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.04em",
-                      }}
-                    >
+                    <div className="text-[12px] font-semibold text-[#86868b] uppercase tracking-[0.04em]">
                       {c.label}
                     </div>
-                    <div
-                      style={{
-                        fontSize: 14,
-                        fontWeight: 600,
-                        color: "#1d1d1f",
-                      }}
-                    >
+                    <div className="text-[14px] font-semibold text-[#1d1d1f]">
                       {c.value}
                     </div>
                   </Wrapper>
@@ -825,20 +444,7 @@ export default function AboutSection() {
               href="#contact"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                marginTop: 40,
-                padding: "14px 32px",
-                background: "#06c",
-                color: "white",
-                borderRadius: 14,
-                fontSize: 16,
-                fontWeight: 600,
-                textDecoration: "none",
-                cursor: "pointer",
-              }}
+              className="inline-flex items-center gap-2 mt-8 md:mt-10 px-8 py-3.5 bg-[#06c] text-white rounded-[14px] text-[15px] md:text-[16px] font-semibold no-underline cursor-pointer"
             >
               พูดคุยกับเรา
               <ArrowRight size={18} />
@@ -846,17 +452,6 @@ export default function AboutSection() {
           </motion.div>
         </motion.div>
       </div>
-
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .about-grid-3 {
-            grid-template-columns: 1fr !important;
-          }
-          .about-contact-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

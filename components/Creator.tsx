@@ -64,7 +64,7 @@ function AnimatedCounter({ target, suffix = "" }: { target: number; suffix?: str
 /* ─── Waveform bars for Podcast card ─── */
 function WaveformBars({ playing }: { playing: boolean }) {
   return (
-    <div style={{ display: "flex", alignItems: "end", gap: 2, height: 32 }}>
+    <div className="flex items-end gap-0.5 h-8">
       {Array.from({ length: 40 }).map((_, i) => {
         const h = Math.random() * 24 + 8;
         return (
@@ -80,12 +80,7 @@ function WaveformBars({ playing }: { playing: boolean }) {
                 ? { duration: 0.4 + Math.random() * 0.4, repeat: Infinity, repeatType: "mirror" }
                 : { duration: 0.3 }
             }
-            style={{
-              width: 3,
-              borderRadius: 2,
-              background: "#06c",
-              minHeight: 4,
-            }}
+            className="w-[3px] rounded-sm bg-[#06c] min-h-1"
           />
         );
       })}
@@ -104,55 +99,27 @@ function LINEBubble({
   isImage?: boolean;
 }) {
   return (
-    <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
-      <div
-        style={{
-          width: 32,
-          height: 32,
-          borderRadius: "50%",
-          background: "#06c",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexShrink: 0,
-        }}
-      >
-        <span style={{ color: "#fff", fontSize: 11, fontWeight: 700 }}>AI</span>
+    <div className="flex gap-2 mb-2">
+      <div className="w-8 h-8 rounded-full bg-[#06c] flex items-center justify-center shrink-0">
+        <span className="text-white text-[11px] font-bold">AI</span>
       </div>
       <div>
         <div
-          style={{
-            background: isImage ? "transparent" : "#e8f5e9",
-            borderRadius: "0 16px 16px 16px",
-            padding: isImage ? 0 : "10px 14px",
-            maxWidth: 260,
-            overflow: "hidden",
-          }}
+          className={`rounded-[0_16px_16px_16px] max-w-[260px] overflow-hidden ${
+            isImage ? "bg-transparent p-0" : "bg-[#e8f5e9] px-3.5 py-2.5"
+          }`}
         >
           {isImage ? (
-            <div
-              style={{
-                width: 220,
-                height: 120,
-                borderRadius: 12,
-                background: "linear-gradient(135deg, #06c 0%, #5ac8fa 100%)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "#fff",
-                fontSize: 13,
-                fontWeight: 600,
-              }}
-            >
+            <div className="w-[220px] h-[120px] rounded-xl bg-gradient-to-br from-[#06c] to-[#5ac8fa] flex items-center justify-center text-white text-[13px] font-semibold">
               AI Workshop 2026
             </div>
           ) : (
-            <p style={{ fontSize: 13, color: "#1d1d1f", lineHeight: 1.5, margin: 0 }}>
+            <p className="text-[13px] text-[#1d1d1f] leading-relaxed m-0">
               {text}
             </p>
           )}
         </div>
-        <span style={{ fontSize: 10, color: "#86868b", marginTop: 2, display: "block" }}>
+        <span className="text-[10px] text-[#86868b] mt-0.5 block">
           {time}
         </span>
       </div>
@@ -167,12 +134,9 @@ export default function Creator() {
   return (
     <section
       id="creator"
-      style={{
-        background: "#fff",
-        padding: "clamp(60px, 10vw, 120px) 16px",
-      }}
+      className="bg-white py-[clamp(60px,10vw,120px)] px-4"
     >
-      <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+      <div className="max-w-[1080px] mx-auto">
         {/* ════════════════════════════════════════════
             Section 1: Hero
         ════════════════════════════════════════════ */}
@@ -181,45 +145,18 @@ export default function Creator() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          style={{ textAlign: "center", marginBottom: 100 }}
+          className="text-center mb-24"
         >
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              padding: "6px 16px",
-              borderRadius: 100,
-              background: "rgba(0, 102, 204, 0.06)",
-              marginBottom: 20,
-            }}
-          >
-            <PenTool size={14} style={{ color: "#06c" }} />
-            <span style={{ fontSize: 13, fontWeight: 600, color: "#06c" }}>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[rgba(0,102,204,0.06)] mb-5">
+            <PenTool size={14} className="text-[#06c]" />
+            <span className="text-[13px] font-semibold text-[#06c]">
               AI Creator Studio
             </span>
           </div>
-          <h2
-            style={{
-              fontSize: "clamp(36px, 6vw, 56px)",
-              fontWeight: 700,
-              color: "#1d1d1f",
-              lineHeight: 1.1,
-              marginBottom: 20,
-              letterSpacing: "-0.02em",
-            }}
-          >
+          <h2 className="text-[clamp(36px,6vw,56px)] font-bold text-[#1d1d1f] leading-[1.1] mb-5 tracking-tight">
             AI Content Creation
           </h2>
-          <p
-            style={{
-              fontSize: "clamp(17px, 2.5vw, 21px)",
-              color: "#6e6e73",
-              maxWidth: 600,
-              margin: "0 auto",
-              lineHeight: 1.6,
-            }}
-          >
+          <p className="text-[clamp(17px,2.5vw,21px)] text-[#6e6e73] max-w-[600px] mx-auto leading-relaxed">
             เราสร้าง content ที่ทำให้ AI เข้าถึงได้สำหรับทุกคน
           </p>
         </motion.div>
@@ -232,255 +169,89 @@ export default function Creator() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ marginBottom: 100 }}
+          className="mb-24"
         >
-          <h3
-            style={{
-              fontSize: 14,
-              fontWeight: 600,
-              color: "#06c",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              marginBottom: 12,
-              textAlign: "center",
-            }}
-          >
+          <h3 className="text-sm font-semibold text-[#06c] tracking-widest uppercase mb-3 text-center">
             Our Content
           </h3>
-          <h3
-            style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
-              fontWeight: 700,
-              color: "#1d1d1f",
-              textAlign: "center",
-              marginBottom: 56,
-              letterSpacing: "-0.01em",
-            }}
-          >
+          <h3 className="text-[clamp(28px,4vw,40px)] font-bold text-[#1d1d1f] text-center mb-14 tracking-tight">
             สิ่งที่เราสร้าง
           </h3>
 
-          {/* Row 1: Blog + TikTok */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 24,
-              marginBottom: 24,
-            }}
-            className="portfolio-row"
-          >
-            {/* ── Blog Card (Medium-style) ── */}
+          {/* All 5 cards in one horizontal scroll on mobile, grid on desktop */}
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-3">
+
+            {/* ── Card 1: Blog Card (Medium-style) ── */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="apple-card"
-              style={{
-                background: "#fff",
-                borderRadius: 24,
-                border: "1px solid rgba(0,0,0,0.06)",
-                overflow: "hidden",
-                cursor: "pointer",
-              }}
+              className="apple-card min-w-[280px] shrink-0 snap-start md:min-w-0 md:shrink bg-white rounded-3xl border border-black/[0.06] overflow-hidden cursor-pointer"
             >
               {/* Article header image placeholder */}
-              <div
-                style={{
-                  height: 180,
-                  background: "linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  position: "relative",
-                }}
-              >
-                <PenTool size={48} style={{ color: "#86868b", opacity: 0.3 }} />
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 16,
-                    left: 16,
-                    background: "#06c",
-                    color: "#fff",
-                    fontSize: 11,
-                    fontWeight: 700,
-                    padding: "4px 10px",
-                    borderRadius: 8,
-                  }}
-                >
+              <div className="h-[180px] bg-gradient-to-br from-[#f5f5f7] to-[#e8e8ed] flex items-center justify-center relative">
+                <PenTool size={48} className="text-[#86868b] opacity-30" />
+                <div className="absolute top-4 left-4 bg-[#06c] text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">
                   AI Automation
                 </div>
               </div>
-              <div style={{ padding: "24px 28px 28px" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                    marginBottom: 12,
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 28,
-                      height: 28,
-                      borderRadius: "50%",
-                      background: "#06c",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <span style={{ color: "#fff", fontSize: 10, fontWeight: 700 }}>AI</span>
+              <div className="p-6 pb-7">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-7 h-7 rounded-full bg-[#06c] flex items-center justify-center">
+                    <span className="text-white text-[10px] font-bold">AI</span>
                   </div>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: "#1d1d1f" }}>
+                  <span className="text-[13px] font-semibold text-[#1d1d1f]">
                     AI Studio Thailand
                   </span>
-                  <span style={{ fontSize: 12, color: "#86868b" }}>
+                  <span className="text-xs text-[#86868b]">
                     14 มี.ค. 2026
                   </span>
                 </div>
-                <h4
-                  style={{
-                    fontSize: 20,
-                    fontWeight: 700,
-                    color: "#1d1d1f",
-                    lineHeight: 1.35,
-                    marginBottom: 10,
-                  }}
-                >
+                <h4 className="text-xl font-bold text-[#1d1d1f] leading-snug mb-2.5">
                   AI Automation คืออะไร? เหมาะกับธุรกิจไหน?
                 </h4>
-                <p
-                  style={{
-                    fontSize: 14,
-                    color: "#6e6e73",
-                    lineHeight: 1.65,
-                    marginBottom: 16,
-                    display: "-webkit-box",
-                    WebkitLineClamp: 3,
-                    WebkitBoxOrient: "vertical",
-                    overflow: "hidden",
-                  }}
-                >
+                <p className="text-sm text-[#6e6e73] leading-relaxed mb-4 line-clamp-3">
                   หลายคนเคยได้ยินคำว่า AI Automation แต่ยังไม่แน่ใจว่ามันช่วยธุรกิจได้จริงหรือไม่
                   บทความนี้จะพาคุณไปรู้จักกับ AI Automation ตั้งแต่พื้นฐาน จนถึงการประยุกต์ใช้จริงในธุรกิจ SME ไทย...
                 </p>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    paddingTop: 14,
-                    borderTop: "1px solid rgba(0,0,0,0.05)",
-                  }}
-                >
-                  <div
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 12,
-                      fontSize: 12,
-                      color: "#86868b",
-                    }}
-                  >
-                    <span style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                <div className="flex items-center justify-between pt-3.5 border-t border-black/5">
+                  <div className="flex items-center gap-3 text-xs text-[#86868b]">
+                    <span className="flex items-center gap-1">
                       <Clock size={13} /> 8 min read
                     </span>
-                    <span style={{ display: "flex", alignItems: "center", gap: 4 }}>
+                    <span className="flex items-center gap-1">
                       <Heart size={13} /> 412
                     </span>
                   </div>
-                  <div style={{ display: "flex", gap: 8 }}>
-                    <Bookmark size={16} style={{ color: "#86868b", cursor: "pointer" }} />
-                    <Share2 size={16} style={{ color: "#86868b", cursor: "pointer" }} />
+                  <div className="flex gap-2">
+                    <Bookmark size={16} className="text-[#86868b] cursor-pointer" />
+                    <Share2 size={16} className="text-[#86868b] cursor-pointer" />
                   </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* ── TikTok/Reels Card (dark vertical) ── */}
+            {/* ── Card 2: TikTok/Reels Card (dark vertical) ── */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="apple-card"
-              style={{
-                background: "#000",
-                borderRadius: 24,
-                overflow: "hidden",
-                cursor: "pointer",
-                position: "relative",
-                minHeight: 420,
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-end",
-              }}
+              className="apple-card min-w-[280px] shrink-0 snap-start md:min-w-0 md:shrink bg-black rounded-3xl overflow-hidden cursor-pointer relative aspect-[9/16] max-w-[200px] md:max-w-[240px] flex flex-col justify-end"
             >
               {/* Simulated video background gradient */}
-              <div
-                style={{
-                  position: "absolute",
-                  inset: 0,
-                  background:
-                    "linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.7) 100%)",
-                  zIndex: 1,
-                }}
-              />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/70 z-[1]" />
               {/* Centered play button */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: "40%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  width: 64,
-                  height: 64,
-                  borderRadius: "50%",
-                  background: "rgba(255,255,255,0.2)",
-                  backdropFilter: "blur(10px)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  zIndex: 2,
-                }}
-              >
-                <Play size={28} style={{ color: "#fff", marginLeft: 3 }} />
+              <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full bg-white/20 backdrop-blur-[10px] flex items-center justify-center z-[2]">
+                <Play size={28} className="text-white ml-0.5" />
               </div>
               {/* TikTok badge */}
-              <div
-                style={{
-                  position: "absolute",
-                  top: 16,
-                  right: 16,
-                  background: "rgba(255,255,255,0.15)",
-                  backdropFilter: "blur(8px)",
-                  padding: "4px 10px",
-                  borderRadius: 8,
-                  fontSize: 11,
-                  fontWeight: 700,
-                  color: "#fff",
-                  zIndex: 2,
-                }}
-              >
+              <div className="absolute top-4 right-4 bg-white/15 backdrop-blur-md px-2.5 py-1 rounded-lg text-[11px] font-bold text-white z-[2]">
                 TikTok / Reels
               </div>
               {/* Right-side engagement buttons */}
-              <div
-                style={{
-                  position: "absolute",
-                  right: 16,
-                  bottom: 100,
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: 20,
-                  zIndex: 2,
-                }}
-              >
+              <div className="absolute right-4 bottom-24 flex flex-col items-center gap-5 z-[2]">
                 {[
                   { icon: Heart, label: "8.2K" },
                   { icon: MessageCircle, label: "342" },
@@ -491,15 +262,10 @@ export default function Creator() {
                   return (
                     <div
                       key={btn.label}
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        gap: 2,
-                      }}
+                      className="flex flex-col items-center gap-0.5"
                     >
-                      <BtnIcon size={24} style={{ color: "#fff" }} />
-                      <span style={{ fontSize: 11, color: "#fff", fontWeight: 600 }}>
+                      <BtnIcon size={24} className="text-white" />
+                      <span className="text-[11px] text-white font-semibold">
                         {btn.label}
                       </span>
                     </div>
@@ -507,370 +273,148 @@ export default function Creator() {
                 })}
               </div>
               {/* Bottom overlay info */}
-              <div style={{ position: "relative", zIndex: 2, padding: "24px 20px" }}>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 10,
-                    marginBottom: 10,
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 32,
-                      height: 32,
-                      borderRadius: "50%",
-                      background: "#06c",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      border: "2px solid #fff",
-                    }}
-                  >
-                    <span style={{ color: "#fff", fontSize: 9, fontWeight: 700 }}>AI</span>
+              <div className="relative z-[2] p-5">
+                <div className="flex items-center gap-2.5 mb-2.5">
+                  <div className="w-8 h-8 rounded-full bg-[#06c] flex items-center justify-center border-2 border-white">
+                    <span className="text-white text-[9px] font-bold">AI</span>
                   </div>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: "#fff" }}>
+                  <span className="text-sm font-bold text-white">
                     @aistudiothailand
                   </span>
                 </div>
-                <p style={{ fontSize: 14, color: "#fff", lineHeight: 1.5, marginBottom: 10 }}>
+                <p className="text-sm text-white leading-normal mb-2.5">
                   5 AI Tools ที่ช่วยให้ธุรกิจ SME ประหยัดเวลา 10 ชม./สัปดาห์
                 </p>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 4,
-                    fontSize: 12,
-                    color: "rgba(255,255,255,0.7)",
-                  }}
-                >
+                <div className="flex items-center gap-1 text-xs text-white/70">
                   <Music size={12} />
                   <span>original sound - aistudiothailand</span>
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 4,
-                    marginTop: 8,
-                    fontSize: 12,
-                    color: "rgba(255,255,255,0.6)",
-                  }}
-                >
+                <div className="flex items-center gap-1 mt-2 text-xs text-white/60">
                   <Eye size={13} />
-                  <span style={{ fontWeight: 600 }}>125K views</span>
+                  <span className="font-semibold">125K views</span>
                 </div>
               </div>
             </motion.div>
-          </div>
 
-          {/* Row 2: YouTube + Podcast + LINE OA */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr 1fr",
-              gap: 24,
-            }}
-            className="portfolio-row-3"
-          >
-            {/* ── YouTube Card ── */}
+            {/* ── Card 3: YouTube Card ── */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.15 }}
-              className="apple-card"
-              style={{
-                background: "#fff",
-                borderRadius: 24,
-                border: "1px solid rgba(0,0,0,0.06)",
-                overflow: "hidden",
-                cursor: "pointer",
-              }}
+              className="apple-card min-w-[280px] shrink-0 snap-start md:min-w-0 md:shrink bg-white rounded-3xl border border-black/[0.06] overflow-hidden cursor-pointer"
             >
               {/* Thumbnail */}
-              <div
-                style={{
-                  height: 160,
-                  background: "linear-gradient(135deg, #1d1d1f 0%, #424245 100%)",
-                  position: "relative",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
-                <div
-                  style={{
-                    width: 52,
-                    height: 36,
-                    borderRadius: 8,
-                    background: "rgba(255,0,0,0.9)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
-                  <Play size={18} style={{ color: "#fff", marginLeft: 2 }} />
+              <div className="h-40 bg-gradient-to-br from-[#1d1d1f] to-[#424245] relative flex items-center justify-center">
+                <div className="w-[52px] h-9 rounded-lg bg-red-600/90 flex items-center justify-center">
+                  <Play size={18} className="text-white ml-0.5" />
                 </div>
                 {/* Duration badge */}
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: 8,
-                    right: 8,
-                    background: "rgba(0,0,0,0.8)",
-                    color: "#fff",
-                    fontSize: 11,
-                    fontWeight: 600,
-                    padding: "2px 6px",
-                    borderRadius: 4,
-                  }}
-                >
+                <div className="absolute bottom-2 right-2 bg-black/80 text-white text-[11px] font-semibold px-1.5 py-0.5 rounded">
                   18:42
                 </div>
               </div>
-              <div style={{ padding: "16px 18px 20px" }}>
-                <h4
-                  style={{
-                    fontSize: 15,
-                    fontWeight: 600,
-                    color: "#1d1d1f",
-                    lineHeight: 1.4,
-                    marginBottom: 10,
-                    display: "-webkit-box",
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: "vertical",
-                    overflow: "hidden",
-                  }}
-                >
+              <div className="px-[18px] pt-4 pb-5">
+                <h4 className="text-[15px] font-semibold text-[#1d1d1f] leading-snug mb-2.5 line-clamp-2">
                   สอน n8n Automation สำหรับธุรกิจ SME ไทย [ฉบับเต็ม]
                 </h4>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                    marginBottom: 6,
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 24,
-                      height: 24,
-                      borderRadius: "50%",
-                      background: "#dc2626",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <Youtube size={12} style={{ color: "#fff" }} />
+                <div className="flex items-center gap-2 mb-1.5">
+                  <div className="w-6 h-6 rounded-full bg-red-600 flex items-center justify-center">
+                    <Youtube size={12} className="text-white" />
                   </div>
-                  <span style={{ fontSize: 13, fontWeight: 500, color: "#1d1d1f" }}>
+                  <span className="text-[13px] font-medium text-[#1d1d1f]">
                     AI Studio Thailand
                   </span>
-                  <CheckCircle
-                    size={13}
-                    style={{ color: "#86868b" }}
-                  />
+                  <CheckCircle size={13} className="text-[#86868b]" />
                 </div>
-                <div style={{ fontSize: 12, color: "#86868b" }}>
+                <div className="text-xs text-[#86868b]">
                   89K views &middot; 2 สัปดาห์ที่แล้ว
                 </div>
               </div>
             </motion.div>
 
-            {/* ── Podcast Card ── */}
+            {/* ── Card 4: Podcast Card ── */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.25 }}
-              className="apple-card"
-              style={{
-                background: "#fff",
-                borderRadius: 24,
-                border: "1px solid rgba(0,0,0,0.06)",
-                overflow: "hidden",
-                display: "flex",
-                flexDirection: "column",
-              }}
+              className="apple-card min-w-[280px] shrink-0 snap-start md:min-w-0 md:shrink bg-white rounded-3xl border border-black/[0.06] overflow-hidden flex flex-col"
             >
               {/* Podcast cover */}
-              <div
-                style={{
-                  height: 120,
-                  background: "linear-gradient(135deg, #06c 0%, #5ac8fa 100%)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 12,
-                  padding: "0 20px",
-                }}
-              >
-                <Mic size={32} style={{ color: "#fff" }} />
+              <div className="h-[120px] bg-gradient-to-br from-[#06c] to-[#5ac8fa] flex items-center justify-center gap-3 px-5">
+                <Mic size={32} className="text-white" />
                 <div>
-                  <div style={{ fontSize: 16, fontWeight: 700, color: "#fff" }}>
+                  <div className="text-base font-bold text-white">
                     AI Talk TH
                   </div>
-                  <div style={{ fontSize: 12, color: "rgba(255,255,255,0.8)" }}>
+                  <div className="text-xs text-white/80">
                     Podcast by AI Studio
                   </div>
                 </div>
               </div>
-              <div
-                style={{
-                  padding: "18px 18px 20px",
-                  flex: 1,
-                  display: "flex",
-                  flexDirection: "column",
-                }}
-              >
-                <div
-                  style={{
-                    fontSize: 11,
-                    fontWeight: 600,
-                    color: "#06c",
-                    marginBottom: 6,
-                  }}
-                >
+              <div className="px-[18px] pt-[18px] pb-5 flex-1 flex flex-col">
+                <div className="text-[11px] font-semibold text-[#06c] mb-1.5">
                   EP.48 &middot; 45 นาที
                 </div>
-                <h4
-                  style={{
-                    fontSize: 15,
-                    fontWeight: 600,
-                    color: "#1d1d1f",
-                    lineHeight: 1.4,
-                    marginBottom: 14,
-                  }}
-                >
+                <h4 className="text-[15px] font-semibold text-[#1d1d1f] leading-snug mb-3.5">
                   Local AI กับอนาคตธุรกิจไทย
                 </h4>
                 {/* Waveform */}
-                <div style={{ marginBottom: 14, overflow: "hidden", borderRadius: 4 }}>
+                <div className="mb-3.5 overflow-hidden rounded">
                   <WaveformBars playing={podcastPlaying} />
                 </div>
                 {/* Player controls */}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 16,
-                    marginTop: "auto",
-                  }}
-                >
-                  <SkipBack size={18} style={{ color: "#86868b", cursor: "pointer" }} />
+                <div className="flex items-center justify-center gap-4 mt-auto">
+                  <SkipBack size={18} className="text-[#86868b] cursor-pointer" />
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setPodcastPlaying(!podcastPlaying)}
-                    style={{
-                      width: 40,
-                      height: 40,
-                      borderRadius: "50%",
-                      background: "#06c",
-                      border: "none",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      cursor: "pointer",
-                    }}
+                    className="w-10 h-10 rounded-full bg-[#06c] border-none flex items-center justify-center cursor-pointer"
                   >
                     {podcastPlaying ? (
-                      <Pause size={18} style={{ color: "#fff" }} />
+                      <Pause size={18} className="text-white" />
                     ) : (
-                      <Play size={18} style={{ color: "#fff", marginLeft: 2 }} />
+                      <Play size={18} className="text-white ml-0.5" />
                     )}
                   </motion.button>
-                  <SkipForward size={18} style={{ color: "#86868b", cursor: "pointer" }} />
-                  <Volume2 size={16} style={{ color: "#86868b", marginLeft: 8 }} />
+                  <SkipForward size={18} className="text-[#86868b] cursor-pointer" />
+                  <Volume2 size={16} className="text-[#86868b] ml-2" />
                 </div>
                 {/* Progress bar */}
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                    marginTop: 12,
-                    fontSize: 10,
-                    color: "#86868b",
-                  }}
-                >
+                <div className="flex items-center gap-2 mt-3 text-[10px] text-[#86868b]">
                   <span>12:34</span>
-                  <div
-                    style={{
-                      flex: 1,
-                      height: 3,
-                      background: "rgba(0,0,0,0.06)",
-                      borderRadius: 2,
-                      position: "relative",
-                    }}
-                  >
-                    <div
-                      style={{
-                        width: "28%",
-                        height: "100%",
-                        background: "#06c",
-                        borderRadius: 2,
-                      }}
-                    />
+                  <div className="flex-1 h-[3px] bg-black/[0.06] rounded-sm relative">
+                    <div className="w-[28%] h-full bg-[#06c] rounded-sm" />
                   </div>
                   <span>45:00</span>
                 </div>
               </div>
             </motion.div>
 
-            {/* ── LINE OA Broadcast Card ── */}
+            {/* ── Card 5: LINE OA Broadcast Card ── */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.35 }}
-              className="apple-card"
-              style={{
-                background: "#fff",
-                borderRadius: 24,
-                border: "1px solid rgba(0,0,0,0.06)",
-                overflow: "hidden",
-                display: "flex",
-                flexDirection: "column",
-              }}
+              className="apple-card min-w-[280px] shrink-0 snap-start md:min-w-0 md:shrink bg-white rounded-3xl border border-black/[0.06] overflow-hidden flex flex-col"
             >
               {/* LINE header */}
-              <div
-                style={{
-                  background: "#06c",
-                  padding: "14px 18px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                }}
-              >
-                <Send size={16} style={{ color: "#fff" }} />
+              <div className="bg-[#06c] px-[18px] py-3.5 flex items-center gap-2.5">
+                <Send size={16} className="text-white" />
                 <div>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: "#fff" }}>
+                  <div className="text-sm font-bold text-white">
                     AI Studio Thailand
                   </div>
-                  <div style={{ fontSize: 11, color: "rgba(255,255,255,0.8)" }}>
+                  <div className="text-[11px] text-white/80">
                     LINE Official Account
                   </div>
                 </div>
               </div>
               {/* Chat area */}
-              <div
-                style={{
-                  flex: 1,
-                  padding: "16px 14px",
-                  background: "#d9e7f5",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 4,
-                }}
-              >
+              <div className="flex-1 px-3.5 py-4 bg-[#d9e7f5] flex flex-col gap-1">
                 <LINEBubble
                   text="สวัสดีครับ! AI Studio มีอัพเดทใหม่ให้คุณ"
                   time="10:30"
@@ -890,29 +434,11 @@ export default function Creator() {
                 />
               </div>
               {/* Bottom bar */}
-              <div
-                style={{
-                  padding: "12px 14px",
-                  borderTop: "1px solid rgba(0,0,0,0.06)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  background: "#fff",
-                }}
-              >
-                <span style={{ fontSize: 11, color: "#86868b" }}>
+              <div className="px-3.5 py-3 border-t border-black/[0.06] flex items-center justify-between bg-white">
+                <span className="text-[11px] text-[#86868b]">
                   Broadcast &middot; 12K ผู้รับ
                 </span>
-                <span
-                  style={{
-                    fontSize: 11,
-                    fontWeight: 600,
-                    color: "#06c",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 4,
-                  }}
-                >
+                <span className="text-[11px] font-semibold text-[#06c] flex items-center gap-1">
                   Open rate 68% <TrendingUp size={12} />
                 </span>
               </div>
@@ -921,143 +447,55 @@ export default function Creator() {
         </motion.div>
 
         {/* ════════════════════════════════════════════
-            Section 3: สร้าง Content ให้ธุรกิจคุณ
+            Section 3: สร้าง Content ให้ธุรกิจคุณ — Service Cards
         ════════════════════════════════════════════ */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          style={{ marginBottom: 100 }}
+          className="mb-24"
         >
-          <h3
-            style={{
-              fontSize: 14,
-              fontWeight: 600,
-              color: "#06c",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              marginBottom: 12,
-              textAlign: "center",
-            }}
-          >
+          <h3 className="text-sm font-semibold text-[#06c] tracking-widest uppercase mb-3 text-center">
             Content Services
           </h3>
-          <h3
-            style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
-              fontWeight: 700,
-              color: "#1d1d1f",
-              textAlign: "center",
-              marginBottom: 16,
-              letterSpacing: "-0.01em",
-            }}
-          >
+          <h3 className="text-[clamp(28px,4vw,40px)] font-bold text-[#1d1d1f] text-center mb-4 tracking-tight">
             สร้าง Content ให้ธุรกิจคุณ
           </h3>
-          <p
-            style={{
-              fontSize: 17,
-              color: "#6e6e73",
-              textAlign: "center",
-              maxWidth: 520,
-              margin: "0 auto 48px",
-              lineHeight: 1.6,
-            }}
-          >
+          <p className="text-[17px] text-[#6e6e73] text-center max-w-[520px] mx-auto mb-12 leading-relaxed">
             เรารับผลิตคอนเทนต์เกี่ยวกับ AI และเทคโนโลยี
             ครบทุกรูปแบบสำหรับธุรกิจของคุณ
           </p>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: 20,
-            }}
-            className="services-grid"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* AI Blog Writing */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="apple-card"
-              style={{
-                background: "#fff",
-                borderRadius: 24,
-                padding: "32px 24px",
-                border: "1px solid rgba(0,0,0,0.06)",
-              }}
+              className="apple-card bg-white rounded-3xl py-8 px-6 border border-black/[0.06]"
             >
-              <div
-                style={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: 14,
-                  background: "rgba(0, 102, 204, 0.08)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 18,
-                }}
-              >
-                <FileText size={22} style={{ color: "#06c" }} />
+              <div className="w-12 h-12 rounded-[14px] bg-[rgba(0,102,204,0.08)] flex items-center justify-center mb-[18px]">
+                <FileText size={22} className="text-[#06c]" />
               </div>
-              <h4
-                style={{
-                  fontSize: 18,
-                  fontWeight: 700,
-                  color: "#1d1d1f",
-                  marginBottom: 8,
-                }}
-              >
+              <h4 className="text-lg font-bold text-[#1d1d1f] mb-2">
                 AI Blog Writing
               </h4>
-              <p
-                style={{
-                  fontSize: 14,
-                  color: "#6e6e73",
-                  lineHeight: 1.6,
-                  marginBottom: 18,
-                }}
-              >
+              <p className="text-sm text-[#6e6e73] leading-relaxed mb-[18px]">
                 บทความคุณภาพสูงเกี่ยวกับ AI สำหรับเว็บไซต์ของคุณ SEO-optimized
               </p>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 6,
-                  marginBottom: 18,
-                  fontSize: 13,
-                  color: "#1d1d1f",
-                }}
-              >
+              <div className="flex flex-col gap-1.5 mb-[18px] text-[13px] text-[#1d1d1f]">
                 {["4 บทความ/เดือน", "SEO keyword research", "รูปประกอบ AI-generated"].map(
                   (item) => (
-                    <div
-                      key={item}
-                      style={{ display: "flex", alignItems: "center", gap: 6 }}
-                    >
-                      <CheckCircle size={14} style={{ color: "#06c", flexShrink: 0 }} />
+                    <div key={item} className="flex items-center gap-1.5">
+                      <CheckCircle size={14} className="text-[#06c] shrink-0" />
                       <span>{item}</span>
                     </div>
                   )
                 )}
               </div>
-              <div
-                style={{
-                  fontSize: 13,
-                  fontWeight: 600,
-                  color: "#06c",
-                  background: "rgba(0, 102, 204, 0.06)",
-                  padding: "6px 12px",
-                  borderRadius: 8,
-                  display: "inline-block",
-                }}
-              >
+              <div className="text-[13px] font-semibold text-[#06c] bg-[rgba(0,102,204,0.06)] px-3 py-1.5 rounded-lg inline-block">
                 เริ่มต้น 9,900/เดือน
               </div>
             </motion.div>
@@ -1068,81 +506,28 @@ export default function Creator() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="apple-card"
-              style={{
-                background: "#fff",
-                borderRadius: 24,
-                padding: "32px 24px",
-                border: "1px solid rgba(0,0,0,0.06)",
-              }}
+              className="apple-card bg-white rounded-3xl py-8 px-6 border border-black/[0.06]"
             >
-              <div
-                style={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: 14,
-                  background: "rgba(0, 102, 204, 0.08)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 18,
-                }}
-              >
-                <Camera size={22} style={{ color: "#06c" }} />
+              <div className="w-12 h-12 rounded-[14px] bg-[rgba(0,102,204,0.08)] flex items-center justify-center mb-[18px]">
+                <Camera size={22} className="text-[#06c]" />
               </div>
-              <h4
-                style={{
-                  fontSize: 18,
-                  fontWeight: 700,
-                  color: "#1d1d1f",
-                  marginBottom: 8,
-                }}
-              >
+              <h4 className="text-lg font-bold text-[#1d1d1f] mb-2">
                 Social Media
               </h4>
-              <p
-                style={{
-                  fontSize: 14,
-                  color: "#6e6e73",
-                  lineHeight: 1.6,
-                  marginBottom: 18,
-                }}
-              >
+              <p className="text-sm text-[#6e6e73] leading-relaxed mb-[18px]">
                 ดูแล Social Media ครบทุกแพลตฟอร์ม TikTok, IG, Facebook
               </p>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 6,
-                  marginBottom: 18,
-                  fontSize: 13,
-                  color: "#1d1d1f",
-                }}
-              >
+              <div className="flex flex-col gap-1.5 mb-[18px] text-[13px] text-[#1d1d1f]">
                 {["12 โพสต์/เดือน", "Content calendar", "Engagement report"].map(
                   (item) => (
-                    <div
-                      key={item}
-                      style={{ display: "flex", alignItems: "center", gap: 6 }}
-                    >
-                      <CheckCircle size={14} style={{ color: "#06c", flexShrink: 0 }} />
+                    <div key={item} className="flex items-center gap-1.5">
+                      <CheckCircle size={14} className="text-[#06c] shrink-0" />
                       <span>{item}</span>
                     </div>
                   )
                 )}
               </div>
-              <div
-                style={{
-                  fontSize: 13,
-                  fontWeight: 600,
-                  color: "#06c",
-                  background: "rgba(0, 102, 204, 0.06)",
-                  padding: "6px 12px",
-                  borderRadius: 8,
-                  display: "inline-block",
-                }}
-              >
+              <div className="text-[13px] font-semibold text-[#06c] bg-[rgba(0,102,204,0.06)] px-3 py-1.5 rounded-lg inline-block">
                 เริ่มต้น 14,900/เดือน
               </div>
             </motion.div>
@@ -1153,81 +538,28 @@ export default function Creator() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
-              className="apple-card"
-              style={{
-                background: "#fff",
-                borderRadius: 24,
-                padding: "32px 24px",
-                border: "1px solid rgba(0,0,0,0.06)",
-              }}
+              className="apple-card bg-white rounded-3xl py-8 px-6 border border-black/[0.06]"
             >
-              <div
-                style={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: 14,
-                  background: "rgba(0, 102, 204, 0.08)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 18,
-                }}
-              >
-                <Play size={22} style={{ color: "#06c" }} />
+              <div className="w-12 h-12 rounded-[14px] bg-[rgba(0,102,204,0.08)] flex items-center justify-center mb-[18px]">
+                <Play size={22} className="text-[#06c]" />
               </div>
-              <h4
-                style={{
-                  fontSize: 18,
-                  fontWeight: 700,
-                  color: "#1d1d1f",
-                  marginBottom: 8,
-                }}
-              >
+              <h4 className="text-lg font-bold text-[#1d1d1f] mb-2">
                 Video Production
               </h4>
-              <p
-                style={{
-                  fontSize: 14,
-                  color: "#6e6e73",
-                  lineHeight: 1.6,
-                  marginBottom: 18,
-                }}
-              >
+              <p className="text-sm text-[#6e6e73] leading-relaxed mb-[18px]">
                 ผลิตวิดีโอ Tutorial, Demo, Explainer สำหรับธุรกิจ AI
               </p>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 6,
-                  marginBottom: 18,
-                  fontSize: 13,
-                  color: "#1d1d1f",
-                }}
-              >
+              <div className="flex flex-col gap-1.5 mb-[18px] text-[13px] text-[#1d1d1f]">
                 {["2 วิดีโอ/เดือน", "Script + Storyboard", "Editing + Subtitle"].map(
                   (item) => (
-                    <div
-                      key={item}
-                      style={{ display: "flex", alignItems: "center", gap: 6 }}
-                    >
-                      <CheckCircle size={14} style={{ color: "#06c", flexShrink: 0 }} />
+                    <div key={item} className="flex items-center gap-1.5">
+                      <CheckCircle size={14} className="text-[#06c] shrink-0" />
                       <span>{item}</span>
                     </div>
                   )
                 )}
               </div>
-              <div
-                style={{
-                  fontSize: 13,
-                  fontWeight: 600,
-                  color: "#06c",
-                  background: "rgba(0, 102, 204, 0.06)",
-                  padding: "6px 12px",
-                  borderRadius: 8,
-                  display: "inline-block",
-                }}
-              >
+              <div className="text-[13px] font-semibold text-[#06c] bg-[rgba(0,102,204,0.06)] px-3 py-1.5 rounded-lg inline-block">
                 เริ่มต้น 19,900/เดือน
               </div>
             </motion.div>
@@ -1238,81 +570,28 @@ export default function Creator() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="apple-card"
-              style={{
-                background: "#fff",
-                borderRadius: 24,
-                padding: "32px 24px",
-                border: "1px solid rgba(0,0,0,0.06)",
-              }}
+              className="apple-card bg-white rounded-3xl py-8 px-6 border border-black/[0.06]"
             >
-              <div
-                style={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: 14,
-                  background: "rgba(0, 102, 204, 0.08)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 18,
-                }}
-              >
-                <Mail size={22} style={{ color: "#06c" }} />
+              <div className="w-12 h-12 rounded-[14px] bg-[rgba(0,102,204,0.08)] flex items-center justify-center mb-[18px]">
+                <Mail size={22} className="text-[#06c]" />
               </div>
-              <h4
-                style={{
-                  fontSize: 18,
-                  fontWeight: 700,
-                  color: "#1d1d1f",
-                  marginBottom: 8,
-                }}
-              >
+              <h4 className="text-lg font-bold text-[#1d1d1f] mb-2">
                 Newsletter
               </h4>
-              <p
-                style={{
-                  fontSize: 14,
-                  color: "#6e6e73",
-                  lineHeight: 1.6,
-                  marginBottom: 18,
-                }}
-              >
+              <p className="text-sm text-[#6e6e73] leading-relaxed mb-[18px]">
                 Email newsletter รายสัปดาห์ สรุป AI News ให้ลูกค้าของคุณ
               </p>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 6,
-                  marginBottom: 18,
-                  fontSize: 13,
-                  color: "#1d1d1f",
-                }}
-              >
+              <div className="flex flex-col gap-1.5 mb-[18px] text-[13px] text-[#1d1d1f]">
                 {["4 ฉบับ/เดือน", "Template design", "A/B testing subject"].map(
                   (item) => (
-                    <div
-                      key={item}
-                      style={{ display: "flex", alignItems: "center", gap: 6 }}
-                    >
-                      <CheckCircle size={14} style={{ color: "#06c", flexShrink: 0 }} />
+                    <div key={item} className="flex items-center gap-1.5">
+                      <CheckCircle size={14} className="text-[#06c] shrink-0" />
                       <span>{item}</span>
                     </div>
                   )
                 )}
               </div>
-              <div
-                style={{
-                  fontSize: 13,
-                  fontWeight: 600,
-                  color: "#06c",
-                  background: "rgba(0, 102, 204, 0.06)",
-                  padding: "6px 12px",
-                  borderRadius: 8,
-                  display: "inline-block",
-                }}
-              >
+              <div className="text-[13px] font-semibold text-[#06c] bg-[rgba(0,102,204,0.06)] px-3 py-1.5 rounded-lg inline-block">
                 เริ่มต้น 7,900/เดือน
               </div>
             </motion.div>
@@ -1327,34 +606,13 @@ export default function Creator() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          style={{
-            marginBottom: 100,
-            background: "#f5f5f7",
-            borderRadius: 28,
-            padding: "56px 32px",
-          }}
+          className="mb-24 bg-[#f5f5f7] rounded-[28px] py-14 px-8"
         >
-          <h3
-            style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
-              fontWeight: 700,
-              color: "#1d1d1f",
-              textAlign: "center",
-              marginBottom: 48,
-              letterSpacing: "-0.01em",
-            }}
-          >
+          <h3 className="text-[clamp(28px,4vw,40px)] font-bold text-[#1d1d1f] text-center mb-12 tracking-tight">
             ตัวเลข
           </h3>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: 24,
-            }}
-            className="stats-grid"
-          >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { value: 100, suffix: "+", label: "บทความ", icon: FileText },
               { value: 50, suffix: "K+", label: "ผู้ติดตาม", icon: Users },
@@ -1369,36 +627,13 @@ export default function Creator() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 + i * 0.1 }}
-                  style={{
-                    textAlign: "center",
-                    padding: "32px 16px",
-                    background: "#fff",
-                    borderRadius: 20,
-                    border: "1px solid rgba(0,0,0,0.04)",
-                  }}
+                  className="text-center py-8 px-4 bg-white rounded-[20px] border border-black/[0.04]"
                 >
-                  <StatIcon
-                    size={24}
-                    style={{ color: "#06c", marginBottom: 14 }}
-                  />
-                  <div
-                    style={{
-                      fontSize: "clamp(32px, 4vw, 44px)",
-                      fontWeight: 700,
-                      color: "#1d1d1f",
-                      lineHeight: 1.1,
-                      marginBottom: 6,
-                    }}
-                  >
+                  <StatIcon size={24} className="text-[#06c] mb-3.5 mx-auto" />
+                  <div className="text-[clamp(32px,4vw,44px)] font-bold text-[#1d1d1f] leading-[1.1] mb-1.5">
                     <AnimatedCounter target={stat.value} suffix={stat.suffix} />
                   </div>
-                  <div
-                    style={{
-                      fontSize: 14,
-                      color: "#6e6e73",
-                      fontWeight: 500,
-                    }}
-                  >
+                  <div className="text-sm text-[#6e6e73] font-medium">
                     {stat.label}
                   </div>
                 </motion.div>
@@ -1415,60 +650,40 @@ export default function Creator() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          style={{ marginBottom: 100 }}
+          className="mb-24"
         >
-          <h3
-            style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
-              fontWeight: 700,
-              color: "#1d1d1f",
-              textAlign: "center",
-              marginBottom: 48,
-              letterSpacing: "-0.01em",
-            }}
-          >
+          <h3 className="text-[clamp(28px,4vw,40px)] font-bold text-[#1d1d1f] text-center mb-12 tracking-tight">
             ติดตามเรา
           </h3>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: 20,
-            }}
-            className="social-grid"
-          >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
               {
                 name: "TikTok",
                 handle: "@aistudiothailand",
                 followers: "25K followers",
-                bg: "linear-gradient(135deg, #1d1d1f 0%, #424245 100%)",
-                color: "#fff",
+                bgClass: "bg-gradient-to-br from-[#1d1d1f] to-[#424245]",
                 icon: Play,
               },
               {
                 name: "Instagram",
                 handle: "@aistudio.th",
                 followers: "12K followers",
-                bg: "linear-gradient(135deg, #833AB4 0%, #FD1D1D 50%, #F77737 100%)",
-                color: "#fff",
+                bgClass: "bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#F77737]",
                 icon: Camera,
               },
               {
                 name: "YouTube",
                 handle: "AI Studio Thailand",
                 followers: "8K subscribers",
-                bg: "linear-gradient(135deg, #dc2626 0%, #ef4444 100%)",
-                color: "#fff",
+                bgClass: "bg-gradient-to-br from-red-600 to-red-500",
                 icon: Youtube,
               },
               {
                 name: "LINE OA",
                 handle: "@aistudio-th",
                 followers: "5K friends",
-                bg: "linear-gradient(135deg, #06c 0%, #5ac8fa 100%)",
-                color: "#fff",
+                bgClass: "bg-gradient-to-br from-[#06c] to-[#5ac8fa]",
                 icon: Send,
               },
             ].map((social, i) => {
@@ -1483,70 +698,23 @@ export default function Creator() {
                   transition={{ delay: 0.1 + i * 0.1 }}
                   whileHover={{ y: -4, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  style={{
-                    background: social.bg,
-                    borderRadius: 24,
-                    padding: "32px 24px",
-                    textDecoration: "none",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    textAlign: "center",
-                    cursor: "pointer",
-                    position: "relative",
-                    overflow: "hidden",
-                  }}
+                  className={`${social.bgClass} rounded-3xl py-8 px-6 no-underline flex flex-col items-center text-center cursor-pointer relative overflow-hidden`}
                 >
-                  <div
-                    style={{
-                      width: 52,
-                      height: 52,
-                      borderRadius: 16,
-                      background: "rgba(255,255,255,0.2)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      marginBottom: 16,
-                    }}
-                  >
-                    <SocialIcon size={24} style={{ color: social.color }} />
+                  <div className="w-[52px] h-[52px] rounded-2xl bg-white/20 flex items-center justify-center mb-4">
+                    <SocialIcon size={24} className="text-white" />
                   </div>
-                  <div
-                    style={{
-                      fontSize: 18,
-                      fontWeight: 700,
-                      color: social.color,
-                      marginBottom: 4,
-                    }}
-                  >
+                  <div className="text-lg font-bold text-white mb-1">
                     {social.name}
                   </div>
-                  <div
-                    style={{
-                      fontSize: 14,
-                      color: "rgba(255,255,255,0.8)",
-                      marginBottom: 8,
-                    }}
-                  >
+                  <div className="text-sm text-white/80 mb-2">
                     {social.handle}
                   </div>
-                  <div
-                    style={{
-                      fontSize: 13,
-                      color: "rgba(255,255,255,0.7)",
-                      fontWeight: 500,
-                    }}
-                  >
+                  <div className="text-[13px] text-white/70 font-medium">
                     {social.followers}
                   </div>
                   <ExternalLink
                     size={14}
-                    style={{
-                      position: "absolute",
-                      top: 16,
-                      right: 16,
-                      color: "rgba(255,255,255,0.5)",
-                    }}
+                    className="absolute top-4 right-4 text-white/50"
                   />
                 </motion.a>
               );
@@ -1562,90 +730,27 @@ export default function Creator() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          style={{
-            textAlign: "center",
-            background: "linear-gradient(135deg, #06c 0%, #5ac8fa 100%)",
-            borderRadius: 32,
-            padding: "64px 32px",
-            position: "relative",
-            overflow: "hidden",
-          }}
+          className="text-center bg-gradient-to-br from-[#06c] to-[#5ac8fa] rounded-[32px] py-16 px-8 relative overflow-hidden"
         >
           {/* Decorative circles */}
-          <div
-            style={{
-              position: "absolute",
-              top: -40,
-              right: -40,
-              width: 200,
-              height: 200,
-              borderRadius: "50%",
-              background: "rgba(255,255,255,0.08)",
-            }}
-          />
-          <div
-            style={{
-              position: "absolute",
-              bottom: -60,
-              left: -20,
-              width: 160,
-              height: 160,
-              borderRadius: "50%",
-              background: "rgba(255,255,255,0.06)",
-            }}
-          />
-          <div style={{ position: "relative", zIndex: 1 }}>
-            <h3
-              style={{
-                fontSize: "clamp(28px, 4vw, 40px)",
-                fontWeight: 700,
-                color: "#fff",
-                marginBottom: 16,
-                lineHeight: 1.2,
-              }}
-            >
+          <div className="absolute -top-10 -right-10 w-[200px] h-[200px] rounded-full bg-white/[0.08]" />
+          <div className="absolute -bottom-[60px] -left-5 w-40 h-40 rounded-full bg-white/[0.06]" />
+          <div className="relative z-[1]">
+            <h3 className="text-[clamp(28px,4vw,40px)] font-bold text-white mb-4 leading-tight">
               พร้อมสร้าง Content
               <br />
               ให้ธุรกิจของคุณ?
             </h3>
-            <p
-              style={{
-                fontSize: 17,
-                color: "rgba(255,255,255,0.85)",
-                maxWidth: 480,
-                margin: "0 auto 32px",
-                lineHeight: 1.6,
-              }}
-            >
+            <p className="text-[17px] text-white/85 max-w-[480px] mx-auto mb-8 leading-relaxed">
               ไม่ว่าจะจ้างเราสร้าง content หรือติดตามเราเพื่อเรียนรู้ AI
               เราพร้อมช่วยคุณ
             </p>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 16,
-                flexWrap: "wrap",
-              }}
-            >
+            <div className="flex items-center justify-center gap-4 flex-wrap">
               <motion.a
                 href="#contact"
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "16px 32px",
-                  background: "#fff",
-                  color: "#06c",
-                  borderRadius: 14,
-                  fontSize: 16,
-                  fontWeight: 600,
-                  textDecoration: "none",
-                  cursor: "pointer",
-                }}
+                className="inline-flex items-center gap-2 py-4 px-8 bg-white text-[#06c] rounded-[14px] text-base font-semibold no-underline cursor-pointer"
               >
                 จ้างเราสร้าง Content <ArrowRight size={18} />
               </motion.a>
@@ -1653,21 +758,7 @@ export default function Creator() {
                 href="#"
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  padding: "16px 32px",
-                  background: "rgba(255,255,255,0.15)",
-                  backdropFilter: "blur(8px)",
-                  color: "#fff",
-                  borderRadius: 14,
-                  fontSize: 16,
-                  fontWeight: 600,
-                  textDecoration: "none",
-                  cursor: "pointer",
-                  border: "1px solid rgba(255,255,255,0.25)",
-                }}
+                className="inline-flex items-center gap-2 py-4 px-8 bg-white/15 backdrop-blur-md text-white rounded-[14px] text-base font-semibold no-underline cursor-pointer border border-white/25"
               >
                 ติดตามเรา
               </motion.a>
@@ -1675,78 +766,6 @@ export default function Creator() {
           </div>
         </motion.div>
       </div>
-
-      <style jsx>{`
-        @media (max-width: 968px) {
-          .portfolio-row {
-            grid-template-columns: 1fr !important;
-          }
-          .portfolio-row-3 {
-            grid-template-columns: 1fr 1fr !important;
-          }
-          .services-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-          .social-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-        @media (max-width: 639px) {
-          .portfolio-row {
-            display: flex !important;
-            overflow-x: auto !important;
-            -webkit-overflow-scrolling: touch;
-            scroll-snap-type: x mandatory;
-            gap: 16px !important;
-            padding-bottom: 16px;
-            margin-left: -16px;
-            margin-right: -16px;
-            padding-left: 16px;
-            padding-right: 16px;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
-          .portfolio-row::-webkit-scrollbar {
-            display: none;
-          }
-          .portfolio-row > div {
-            min-width: 280px !important;
-            flex-shrink: 0 !important;
-            scroll-snap-align: start;
-          }
-          .portfolio-row-3 {
-            display: flex !important;
-            overflow-x: auto !important;
-            -webkit-overflow-scrolling: touch;
-            scroll-snap-type: x mandatory;
-            gap: 16px !important;
-            padding-bottom: 16px;
-            margin-left: -16px;
-            margin-right: -16px;
-            padding-left: 16px;
-            padding-right: 16px;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
-          .portfolio-row-3::-webkit-scrollbar {
-            display: none;
-          }
-          .portfolio-row-3 > div {
-            min-width: 280px !important;
-            flex-shrink: 0 !important;
-            scroll-snap-align: start;
-          }
-          .services-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .stats-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-          .social-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

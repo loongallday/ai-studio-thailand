@@ -170,51 +170,26 @@ function DayTimeline({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="apple-card"
-      style={{
-        background: "#fff",
-        borderRadius: 20,
-        border: "1px solid rgba(0,0,0,0.06)",
-        overflow: "hidden",
-      }}
+      className="apple-card rounded-[20px] border border-black/[0.06] overflow-hidden"
+      style={{ background: "#fff" }}
     >
       <motion.button
         onClick={onToggle}
         whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
-        style={{
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "24px 28px",
-          background: "transparent",
-          border: "none",
-          cursor: "pointer",
-          textAlign: "left",
-        }}
+        className="w-full flex items-center justify-between p-4 md:p-6 bg-transparent border-none cursor-pointer text-left"
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+        <div className="flex items-center gap-3 md:gap-4">
           <div
-            style={{
-              width: 44,
-              height: 44,
-              borderRadius: 12,
-              background: "rgba(0,102,204,0.08)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 14,
-              fontWeight: 700,
-              color: "#06c",
-            }}
+            className="w-10 h-10 md:w-11 md:h-11 rounded-xl flex items-center justify-center text-sm font-bold shrink-0"
+            style={{ background: "rgba(0,102,204,0.08)", color: "#06c" }}
           >
             {day.day.replace("Day ", "D")}
           </div>
           <div>
-            <div style={{ fontSize: 18, fontWeight: 700, color: "#1d1d1f" }}>
+            <div className="text-base md:text-lg font-bold" style={{ color: "#1d1d1f" }}>
               {day.day}: {day.title}
             </div>
-            <div style={{ fontSize: 13, color: "#6e6e73", marginTop: 2 }}>
+            <div className="text-xs mt-0.5" style={{ color: "#6e6e73" }}>
               {day.slots.length} sessions | 09:00 - 16:30
             </div>
           </div>
@@ -234,18 +209,10 @@ function DayTimeline({
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-            style={{ overflow: "hidden" }}
+            className="overflow-hidden"
           >
-            <div style={{ padding: "0 28px 28px 28px" }}>
-              <div
-                style={{
-                  borderTop: "1px solid rgba(0,0,0,0.06)",
-                  paddingTop: 20,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 0,
-                }}
-              >
+            <div className="px-4 pb-4 md:px-7 md:pb-7">
+              <div className="border-t border-black/[0.06] pt-5 flex flex-col">
                 {day.slots.map((slot, i) => {
                   const tc = typeColors[slot.type];
                   return (
@@ -254,52 +221,32 @@ function DayTimeline({
                       initial={{ opacity: 0, x: -12 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.04 }}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 16,
-                        padding: "12px 0",
-                        borderBottom:
-                          i < day.slots.length - 1
-                            ? "1px solid rgba(0,0,0,0.03)"
-                            : "none",
-                      }}
+                      className={`flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 py-3 ${
+                        i < day.slots.length - 1 ? "border-b border-black/[0.03]" : ""
+                      }`}
                     >
                       <div
-                        style={{
-                          minWidth: 110,
-                          fontSize: 13,
-                          fontWeight: 600,
-                          color: slot.type === "break" ? "#86868b" : "#1d1d1f",
-                          fontVariantNumeric: "tabular-nums",
-                        }}
+                        className="min-w-[110px] text-[13px] font-semibold tabular-nums"
+                        style={{ color: slot.type === "break" ? "#86868b" : "#1d1d1f" }}
                       >
                         {slot.time}
                       </div>
-                      <div
-                        style={{
-                          fontSize: 11,
-                          fontWeight: 600,
-                          padding: "3px 8px",
-                          borderRadius: 6,
-                          background: tc.bg,
-                          color: tc.text,
-                          textTransform: "uppercase",
-                          letterSpacing: "0.03em",
-                          flexShrink: 0,
-                        }}
-                      >
-                        {tc.label}
-                      </div>
-                      <div
-                        style={{
-                          fontSize: 14,
-                          color: slot.type === "break" ? "#86868b" : "#1d1d1f",
-                          lineHeight: 1.5,
-                          fontStyle: slot.type === "break" ? "italic" : "normal",
-                        }}
-                      >
-                        {slot.topic}
+                      <div className="flex items-center gap-2 sm:gap-4">
+                        <div
+                          className="text-[11px] font-semibold px-2 py-[3px] rounded-md uppercase tracking-wide shrink-0"
+                          style={{ background: tc.bg, color: tc.text }}
+                        >
+                          {tc.label}
+                        </div>
+                        <div
+                          className="text-sm leading-relaxed"
+                          style={{
+                            color: slot.type === "break" ? "#86868b" : "#1d1d1f",
+                            fontStyle: slot.type === "break" ? "italic" : "normal",
+                          }}
+                        >
+                          {slot.topic}
+                        </div>
                       </div>
                     </motion.div>
                   );
@@ -324,78 +271,46 @@ export default function Workshop() {
   return (
     <section
       id="workshop"
-      style={{
-        background: "white",
-        padding: "120px 24px",
-      }}
+      className="bg-white py-16 md:py-24 lg:py-[120px] px-4 md:px-6"
     >
-      <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+      <div className="max-w-[1080px] mx-auto">
         {/* ───── Section 1: Hero ───── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          style={{ textAlign: "center", marginBottom: 80 }}
+          className="text-center mb-16 md:mb-20"
         >
           <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              padding: "8px 16px",
-              background: "rgba(0,102,204,0.06)",
-              borderRadius: 100,
-              marginBottom: 20,
-            }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5"
+            style={{ background: "rgba(0,102,204,0.06)" }}
           >
             <GraduationCap size={16} style={{ color: "#06c" }} />
             <span
-              style={{
-                fontSize: 13,
-                fontWeight: 600,
-                color: "#06c",
-                letterSpacing: "0.04em",
-              }}
+              className="text-[13px] font-semibold tracking-wider"
+              style={{ color: "#06c" }}
             >
               AI ACADEMY
             </span>
           </div>
 
           <h2
-            style={{
-              fontSize: "clamp(36px, 5.5vw, 56px)",
-              fontWeight: 700,
-              color: "#1d1d1f",
-              lineHeight: 1.1,
-              marginBottom: 16,
-            }}
+            className="text-[28px] md:text-[40px] lg:text-[56px] font-bold leading-[1.1] mb-4"
+            style={{ color: "#1d1d1f" }}
           >
             AI Workshop & Training
           </h2>
           <p
-            style={{
-              fontSize: "clamp(17px, 2.5vw, 21px)",
-              color: "#6e6e73",
-              maxWidth: 620,
-              margin: "0 auto",
-              lineHeight: 1.6,
-            }}
+            className="text-[15px] md:text-[17px] lg:text-[21px] max-w-[620px] mx-auto leading-relaxed"
+            style={{ color: "#6e6e73" }}
           >
             เรียนรู้ AI แบบ hands-on จากผู้เชี่ยวชาญที่สร้างระบบ AI จริง
             <br />
             ออกแบบมาสำหรับคนไทย ใช้ได้จริงตั้งแต่วันแรก
           </p>
 
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: 32,
-              marginTop: 32,
-              flexWrap: "wrap",
-            }}
-          >
+          <div className="flex justify-center gap-4 md:gap-8 mt-6 md:mt-8 flex-wrap">
             {[
               { icon: BookOpen, label: "4 หลักสูตร" },
               { icon: Users, label: "รุ่นละ 12-20 คน" },
@@ -406,13 +321,8 @@ export default function Workshop() {
               return (
                 <div
                   key={item.label}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 8,
-                    fontSize: 14,
-                    color: "#6e6e73",
-                  }}
+                  className="flex items-center gap-2 text-sm"
+                  style={{ color: "#6e6e73" }}
                 >
                   <Icon size={16} style={{ color: "#06c" }} />
                   {item.label}
@@ -428,19 +338,15 @@ export default function Workshop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ textAlign: "center", marginBottom: 48 }}
+          className="text-center mb-8 md:mb-12"
         >
           <h3
-            style={{
-              fontSize: "clamp(24px, 4vw, 36px)",
-              fontWeight: 700,
-              color: "#1d1d1f",
-              marginBottom: 8,
-            }}
+            className="text-[24px] md:text-[30px] lg:text-[36px] font-bold mb-2"
+            style={{ color: "#1d1d1f" }}
           >
             เลือก Workshop ที่เหมาะกับคุณ
           </h3>
-          <p style={{ fontSize: 16, color: "#6e6e73" }}>
+          <p className="text-base" style={{ color: "#6e6e73" }}>
             ตั้งแต่ผู้เริ่มต้นจนถึงระดับผู้บริหาร — เรามีหลักสูตรสำหรับทุกคน
           </p>
         </motion.div>
@@ -451,76 +357,42 @@ export default function Workshop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.6 }}
-          className="apple-card"
-          style={{
-            background: "#fff",
-            borderRadius: 24,
-            border: "1px solid rgba(0,0,0,0.06)",
-            overflow: "hidden",
-            marginBottom: 24,
-          }}
+          className="apple-card rounded-[20px] md:rounded-3xl border border-black/[0.06] overflow-hidden mb-4 md:mb-6"
+          style={{ background: "#fff" }}
         >
-          <div style={{ padding: 32 }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "flex-start",
-                justifyContent: "space-between",
-                flexWrap: "wrap",
-                gap: 20,
-                marginBottom: 24,
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <div className="p-4 md:p-6 lg:p-8">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 md:gap-5 mb-5 md:mb-6">
+              <div className="flex items-center gap-3 md:gap-4">
                 <div
-                  style={{
-                    width: 52,
-                    height: 52,
-                    borderRadius: 16,
-                    background: "rgba(0,102,204,0.08)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
+                  className="w-11 h-11 md:w-[52px] md:h-[52px] rounded-xl md:rounded-2xl flex items-center justify-center shrink-0"
+                  style={{ background: "rgba(0,102,204,0.08)" }}
                 >
                   <GraduationCap size={26} style={{ color: "#06c" }} />
                 </div>
                 <div>
                   <h4
-                    style={{
-                      fontSize: 22,
-                      fontWeight: 700,
-                      color: "#1d1d1f",
-                      lineHeight: 1.3,
-                    }}
+                    className="text-lg md:text-[22px] font-bold leading-tight"
+                    style={{ color: "#1d1d1f" }}
                   >
                     AI Fundamentals
                   </h4>
-                  <p style={{ fontSize: 14, color: "#06c", fontWeight: 500 }}>
+                  <p className="text-sm font-medium" style={{ color: "#06c" }}>
                     เริ่มต้นเข้าใจ AI อย่างแท้จริง
                   </p>
                 </div>
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+              <div className="flex items-center gap-3 md:gap-4">
                 <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                    fontSize: 13,
-                    color: "#6e6e73",
-                    padding: "6px 12px",
-                    background: "rgba(0,0,0,0.03)",
-                    borderRadius: 8,
-                  }}
+                  className="flex items-center gap-1.5 text-[13px] px-3 py-1.5 rounded-lg"
+                  style={{ color: "#6e6e73", background: "rgba(0,0,0,0.03)" }}
                 >
                   <Clock size={14} />1 วัน
                 </div>
                 <div>
-                  <span style={{ fontSize: 28, fontWeight: 700, color: "#1d1d1f" }}>
+                  <span className="text-[24px] md:text-[28px] font-bold" style={{ color: "#1d1d1f" }}>
                     ฿9,900
                   </span>
-                  <span style={{ fontSize: 14, color: "#86868b" }}>/คน</span>
+                  <span className="text-sm" style={{ color: "#86868b" }}>/คน</span>
                 </div>
               </div>
             </div>
@@ -531,19 +403,13 @@ export default function Workshop() {
                 setExpandedCard(expandedCard === 1 ? null : 1)
               }
               whileHover={{ backgroundColor: "rgba(0,0,0,0.02)" }}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-[10px] border cursor-pointer text-sm font-semibold ${
+                expandedCard === 1 ? "mb-6" : "mb-0"
+              }`}
               style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "10px 16px",
                 background: "rgba(0,102,204,0.04)",
-                borderRadius: 10,
-                border: "1px solid rgba(0,102,204,0.1)",
-                cursor: "pointer",
-                fontSize: 14,
-                fontWeight: 600,
+                borderColor: "rgba(0,102,204,0.1)",
                 color: "#06c",
-                marginBottom: expandedCard === 1 ? 24 : 0,
               }}
             >
               {expandedCard === 1 ? "ซ่อนรายละเอียด" : "ดูรายละเอียดทั้งหมด"}
@@ -562,36 +428,20 @@ export default function Workshop() {
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-                  style={{ overflow: "hidden" }}
+                  className="overflow-hidden"
                 >
-                  <div
-                    className="workshop-expand-grid"
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "1fr 1fr",
-                      gap: 24,
-                    }}
-                  >
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Day schedule */}
                     <div>
                       <div
-                        style={{
-                          fontSize: 12,
-                          fontWeight: 700,
-                          color: "#86868b",
-                          letterSpacing: "0.06em",
-                          textTransform: "uppercase",
-                          marginBottom: 14,
-                        }}
+                        className="text-xs font-bold tracking-widest uppercase mb-3.5"
+                        style={{ color: "#86868b" }}
                       >
                         ตารางเรียน
                       </div>
                       <div
-                        style={{
-                          background: "rgba(0,0,0,0.02)",
-                          borderRadius: 14,
-                          padding: "16px 20px",
-                        }}
+                        className="rounded-[14px] p-4 md:px-5"
+                        style={{ background: "rgba(0,0,0,0.02)" }}
                       >
                         {[
                           { time: "09:00 - 10:30", topic: "AI Overview & LLM Fundamentals" },
@@ -604,29 +454,17 @@ export default function Workshop() {
                         ].map((item, i, arr) => (
                           <div
                             key={i}
-                            style={{
-                              display: "flex",
-                              gap: 14,
-                              padding: "8px 0",
-                              borderBottom:
-                                i < arr.length - 1
-                                  ? "1px solid rgba(0,0,0,0.04)"
-                                  : "none",
-                            }}
+                            className={`flex gap-3 md:gap-3.5 py-2 ${
+                              i < arr.length - 1 ? "border-b border-black/[0.04]" : ""
+                            }`}
                           >
                             <div
-                              style={{
-                                minWidth: 100,
-                                fontSize: 12,
-                                fontWeight: 600,
-                                color: "#06c",
-                                fontVariantNumeric: "tabular-nums",
-                                paddingTop: 1,
-                              }}
+                              className="min-w-[90px] md:min-w-[100px] text-xs font-semibold tabular-nums pt-px"
+                              style={{ color: "#06c" }}
                             >
                               {item.time}
                             </div>
-                            <div style={{ fontSize: 13, color: "#1d1d1f", lineHeight: 1.5 }}>
+                            <div className="text-[13px] leading-relaxed" style={{ color: "#1d1d1f" }}>
                               {item.topic}
                             </div>
                           </div>
@@ -638,18 +476,12 @@ export default function Workshop() {
                     <div>
                       {/* What you'll learn */}
                       <div
-                        style={{
-                          fontSize: 12,
-                          fontWeight: 700,
-                          color: "#86868b",
-                          letterSpacing: "0.06em",
-                          textTransform: "uppercase",
-                          marginBottom: 14,
-                        }}
+                        className="text-xs font-bold tracking-widest uppercase mb-3.5"
+                        style={{ color: "#86868b" }}
                       >
                         สิ่งที่จะได้เรียนรู้
                       </div>
-                      <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
+                      <div className="flex flex-col gap-2.5 mb-6">
                         {[
                           "เข้าใจ AI, ML, LLM อย่างถ่องแท้",
                           "เขียน Prompt ให้ได้ผลลัพธ์ระดับมือโปร",
@@ -659,13 +491,14 @@ export default function Workshop() {
                         ].map((item, i) => (
                           <div
                             key={i}
-                            style={{ display: "flex", alignItems: "flex-start", gap: 10 }}
+                            className="flex items-start gap-2.5"
                           >
                             <CheckCircle
                               size={16}
-                              style={{ color: "#34c759", marginTop: 2, flexShrink: 0 }}
+                              className="mt-0.5 shrink-0"
+                              style={{ color: "#34c759" }}
                             />
-                            <span style={{ fontSize: 14, color: "#1d1d1f", lineHeight: 1.5 }}>
+                            <span className="text-sm leading-relaxed" style={{ color: "#1d1d1f" }}>
                               {item}
                             </span>
                           </div>
@@ -674,48 +507,29 @@ export default function Workshop() {
 
                       {/* Who it's for */}
                       <div
-                        style={{
-                          fontSize: 12,
-                          fontWeight: 700,
-                          color: "#86868b",
-                          letterSpacing: "0.06em",
-                          textTransform: "uppercase",
-                          marginBottom: 10,
-                        }}
+                        className="text-xs font-bold tracking-widest uppercase mb-2.5"
+                        style={{ color: "#86868b" }}
                       >
                         เหมาะสำหรับ
                       </div>
                       <div
-                        style={{
-                          display: "flex",
-                          alignItems: "flex-start",
-                          gap: 8,
-                          padding: "12px 14px",
-                          background: "rgba(0,0,0,0.02)",
-                          borderRadius: 10,
-                          marginBottom: 24,
-                        }}
+                        className="flex items-start gap-2 p-3 md:px-3.5 rounded-[10px] mb-6"
+                        style={{ background: "rgba(0,0,0,0.02)" }}
                       >
-                        <Users size={16} style={{ color: "#06c", marginTop: 2, flexShrink: 0 }} />
-                        <span style={{ fontSize: 13, color: "#1d1d1f", lineHeight: 1.6 }}>
+                        <Users size={16} className="mt-0.5 shrink-0" style={{ color: "#06c" }} />
+                        <span className="text-[13px] leading-relaxed" style={{ color: "#1d1d1f" }}>
                           ผู้เริ่มต้น, ทีมที่ต้องการเข้าใจ AI พื้นฐาน, ผู้ที่อยากนำ AI ไปใช้ในงาน
                         </span>
                       </div>
 
                       {/* What you get */}
                       <div
-                        style={{
-                          fontSize: 12,
-                          fontWeight: 700,
-                          color: "#86868b",
-                          letterSpacing: "0.06em",
-                          textTransform: "uppercase",
-                          marginBottom: 10,
-                        }}
+                        className="text-xs font-bold tracking-widest uppercase mb-2.5"
+                        style={{ color: "#86868b" }}
                       >
                         สิ่งที่ได้รับ
                       </div>
-                      <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                      <div className="flex flex-wrap gap-2">
                         {[
                           { icon: Award, label: "Certificate" },
                           { icon: BookOpen, label: "Workshop Materials" },
@@ -726,17 +540,8 @@ export default function Workshop() {
                           return (
                             <div
                               key={b.label}
-                              style={{
-                                display: "flex",
-                                alignItems: "center",
-                                gap: 6,
-                                padding: "6px 12px",
-                                background: "rgba(0,102,204,0.05)",
-                                borderRadius: 8,
-                                fontSize: 12,
-                                fontWeight: 500,
-                                color: "#1d1d1f",
-                              }}
+                              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium"
+                              style={{ background: "rgba(0,102,204,0.05)", color: "#1d1d1f" }}
                             >
                               <BIcon size={14} style={{ color: "#06c" }} />
                               {b.label}
@@ -758,108 +563,57 @@ export default function Workshop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-40px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="apple-card"
-          style={{
-            background: "#fff",
-            borderRadius: 24,
-            border: "2px solid #06c",
-            overflow: "hidden",
-            marginBottom: 24,
-            position: "relative",
-          }}
+          className="apple-card rounded-[20px] md:rounded-3xl overflow-hidden mb-4 md:mb-6 relative"
+          style={{ background: "#fff", border: "2px solid #06c" }}
         >
           {/* Featured badge */}
           <div
-            style={{
-              position: "absolute",
-              top: 16,
-              right: 16,
-              padding: "6px 14px",
-              background: "#06c",
-              color: "#fff",
-              fontSize: 12,
-              fontWeight: 700,
-              borderRadius: 100,
-              letterSpacing: "0.03em",
-              zIndex: 1,
-            }}
+            className="absolute top-3 right-3 md:top-4 md:right-4 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide z-10"
+            style={{ background: "#06c", color: "#fff" }}
           >
             MOST POPULAR
           </div>
 
-          <div style={{ padding: 32 }}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "flex-start",
-                justifyContent: "space-between",
-                flexWrap: "wrap",
-                gap: 20,
-                marginBottom: 20,
-              }}
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+          <div className="p-4 md:p-6 lg:p-8">
+            <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 md:gap-5 mb-5">
+              <div className="flex items-center gap-3 md:gap-4">
                 <div
-                  style={{
-                    width: 52,
-                    height: 52,
-                    borderRadius: 16,
-                    background: "rgba(0,102,204,0.08)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
+                  className="w-11 h-11 md:w-[52px] md:h-[52px] rounded-xl md:rounded-2xl flex items-center justify-center shrink-0"
+                  style={{ background: "rgba(0,102,204,0.08)" }}
                 >
                   <Zap size={26} style={{ color: "#06c" }} />
                 </div>
                 <div>
                   <h4
-                    style={{
-                      fontSize: 24,
-                      fontWeight: 700,
-                      color: "#1d1d1f",
-                      lineHeight: 1.3,
-                    }}
+                    className="text-lg md:text-2xl font-bold leading-tight"
+                    style={{ color: "#1d1d1f" }}
                   >
                     AI Automation Masterclass
                   </h4>
-                  <p style={{ fontSize: 15, color: "#06c", fontWeight: 500 }}>
+                  <p className="text-[13px] md:text-[15px] font-medium" style={{ color: "#06c" }}>
                     สร้างระบบ AI อัตโนมัติแบบมืออาชีพ
                   </p>
                 </div>
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+              <div className="flex items-center gap-3 md:gap-4">
                 <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                    fontSize: 13,
-                    color: "#6e6e73",
-                    padding: "6px 12px",
-                    background: "rgba(0,0,0,0.03)",
-                    borderRadius: 8,
-                  }}
+                  className="flex items-center gap-1.5 text-[13px] px-3 py-1.5 rounded-lg"
+                  style={{ color: "#6e6e73", background: "rgba(0,0,0,0.03)" }}
                 >
                   <Clock size={14} />2 วัน
                 </div>
                 <div>
-                  <span style={{ fontSize: 32, fontWeight: 700, color: "#1d1d1f" }}>
+                  <span className="text-[26px] md:text-[32px] font-bold" style={{ color: "#1d1d1f" }}>
                     ฿19,900
                   </span>
-                  <span style={{ fontSize: 14, color: "#86868b" }}>/คน</span>
+                  <span className="text-sm" style={{ color: "#86868b" }}>/คน</span>
                 </div>
               </div>
             </div>
 
             <p
-              style={{
-                fontSize: 15,
-                color: "#6e6e73",
-                lineHeight: 1.7,
-                marginBottom: 24,
-                maxWidth: 700,
-              }}
+              className="text-[14px] md:text-[15px] leading-relaxed mb-5 md:mb-6 max-w-[700px]"
+              style={{ color: "#6e6e73" }}
             >
               เจาะลึก 2 วันเต็ม กับเครื่องมือ AI Automation ที่ใช้จริงใน production —
               n8n, Flowise, RAG Pipeline, Vector Database, API Integration, Docker deployment
@@ -867,35 +621,16 @@ export default function Workshop() {
 
             {/* Mock n8n workflow preview */}
             <div
-              style={{
-                background: "linear-gradient(135deg, #f5f5f7 0%, #eef2ff 100%)",
-                borderRadius: 16,
-                padding: "24px 28px",
-                marginBottom: 24,
-                border: "1px solid rgba(0,0,0,0.04)",
-              }}
+              className="rounded-2xl p-4 md:p-6 mb-5 md:mb-6 border border-black/[0.04]"
+              style={{ background: "linear-gradient(135deg, #f5f5f7 0%, #eef2ff 100%)" }}
             >
               <div
-                style={{
-                  fontSize: 11,
-                  fontWeight: 700,
-                  color: "#86868b",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
-                  marginBottom: 16,
-                }}
+                className="text-[11px] font-bold tracking-widest uppercase mb-3 md:mb-4"
+                style={{ color: "#86868b" }}
               >
                 ตัวอย่าง Workflow ที่จะสร้างในคอร์ส
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 0,
-                  overflowX: "auto",
-                  paddingBottom: 4,
-                }}
-              >
+              <div className="flex items-center overflow-x-auto pb-1 scrollbar-hide">
                 {[
                   { label: "Gmail Trigger", color: "#EA4335" },
                   { label: "AI Classify", color: "#06c" },
@@ -905,39 +640,20 @@ export default function Workshop() {
                 ].map((node, i, arr) => (
                   <div
                     key={node.label}
-                    style={{ display: "flex", alignItems: "center", flexShrink: 0 }}
+                    className="flex items-center shrink-0"
                   >
                     <div
-                      style={{
-                        padding: "10px 16px",
-                        background: "#fff",
-                        borderRadius: 10,
-                        border: `2px solid ${node.color}`,
-                        fontSize: 12,
-                        fontWeight: 600,
-                        color: node.color,
-                        whiteSpace: "nowrap",
-                      }}
+                      className="px-3 md:px-4 py-2 md:py-2.5 bg-white rounded-[10px] text-xs font-semibold whitespace-nowrap"
+                      style={{ border: `2px solid ${node.color}`, color: node.color }}
                     >
                       {node.label}
                     </div>
                     {i < arr.length - 1 && (
-                      <div
-                        style={{
-                          width: 32,
-                          height: 2,
-                          background: "rgba(0,0,0,0.1)",
-                          position: "relative",
-                        }}
-                      >
+                      <div className="w-6 md:w-8 h-[2px] relative" style={{ background: "rgba(0,0,0,0.1)" }}>
                         <ArrowRight
                           size={12}
-                          style={{
-                            position: "absolute",
-                            right: -2,
-                            top: -5,
-                            color: "rgba(0,0,0,0.2)",
-                          }}
+                          className="absolute -right-0.5 -top-[5px]"
+                          style={{ color: "rgba(0,0,0,0.2)" }}
                         />
                       </div>
                     )}
@@ -947,15 +663,7 @@ export default function Workshop() {
             </div>
 
             {/* Hands-on labs preview */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: 12,
-                marginBottom: 24,
-              }}
-              className="workshop-labs-grid"
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5 md:mb-6">
               {[
                 {
                   title: "Lab 1: Email Automation",
@@ -976,24 +684,19 @@ export default function Workshop() {
               ].map((lab) => (
                 <div
                   key={lab.title}
+                  className="p-3.5 md:p-4 rounded-xl border"
                   style={{
-                    padding: "16px 18px",
                     background: "rgba(0,102,204,0.03)",
-                    borderRadius: 12,
-                    border: "1px solid rgba(0,102,204,0.08)",
+                    borderColor: "rgba(0,102,204,0.08)",
                   }}
                 >
                   <div
-                    style={{
-                      fontSize: 14,
-                      fontWeight: 700,
-                      color: "#1d1d1f",
-                      marginBottom: 4,
-                    }}
+                    className="text-sm font-bold mb-1"
+                    style={{ color: "#1d1d1f" }}
                   >
                     {lab.title}
                   </div>
-                  <div style={{ fontSize: 13, color: "#6e6e73", lineHeight: 1.5 }}>
+                  <div className="text-[13px] leading-relaxed" style={{ color: "#6e6e73" }}>
                     {lab.desc}
                   </div>
                 </div>
@@ -1001,68 +704,34 @@ export default function Workshop() {
             </div>
 
             {/* Audience + what you get */}
-            <div
-              style={{
-                display: "flex",
-                gap: 16,
-                flexWrap: "wrap",
-              }}
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
               <div
-                style={{
-                  flex: 1,
-                  minWidth: 240,
-                  padding: "14px 18px",
-                  background: "rgba(0,0,0,0.02)",
-                  borderRadius: 12,
-                }}
+                className="p-3.5 md:p-4 rounded-xl"
+                style={{ background: "rgba(0,0,0,0.02)" }}
               >
                 <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                    fontSize: 11,
-                    fontWeight: 700,
-                    color: "#86868b",
-                    letterSpacing: "0.04em",
-                    textTransform: "uppercase",
-                    marginBottom: 8,
-                  }}
+                  className="flex items-center gap-1.5 text-[11px] font-bold tracking-wider uppercase mb-2"
+                  style={{ color: "#86868b" }}
                 >
                   <Users size={13} />
                   เหมาะสำหรับ
                 </div>
-                <div style={{ fontSize: 13, color: "#1d1d1f", lineHeight: 1.6 }}>
+                <div className="text-[13px] leading-relaxed" style={{ color: "#1d1d1f" }}>
                   Developer, IT Team, ผู้ที่มีพื้นฐาน technical, ผู้ที่ต้องการ automate งานด้วย AI
                 </div>
               </div>
               <div
-                style={{
-                  flex: 1,
-                  minWidth: 240,
-                  padding: "14px 18px",
-                  background: "rgba(0,0,0,0.02)",
-                  borderRadius: 12,
-                }}
+                className="p-3.5 md:p-4 rounded-xl"
+                style={{ background: "rgba(0,0,0,0.02)" }}
               >
                 <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                    fontSize: 11,
-                    fontWeight: 700,
-                    color: "#86868b",
-                    letterSpacing: "0.04em",
-                    textTransform: "uppercase",
-                    marginBottom: 8,
-                  }}
+                  className="flex items-center gap-1.5 text-[11px] font-bold tracking-wider uppercase mb-2"
+                  style={{ color: "#86868b" }}
                 >
                   <Award size={13} />
                   สิ่งที่ได้รับ
                 </div>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                <div className="flex flex-wrap gap-1.5">
                   {[
                     "Certificate",
                     "Source Code ทุก Lab",
@@ -1072,14 +741,8 @@ export default function Workshop() {
                   ].map((b) => (
                     <span
                       key={b}
-                      style={{
-                        padding: "4px 10px",
-                        background: "rgba(0,102,204,0.06)",
-                        borderRadius: 6,
-                        fontSize: 12,
-                        color: "#1d1d1f",
-                        fontWeight: 500,
-                      }}
+                      className="px-2.5 py-1 rounded-md text-xs font-medium"
+                      style={{ background: "rgba(0,102,204,0.06)", color: "#1d1d1f" }}
                     >
                       {b}
                     </span>
@@ -1091,118 +754,65 @@ export default function Workshop() {
         </motion.div>
 
         {/* ── Cards 3 & 4: Business Leaders + Custom (side by side) ── */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 24,
-            marginBottom: 80,
-          }}
-          className="workshop-bottom-grid"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-16 md:mb-20">
           {/* Card 3: AI for Business Leaders */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="apple-card"
-            style={{
-              background: "#fff",
-              borderRadius: 24,
-              border: "1px solid rgba(0,0,0,0.06)",
-              overflow: "hidden",
-              display: "flex",
-              flexDirection: "column",
-            }}
+            className="apple-card rounded-[20px] md:rounded-3xl border border-black/[0.06] overflow-hidden flex flex-col"
+            style={{ background: "#fff" }}
           >
-            <div style={{ padding: 28, flex: 1 }}>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  marginBottom: 20,
-                }}
-              >
+            <div className="p-4 md:p-6 lg:p-7 flex-1">
+              <div className="flex items-center justify-between mb-5">
                 <div
-                  style={{
-                    width: 48,
-                    height: 48,
-                    borderRadius: 14,
-                    background: "rgba(5,150,105,0.08)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
+                  className="w-11 h-11 md:w-12 md:h-12 rounded-[14px] flex items-center justify-center"
+                  style={{ background: "rgba(5,150,105,0.08)" }}
                 >
                   <BarChart3 size={24} style={{ color: "#059669" }} />
                 </div>
                 <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                    fontSize: 13,
-                    color: "#6e6e73",
-                  }}
+                  className="flex items-center gap-1.5 text-[13px]"
+                  style={{ color: "#6e6e73" }}
                 >
                   <Clock size={14} />1 วัน
                 </div>
               </div>
 
               <h4
-                style={{
-                  fontSize: 20,
-                  fontWeight: 700,
-                  color: "#1d1d1f",
-                  marginBottom: 4,
-                }}
+                className="text-lg md:text-xl font-bold mb-1"
+                style={{ color: "#1d1d1f" }}
               >
                 AI for Business Leaders
               </h4>
               <p
-                style={{
-                  fontSize: 14,
-                  color: "#059669",
-                  fontWeight: 500,
-                  marginBottom: 12,
-                }}
+                className="text-sm font-medium mb-3"
+                style={{ color: "#059669" }}
               >
                 วางแผน AI Strategy สำหรับผู้บริหาร
               </p>
-              <div style={{ display: "flex", alignItems: "baseline", gap: 4, marginBottom: 20 }}>
-                <span style={{ fontSize: 28, fontWeight: 700, color: "#1d1d1f" }}>฿14,900</span>
-                <span style={{ fontSize: 14, color: "#86868b" }}>/คน</span>
+              <div className="flex items-baseline gap-1 mb-5">
+                <span className="text-[24px] md:text-[28px] font-bold" style={{ color: "#1d1d1f" }}>฿14,900</span>
+                <span className="text-sm" style={{ color: "#86868b" }}>/คน</span>
               </div>
 
               {/* Executive focus: ROI + case studies */}
               <div
+                className="rounded-xl p-3.5 md:p-4 mb-5 border"
                 style={{
                   background: "rgba(5,150,105,0.04)",
-                  borderRadius: 12,
-                  padding: "16px 18px",
-                  marginBottom: 20,
-                  border: "1px solid rgba(5,150,105,0.1)",
+                  borderColor: "rgba(5,150,105,0.1)",
                 }}
               >
                 <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                    fontSize: 12,
-                    fontWeight: 700,
-                    color: "#059669",
-                    marginBottom: 10,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.04em",
-                  }}
+                  className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider mb-2.5"
+                  style={{ color: "#059669" }}
                 >
                   <TrendingUp size={14} />
                   ROI Focus
                 </div>
-                <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                <div className="flex flex-col gap-2">
                   {[
                     "วิเคราะห์ ROI ก่อนลงทุน AI",
                     "Framework ตัดสินใจ Build vs Buy",
@@ -1210,10 +820,10 @@ export default function Workshop() {
                   ].map((item, i) => (
                     <div
                       key={i}
-                      style={{ display: "flex", alignItems: "center", gap: 8 }}
+                      className="flex items-center gap-2"
                     >
-                      <Target size={14} style={{ color: "#059669", flexShrink: 0 }} />
-                      <span style={{ fontSize: 13, color: "#1d1d1f", lineHeight: 1.5 }}>
+                      <Target size={14} className="shrink-0" style={{ color: "#059669" }} />
+                      <span className="text-[13px] leading-relaxed" style={{ color: "#1d1d1f" }}>
                         {item}
                       </span>
                     </div>
@@ -1223,35 +833,28 @@ export default function Workshop() {
 
               {/* Case study snippets */}
               <div
-                style={{
-                  fontSize: 12,
-                  fontWeight: 700,
-                  color: "#86868b",
-                  letterSpacing: "0.06em",
-                  textTransform: "uppercase",
-                  marginBottom: 10,
-                }}
+                className="text-xs font-bold tracking-widest uppercase mb-2.5"
+                style={{ color: "#86868b" }}
               >
                 Case Studies
               </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: 8, marginBottom: 20 }}>
+              <div className="flex flex-col gap-2 mb-5">
                 {[
                   { title: "โรงงานผลิต", result: "ลดเวลา QC 40% ด้วย AI Vision" },
                   { title: "ธุรกิจค้าปลีก", result: "เพิ่มยอดขาย 25% ด้วย AI Recommendation" },
                 ].map((cs) => (
                   <div
                     key={cs.title}
+                    className="px-3 md:px-3.5 py-2.5 rounded-[10px]"
                     style={{
-                      padding: "10px 14px",
                       background: "rgba(0,0,0,0.02)",
-                      borderRadius: 10,
                       borderLeft: "3px solid #059669",
                     }}
                   >
-                    <div style={{ fontSize: 12, fontWeight: 600, color: "#059669" }}>
+                    <div className="text-xs font-semibold" style={{ color: "#059669" }}>
                       {cs.title}
                     </div>
-                    <div style={{ fontSize: 13, color: "#1d1d1f", marginTop: 2 }}>
+                    <div className="text-[13px] mt-0.5" style={{ color: "#1d1d1f" }}>
                       {cs.result}
                     </div>
                   </div>
@@ -1259,43 +862,23 @@ export default function Workshop() {
               </div>
 
               <div
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: 8,
-                  padding: "10px 14px",
-                  background: "rgba(0,0,0,0.02)",
-                  borderRadius: 10,
-                }}
+                className="flex items-start gap-2 p-2.5 md:p-3.5 rounded-[10px]"
+                style={{ background: "rgba(0,0,0,0.02)" }}
               >
-                <Briefcase size={14} style={{ color: "#6e6e73", marginTop: 2, flexShrink: 0 }} />
-                <span style={{ fontSize: 12, color: "#6e6e73", lineHeight: 1.5 }}>
+                <Briefcase size={14} className="mt-0.5 shrink-0" style={{ color: "#6e6e73" }} />
+                <span className="text-xs leading-relaxed" style={{ color: "#6e6e73" }}>
                   CEO, CTO, ผู้จัดการ, ผู้บริหารที่ตัดสินใจเรื่อง AI
                 </span>
               </div>
             </div>
 
-            <div style={{ padding: "0 28px 28px 28px" }}>
+            <div className="px-4 pb-4 md:px-6 md:pb-6 lg:px-7 lg:pb-7">
               <motion.a
                 href="#contact"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 8,
-                  width: "100%",
-                  padding: "14px 24px",
-                  background: "#059669",
-                  color: "white",
-                  borderRadius: 14,
-                  fontSize: 15,
-                  fontWeight: 600,
-                  textDecoration: "none",
-                  cursor: "pointer",
-                  border: "none",
-                }}
+                className="flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-[14px] text-[15px] font-semibold no-underline cursor-pointer border-none"
+                style={{ background: "#059669", color: "white" }}
               >
                 สมัครเรียน <ArrowRight size={16} />
               </motion.a>
@@ -1308,47 +891,23 @@ export default function Workshop() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="apple-card"
+            className="apple-card rounded-[20px] md:rounded-3xl overflow-hidden flex flex-col"
             style={{
-              background:
-                "linear-gradient(160deg, #fff 0%, rgba(124,58,237,0.03) 100%)",
-              borderRadius: 24,
+              background: "linear-gradient(160deg, #fff 0%, rgba(124,58,237,0.03) 100%)",
               border: "1px dashed rgba(124,58,237,0.3)",
-              overflow: "hidden",
-              display: "flex",
-              flexDirection: "column",
             }}
           >
-            <div style={{ padding: 28, flex: 1 }}>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  marginBottom: 20,
-                }}
-              >
+            <div className="p-4 md:p-6 lg:p-7 flex-1">
+              <div className="flex items-center justify-between mb-5">
                 <div
-                  style={{
-                    width: 48,
-                    height: 48,
-                    borderRadius: 14,
-                    background: "rgba(124,58,237,0.08)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
+                  className="w-11 h-11 md:w-12 md:h-12 rounded-[14px] flex items-center justify-center"
+                  style={{ background: "rgba(124,58,237,0.08)" }}
                 >
                   <Settings size={24} style={{ color: "#7c3aed" }} />
                 </div>
                 <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 6,
-                    fontSize: 13,
-                    color: "#6e6e73",
-                  }}
+                  className="flex items-center gap-1.5 text-[13px]"
+                  style={{ color: "#6e6e73" }}
                 >
                   <Clock size={14} />
                   1-5 วัน
@@ -1356,40 +915,27 @@ export default function Workshop() {
               </div>
 
               <h4
-                style={{
-                  fontSize: 20,
-                  fontWeight: 700,
-                  color: "#1d1d1f",
-                  marginBottom: 4,
-                }}
+                className="text-lg md:text-xl font-bold mb-1"
+                style={{ color: "#1d1d1f" }}
               >
                 Custom In-house Training
               </h4>
               <p
-                style={{
-                  fontSize: 15,
-                  color: "#7c3aed",
-                  fontWeight: 600,
-                  marginBottom: 20,
-                  lineHeight: 1.5,
-                }}
+                className="text-[14px] md:text-[15px] font-semibold leading-relaxed mb-5"
+                style={{ color: "#7c3aed" }}
               >
                 ออกแบบหลักสูตรเฉพาะทีมคุณ
               </p>
 
               <div
-                style={{
-                  fontSize: 13,
-                  color: "#6e6e73",
-                  lineHeight: 1.8,
-                  marginBottom: 24,
-                }}
+                className="text-[13px] leading-loose mb-5 md:mb-6"
+                style={{ color: "#6e6e73" }}
               >
                 บอกเราว่าทีมคุณต้องการอะไร — เราจะออกแบบหลักสูตรที่ตรงจุด
                 ใช้ข้อมูลจริงขององค์กร เน้น use case ที่เกี่ยวข้องกับธุรกิจคุณโดยตรง
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 24 }}>
+              <div className="flex flex-col gap-2.5 mb-5 md:mb-6">
                 {[
                   "ออกแบบหลักสูตรตาม use case ขององค์กร",
                   "ปรับเนื้อหาตามระดับความรู้ของทีม",
@@ -1400,13 +946,14 @@ export default function Workshop() {
                 ].map((item, i) => (
                   <div
                     key={i}
-                    style={{ display: "flex", alignItems: "flex-start", gap: 10 }}
+                    className="flex items-start gap-2.5"
                   >
                     <CheckCircle
                       size={16}
-                      style={{ color: "#7c3aed", marginTop: 2, flexShrink: 0 }}
+                      className="mt-0.5 shrink-0"
+                      style={{ color: "#7c3aed" }}
                     />
-                    <span style={{ fontSize: 13, color: "#1d1d1f", lineHeight: 1.5 }}>
+                    <span className="text-[13px] leading-relaxed" style={{ color: "#1d1d1f" }}>
                       {item}
                     </span>
                   </div>
@@ -1415,50 +962,28 @@ export default function Workshop() {
 
               {/* Price box */}
               <div
+                className="p-4 rounded-xl border text-center"
                 style={{
-                  padding: "16px 18px",
                   background: "rgba(124,58,237,0.05)",
-                  borderRadius: 12,
-                  border: "1px solid rgba(124,58,237,0.1)",
-                  textAlign: "center",
+                  borderColor: "rgba(124,58,237,0.1)",
                 }}
               >
-                <div
-                  style={{
-                    fontSize: 14,
-                    color: "#6e6e73",
-                    marginBottom: 4,
-                  }}
-                >
+                <div className="text-sm mb-1" style={{ color: "#6e6e73" }}>
                   ราคาเริ่มต้น
                 </div>
-                <div style={{ fontSize: 22, fontWeight: 700, color: "#7c3aed" }}>
+                <div className="text-lg md:text-[22px] font-bold" style={{ color: "#7c3aed" }}>
                   ติดต่อเพื่อรับใบเสนอราคา
                 </div>
               </div>
             </div>
 
-            <div style={{ padding: "0 28px 28px 28px" }}>
+            <div className="px-4 pb-4 md:px-6 md:pb-6 lg:px-7 lg:pb-7">
               <motion.a
                 href="#contact"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: 8,
-                  width: "100%",
-                  padding: "14px 24px",
-                  background: "#7c3aed",
-                  color: "white",
-                  borderRadius: 14,
-                  fontSize: 15,
-                  fontWeight: 600,
-                  textDecoration: "none",
-                  cursor: "pointer",
-                  border: "none",
-                }}
+                className="flex items-center justify-center gap-2 w-full py-3.5 px-6 rounded-[14px] text-[15px] font-semibold no-underline cursor-pointer border-none"
+                style={{ background: "#7c3aed", color: "white" }}
               >
                 <Phone size={16} />
                 ปรึกษาหลักสูตร
@@ -1473,25 +998,21 @@ export default function Workshop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ marginBottom: 80 }}
+          className="mb-16 md:mb-20"
         >
-          <div style={{ textAlign: "center", marginBottom: 40 }}>
+          <div className="text-center mb-8 md:mb-10">
             <h3
-              style={{
-                fontSize: "clamp(24px, 4vw, 36px)",
-                fontWeight: 700,
-                color: "#1d1d1f",
-                marginBottom: 8,
-              }}
+              className="text-[24px] md:text-[30px] lg:text-[36px] font-bold mb-2"
+              style={{ color: "#1d1d1f" }}
             >
               หลักสูตรแต่ละวัน
             </h3>
-            <p style={{ fontSize: 16, color: "#6e6e73" }}>
+            <p className="text-base" style={{ color: "#6e6e73" }}>
               AI Automation Masterclass — ดูรายละเอียดรายชั่วโมง
             </p>
           </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+          <div className="flex flex-col gap-4">
             {masterclassDays.map((day, i) => (
               <DayTimeline
                 key={day.day}
@@ -1509,32 +1030,21 @@ export default function Workshop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ marginBottom: 80 }}
+          className="mb-16 md:mb-20"
         >
-          <div style={{ textAlign: "center", marginBottom: 40 }}>
+          <div className="text-center mb-8 md:mb-10">
             <h3
-              style={{
-                fontSize: "clamp(24px, 4vw, 36px)",
-                fontWeight: 700,
-                color: "#1d1d1f",
-                marginBottom: 8,
-              }}
+              className="text-[24px] md:text-[30px] lg:text-[36px] font-bold mb-2"
+              style={{ color: "#1d1d1f" }}
             >
               ทำไมเลือกเรียนกับเรา
             </h3>
-            <p style={{ fontSize: 16, color: "#6e6e73" }}>
+            <p className="text-base" style={{ color: "#6e6e73" }}>
               สิ่งที่ทำให้ workshop ของเราแตกต่าง
             </p>
           </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: 20,
-            }}
-            className="workshop-why-grid"
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
             {whyUs.map((item, i) => {
               const Icon = item.icon;
               return (
@@ -1544,46 +1054,24 @@ export default function Workshop() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="apple-card"
-                  style={{
-                    background: "#fff",
-                    borderRadius: 20,
-                    border: "1px solid rgba(0,0,0,0.06)",
-                    padding: "28px 24px",
-                    textAlign: "center",
-                  }}
+                  className="apple-card rounded-[20px] border border-black/[0.06] p-5 md:p-6 text-center"
+                  style={{ background: "#fff" }}
                 >
                   <div
-                    style={{
-                      width: 52,
-                      height: 52,
-                      borderRadius: 16,
-                      background: "rgba(0,102,204,0.06)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      margin: "0 auto 16px",
-                    }}
+                    className="w-[52px] h-[52px] rounded-2xl flex items-center justify-center mx-auto mb-4"
+                    style={{ background: "rgba(0,102,204,0.06)" }}
                   >
                     <Icon size={24} style={{ color: "#06c" }} />
                   </div>
                   <div
-                    style={{
-                      fontSize: 16,
-                      fontWeight: 700,
-                      color: "#1d1d1f",
-                      marginBottom: 8,
-                      lineHeight: 1.4,
-                    }}
+                    className="text-base font-bold mb-2 leading-snug"
+                    style={{ color: "#1d1d1f" }}
                   >
                     {item.title}
                   </div>
                   <div
-                    style={{
-                      fontSize: 13,
-                      color: "#6e6e73",
-                      lineHeight: 1.6,
-                    }}
+                    className="text-[13px] leading-relaxed"
+                    style={{ color: "#6e6e73" }}
                   >
                     {item.desc}
                   </div>
@@ -1599,32 +1087,21 @@ export default function Workshop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ marginBottom: 80 }}
+          className="mb-16 md:mb-20"
         >
-          <div style={{ textAlign: "center", marginBottom: 40 }}>
+          <div className="text-center mb-8 md:mb-10">
             <h3
-              style={{
-                fontSize: "clamp(24px, 4vw, 36px)",
-                fontWeight: 700,
-                color: "#1d1d1f",
-                marginBottom: 8,
-              }}
+              className="text-[24px] md:text-[30px] lg:text-[36px] font-bold mb-2"
+              style={{ color: "#1d1d1f" }}
             >
               ผู้เข้าร่วมพูดถึงเรา
             </h3>
-            <p style={{ fontSize: 16, color: "#6e6e73" }}>
+            <p className="text-base" style={{ color: "#6e6e73" }}>
               เสียงจากผู้ที่เคยเข้าร่วม workshop
             </p>
           </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 20,
-            }}
-            className="workshop-testimonial-grid"
-          >
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 scrollbar-hide md:grid md:grid-cols-3">
             {testimonials.map((t, i) => (
               <motion.div
                 key={t.name}
@@ -1632,33 +1109,22 @@ export default function Workshop() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="apple-card"
-                style={{
-                  background: "#fff",
-                  borderRadius: 20,
-                  border: "1px solid rgba(0,0,0,0.06)",
-                  padding: "28px 24px",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
+                className="apple-card rounded-[20px] border border-black/[0.06] p-5 md:p-6 flex flex-col min-w-[280px] snap-start shrink-0 md:min-w-0 md:shrink"
+                style={{ background: "#fff" }}
               >
                 <Quote
                   size={24}
-                  style={{ color: "rgba(0,102,204,0.15)", marginBottom: 12 }}
+                  className="mb-3"
+                  style={{ color: "rgba(0,102,204,0.15)" }}
                 />
                 <div
-                  style={{
-                    fontSize: 14,
-                    color: "#1d1d1f",
-                    lineHeight: 1.7,
-                    flex: 1,
-                    marginBottom: 20,
-                  }}
+                  className="text-sm leading-relaxed flex-1 mb-5"
+                  style={{ color: "#1d1d1f" }}
                 >
                   &ldquo;{t.text}&rdquo;
                 </div>
                 <div>
-                  <div style={{ display: "flex", gap: 2, marginBottom: 10 }}>
+                  <div className="flex gap-0.5 mb-2.5">
                     {Array.from({ length: t.rating }).map((_, si) => (
                       <Star
                         key={si}
@@ -1668,15 +1134,12 @@ export default function Workshop() {
                     ))}
                   </div>
                   <div
-                    style={{
-                      fontSize: 14,
-                      fontWeight: 700,
-                      color: "#1d1d1f",
-                    }}
+                    className="text-sm font-bold"
+                    style={{ color: "#1d1d1f" }}
                   >
                     {t.name}
                   </div>
-                  <div style={{ fontSize: 12, color: "#6e6e73", marginTop: 2 }}>
+                  <div className="text-xs mt-0.5" style={{ color: "#6e6e73" }}>
                     {t.role}, {t.company}
                   </div>
                 </div>
@@ -1691,64 +1154,22 @@ export default function Workshop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          style={{ marginBottom: 80 }}
+          className="mb-16 md:mb-20"
         >
-          <div style={{ textAlign: "center", marginBottom: 40 }}>
+          <div className="text-center mb-8 md:mb-10">
             <h3
-              style={{
-                fontSize: "clamp(24px, 4vw, 36px)",
-                fontWeight: 700,
-                color: "#1d1d1f",
-                marginBottom: 8,
-              }}
+              className="text-[24px] md:text-[30px] lg:text-[36px] font-bold mb-2"
+              style={{ color: "#1d1d1f" }}
             >
               ตารางอบรมที่จะถึง
             </h3>
-            <p style={{ fontSize: 16, color: "#6e6e73" }}>
+            <p className="text-base" style={{ color: "#6e6e73" }}>
               เลือกรอบที่สะดวก แล้วจองที่นั่งเลย
             </p>
           </div>
 
-          <div
-            className="apple-card workshop-schedule-wrapper"
-            style={{
-              background: "#fff",
-              borderRadius: 20,
-              border: "1px solid rgba(0,0,0,0.06)",
-              overflow: "hidden",
-            }}
-          >
-           <div>
-            {/* Table header */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1.2fr 2fr 1fr 1.2fr 0.8fr",
-                padding: "14px 24px",
-                background: "rgba(0,0,0,0.02)",
-                borderBottom: "1px solid rgba(0,0,0,0.06)",
-                fontSize: 12,
-                fontWeight: 700,
-                color: "#86868b",
-                letterSpacing: "0.04em",
-                textTransform: "uppercase",
-              }}
-              className="workshop-schedule-header"
-            >
-              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                <Calendar size={13} />
-                วันที่
-              </div>
-              <div>หลักสูตร</div>
-              <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-                <MapPin size={13} />
-                สถานที่
-              </div>
-              <div>ที่นั่งเหลือ</div>
-              <div></div>
-            </div>
-
-            {/* Table rows */}
+          {/* Schedule as cards on mobile, table-like on desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
             {upcomingSchedule.map((row, i) => {
               const seatsPercent = (row.seats / row.total) * 100;
               const isLow = row.seats <= 8;
@@ -1759,86 +1180,64 @@ export default function Workshop() {
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08 }}
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1.2fr 2fr 1fr 1.2fr 0.8fr",
-                    padding: "18px 24px",
-                    borderBottom:
-                      i < upcomingSchedule.length - 1
-                        ? "1px solid rgba(0,0,0,0.04)"
-                        : "none",
-                    alignItems: "center",
-                  }}
-                  className="workshop-schedule-row"
+                  className="apple-card rounded-2xl border border-black/[0.06] p-4 md:p-5"
+                  style={{ background: "#fff" }}
                 >
-                  <div style={{ fontSize: 14, fontWeight: 600, color: "#1d1d1f" }}>
-                    {row.date}
+                  {/* Workshop name */}
+                  <div
+                    className="text-[15px] font-bold mb-2"
+                    style={{ color: "#1d1d1f" }}
+                  >
+                    {row.workshop}
                   </div>
-                  <div style={{ fontSize: 14, color: "#1d1d1f" }}>{row.workshop}</div>
-                  <div style={{ fontSize: 13, color: "#6e6e73" }}>{row.location}</div>
-                  <div>
-                    <div
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 8,
-                      }}
-                    >
+
+                  {/* Date + Location row */}
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
+                    <div className="flex items-center gap-1.5 text-[13px]" style={{ color: "#6e6e73" }}>
+                      <Calendar size={13} style={{ color: "#06c" }} />
+                      {row.date}
+                    </div>
+                    <div className="flex items-center gap-1.5 text-[13px]" style={{ color: "#6e6e73" }}>
+                      <MapPin size={13} style={{ color: "#06c" }} />
+                      {row.location}
+                    </div>
+                  </div>
+
+                  {/* Seats + Book row */}
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-2 flex-1">
                       <div
-                        style={{
-                          flex: 1,
-                          height: 6,
-                          background: "rgba(0,0,0,0.06)",
-                          borderRadius: 3,
-                          overflow: "hidden",
-                          maxWidth: 80,
-                        }}
+                        className="flex-1 h-1.5 rounded-full overflow-hidden max-w-[80px]"
+                        style={{ background: "rgba(0,0,0,0.06)" }}
                       >
                         <div
+                          className="h-full rounded-full"
                           style={{
                             width: `${seatsPercent}%`,
-                            height: "100%",
                             background: isLow ? "#f59e0b" : "#34c759",
-                            borderRadius: 3,
                           }}
                         />
                       </div>
                       <span
-                        style={{
-                          fontSize: 12,
-                          fontWeight: 600,
-                          color: isLow ? "#f59e0b" : "#34c759",
-                        }}
+                        className="text-xs font-semibold"
+                        style={{ color: isLow ? "#f59e0b" : "#34c759" }}
                       >
-                        {row.seats}/{row.total}
+                        เหลือ {row.seats}/{row.total}
                       </span>
                     </div>
-                  </div>
-                  <div>
                     <motion.a
                       href="#contact"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      style={{
-                        display: "inline-block",
-                        padding: "8px 16px",
-                        background: "#06c",
-                        color: "#fff",
-                        borderRadius: 8,
-                        fontSize: 13,
-                        fontWeight: 600,
-                        textDecoration: "none",
-                        cursor: "pointer",
-                        whiteSpace: "nowrap",
-                      }}
+                      className="inline-block px-4 py-2 rounded-lg text-[13px] font-semibold no-underline cursor-pointer whitespace-nowrap"
+                      style={{ background: "#06c", color: "#fff" }}
                     >
-                      จอง
+                      จองที่นั่ง
                     </motion.a>
                   </div>
                 </motion.div>
               );
             })}
-           </div>
           </div>
         </motion.div>
 
@@ -1848,64 +1247,33 @@ export default function Workshop() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
+          className="text-center p-8 md:p-10 lg:p-14 rounded-[24px] md:rounded-[28px] border"
           style={{
-            textAlign: "center",
-            padding: "56px 40px",
             background: "linear-gradient(160deg, rgba(0,102,204,0.04) 0%, rgba(124,58,237,0.04) 100%)",
-            borderRadius: 28,
-            border: "1px solid rgba(0,102,204,0.08)",
+            borderColor: "rgba(0,102,204,0.08)",
           }}
         >
           <h3
-            style={{
-              fontSize: "clamp(24px, 4vw, 36px)",
-              fontWeight: 700,
-              color: "#1d1d1f",
-              marginBottom: 12,
-            }}
+            className="text-[24px] md:text-[30px] lg:text-[36px] font-bold mb-3"
+            style={{ color: "#1d1d1f" }}
           >
             พร้อมเริ่มเรียนรู้ AI แล้วหรือยัง?
           </h3>
           <p
-            style={{
-              fontSize: 17,
-              color: "#6e6e73",
-              maxWidth: 520,
-              margin: "0 auto",
-              lineHeight: 1.6,
-              marginBottom: 32,
-            }}
+            className="text-[15px] md:text-[17px] max-w-[520px] mx-auto leading-relaxed mb-6 md:mb-8"
+            style={{ color: "#6e6e73" }}
           >
             ไม่ว่าคุณจะเป็นผู้เริ่มต้นหรือผู้บริหาร เรามีหลักสูตรที่เหมาะกับคุณ
             สมัครวันนี้ หรือปรึกษาเราเพื่อออกแบบหลักสูตรเฉพาะ
           </p>
 
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: 16,
-              flexWrap: "wrap",
-            }}
-          >
+          <div className="flex justify-center gap-3 md:gap-4 flex-wrap">
             <motion.a
               href="#contact"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "16px 32px",
-                background: "#06c",
-                color: "#fff",
-                borderRadius: 14,
-                fontSize: 16,
-                fontWeight: 600,
-                textDecoration: "none",
-                cursor: "pointer",
-                border: "none",
-              }}
+              className="inline-flex items-center gap-2 px-6 md:px-8 py-3.5 md:py-4 rounded-[14px] text-base font-semibold no-underline cursor-pointer border-none"
+              style={{ background: "#06c", color: "#fff" }}
             >
               สมัครเลย <ArrowRight size={18} />
             </motion.a>
@@ -1914,20 +1282,8 @@ export default function Workshop() {
               href="#contact"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 8,
-                padding: "16px 32px",
-                background: "rgba(0,0,0,0.04)",
-                color: "#1d1d1f",
-                borderRadius: 14,
-                fontSize: 16,
-                fontWeight: 600,
-                textDecoration: "none",
-                cursor: "pointer",
-                border: "1px solid rgba(0,0,0,0.08)",
-              }}
+              className="inline-flex items-center gap-2 px-6 md:px-8 py-3.5 md:py-4 rounded-[14px] text-base font-semibold no-underline cursor-pointer border border-black/[0.08]"
+              style={{ background: "rgba(0,0,0,0.04)", color: "#1d1d1f" }}
             >
               <Phone size={16} />
               ปรึกษาหลักสูตร
@@ -1935,72 +1291,6 @@ export default function Workshop() {
           </div>
         </motion.div>
       </div>
-
-      <style jsx>{`
-        @media (max-width: 639px) {
-          .workshop-bottom-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .workshop-why-grid {
-            grid-template-columns: 1fr 1fr !important;
-          }
-          .workshop-testimonial-grid {
-            display: flex !important;
-            overflow-x: auto !important;
-            -webkit-overflow-scrolling: touch;
-            scroll-snap-type: x mandatory;
-            gap: 16px !important;
-            padding-bottom: 16px;
-            margin-left: -16px;
-            margin-right: -16px;
-            padding-left: 16px;
-            padding-right: 16px;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
-          .workshop-testimonial-grid::-webkit-scrollbar {
-            display: none;
-          }
-          .workshop-testimonial-grid > div {
-            min-width: 280px !important;
-            flex-shrink: 0 !important;
-            scroll-snap-align: start;
-          }
-          .workshop-expand-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .workshop-labs-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .workshop-schedule-wrapper {
-            border-radius: 16px !important;
-          }
-          .workshop-schedule-wrapper > div {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 0 !important;
-          }
-          .workshop-schedule-header {
-            display: none !important;
-          }
-          .workshop-schedule-row {
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 10px !important;
-            padding: 16px 20px !important;
-            border-bottom: 1px solid rgba(0,0,0,0.06) !important;
-            min-width: unset !important;
-          }
-          .workshop-schedule-row > div {
-            width: 100% !important;
-          }
-        }
-        @media (max-width: 480px) {
-          .workshop-why-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

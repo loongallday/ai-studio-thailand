@@ -69,17 +69,8 @@ function ChatMockup() {
     { from: "bot", text: "สร้างใบเสนอราคาเรียบร้อยแล้วครับ ส่งไปยังอีเมลของท่านแล้ว" },
   ];
   return (
-    <div
-      style={{
-        background: "#f5f5f7",
-        borderRadius: 16,
-        padding: 16,
-        marginTop: 20,
-        maxHeight: 220,
-        overflow: "hidden",
-      }}
-    >
-      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+    <div className="bg-[#f5f5f7] rounded-2xl p-4 mt-5 max-h-[220px] overflow-hidden">
+      <div className="flex flex-col gap-2">
         {messages.map((m, i) => (
           <motion.div
             key={i}
@@ -87,77 +78,32 @@ function ChatMockup() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 + i * 0.15 }}
-            style={{
-              display: "flex",
-              alignItems: "flex-start",
-              gap: 8,
-              justifyContent: m.from === "user" ? "flex-end" : "flex-start",
-            }}
+            className={`flex items-start gap-2 ${m.from === "user" ? "justify-end" : "justify-start"}`}
           >
             {m.from === "bot" && (
-              <div
-                style={{
-                  width: 24,
-                  height: 24,
-                  borderRadius: 12,
-                  background: "#06c",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                  marginTop: 2,
-                }}
-              >
+              <div className="w-6 h-6 rounded-full bg-[#06c] flex items-center justify-center shrink-0 mt-0.5">
                 <Bot size={14} color="#fff" />
               </div>
             )}
             <div
-              style={{
-                background: m.from === "user" ? "#06c" : "#fff",
-                color: m.from === "user" ? "#fff" : "#1d1d1f",
-                padding: "8px 12px",
-                borderRadius: 14,
-                fontSize: 12,
-                lineHeight: 1.5,
-                maxWidth: "75%",
-                boxShadow: m.from === "bot" ? "0 1px 4px rgba(0,0,0,0.06)" : "none",
-              }}
+              className={`px-3 py-2 rounded-[14px] text-xs leading-relaxed max-w-[75%] ${
+                m.from === "user"
+                  ? "bg-[#06c] text-white"
+                  : "bg-white text-[#1d1d1f] shadow-[0_1px_4px_rgba(0,0,0,0.06)]"
+              }`}
             >
               {m.text}
             </div>
             {m.from === "user" && (
-              <div
-                style={{
-                  width: 24,
-                  height: 24,
-                  borderRadius: 12,
-                  background: "#e5e5ea",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexShrink: 0,
-                  marginTop: 2,
-                }}
-              >
+              <div className="w-6 h-6 rounded-full bg-[#e5e5ea] flex items-center justify-center shrink-0 mt-0.5">
                 <User size={14} color="#6e6e73" />
               </div>
             )}
           </motion.div>
         ))}
       </div>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
-          marginTop: 12,
-          background: "#fff",
-          borderRadius: 20,
-          padding: "8px 12px",
-          border: "1px solid rgba(0,0,0,0.08)",
-        }}
-      >
-        <span style={{ fontSize: 12, color: "#86868b", flex: 1 }}>พิมพ์ข้อความ...</span>
+      <div className="flex items-center gap-2 mt-3 bg-white rounded-[20px] px-3 py-2 border border-black/[0.08]">
+        <span className="text-xs text-[#86868b] flex-1">พิมพ์ข้อความ...</span>
         <Send size={14} color="#06c" />
       </div>
     </div>
@@ -166,20 +112,10 @@ function ChatMockup() {
 
 function SearchMockup() {
   return (
-    <div style={{ marginTop: 16 }}>
-      <div
-        style={{
-          background: "#f5f5f7",
-          borderRadius: 12,
-          padding: "10px 14px",
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
-          marginBottom: 10,
-        }}
-      >
+    <div className="mt-4">
+      <div className="bg-[#f5f5f7] rounded-xl px-3.5 py-2.5 flex items-center gap-2 mb-2.5">
         <Search size={14} color="#86868b" />
-        <span style={{ fontSize: 12, color: "#1d1d1f" }}>นโยบายการคืนสินค้า</span>
+        <span className="text-xs text-[#1d1d1f]">นโยบายการคืนสินค้า</span>
       </div>
       {["คู่มือนโยบาย v3.2 — หน้า 14", "ข้อกำหนดการคืนสินค้า 2024", "FAQ — การคืนสินค้าออนไลน์"].map(
         (r, i) => (
@@ -189,30 +125,14 @@ function SearchMockup() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 + i * 0.1 }}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 8,
-              padding: "6px 10px",
-              borderRadius: 8,
-              background: i === 0 ? "rgba(0,102,204,0.06)" : "transparent",
-              marginBottom: 2,
-            }}
+            className={`flex items-center gap-2 px-2.5 py-1.5 rounded-lg mb-0.5 ${
+              i === 0 ? "bg-[rgba(0,102,204,0.06)]" : ""
+            }`}
           >
             <FileText size={12} color={i === 0 ? "#06c" : "#86868b"} />
-            <span style={{ fontSize: 11, color: i === 0 ? "#06c" : "#6e6e73" }}>{r}</span>
+            <span className={`text-[11px] ${i === 0 ? "text-[#06c]" : "text-[#6e6e73]"}`}>{r}</span>
             {i === 0 && (
-              <span
-                style={{
-                  fontSize: 9,
-                  background: "#06c",
-                  color: "#fff",
-                  padding: "1px 6px",
-                  borderRadius: 6,
-                  fontWeight: 600,
-                  marginLeft: "auto",
-                }}
-              >
+              <span className="text-[9px] bg-[#06c] text-white px-1.5 py-px rounded-md font-semibold ml-auto">
                 98%
               </span>
             )}
@@ -230,16 +150,7 @@ function WorkflowMockup() {
     { label: "Action", color: "#ea580c" },
   ];
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 6,
-        marginTop: 20,
-        padding: "12px 0",
-      }}
-    >
+    <div className="flex items-center justify-center gap-1.5 mt-5 py-3">
       {nodes.map((n, i) => (
         <motion.div
           key={n.label}
@@ -247,18 +158,14 @@ function WorkflowMockup() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 + i * 0.15 }}
-          style={{ display: "flex", alignItems: "center", gap: 6 }}
+          className="flex items-center gap-1.5"
         >
           <div
+            className="rounded-[10px] px-3 py-2 text-[10px] font-semibold whitespace-nowrap"
             style={{
               background: `${n.color}12`,
               border: `1.5px solid ${n.color}30`,
-              borderRadius: 10,
-              padding: "8px 12px",
-              fontSize: 10,
-              fontWeight: 600,
               color: n.color,
-              whiteSpace: "nowrap",
             }}
           >
             {n.label}
@@ -273,16 +180,7 @@ function WorkflowMockup() {
 function MiniChart() {
   const bars = [35, 52, 45, 68, 82, 75, 90];
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "flex-end",
-        gap: 4,
-        height: 60,
-        marginTop: 16,
-        padding: "0 4px",
-      }}
-    >
+    <div className="flex items-end gap-1 h-[60px] mt-4 px-1">
       {bars.map((h, i) => (
         <motion.div
           key={i}
@@ -290,11 +188,9 @@ function MiniChart() {
           whileInView={{ height: `${h}%` }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 + i * 0.08, duration: 0.5 }}
+          className="flex-1 rounded min-h-1"
           style={{
-            flex: 1,
             background: `linear-gradient(to top, #06c, ${i >= 5 ? "#34d399" : "#60a5fa"})`,
-            borderRadius: 4,
-            minHeight: 4,
           }}
         />
       ))}
@@ -305,20 +201,11 @@ function MiniChart() {
 function ApiDiagram() {
   const endpoints = ["ERP", "CRM", "LINE"];
   return (
-    <div style={{ marginTop: 16, display: "flex", flexDirection: "column", alignItems: "center", gap: 6 }}>
-      <div
-        style={{
-          background: "rgba(0,102,204,0.08)",
-          borderRadius: 10,
-          padding: "6px 16px",
-          fontSize: 11,
-          fontWeight: 700,
-          color: "#06c",
-        }}
-      >
+    <div className="mt-4 flex flex-col items-center gap-1.5">
+      <div className="bg-[rgba(0,102,204,0.08)] rounded-[10px] px-4 py-1.5 text-[11px] font-bold text-[#06c]">
         AI Hub
       </div>
-      <div style={{ display: "flex", gap: 12 }}>
+      <div className="flex gap-3">
         {endpoints.map((ep, i) => (
           <motion.div
             key={ep}
@@ -326,19 +213,10 @@ function ApiDiagram() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 + i * 0.1 }}
-            style={{ textAlign: "center" }}
+            className="text-center"
           >
-            <div style={{ width: 1, height: 16, background: "#d1d5db", margin: "0 auto" }} />
-            <div
-              style={{
-                background: "#f5f5f7",
-                borderRadius: 8,
-                padding: "4px 12px",
-                fontSize: 10,
-                fontWeight: 600,
-                color: "#6e6e73",
-              }}
-            >
+            <div className="w-px h-4 bg-[#d1d5db] mx-auto" />
+            <div className="bg-[#f5f5f7] rounded-lg px-3 py-1 text-[10px] font-semibold text-[#6e6e73]">
               {ep}
             </div>
           </motion.div>
@@ -355,7 +233,7 @@ function ArchitectureDiagram() {
     { label: "Infrastructure", items: ["GPU Server", "Vector DB", "API Gateway"], color: "#6e6e73" },
   ];
   return (
-    <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 6 }}>
+    <div className="mt-5 flex flex-col gap-1.5">
       {layers.map((layer, li) => (
         <motion.div
           key={layer.label}
@@ -363,28 +241,23 @@ function ArchitectureDiagram() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 + li * 0.12 }}
+          className="rounded-[10px] px-3.5 py-2"
           style={{
             background: `${layer.color}08`,
             border: `1px solid ${layer.color}20`,
-            borderRadius: 10,
-            padding: "8px 14px",
           }}
         >
-          <div style={{ fontSize: 9, fontWeight: 700, color: layer.color, marginBottom: 4, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+          <div
+            className="text-[9px] font-bold mb-1 uppercase tracking-wide"
+            style={{ color: layer.color }}
+          >
             {layer.label}
           </div>
-          <div style={{ display: "flex", gap: 8 }}>
+          <div className="flex gap-2">
             {layer.items.map((item) => (
               <span
                 key={item}
-                style={{
-                  fontSize: 10,
-                  color: "#1d1d1f",
-                  background: "#fff",
-                  padding: "2px 8px",
-                  borderRadius: 6,
-                  border: "1px solid rgba(0,0,0,0.06)",
-                }}
+                className="text-[10px] text-[#1d1d1f] bg-white px-2 py-0.5 rounded-md border border-black/[0.06]"
               >
                 {item}
               </span>
@@ -400,24 +273,15 @@ function ArchitectureDiagram() {
 
 function WhiteboardMockup() {
   return (
-    <div
-      style={{
-        background: "#fffef5",
-        borderRadius: 16,
-        border: "1px solid #e8e5d0",
-        padding: 20,
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      <div style={{ fontSize: 10, color: "#b8a040", fontWeight: 600, marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+    <div className="bg-[#fffef5] rounded-2xl border border-[#e8e5d0] p-5 relative overflow-hidden">
+      <div className="text-[10px] text-[#b8a040] font-semibold mb-3 uppercase tracking-wide">
         Discovery Board
       </div>
       {[
-        { text: "Pain Point: manual data entry", x: 8, y: 0, rotate: -2 },
-        { text: "Goal: 80% automation", x: 60, y: 4, rotate: 1 },
-        { text: "Users: 50 staff", x: 20, y: 8, rotate: -1 },
-        { text: "Timeline: 3 months", x: 100, y: 2, rotate: 2 },
+        { text: "Pain Point: manual data entry", rotate: -2 },
+        { text: "Goal: 80% automation", rotate: 1 },
+        { text: "Users: 50 staff", rotate: -1 },
+        { text: "Timeline: 3 months", rotate: 2 },
       ].map((note, i) => (
         <motion.div
           key={i}
@@ -425,17 +289,7 @@ function WhiteboardMockup() {
           whileInView={{ opacity: 1, scale: 1, rotate: note.rotate }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 + i * 0.1 }}
-          style={{
-            display: "inline-block",
-            background: "#fff9c4",
-            padding: "6px 10px",
-            borderRadius: 4,
-            fontSize: 10,
-            color: "#5d4e00",
-            margin: "4px 6px",
-            boxShadow: "0 1px 3px rgba(0,0,0,0.08)",
-            border: "1px solid #f0e68c",
-          }}
+          className="inline-block bg-[#fff9c4] px-2.5 py-1.5 rounded text-[10px] text-[#5d4e00] m-1 shadow-[0_1px_3px_rgba(0,0,0,0.08)] border border-[#f0e68c]"
         >
           {note.text}
         </motion.div>
@@ -446,45 +300,30 @@ function WhiteboardMockup() {
 
 function ArchMockup() {
   return (
-    <div
-      style={{
-        background: "#f5f5f7",
-        borderRadius: 16,
-        padding: 20,
-        border: "1px solid rgba(0,0,0,0.06)",
-      }}
-    >
-      <div style={{ fontSize: 10, color: "#6e6e73", fontWeight: 600, marginBottom: 12, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+    <div className="bg-[#f5f5f7] rounded-2xl p-5 border border-black/[0.06]">
+      <div className="text-[10px] text-[#6e6e73] font-semibold mb-3 uppercase tracking-wide">
         System Architecture
       </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+      <div className="flex flex-col gap-2">
         {[
           { label: "Frontend", sub: "Next.js + React", color: "#06c" },
           { label: "AI Service", sub: "LangChain + LLM", color: "#059669" },
           { label: "Database", sub: "PostgreSQL + pgvector", color: "#7c3aed" },
         ].map((item, i) => (
-          <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <div key={i} className="flex items-center gap-2.5">
             <div
-              style={{
-                width: 8,
-                height: 8,
-                borderRadius: 4,
-                background: item.color,
-                flexShrink: 0,
-              }}
+              className="w-2 h-2 rounded-full shrink-0"
+              style={{ background: item.color }}
             />
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 11, fontWeight: 600, color: "#1d1d1f" }}>{item.label}</div>
-              <div style={{ fontSize: 10, color: "#86868b" }}>{item.sub}</div>
+            <div className="flex-1">
+              <div className="text-[11px] font-semibold text-[#1d1d1f]">{item.label}</div>
+              <div className="text-[10px] text-[#86868b]">{item.sub}</div>
             </div>
             <div
+              className="text-[9px] px-2 py-0.5 rounded-md font-semibold"
               style={{
-                fontSize: 9,
                 background: `${item.color}12`,
                 color: item.color,
-                padding: "2px 8px",
-                borderRadius: 6,
-                fontWeight: 600,
               }}
             >
               v1.0
@@ -492,18 +331,11 @@ function ArchMockup() {
           </div>
         ))}
       </div>
-      <div style={{ marginTop: 12, display: "flex", gap: 6 }}>
+      <div className="mt-3 flex gap-1.5">
         {["REST API", "WebSocket", "gRPC"].map((proto) => (
           <span
             key={proto}
-            style={{
-              fontSize: 9,
-              background: "#fff",
-              border: "1px solid rgba(0,0,0,0.08)",
-              borderRadius: 6,
-              padding: "2px 8px",
-              color: "#6e6e73",
-            }}
+            className="text-[9px] bg-white border border-black/[0.08] rounded-md px-2 py-0.5 text-[#6e6e73]"
           >
             {proto}
           </span>
@@ -515,20 +347,11 @@ function ArchMockup() {
 
 function CodeMockup() {
   return (
-    <div
-      style={{
-        background: "#1d1d1f",
-        borderRadius: 16,
-        padding: "16px 14px",
-        fontFamily: "'SF Mono', 'Fira Code', monospace",
-        overflowX: "auto",
-        WebkitOverflowScrolling: "touch",
-      }}
-    >
-      <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
-        <div style={{ width: 10, height: 10, borderRadius: 5, background: "#ff5f57" }} />
-        <div style={{ width: 10, height: 10, borderRadius: 5, background: "#febc2e" }} />
-        <div style={{ width: 10, height: 10, borderRadius: 5, background: "#28c840" }} />
+    <div className="bg-[#1d1d1f] rounded-2xl px-3.5 py-4 font-mono overflow-x-auto">
+      <div className="flex gap-1.5 mb-3.5">
+        <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f57]" />
+        <div className="w-2.5 h-2.5 rounded-full bg-[#febc2e]" />
+        <div className="w-2.5 h-2.5 rounded-full bg-[#28c840]" />
       </div>
       {[
         { text: "from langchain import ChatOpenAI", color: "#c084fc" },
@@ -546,12 +369,8 @@ function CodeMockup() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 + i * 0.08 }}
-          style={{
-            fontSize: 11,
-            color: line.color || "transparent",
-            lineHeight: 1.8,
-            whiteSpace: "nowrap",
-          }}
+          className="text-[10px] md:text-[12px] leading-[1.8] whitespace-nowrap"
+          style={{ color: line.color || "transparent" }}
         >
           {line.text || "\u00A0"}
         </motion.div>
@@ -569,18 +388,11 @@ function TestMockup() {
     { name: "test_load_100_users", pass: true, ms: 1503 },
   ];
   return (
-    <div
-      style={{
-        background: "#f5f5f7",
-        borderRadius: 16,
-        padding: 20,
-        border: "1px solid rgba(0,0,0,0.06)",
-      }}
-    >
-      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+    <div className="bg-[#f5f5f7] rounded-2xl p-5 border border-black/[0.06]">
+      <div className="flex items-center gap-2 mb-3.5">
         <TestTube size={14} color="#059669" />
-        <span style={{ fontSize: 11, fontWeight: 700, color: "#059669", textTransform: "uppercase", letterSpacing: "0.05em" }}>All Tests Passed</span>
-        <span style={{ fontSize: 10, color: "#86868b", marginLeft: "auto" }}>5/5</span>
+        <span className="text-[11px] font-bold text-[#059669] uppercase tracking-wide">All Tests Passed</span>
+        <span className="text-[10px] text-[#86868b] ml-auto">5/5</span>
       </div>
       {tests.map((t, i) => (
         <motion.div
@@ -589,17 +401,13 @@ function TestMockup() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 + i * 0.08 }}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            padding: "5px 0",
-            borderBottom: i < tests.length - 1 ? "1px solid rgba(0,0,0,0.04)" : "none",
-          }}
+          className={`flex items-center gap-2 py-[5px] ${
+            i < tests.length - 1 ? "border-b border-black/[0.04]" : ""
+          }`}
         >
           <CircleCheck size={12} color="#059669" />
-          <span style={{ fontSize: 10, color: "#1d1d1f", fontFamily: "monospace", flex: 1 }}>{t.name}</span>
-          <span style={{ fontSize: 9, color: "#86868b" }}>{t.ms}ms</span>
+          <span className="text-[10px] text-[#1d1d1f] font-mono flex-1">{t.name}</span>
+          <span className="text-[9px] text-[#86868b]">{t.ms}ms</span>
         </motion.div>
       ))}
     </div>
@@ -608,20 +416,13 @@ function TestMockup() {
 
 function DashboardMockup() {
   return (
-    <div
-      style={{
-        background: "#f5f5f7",
-        borderRadius: 16,
-        padding: 20,
-        border: "1px solid rgba(0,0,0,0.06)",
-      }}
-    >
-      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+    <div className="bg-[#f5f5f7] rounded-2xl p-5 border border-black/[0.06]">
+      <div className="flex items-center gap-2 mb-4">
         <Rocket size={14} color="#06c" />
-        <span style={{ fontSize: 11, fontWeight: 700, color: "#06c", textTransform: "uppercase", letterSpacing: "0.05em" }}>Production Live</span>
-        <div style={{ width: 6, height: 6, borderRadius: 3, background: "#34d399", marginLeft: "auto" }} />
+        <span className="text-[11px] font-bold text-[#06c] uppercase tracking-wide">Production Live</span>
+        <div className="w-1.5 h-1.5 rounded-full bg-[#34d399] ml-auto" />
       </div>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
+      <div className="grid grid-cols-2 gap-2">
         {[
           { label: "Uptime", value: "99.97%", color: "#059669" },
           { label: "Response", value: "< 200ms", color: "#06c" },
@@ -630,15 +431,10 @@ function DashboardMockup() {
         ].map((stat) => (
           <div
             key={stat.label}
-            style={{
-              background: "#fff",
-              borderRadius: 10,
-              padding: "10px 12px",
-              border: "1px solid rgba(0,0,0,0.04)",
-            }}
+            className="bg-white rounded-[10px] px-3 py-2.5 border border-black/[0.04]"
           >
-            <div style={{ fontSize: 9, color: "#86868b", marginBottom: 2 }}>{stat.label}</div>
-            <div style={{ fontSize: 16, fontWeight: 700, color: stat.color }}>{stat.value}</div>
+            <div className="text-[9px] text-[#86868b] mb-0.5">{stat.label}</div>
+            <div className="text-base font-bold" style={{ color: stat.color }}>{stat.value}</div>
           </div>
         ))}
       </div>
@@ -648,29 +444,14 @@ function DashboardMockup() {
 
 function MonitorMockup() {
   return (
-    <div
-      style={{
-        background: "#1d1d1f",
-        borderRadius: 16,
-        padding: 20,
-        overflow: "hidden",
-      }}
-    >
-      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}>
+    <div className="bg-[#1d1d1f] rounded-2xl p-5 overflow-hidden">
+      <div className="flex items-center gap-2 mb-3.5">
         <Activity size={14} color="#34d399" />
-        <span style={{ fontSize: 11, fontWeight: 600, color: "#34d399" }}>System Healthy</span>
-        <span style={{ fontSize: 9, color: "#6e6e73", marginLeft: "auto" }}>Live</span>
-        <div
-          style={{
-            width: 6,
-            height: 6,
-            borderRadius: 3,
-            background: "#34d399",
-            animation: "pulse 2s ease-in-out infinite",
-          }}
-        />
+        <span className="text-[11px] font-semibold text-[#34d399]">System Healthy</span>
+        <span className="text-[9px] text-[#6e6e73] ml-auto">Live</span>
+        <div className="w-1.5 h-1.5 rounded-full bg-[#34d399] animate-pulse" />
       </div>
-      <div style={{ display: "flex", alignItems: "flex-end", gap: 2, height: 40, marginBottom: 12 }}>
+      <div className="flex items-end gap-0.5 h-10 mb-3">
         {Array.from({ length: 20 }).map((_, i) => {
           const h = 20 + Math.sin(i * 0.5) * 15 + Math.random() * 10;
           return (
@@ -680,25 +461,21 @@ function MonitorMockup() {
               whileInView={{ height: `${h}%` }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 + i * 0.03 }}
-              style={{
-                flex: 1,
-                background: h > 60 ? "#fbbf24" : "#34d399",
-                borderRadius: 2,
-                minHeight: 2,
-              }}
+              className="flex-1 rounded-sm min-h-0.5"
+              style={{ background: h > 60 ? "#fbbf24" : "#34d399" }}
             />
           );
         })}
       </div>
-      <div style={{ display: "flex", gap: 12 }}>
+      <div className="flex gap-3">
         {[
           { label: "CPU", value: "24%", color: "#34d399" },
           { label: "RAM", value: "6.2G", color: "#60a5fa" },
           { label: "GPU", value: "45%", color: "#fbbf24" },
         ].map((m) => (
-          <div key={m.label} style={{ flex: 1 }}>
-            <div style={{ fontSize: 9, color: "#6e6e73", marginBottom: 2 }}>{m.label}</div>
-            <div style={{ fontSize: 13, fontWeight: 700, color: m.color }}>{m.value}</div>
+          <div key={m.label} className="flex-1">
+            <div className="text-[9px] text-[#6e6e73] mb-0.5">{m.label}</div>
+            <div className="text-[13px] font-bold" style={{ color: m.color }}>{m.value}</div>
           </div>
         ))}
       </div>
@@ -709,7 +486,7 @@ function MonitorMockup() {
 /* ─── Main Component ─── */
 
 export default function Development() {
-  /* Process steps data with alternating layout */
+  /* Process steps data */
   const processSteps = [
     {
       icon: Search,
@@ -804,24 +581,9 @@ export default function Development() {
   ];
 
   return (
-    <section
-      id="development"
-      style={{
-        background: "#fff",
-        padding: "0 24px",
-        overflow: "hidden",
-      }}
-    >
+    <section id="development" className="bg-white px-4 md:px-6 overflow-hidden">
       {/* ──────────── SECTION 1: Hero ──────────── */}
-      <div
-        style={{
-          maxWidth: 1080,
-          margin: "0 auto",
-          paddingTop: 120,
-          paddingBottom: 100,
-          textAlign: "center",
-        }}
-      >
+      <div className="max-w-[1080px] mx-auto pt-20 md:pt-[120px] pb-16 md:pb-[100px] text-center">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -829,53 +591,17 @@ export default function Development() {
           variants={fadeUp}
           transition={{ duration: 0.8 }}
         >
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              background: "rgba(0,102,204,0.06)",
-              borderRadius: 20,
-              padding: "6px 16px",
-              marginBottom: 24,
-            }}
-          >
+          <div className="inline-flex items-center gap-2 bg-[rgba(0,102,204,0.06)] rounded-[20px] px-4 py-1.5 mb-6">
             <Code2 size={14} color="#06c" />
-            <span style={{ fontSize: 13, fontWeight: 600, color: "#06c" }}>Engineering Lab</span>
+            <span className="text-[13px] font-semibold text-[#06c]">Engineering Lab</span>
           </div>
-          <h2
-            style={{
-              fontSize: "clamp(36px, 5.5vw, 56px)",
-              fontWeight: 700,
-              color: "#1d1d1f",
-              lineHeight: 1.1,
-              marginBottom: 20,
-              letterSpacing: "-0.02em",
-            }}
-          >
+          <h2 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-[#1d1d1f] leading-[1.1] mb-5 tracking-tight">
             Custom AI Development
           </h2>
-          <p
-            style={{
-              fontSize: "clamp(18px, 2.5vw, 24px)",
-              color: "#6e6e73",
-              maxWidth: 640,
-              margin: "0 auto",
-              lineHeight: 1.5,
-              fontWeight: 400,
-            }}
-          >
+          <p className="text-lg md:text-xl lg:text-2xl text-[#6e6e73] max-w-[640px] mx-auto leading-relaxed font-normal">
             ออกแบบและสร้างระบบ AI ที่พอดีกับธุรกิจคุณ
           </p>
-          <p
-            style={{
-              fontSize: 16,
-              color: "#86868b",
-              maxWidth: 520,
-              margin: "16px auto 0",
-              lineHeight: 1.7,
-            }}
-          >
+          <p className="text-base text-[#86868b] max-w-[520px] mx-auto mt-4 leading-[1.7]">
             ไม่ใช่แค่ใช้เครื่องมือสำเร็จรูป — เราออกแบบ พัฒนา และดูแลระบบ AI
             ที่สร้างขึ้นเฉพาะสำหรับกระบวนการทำงานของคุณ ทั้ง On-Premise และ Cloud
           </p>
@@ -883,40 +609,24 @@ export default function Development() {
       </div>
 
       {/* ──────────── SECTION 2: Bento Grid ──────────── */}
-      <div style={{ maxWidth: 1080, margin: "0 auto", paddingBottom: 120 }}>
+      <div className="max-w-[1080px] mx-auto pb-20 md:pb-[120px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
           transition={{ duration: 0.7 }}
-          style={{ textAlign: "center", marginBottom: 56 }}
+          className="text-center mb-14"
         >
-          <h3
-            style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
-              fontWeight: 700,
-              color: "#1d1d1f",
-              marginBottom: 12,
-              letterSpacing: "-0.01em",
-            }}
-          >
+          <h3 className="text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-3 tracking-tight">
             สิ่งที่เราสร้าง
           </h3>
-          <p style={{ fontSize: 17, color: "#86868b", maxWidth: 480, margin: "0 auto", lineHeight: 1.6 }}>
+          <p className="text-[17px] text-[#86868b] max-w-[480px] mx-auto leading-relaxed">
             ครอบคลุมทุก AI use case ที่องค์กรต้องการ
           </p>
         </motion.div>
 
-        <div
-          className="bento-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gridTemplateRows: "auto auto auto",
-            gap: 20,
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {/* Large: AI Chatbot (spans 2 cols) */}
           <motion.div
             initial="hidden"
@@ -924,35 +634,17 @@ export default function Development() {
             viewport={{ once: true, margin: "-40px" }}
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.05 }}
-            className="apple-card bento-chatbot"
-            style={{
-              gridColumn: "span 2",
-              background: "#fff",
-              borderRadius: 24,
-              padding: "32px 28px 24px",
-              border: "1px solid rgba(0,0,0,0.06)",
-              boxShadow: "0 2px 20px rgba(0,0,0,0.03)",
-            }}
+            className="md:col-span-2 bg-white rounded-3xl p-7 md:px-7 md:py-8 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)]"
           >
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
-              <div
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 12,
-                  background: "rgba(0,102,204,0.08)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
+            <div className="flex items-center gap-2.5 mb-1">
+              <div className="w-10 h-10 rounded-xl bg-[rgba(0,102,204,0.08)] flex items-center justify-center">
                 <MessageSquare size={20} color="#06c" />
               </div>
               <div>
-                <h4 style={{ fontSize: 18, fontWeight: 700, color: "#1d1d1f", margin: 0 }}>
+                <h4 className="text-lg font-bold text-[#1d1d1f]">
                   AI Chatbot & Customer Service
                 </h4>
-                <p style={{ fontSize: 13, color: "#86868b", margin: 0 }}>
+                <p className="text-[13px] text-[#86868b]">
                   แชทบอทอัจฉริยะ ตอบคำถาม 24/7 รองรับภาษาไทย
                 </p>
               </div>
@@ -967,34 +659,15 @@ export default function Development() {
             viewport={{ once: true, margin: "-40px" }}
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="apple-card bento-rag"
-            style={{
-              gridColumn: "span 1",
-              background: "#fff",
-              borderRadius: 24,
-              padding: "28px 22px 20px",
-              border: "1px solid rgba(0,0,0,0.06)",
-              boxShadow: "0 2px 20px rgba(0,0,0,0.03)",
-            }}
+            className="bg-white rounded-3xl px-5 pt-7 pb-5 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)]"
           >
-            <div
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 10,
-                background: "rgba(124,58,237,0.08)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginBottom: 12,
-              }}
-            >
+            <div className="w-9 h-9 rounded-[10px] bg-[rgba(124,58,237,0.08)] flex items-center justify-center mb-3">
               <Database size={18} color="#7c3aed" />
             </div>
-            <h4 style={{ fontSize: 15, fontWeight: 700, color: "#1d1d1f", margin: "0 0 4px" }}>
+            <h4 className="text-[15px] font-bold text-[#1d1d1f] mb-1">
               RAG Knowledge Base
             </h4>
-            <p style={{ fontSize: 12, color: "#86868b", margin: 0, lineHeight: 1.5 }}>
+            <p className="text-xs text-[#86868b] leading-relaxed">
               ค้นหาข้อมูลจากเอกสารองค์กร
             </p>
             <SearchMockup />
@@ -1007,34 +680,15 @@ export default function Development() {
             viewport={{ once: true, margin: "-40px" }}
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="apple-card bento-workflow"
-            style={{
-              gridColumn: "span 1",
-              background: "#fff",
-              borderRadius: 24,
-              padding: "28px 22px 20px",
-              border: "1px solid rgba(0,0,0,0.06)",
-              boxShadow: "0 2px 20px rgba(0,0,0,0.03)",
-            }}
+            className="bg-white rounded-3xl px-5 pt-7 pb-5 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)]"
           >
-            <div
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 10,
-                background: "rgba(234,88,12,0.08)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginBottom: 12,
-              }}
-            >
+            <div className="w-9 h-9 rounded-[10px] bg-[rgba(234,88,12,0.08)] flex items-center justify-center mb-3">
               <Workflow size={18} color="#ea580c" />
             </div>
-            <h4 style={{ fontSize: 15, fontWeight: 700, color: "#1d1d1f", margin: "0 0 4px" }}>
+            <h4 className="text-[15px] font-bold text-[#1d1d1f] mb-1">
               Workflow Automation
             </h4>
-            <p style={{ fontSize: 12, color: "#86868b", margin: 0, lineHeight: 1.5 }}>
+            <p className="text-xs text-[#86868b] leading-relaxed">
               อัตโนมัติกระบวนการด้วย n8n + AI
             </p>
             <WorkflowMockup />
@@ -1047,34 +701,15 @@ export default function Development() {
             viewport={{ once: true, margin: "-40px" }}
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="apple-card bento-analytics"
-            style={{
-              gridColumn: "span 1",
-              background: "#fff",
-              borderRadius: 24,
-              padding: "28px 22px 20px",
-              border: "1px solid rgba(0,0,0,0.06)",
-              boxShadow: "0 2px 20px rgba(0,0,0,0.03)",
-            }}
+            className="bg-white rounded-3xl px-5 pt-7 pb-5 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)]"
           >
-            <div
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 10,
-                background: "rgba(5,150,105,0.08)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginBottom: 12,
-              }}
-            >
+            <div className="w-9 h-9 rounded-[10px] bg-[rgba(5,150,105,0.08)] flex items-center justify-center mb-3">
               <BarChart3 size={18} color="#059669" />
             </div>
-            <h4 style={{ fontSize: 15, fontWeight: 700, color: "#1d1d1f", margin: "0 0 4px" }}>
+            <h4 className="text-[15px] font-bold text-[#1d1d1f] mb-1">
               Data Analytics
             </h4>
-            <p style={{ fontSize: 12, color: "#86868b", margin: 0, lineHeight: 1.5 }}>
+            <p className="text-xs text-[#86868b] leading-relaxed">
               แดชบอร์ดและรายงานอัจฉริยะ
             </p>
             <MiniChart />
@@ -1087,34 +722,15 @@ export default function Development() {
             viewport={{ once: true, margin: "-40px" }}
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.25 }}
-            className="apple-card bento-integration"
-            style={{
-              gridColumn: "span 1",
-              background: "#fff",
-              borderRadius: 24,
-              padding: "28px 22px 20px",
-              border: "1px solid rgba(0,0,0,0.06)",
-              boxShadow: "0 2px 20px rgba(0,0,0,0.03)",
-            }}
+            className="bg-white rounded-3xl px-5 pt-7 pb-5 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)]"
           >
-            <div
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 10,
-                background: "rgba(0,102,204,0.08)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginBottom: 12,
-              }}
-            >
+            <div className="w-9 h-9 rounded-[10px] bg-[rgba(0,102,204,0.08)] flex items-center justify-center mb-3">
               <Plug size={18} color="#06c" />
             </div>
-            <h4 style={{ fontSize: 15, fontWeight: 700, color: "#1d1d1f", margin: "0 0 4px" }}>
+            <h4 className="text-[15px] font-bold text-[#1d1d1f] mb-1">
               System Integration
             </h4>
-            <p style={{ fontSize: 12, color: "#86868b", margin: 0, lineHeight: 1.5 }}>
+            <p className="text-xs text-[#86868b] leading-relaxed">
               เชื่อมต่อ ERP, CRM, LINE
             </p>
             <ApiDiagram />
@@ -1127,35 +743,17 @@ export default function Development() {
             viewport={{ once: true, margin: "-40px" }}
             variants={fadeUp}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="apple-card bento-enterprise"
-            style={{
-              gridColumn: "span 2",
-              background: "#fff",
-              borderRadius: 24,
-              padding: "32px 28px 24px",
-              border: "1px solid rgba(0,0,0,0.06)",
-              boxShadow: "0 2px 20px rgba(0,0,0,0.03)",
-            }}
+            className="md:col-span-2 bg-white rounded-3xl p-7 md:px-7 md:py-8 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)]"
           >
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
-              <div
-                style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 12,
-                  background: "rgba(0,0,0,0.04)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                }}
-              >
+            <div className="flex items-center gap-2.5 mb-1">
+              <div className="w-10 h-10 rounded-xl bg-black/[0.04] flex items-center justify-center">
                 <Server size={20} color="#1d1d1f" />
               </div>
               <div>
-                <h4 style={{ fontSize: 18, fontWeight: 700, color: "#1d1d1f", margin: 0 }}>
+                <h4 className="text-lg font-bold text-[#1d1d1f]">
                   Enterprise AI Infrastructure
                 </h4>
-                <p style={{ fontSize: 13, color: "#86868b", margin: 0 }}>
+                <p className="text-[13px] text-[#86868b]">
                   วางโครงสร้าง AI ระดับองค์กร ทั้ง On-Premise และ Cloud
                 </p>
               </div>
@@ -1165,53 +763,33 @@ export default function Development() {
         </div>
       </div>
 
-      {/* ──────────── SECTION 3: Process (Alternating) ──────────── */}
-      <div
-        className="py-16 px-4 sm:py-[120px] sm:px-[24px]"
-        style={{
-          background: "#f5f5f7",
-          margin: "0 -24px",
-        }}
-      >
-        <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+      {/* ──────────── SECTION 3: Process ──────────── */}
+      <div className="bg-[#f5f5f7] -mx-4 md:-mx-6 px-4 md:px-6 py-16 md:py-[120px]">
+        <div className="max-w-[1080px] mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
             transition={{ duration: 0.7 }}
-            style={{ textAlign: "center", marginBottom: 80 }}
+            className="text-center mb-16 md:mb-20"
           >
-            <h3
-              style={{
-                fontSize: "clamp(28px, 4vw, 40px)",
-                fontWeight: 700,
-                color: "#1d1d1f",
-                marginBottom: 12,
-                letterSpacing: "-0.01em",
-              }}
-            >
+            <h3 className="text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-3 tracking-tight">
               กระบวนการพัฒนา
             </h3>
-            <p style={{ fontSize: 17, color: "#86868b", maxWidth: 480, margin: "0 auto", lineHeight: 1.6 }}>
+            <p className="text-[17px] text-[#86868b] max-w-[480px] mx-auto leading-relaxed">
               6 ขั้นตอนที่พิสูจน์แล้วว่าส่งมอบคุณค่าได้จริง
             </p>
           </motion.div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 80 }}>
+          <div className="space-y-12 md:space-y-20">
             {processSteps.map((step, i) => {
               const StepIcon = step.icon;
               const isLeft = step.align === "left";
               return (
                 <div
                   key={step.label}
-                  className="process-step"
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: 48,
-                    alignItems: "center",
-                  }}
+                  className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-12 md:items-center"
                 >
                   {/* Text side */}
                   <motion.div
@@ -1220,59 +798,23 @@ export default function Development() {
                     viewport={{ once: true, margin: "-60px" }}
                     variants={isLeft ? fadeLeft : fadeRight}
                     transition={{ duration: 0.7, delay: 0.1 }}
-                    style={{ order: isLeft ? 1 : 2 }}
-                    className={isLeft ? "process-text-left" : "process-text-right"}
+                    className={isLeft ? "md:order-1" : "md:order-2"}
                   >
-                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
-                      <div
-                        style={{
-                          width: 48,
-                          height: 48,
-                          borderRadius: 14,
-                          background: "#fff",
-                          border: "2px solid rgba(0,102,204,0.15)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          boxShadow: "0 2px 8px rgba(0,0,0,0.04)",
-                        }}
-                      >
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-12 h-12 rounded-[14px] bg-white border-2 border-[rgba(0,102,204,0.15)] flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
                         <StepIcon size={22} color="#06c" />
                       </div>
                       <div>
-                        <div
-                          style={{
-                            fontSize: 12,
-                            fontWeight: 700,
-                            color: "#06c",
-                            textTransform: "uppercase",
-                            letterSpacing: "0.08em",
-                          }}
-                        >
+                        <div className="text-xs font-bold text-[#06c] uppercase tracking-widest">
                           Step {i + 1} — {step.label}
                         </div>
-                        <div style={{ fontSize: 13, color: "#86868b", fontWeight: 500 }}>{step.thai}</div>
+                        <div className="text-[13px] text-[#86868b] font-medium">{step.thai}</div>
                       </div>
                     </div>
-                    <h4
-                      style={{
-                        fontSize: 24,
-                        fontWeight: 700,
-                        color: "#1d1d1f",
-                        marginBottom: 12,
-                        lineHeight: 1.3,
-                      }}
-                    >
+                    <h4 className="text-2xl font-bold text-[#1d1d1f] mb-3 leading-tight">
                       {step.title}
                     </h4>
-                    <p
-                      style={{
-                        fontSize: 15,
-                        color: "#6e6e73",
-                        lineHeight: 1.7,
-                        margin: 0,
-                      }}
-                    >
+                    <p className="text-[15px] text-[#6e6e73] leading-[1.7]">
                       {step.description}
                     </p>
                   </motion.div>
@@ -1284,8 +826,7 @@ export default function Development() {
                     viewport={{ once: true, margin: "-60px" }}
                     variants={isLeft ? fadeRight : fadeLeft}
                     transition={{ duration: 0.7, delay: 0.2 }}
-                    style={{ order: isLeft ? 2 : 1 }}
-                    className={isLeft ? "process-mockup-right" : "process-mockup-left"}
+                    className={isLeft ? "md:order-2" : "md:order-1"}
                   >
                     {step.mockup}
                   </motion.div>
@@ -1297,40 +838,24 @@ export default function Development() {
       </div>
 
       {/* ──────────── SECTION 4: On-Premise vs Cloud ──────────── */}
-      <div style={{ maxWidth: 1080, margin: "0 auto", padding: "120px 0" }}>
+      <div className="max-w-[1080px] mx-auto py-20 md:py-[120px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
           transition={{ duration: 0.7 }}
-          style={{ textAlign: "center", marginBottom: 56 }}
+          className="text-center mb-14"
         >
-          <h3
-            style={{
-              fontSize: "clamp(28px, 4vw, 40px)",
-              fontWeight: 700,
-              color: "#1d1d1f",
-              marginBottom: 12,
-              letterSpacing: "-0.01em",
-            }}
-          >
+          <h3 className="text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-3 tracking-tight">
             On-Premise vs Cloud
           </h3>
-          <p style={{ fontSize: 17, color: "#86868b", maxWidth: 520, margin: "0 auto", lineHeight: 1.6 }}>
+          <p className="text-[17px] text-[#86868b] max-w-[520px] mx-auto leading-relaxed">
             เราทำได้ทั้งสองแบบ เลือกแบบที่เหมาะกับองค์กรของคุณ
           </p>
         </motion.div>
 
-        <div
-          className="deployment-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: 24,
-            marginBottom: 40,
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mb-10">
           {/* LocalAI Card (Dark) */}
           <motion.div
             initial="hidden"
@@ -1338,60 +863,29 @@ export default function Development() {
             viewport={{ once: true }}
             variants={fadeLeft}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="apple-card"
-            style={{
-              background: "#1d1d1f",
-              borderRadius: 24,
-              padding: "36px 32px",
-              position: "relative",
-              overflow: "hidden",
-            }}
+            className="bg-[#1d1d1f] rounded-3xl p-8 md:p-9 relative overflow-hidden"
           >
             {/* Subtle gradient overlay */}
             <div
-              style={{
-                position: "absolute",
-                top: 0,
-                right: 0,
-                width: 200,
-                height: 200,
-                background: "radial-gradient(circle, rgba(0,102,204,0.12) 0%, transparent 70%)",
-                pointerEvents: "none",
-              }}
+              className="absolute top-0 right-0 w-[200px] h-[200px] pointer-events-none"
+              style={{ background: "radial-gradient(circle, rgba(0,102,204,0.12) 0%, transparent 70%)" }}
             />
-            <div style={{ position: "relative" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
-                <div
-                  style={{
-                    width: 48,
-                    height: 48,
-                    borderRadius: 14,
-                    background: "rgba(255,255,255,0.08)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
+            <div className="relative">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-[14px] bg-white/[0.08] flex items-center justify-center">
                   <Server size={24} color="#fff" />
                 </div>
                 <div>
-                  <div style={{ fontSize: 22, fontWeight: 700, color: "#fff" }}>On-Premise AI</div>
-                  <div style={{ fontSize: 13, color: "rgba(255,255,255,0.5)" }}>LocalAI Thailand</div>
+                  <div className="text-[22px] font-bold text-white">On-Premise AI</div>
+                  <div className="text-[13px] text-white/50">LocalAI Thailand</div>
                 </div>
               </div>
 
-              <p
-                style={{
-                  fontSize: 14,
-                  color: "rgba(255,255,255,0.7)",
-                  lineHeight: 1.7,
-                  marginBottom: 28,
-                }}
-              >
+              <p className="text-sm text-white/70 leading-[1.7] mb-7">
                 ข้อมูลอยู่ในองค์กร 100% ควบคุมได้เต็มที่ เหมาะกับธุรกิจที่ต้องการ compliance สูงสุด
               </p>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 32 }}>
+              <div className="flex flex-col gap-3.5 mb-8">
                 {[
                   { icon: Lock, text: "ข้อมูลไม่ออกนอกองค์กร" },
                   { icon: Zap, text: "ไม่มีค่า API รายเดือน" },
@@ -1401,28 +895,8 @@ export default function Development() {
                 ].map((item, idx) => {
                   const ItemIcon = item.icon;
                   return (
-                    <div
-                      key={idx}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 12,
-                        fontSize: 14,
-                        color: "rgba(255,255,255,0.85)",
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: 28,
-                          height: 28,
-                          borderRadius: 8,
-                          background: "rgba(255,255,255,0.06)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          flexShrink: 0,
-                        }}
-                      >
+                    <div key={idx} className="flex items-center gap-3 text-sm text-white/85">
+                      <div className="w-7 h-7 rounded-lg bg-white/[0.06] flex items-center justify-center shrink-0">
                         <ItemIcon size={14} color="rgba(255,255,255,0.6)" />
                       </div>
                       {item.text}
@@ -1436,18 +910,7 @@ export default function Development() {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ x: 4 }}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  fontSize: 14,
-                  fontWeight: 600,
-                  color: "#fff",
-                  textDecoration: "none",
-                  background: "rgba(255,255,255,0.1)",
-                  borderRadius: 12,
-                  padding: "10px 18px",
-                }}
+                className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-white/10 rounded-xl px-[18px] py-2.5 no-underline"
               >
                 localaithai.com <ExternalLink size={14} />
               </motion.a>
@@ -1461,61 +924,28 @@ export default function Development() {
             viewport={{ once: true }}
             variants={fadeRight}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="apple-card"
-            style={{
-              background: "#fff",
-              borderRadius: 24,
-              padding: "36px 32px",
-              border: "1px solid rgba(0,0,0,0.06)",
-              boxShadow: "0 2px 20px rgba(0,0,0,0.03)",
-              position: "relative",
-              overflow: "hidden",
-            }}
+            className="bg-white rounded-3xl p-8 md:p-9 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)] relative overflow-hidden"
           >
             <div
-              style={{
-                position: "absolute",
-                top: 0,
-                right: 0,
-                width: 200,
-                height: 200,
-                background: "radial-gradient(circle, rgba(0,102,204,0.06) 0%, transparent 70%)",
-                pointerEvents: "none",
-              }}
+              className="absolute top-0 right-0 w-[200px] h-[200px] pointer-events-none"
+              style={{ background: "radial-gradient(circle, rgba(0,102,204,0.06) 0%, transparent 70%)" }}
             />
-            <div style={{ position: "relative" }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 24 }}>
-                <div
-                  style={{
-                    width: 48,
-                    height: 48,
-                    borderRadius: 14,
-                    background: "rgba(0,102,204,0.08)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                  }}
-                >
+            <div className="relative">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-12 h-12 rounded-[14px] bg-[rgba(0,102,204,0.08)] flex items-center justify-center">
                   <Cloud size={24} color="#06c" />
                 </div>
                 <div>
-                  <div style={{ fontSize: 22, fontWeight: 700, color: "#1d1d1f" }}>Cloud AI</div>
-                  <div style={{ fontSize: 13, color: "#86868b" }}>CloudAI Thailand</div>
+                  <div className="text-[22px] font-bold text-[#1d1d1f]">Cloud AI</div>
+                  <div className="text-[13px] text-[#86868b]">CloudAI Thailand</div>
                 </div>
               </div>
 
-              <p
-                style={{
-                  fontSize: 14,
-                  color: "#6e6e73",
-                  lineHeight: 1.7,
-                  marginBottom: 28,
-                }}
-              >
+              <p className="text-sm text-[#6e6e73] leading-[1.7] mb-7">
                 เข้าถึง frontier model ล่าสุด ไม่ต้องลงทุนฮาร์ดแวร์ Scale ได้ไม่จำกัดตามการเติบโตของธุรกิจ
               </p>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 32 }}>
+              <div className="flex flex-col gap-3.5 mb-8">
                 {[
                   { icon: Rocket, text: "เริ่มต้นเร็ว ไม่ต้องซื้อเซิร์ฟเวอร์" },
                   { icon: TrendingUp, text: "Scale ได้ตามการใช้งาน" },
@@ -1525,28 +955,8 @@ export default function Development() {
                 ].map((item, idx) => {
                   const ItemIcon = item.icon;
                   return (
-                    <div
-                      key={idx}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 12,
-                        fontSize: 14,
-                        color: "#1d1d1f",
-                      }}
-                    >
-                      <div
-                        style={{
-                          width: 28,
-                          height: 28,
-                          borderRadius: 8,
-                          background: "rgba(0,102,204,0.06)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          flexShrink: 0,
-                        }}
-                      >
+                    <div key={idx} className="flex items-center gap-3 text-sm text-[#1d1d1f]">
+                      <div className="w-7 h-7 rounded-lg bg-[rgba(0,102,204,0.06)] flex items-center justify-center shrink-0">
                         <ItemIcon size={14} color="#06c" />
                       </div>
                       {item.text}
@@ -1560,18 +970,7 @@ export default function Development() {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ x: 4 }}
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  fontSize: 14,
-                  fontWeight: 600,
-                  color: "#06c",
-                  textDecoration: "none",
-                  background: "rgba(0,102,204,0.06)",
-                  borderRadius: 12,
-                  padding: "10px 18px",
-                }}
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#06c] bg-[rgba(0,102,204,0.06)] rounded-xl px-[18px] py-2.5 no-underline"
               >
                 cloudaithai.com <ExternalLink size={14} />
               </motion.a>
@@ -1586,37 +985,19 @@ export default function Development() {
           viewport={{ once: true }}
           variants={fadeUp}
           transition={{ duration: 0.6, delay: 0.3 }}
-          style={{
-            textAlign: "center",
-            background: "#f5f5f7",
-            borderRadius: 20,
-            padding: "28px 32px",
-          }}
+          className="text-center bg-[#f5f5f7] rounded-[20px] px-8 py-7"
         >
-          <p style={{ fontSize: 17, color: "#1d1d1f", fontWeight: 600, margin: "0 0 4px" }}>
+          <p className="text-[17px] text-[#1d1d1f] font-semibold mb-1">
             ไม่แน่ใจ? ปรึกษาเราฟรี
           </p>
-          <p style={{ fontSize: 14, color: "#86868b", margin: "0 0 16px" }}>
+          <p className="text-sm text-[#86868b] mb-4">
             เราช่วยวิเคราะห์ว่าแบบไหนเหมาะกับองค์กรคุณ ไม่มีค่าใช้จ่าย
           </p>
           <motion.a
             href="#contact"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              background: "#06c",
-              color: "#fff",
-              fontSize: 14,
-              fontWeight: 600,
-              padding: "12px 28px",
-              borderRadius: 12,
-              textDecoration: "none",
-              border: "none",
-              cursor: "pointer",
-            }}
+            className="inline-flex items-center gap-2 bg-[#06c] text-white text-sm font-semibold px-7 py-3 rounded-xl no-underline cursor-pointer border-none"
           >
             นัดพูดคุย <ArrowRight size={16} />
           </motion.a>
@@ -1624,46 +1005,25 @@ export default function Development() {
       </div>
 
       {/* ──────────── SECTION 5: Case Studies ──────────── */}
-      <div
-        style={{
-          background: "#f5f5f7",
-          margin: "0 -24px",
-          padding: "120px 24px",
-        }}
-      >
-        <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+      <div className="bg-[#f5f5f7] -mx-4 md:-mx-6 px-4 md:px-6 py-20 md:py-[120px]">
+        <div className="max-w-[1080px] mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUp}
             transition={{ duration: 0.7 }}
-            style={{ textAlign: "center", marginBottom: 56 }}
+            className="text-center mb-14"
           >
-            <h3
-              style={{
-                fontSize: "clamp(28px, 4vw, 40px)",
-                fontWeight: 700,
-                color: "#1d1d1f",
-                marginBottom: 12,
-                letterSpacing: "-0.01em",
-              }}
-            >
+            <h3 className="text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-3 tracking-tight">
               ผลงาน
             </h3>
-            <p style={{ fontSize: 17, color: "#86868b", maxWidth: 480, margin: "0 auto", lineHeight: 1.6 }}>
+            <p className="text-[17px] text-[#86868b] max-w-[480px] mx-auto leading-relaxed">
               ตัวอย่างโปรเจกต์จริงที่เราส่งมอบให้ลูกค้า
             </p>
           </motion.div>
 
-          <div
-            className="cases-grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 24,
-            }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             {caseExamples.map((ex, i) => (
               <motion.div
                 key={ex.industry}
@@ -1672,88 +1032,47 @@ export default function Development() {
                 viewport={{ once: true }}
                 variants={fadeUp}
                 transition={{ duration: 0.6, delay: 0.1 + i * 0.1 }}
-                className="apple-card"
-                style={{
-                  background: "#fff",
-                  borderRadius: 24,
-                  padding: "32px 28px",
-                  border: "1px solid rgba(0,0,0,0.06)",
-                  boxShadow: "0 2px 20px rgba(0,0,0,0.03)",
-                  display: "flex",
-                  flexDirection: "column",
-                }}
+                className="bg-white rounded-3xl p-7 md:p-8 border border-black/[0.06] shadow-[0_2px_20px_rgba(0,0,0,0.03)] flex flex-col"
               >
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
+                <div className="flex items-center gap-2 mb-4">
                   <span
+                    className="text-[11px] font-bold px-2.5 py-1 rounded-lg tracking-wide"
                     style={{
-                      fontSize: 11,
-                      fontWeight: 700,
                       color: ex.color,
                       background: `${ex.color}0a`,
-                      padding: "4px 10px",
-                      borderRadius: 8,
-                      letterSpacing: "0.04em",
                     }}
                   >
                     {ex.tag}
                   </span>
-                  <span style={{ fontSize: 12, color: "#86868b" }}>{ex.industry}</span>
+                  <span className="text-xs text-[#86868b]">{ex.industry}</span>
                 </div>
 
-                <h4
-                  style={{
-                    fontSize: 19,
-                    fontWeight: 700,
-                    color: "#1d1d1f",
-                    marginBottom: 10,
-                    lineHeight: 1.3,
-                  }}
-                >
+                <h4 className="text-[19px] font-bold text-[#1d1d1f] mb-2.5 leading-tight">
                   {ex.project}
                 </h4>
 
-                <p
-                  style={{
-                    fontSize: 14,
-                    color: "#6e6e73",
-                    lineHeight: 1.6,
-                    marginBottom: 20,
-                    flex: 1,
-                  }}
-                >
+                <p className="text-sm text-[#6e6e73] leading-relaxed mb-5 flex-1">
                   {ex.description}
                 </p>
 
                 {/* Result highlight */}
                 <div
+                  className="flex items-center gap-2.5 px-4 py-3 rounded-xl mb-4"
                   style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 10,
-                    padding: "12px 16px",
                     background: `${ex.color}08`,
-                    borderRadius: 12,
                     border: `1px solid ${ex.color}15`,
-                    marginBottom: 16,
                   }}
                 >
                   <TrendingUp size={16} color={ex.color} />
-                  <span style={{ fontSize: 14, fontWeight: 700, color: ex.color }}>{ex.result}</span>
+                  <span className="text-sm font-bold" style={{ color: ex.color }}>{ex.result}</span>
                 </div>
 
                 {/* Tech tags */}
-                <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
+                <div className="flex gap-1.5 flex-wrap">
                   {ex.tech.map((t) => (
                     <span
                       key={t}
-                      style={{
-                        fontSize: 11,
-                        color: "#6e6e73",
-                        background: "#f5f5f7",
-                        padding: "3px 10px",
-                        borderRadius: 8,
-                        fontWeight: 500,
-                      }}
+                      className="text-[11px] text-[#6e6e73] bg-[#f5f5f7] px-2.5 py-[3px] rounded-lg font-medium"
                     >
                       {t}
                     </span>
@@ -1766,58 +1085,28 @@ export default function Development() {
       </div>
 
       {/* ──────────── SECTION 6: CTA ──────────── */}
-      <div style={{ maxWidth: 1080, margin: "0 auto", padding: "120px 0" }}>
+      <div className="max-w-[1080px] mx-auto py-20 md:py-[120px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
           transition={{ duration: 0.8 }}
-          style={{ textAlign: "center" }}
+          className="text-center"
         >
-          <h3
-            style={{
-              fontSize: "clamp(32px, 5vw, 48px)",
-              fontWeight: 700,
-              color: "#1d1d1f",
-              marginBottom: 16,
-              lineHeight: 1.15,
-              letterSpacing: "-0.02em",
-            }}
-          >
+          <h3 className="text-[32px] md:text-4xl lg:text-5xl font-bold text-[#1d1d1f] mb-4 leading-[1.15] tracking-tight">
             เริ่มโปรเจกต์ AI ของคุณ
           </h3>
-          <p
-            style={{
-              fontSize: 18,
-              color: "#6e6e73",
-              maxWidth: 520,
-              margin: "0 auto 36px",
-              lineHeight: 1.6,
-            }}
-          >
+          <p className="text-lg text-[#6e6e73] max-w-[520px] mx-auto mb-9 leading-relaxed">
             ทุกโปรเจกต์เริ่มจากการพูดคุย บอกเราว่าคุณต้องการอะไร
             แล้วเราจะออกแบบ solution ที่พอดีกับคุณ
           </p>
-          <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+          <div className="flex gap-4 justify-center flex-wrap">
             <motion.a
               href="#contact"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
-                background: "#06c",
-                color: "#fff",
-                fontSize: 16,
-                fontWeight: 600,
-                padding: "16px 36px",
-                borderRadius: 14,
-                textDecoration: "none",
-                cursor: "pointer",
-                border: "none",
-              }}
+              className="inline-flex items-center gap-2.5 bg-[#06c] text-white text-base font-semibold px-9 py-4 rounded-[14px] no-underline cursor-pointer border-none"
             >
               ปรึกษาฟรี <ArrowRight size={18} />
             </motion.a>
@@ -1825,93 +1114,13 @@ export default function Development() {
               href="#services"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 10,
-                background: "rgba(0,0,0,0.04)",
-                color: "#1d1d1f",
-                fontSize: 16,
-                fontWeight: 600,
-                padding: "16px 36px",
-                borderRadius: 14,
-                textDecoration: "none",
-                cursor: "pointer",
-                border: "none",
-              }}
+              className="inline-flex items-center gap-2.5 bg-black/[0.04] text-[#1d1d1f] text-base font-semibold px-9 py-4 rounded-[14px] no-underline cursor-pointer border-none"
             >
               ดูบริการทั้งหมด <ChevronRight size={18} />
             </motion.a>
           </div>
         </motion.div>
       </div>
-
-      {/* ──────────── Responsive Styles ──────────── */}
-      <style jsx>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.4; }
-        }
-        @media (max-width: 900px) {
-          .bento-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-          .bento-chatbot,
-          .bento-enterprise {
-            grid-column: span 2 !important;
-          }
-          .bento-rag,
-          .bento-workflow,
-          .bento-analytics,
-          .bento-integration {
-            grid-column: span 1 !important;
-          }
-        }
-        @media (max-width: 639px) {
-          .bento-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .bento-chatbot,
-          .bento-enterprise,
-          .bento-rag,
-          .bento-workflow,
-          .bento-analytics,
-          .bento-integration {
-            grid-column: span 1 !important;
-          }
-          .process-step {
-            grid-template-columns: 1fr !important;
-            gap: 16px !important;
-          }
-          .process-text-left,
-          .process-text-right {
-            order: 1 !important;
-          }
-          .process-mockup-left,
-          .process-mockup-right {
-            order: 2 !important;
-          }
-          .deployment-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .cases-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .terminal-mockup {
-            overflow-x: auto !important;
-            -webkit-overflow-scrolling: touch;
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
-          .terminal-mockup::-webkit-scrollbar {
-            display: none;
-          }
-          .terminal-mockup pre,
-          .terminal-mockup code {
-            font-size: 10px !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

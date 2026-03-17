@@ -34,17 +34,15 @@ import {
   Rocket,
 } from "lucide-react";
 
-/* ─────────────────────────────────────────────
-   TYPES
-───────────────────────────────────────────── */
+/* --------- TYPES --------- */
 
 interface CaseStudy {
   id: string;
   service: string;
   serviceColor: string;
   serviceBg: string;
-  serviceIcon: React.ComponentType<{ size: number; style?: React.CSSProperties }>;
-  industryIcon: React.ComponentType<{ size: number; style?: React.CSSProperties }>;
+  serviceIcon: React.ComponentType<{ size: number; style?: React.CSSProperties; className?: string }>;
+  industryIcon: React.ComponentType<{ size: number; style?: React.CSSProperties; className?: string }>;
   title: string;
   client: string;
   problem: {
@@ -71,9 +69,7 @@ interface CaseStudy {
   gradient: string;
 }
 
-/* ─────────────────────────────────────────────
-   DATA
-───────────────────────────────────────────── */
+/* --------- DATA --------- */
 
 const caseStudies: CaseStudy[] = [
   {
@@ -274,9 +270,7 @@ const caseStudies: CaseStudy[] = [
   },
 ];
 
-/* ─────────────────────────────────────────────
-   CASE STUDY CARD
-───────────────────────────────────────────── */
+/* --------- CASE STUDY CARD --------- */
 
 function CaseStudyCard({
   study,
@@ -287,7 +281,6 @@ function CaseStudyCard({
 }) {
   const ServiceIcon = study.serviceIcon;
   const IndustryIcon = study.industryIcon;
-  const isEven = index % 2 === 0;
 
   return (
     <motion.article
@@ -295,122 +288,49 @@ function CaseStudyCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.7, delay: 0.1 }}
-      className="apple-card"
-      style={{
-        background: "#fff",
-        borderRadius: 28,
-        overflow: "hidden",
-        border: "1px solid rgba(0,0,0,0.06)",
-        boxShadow: "0 4px 24px rgba(0,0,0,0.04)",
-        marginBottom: 40,
-      }}
+      className="apple-card bg-white rounded-[28px] overflow-hidden border border-black/[0.06] shadow-[0_4px_24px_rgba(0,0,0,0.04)]"
     >
-      {/* ── Header / Visual ── */}
+      {/* Header / Visual */}
       <div
-        className="case-header"
-        style={{
-          background: study.gradient,
-          padding: "48px 40px 40px",
-          position: "relative",
-          overflow: "hidden",
-        }}
+        className="p-6 md:p-8 lg:p-10 pt-8 md:pt-12 relative overflow-hidden"
+        style={{ background: study.gradient }}
       >
         {/* Decorative elements */}
         <div
+          className="absolute -top-10 -right-10 w-[180px] h-[180px] rounded-full blur-[30px]"
           style={{
-            position: "absolute",
-            top: -40,
-            right: -40,
-            width: 180,
-            height: 180,
-            borderRadius: "50%",
             background: `radial-gradient(circle, ${study.accentColor}18, transparent)`,
-            filter: "blur(30px)",
           }}
         />
 
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            gap: 16,
-            marginBottom: 24,
-            position: "relative",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <div className="flex items-center justify-between flex-wrap gap-4 mb-6 relative">
+          <div className="flex items-center gap-3">
             <span
+              className="inline-flex items-center gap-1.5 text-[12px] font-bold px-3.5 py-1.5 rounded-[20px] tracking-[0.04em] backdrop-blur-md"
               style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-                fontSize: 12,
-                fontWeight: 700,
                 color: study.serviceColor,
                 background: "rgba(255,255,255,0.7)",
-                backdropFilter: "blur(8px)",
-                padding: "6px 14px",
-                borderRadius: 20,
-                letterSpacing: "0.04em",
               }}
             >
               <ServiceIcon size={14} />
               {study.service}
             </span>
-            <span
-              style={{
-                fontSize: 12,
-                fontWeight: 600,
-                color: "#6e6e73",
-                background: "rgba(255,255,255,0.5)",
-                padding: "6px 14px",
-                borderRadius: 20,
-              }}
-            >
+            <span className="text-[12px] font-semibold text-[#6e6e73] bg-white/50 px-3.5 py-1.5 rounded-[20px]">
               {study.client}
             </span>
           </div>
-          <div
-            style={{
-              width: 48,
-              height: 48,
-              borderRadius: 14,
-              background: "rgba(255,255,255,0.6)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          <div className="w-12 h-12 rounded-[14px] bg-white/60 flex items-center justify-center">
             <IndustryIcon size={24} style={{ color: study.accentColor }} />
           </div>
         </div>
 
-        <h3
-          style={{
-            fontSize: "clamp(24px, 3.5vw, 36px)",
-            fontWeight: 700,
-            color: "#1d1d1f",
-            lineHeight: 1.2,
-            position: "relative",
-            maxWidth: 600,
-          }}
-        >
+        <h3 className="text-[24px] md:text-[30px] lg:text-[36px] font-bold text-[#1d1d1f] leading-[1.2] relative max-w-[600px]">
           {study.title}
         </h3>
       </div>
 
-      {/* ── Problem → Solution → Result ── */}
-      <div
-        style={{
-          padding: "40px 40px 20px",
-          display: "grid",
-          gridTemplateColumns: "repeat(3, 1fr)",
-          gap: 32,
-        }}
-        className="case-flow-grid"
-      >
+      {/* Problem - Solution - Result */}
+      <div className="p-4 md:p-6 lg:px-10 lg:pt-10 lg:pb-5 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
         {/* Problem */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -418,45 +338,15 @@ function CaseStudyCard({
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-              marginBottom: 16,
-            }}
-          >
-            <div
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 10,
-                background: "rgba(220,38,38,0.08)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <BarChart3 size={18} style={{ color: "#dc2626" }} />
+          <div className="flex items-center gap-2.5 mb-4">
+            <div className="w-9 h-9 rounded-[10px] bg-[rgba(220,38,38,0.08)] flex items-center justify-center">
+              <BarChart3 size={18} className="text-[#dc2626]" />
             </div>
-            <span
-              style={{
-                fontSize: 14,
-                fontWeight: 700,
-                color: "#dc2626",
-                letterSpacing: "0.02em",
-              }}
-            >
+            <span className="text-[14px] font-bold text-[#dc2626] tracking-[0.02em]">
               {study.problem.title}
             </span>
           </div>
-          <p
-            style={{
-              fontSize: 15,
-              color: "#6e6e73",
-              lineHeight: 1.7,
-            }}
-          >
+          <p className="text-[14px] md:text-[15px] text-[#6e6e73] leading-[1.7]">
             {study.problem.description}
           </p>
         </motion.div>
@@ -468,69 +358,33 @@ function CaseStudyCard({
           viewport={{ once: true }}
           transition={{ delay: 0.35 }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-              marginBottom: 16,
-            }}
-          >
+          <div className="flex items-center gap-2.5 mb-4">
             <div
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 10,
-                background: `${study.accentColor}12`,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
+              className="w-9 h-9 rounded-[10px] flex items-center justify-center"
+              style={{ background: `${study.accentColor}12` }}
             >
               <Zap size={18} style={{ color: study.accentColor }} />
             </div>
             <span
-              style={{
-                fontSize: 14,
-                fontWeight: 700,
-                color: study.accentColor,
-                letterSpacing: "0.02em",
-              }}
+              className="text-[14px] font-bold tracking-[0.02em]"
+              style={{ color: study.accentColor }}
             >
               {study.solution.title}
             </span>
           </div>
-          <p
-            style={{
-              fontSize: 15,
-              color: "#6e6e73",
-              lineHeight: 1.7,
-              marginBottom: 14,
-            }}
-          >
+          <p className="text-[14px] md:text-[15px] text-[#6e6e73] leading-[1.7] mb-3.5">
             {study.solution.description}
           </p>
-          <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+          <ul className="list-none p-0 m-0">
             {study.solution.steps.map((step, i) => (
               <li
                 key={i}
-                style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: 8,
-                  fontSize: 13,
-                  color: "#1d1d1f",
-                  lineHeight: 1.55,
-                  marginBottom: 8,
-                }}
+                className="flex items-start gap-2 text-[13px] text-[#1d1d1f] leading-[1.55] mb-2"
               >
                 <CheckCircle
                   size={14}
-                  style={{
-                    color: study.accentColor,
-                    flexShrink: 0,
-                    marginTop: 3,
-                  }}
+                  className="shrink-0 mt-[3px]"
+                  style={{ color: study.accentColor }}
                 />
                 <span>{step}</span>
               </li>
@@ -545,68 +399,24 @@ function CaseStudyCard({
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-              marginBottom: 16,
-            }}
-          >
-            <div
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 10,
-                background: "rgba(5,150,105,0.08)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <TrendingUp size={18} style={{ color: "#059669" }} />
+          <div className="flex items-center gap-2.5 mb-4">
+            <div className="w-9 h-9 rounded-[10px] bg-[rgba(5,150,105,0.08)] flex items-center justify-center">
+              <TrendingUp size={18} className="text-[#059669]" />
             </div>
-            <span
-              style={{
-                fontSize: 14,
-                fontWeight: 700,
-                color: "#059669",
-                letterSpacing: "0.02em",
-              }}
-            >
+            <span className="text-[14px] font-bold text-[#059669] tracking-[0.02em]">
               {study.results.title}
             </span>
           </div>
-          <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <div className="flex flex-col gap-3">
             {study.results.metrics.map((metric, i) => (
               <div
                 key={i}
-                style={{
-                  background: "#f5f5f7",
-                  borderRadius: 14,
-                  padding: "14px 18px",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 14,
-                }}
+                className="bg-[#f5f5f7] rounded-[14px] p-3.5 md:p-4 flex items-center gap-3.5"
               >
-                <span
-                  style={{
-                    fontSize: 24,
-                    fontWeight: 700,
-                    color: "#1d1d1f",
-                    minWidth: 60,
-                  }}
-                >
+                <span className="text-[22px] md:text-[24px] font-bold text-[#1d1d1f] min-w-[60px]">
                   {metric.value}
                 </span>
-                <span
-                  style={{
-                    fontSize: 13,
-                    color: "#6e6e73",
-                    lineHeight: 1.4,
-                  }}
-                >
+                <span className="text-[13px] text-[#6e6e73] leading-[1.4]">
                   {metric.label}
                 </span>
               </div>
@@ -615,188 +425,87 @@ function CaseStudyCard({
         </motion.div>
       </div>
 
-      {/* ── Tech Stack ── */}
+      {/* Tech Stack */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.6 }}
-        className="case-tech-stack"
-        style={{
-          padding: "20px 40px",
-          display: "flex",
-          alignItems: "center",
-          gap: 10,
-          flexWrap: "wrap",
-        }}
+        className="px-4 md:px-6 lg:px-10 py-4 md:py-5 flex flex-wrap gap-2 items-center"
       >
-        <span
-          style={{
-            fontSize: 12,
-            fontWeight: 600,
-            color: "#86868b",
-            marginRight: 4,
-          }}
-        >
+        <span className="text-[12px] font-semibold text-[#86868b] mr-1">
           Tech Stack:
         </span>
         {study.techStack.map((tech) => (
           <span
             key={tech}
-            style={{
-              fontSize: 11,
-              fontWeight: 600,
-              color: "#6e6e73",
-              background: "#f5f5f7",
-              padding: "5px 12px",
-              borderRadius: 8,
-              border: "1px solid rgba(0,0,0,0.04)",
-            }}
+            className="text-[11px] font-semibold text-[#6e6e73] bg-[#f5f5f7] px-3 py-1 rounded-lg border border-black/[0.04]"
           >
             {tech}
           </span>
         ))}
       </motion.div>
 
-      {/* ── ROI Highlight ── */}
+      {/* ROI Highlight */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.65 }}
-        className="case-roi"
+        className="mx-4 md:mx-6 lg:mx-10 rounded-2xl p-4 md:p-5 flex items-center gap-3.5"
         style={{
-          margin: "0 40px",
           background: `linear-gradient(135deg, ${study.accentColor}08, ${study.accentColor}04)`,
-          borderRadius: 16,
-          padding: "18px 24px",
-          display: "flex",
-          alignItems: "center",
-          gap: 14,
           border: `1px solid ${study.accentColor}15`,
         }}
       >
         <div
-          style={{
-            width: 40,
-            height: 40,
-            borderRadius: 12,
-            background: `${study.accentColor}12`,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexShrink: 0,
-          }}
+          className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0"
+          style={{ background: `${study.accentColor}12` }}
         >
           <DollarSign size={20} style={{ color: study.accentColor }} />
         </div>
         <div>
-          <span
-            style={{
-              fontSize: 11,
-              fontWeight: 600,
-              color: "#86868b",
-              display: "block",
-              marginBottom: 2,
-              letterSpacing: "0.04em",
-              textTransform: "uppercase",
-            }}
-          >
+          <span className="text-[11px] font-semibold text-[#86868b] block mb-0.5 tracking-[0.04em] uppercase">
             ROI Highlight
           </span>
-          <span
-            style={{
-              fontSize: 16,
-              fontWeight: 700,
-              color: "#1d1d1f",
-            }}
-          >
+          <span className="text-[15px] md:text-[16px] font-bold text-[#1d1d1f]">
             {study.roiHighlight}
           </span>
         </div>
       </motion.div>
 
-      {/* ── Testimonial ── */}
+      {/* Testimonial */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.75 }}
-        className="case-testimonial"
-        style={{
-          padding: "28px 40px 36px",
-        }}
+        className="p-4 md:p-6 lg:px-10 lg:py-8"
       >
-        <div
-          style={{
-            background: "#fafafa",
-            borderRadius: 20,
-            padding: "28px 32px",
-            position: "relative",
-          }}
-        >
+        <div className="bg-[#fafafa] rounded-[20px] p-5 md:p-7 relative">
           <Quote
             size={24}
-            style={{
-              color: study.accentColor,
-              opacity: 0.3,
-              position: "absolute",
-              top: 20,
-              left: 24,
-            }}
+            className="absolute top-5 left-5 md:left-6 opacity-30"
+            style={{ color: study.accentColor }}
           />
-          <p
-            style={{
-              fontSize: 15,
-              color: "#1d1d1f",
-              lineHeight: 1.75,
-              fontStyle: "italic",
-              marginBottom: 16,
-              paddingLeft: 8,
-            }}
-          >
+          <p className="text-[14px] md:text-[15px] text-[#1d1d1f] leading-[1.75] italic mb-4 pl-2">
             &ldquo;{study.testimonial.quote}&rdquo;
           </p>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-              paddingLeft: 8,
-            }}
-          >
+          <div className="flex items-center gap-3 pl-2">
             <div
+              className="w-9 h-9 rounded-full flex items-center justify-center text-[14px] font-bold"
               style={{
-                width: 36,
-                height: 36,
-                borderRadius: "50%",
                 background: `${study.accentColor}15`,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 14,
-                fontWeight: 700,
                 color: study.accentColor,
               }}
             >
               {study.testimonial.author.charAt(0)}
             </div>
             <div>
-              <div
-                style={{
-                  fontSize: 14,
-                  fontWeight: 600,
-                  color: "#1d1d1f",
-                }}
-              >
+              <div className="text-[14px] font-semibold text-[#1d1d1f]">
                 {study.testimonial.author}
               </div>
-              <div
-                style={{
-                  fontSize: 12,
-                  color: "#86868b",
-                }}
-              >
+              <div className="text-[12px] text-[#86868b]">
                 {study.testimonial.role}
               </div>
             </div>
@@ -807,9 +516,7 @@ function CaseStudyCard({
   );
 }
 
-/* ─────────────────────────────────────────────
-   STATS BAR
-───────────────────────────────────────────── */
+/* --------- STATS BAR --------- */
 
 function StatsBar() {
   const stats = [
@@ -845,13 +552,7 @@ function StatsBar() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(4, 1fr)",
-        gap: 20,
-        marginBottom: 80,
-      }}
-      className="stats-bar-grid"
+      className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 mb-16 md:mb-20"
     >
       {stats.map((stat, i) => {
         const StatIcon = stat.icon;
@@ -862,37 +563,17 @@ function StatsBar() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15 + i * 0.1 }}
-            className="apple-card"
-            style={{
-              background: "#fff",
-              borderRadius: 20,
-              padding: "32px 24px",
-              textAlign: "center",
-              border: "1px solid rgba(0,0,0,0.06)",
-              boxShadow: "0 2px 12px rgba(0,0,0,0.03)",
-            }}
+            className="apple-card bg-white rounded-[20px] p-4 md:p-6 lg:p-8 text-center border border-black/[0.06] shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
           >
             <StatIcon
               size={24}
-              style={{ color: stat.color, marginBottom: 12 }}
+              className="mb-3"
+              style={{ color: stat.color }}
             />
-            <div
-              style={{
-                fontSize: 36,
-                fontWeight: 700,
-                color: "#1d1d1f",
-                lineHeight: 1.1,
-              }}
-            >
+            <div className="text-[28px] md:text-[36px] font-bold text-[#1d1d1f] leading-[1.1]">
               {stat.value}
             </div>
-            <div
-              style={{
-                fontSize: 14,
-                color: "#86868b",
-                marginTop: 6,
-              }}
-            >
+            <div className="text-[13px] md:text-[14px] text-[#86868b] mt-1.5">
               {stat.label}
             </div>
           </motion.div>
@@ -902,9 +583,7 @@ function StatsBar() {
   );
 }
 
-/* ─────────────────────────────────────────────
-   CTA SECTION
-───────────────────────────────────────────── */
+/* --------- CTA SECTION --------- */
 
 function CTASection() {
   return (
@@ -913,115 +592,39 @@ function CTASection() {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.7 }}
+      className="rounded-[28px] p-6 md:p-10 lg:p-16 text-center relative overflow-hidden"
       style={{
         background: "linear-gradient(145deg, #1d1d1f, #2d2d2f)",
-        borderRadius: 28,
-        padding: "clamp(32px, 6vw, 64px) clamp(20px, 5vw, 48px)",
-        textAlign: "center",
-        position: "relative",
-        overflow: "hidden",
       }}
     >
       {/* Gradient orbs */}
-      <div
-        style={{
-          position: "absolute",
-          top: -80,
-          left: -80,
-          width: 240,
-          height: 240,
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(139,92,246,0.25), transparent)",
-          filter: "blur(50px)",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          bottom: -80,
-          right: -80,
-          width: 240,
-          height: 240,
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(0,102,204,0.25), transparent)",
-          filter: "blur(50px)",
-        }}
-      />
+      <div className="absolute -top-20 -left-20 w-60 h-60 rounded-full blur-[50px] bg-[radial-gradient(circle,rgba(139,92,246,0.25),transparent)]" />
+      <div className="absolute -bottom-20 -right-20 w-60 h-60 rounded-full blur-[50px] bg-[radial-gradient(circle,rgba(0,102,204,0.25),transparent)]" />
 
       <motion.div
         initial={{ scale: 0.9 }}
         whileInView={{ scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.2 }}
-        style={{
-          width: 64,
-          height: 64,
-          borderRadius: 18,
-          background: "rgba(0,102,204,0.15)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          margin: "0 auto 24px",
-        }}
+        className="w-16 h-16 rounded-[18px] bg-[rgba(0,102,204,0.15)] flex items-center justify-center mx-auto mb-6"
       >
-        <MessageSquare size={28} style={{ color: "#06c" }} />
+        <MessageSquare size={28} className="text-[#06c]" />
       </motion.div>
 
-      <h3
-        style={{
-          fontSize: "clamp(24px, 3vw, 36px)",
-          fontWeight: 700,
-          color: "#fff",
-          lineHeight: 1.25,
-          marginBottom: 12,
-          position: "relative",
-        }}
-      >
+      <h3 className="text-[24px] md:text-[30px] lg:text-[36px] font-bold text-white leading-[1.25] mb-3 relative">
         อยากได้ผลลัพธ์แบบนี้บ้าง?
       </h3>
-      <p
-        style={{
-          fontSize: 16,
-          color: "rgba(255,255,255,0.6)",
-          maxWidth: 500,
-          margin: "0 auto 36px",
-          lineHeight: 1.65,
-          position: "relative",
-        }}
-      >
+      <p className="text-[14px] md:text-[16px] text-white/60 max-w-[500px] mx-auto mb-8 md:mb-9 leading-[1.65] relative">
         ปรึกษาเราได้ฟรี เราจะช่วยวิเคราะห์ว่า AI ช่วยธุรกิจของคุณได้อย่างไร
         พร้อมเสนอ solution ที่เหมาะสมที่สุด
       </p>
 
-      <div
-        style={{
-          display: "flex",
-          gap: 16,
-          justifyContent: "center",
-          flexWrap: "wrap",
-          position: "relative",
-        }}
-      >
+      <div className="flex gap-4 justify-center flex-wrap relative">
         <motion.a
           href="/contact"
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
-            padding: "16px 32px",
-            borderRadius: 14,
-            background: "#06c",
-            color: "#fff",
-            fontSize: 16,
-            fontWeight: 600,
-            textDecoration: "none",
-            cursor: "pointer",
-            border: "none",
-          }}
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-[14px] bg-[#06c] text-white text-[15px] md:text-[16px] font-semibold no-underline cursor-pointer border-none"
         >
           ปรึกษาฟรี <ArrowRight size={16} />
         </motion.a>
@@ -1029,20 +632,7 @@ function CTASection() {
           href="/pricing"
           whileHover={{ scale: 1.04 }}
           whileTap={{ scale: 0.97 }}
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 8,
-            padding: "16px 32px",
-            borderRadius: 14,
-            background: "rgba(255,255,255,0.1)",
-            color: "#fff",
-            fontSize: 16,
-            fontWeight: 600,
-            textDecoration: "none",
-            cursor: "pointer",
-            border: "1px solid rgba(255,255,255,0.15)",
-          }}
+          className="inline-flex items-center gap-2 px-8 py-4 rounded-[14px] bg-white/10 text-white text-[15px] md:text-[16px] font-semibold no-underline cursor-pointer border border-white/15"
         >
           ดูราคา
         </motion.a>
@@ -1051,130 +641,54 @@ function CTASection() {
   );
 }
 
-/* ─────────────────────────────────────────────
-   MAIN COMPONENT
-───────────────────────────────────────────── */
+/* --------- MAIN COMPONENT --------- */
 
 export default function CaseStudiesSection() {
   return (
     <section>
-      {/* ============================================================ */}
-      {/*  Hero                                                         */}
-      {/* ============================================================ */}
-      <div
-        style={{
-          background: "#fff",
-          padding: "160px 24px 80px",
-          textAlign: "center",
-        }}
-      >
-        <div style={{ maxWidth: 800, margin: "0 auto" }}>
+      {/* Hero */}
+      <div className="bg-white px-4 md:px-6 pt-28 md:pt-40 pb-16 md:pb-20 text-center">
+        <div className="max-w-[800px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <div
-              style={{
-                fontSize: 14,
-                fontWeight: 600,
-                color: "#06c",
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                marginBottom: 16,
-              }}
-            >
+            <div className="text-[13px] md:text-[14px] font-semibold text-[#06c] tracking-[0.08em] uppercase mb-4">
               Case Studies
             </div>
-            <h1
-              style={{
-                fontSize: "clamp(40px, 6vw, 64px)",
-                fontWeight: 700,
-                color: "#1d1d1f",
-                lineHeight: 1.1,
-                marginBottom: 16,
-              }}
-            >
+            <h1 className="text-[40px] md:text-[52px] lg:text-[64px] font-bold text-[#1d1d1f] leading-[1.1] mb-4">
               ผลงาน
             </h1>
-            <p
-              style={{
-                fontSize: "clamp(18px, 2.5vw, 24px)",
-                color: "#6e6e73",
-                lineHeight: 1.5,
-                maxWidth: 600,
-                margin: "0 auto",
-              }}
-            >
+            <p className="text-[18px] md:text-[21px] lg:text-[24px] text-[#6e6e73] leading-[1.5] max-w-[600px] mx-auto">
               ตัวอย่างจากธุรกิจจริงที่เราช่วย
             </p>
           </motion.div>
         </div>
       </div>
 
-      {/* ============================================================ */}
-      {/*  Stats Bar                                                    */}
-      {/* ============================================================ */}
-      <div style={{ background: "#f5f5f7", padding: "60px 24px 0" }}>
-        <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+      {/* Stats Bar */}
+      <div className="bg-[#f5f5f7] px-4 md:px-6 pt-12 md:pt-16">
+        <div className="max-w-[1080px] mx-auto">
           <StatsBar />
         </div>
       </div>
 
-      {/* ============================================================ */}
-      {/*  Case Studies                                                 */}
-      {/* ============================================================ */}
-      <div style={{ background: "#f5f5f7", padding: "0 24px 60px" }}>
-        <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+      {/* Case Studies */}
+      <div className="bg-[#f5f5f7] px-4 md:px-6 pb-12 md:pb-16">
+        <div className="max-w-[1080px] mx-auto space-y-8">
           {caseStudies.map((study, i) => (
             <CaseStudyCard key={study.id} study={study} index={i} />
           ))}
         </div>
       </div>
 
-      {/* ============================================================ */}
-      {/*  CTA                                                          */}
-      {/* ============================================================ */}
-      <div style={{ background: "#fff", padding: "80px 24px 120px" }}>
-        <div style={{ maxWidth: 800, margin: "0 auto" }}>
+      {/* CTA */}
+      <div className="bg-white px-4 md:px-6 py-16 md:py-20 lg:py-[120px]">
+        <div className="max-w-[800px] mx-auto">
           <CTASection />
         </div>
       </div>
-
-      {/* ============================================================ */}
-      {/*  Responsive Styles                                            */}
-      {/* ============================================================ */}
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .case-flow-grid {
-            grid-template-columns: 1fr !important;
-            padding-left: 20px !important;
-            padding-right: 20px !important;
-          }
-          .case-header {
-            padding: 28px 20px 24px !important;
-          }
-          .case-tech-stack {
-            padding-left: 20px !important;
-            padding-right: 20px !important;
-          }
-          .case-roi {
-            margin-left: 20px !important;
-            margin-right: 20px !important;
-          }
-          .case-testimonial {
-            padding: 20px 20px 28px !important;
-          }
-          .stats-bar-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-        @media (max-width: 480px) {
-          .stats-bar-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

@@ -62,124 +62,52 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      style={{
-        background: "white",
-        padding: "clamp(60px, 10vw, 120px) 16px",
-      }}
+      className="bg-white py-16 md:py-24 lg:py-[120px] px-4"
     >
-      <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+      <div className="max-w-[1080px] mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          style={{ textAlign: "center", marginBottom: 64 }}
+          className="text-center mb-12 md:mb-16"
         >
-          <div
-            style={{
-              fontSize: 14,
-              fontWeight: 600,
-              color: "#06c",
-              letterSpacing: "0.08em",
-              textTransform: "uppercase",
-              marginBottom: 12,
-            }}
-          >
+          <div className="text-[13px] md:text-[14px] font-semibold text-[#06c] tracking-[0.08em] uppercase mb-3">
             Contact Us
           </div>
-          <h2
-            style={{
-              fontSize: "clamp(32px, 5vw, 48px)",
-              fontWeight: 700,
-              color: "#1d1d1f",
-              lineHeight: 1.15,
-              marginBottom: 16,
-            }}
-          >
+          <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-[#1d1d1f] leading-[1.15] mb-4">
             พร้อมเริ่มต้นกับ AI?
           </h2>
-          <p
-            style={{
-              fontSize: 18,
-              color: "#86868b",
-              maxWidth: 520,
-              margin: "0 auto",
-              lineHeight: 1.6,
-            }}
-          >
+          <p className="text-[16px] md:text-[18px] text-[#86868b] max-w-[520px] mx-auto leading-relaxed">
             ติดต่อเราวันนี้ รับคำปรึกษาเบื้องต้นฟรี
             เราพร้อมช่วยคุณวางแผน AI ที่เหมาะกับธุรกิจ
           </p>
         </motion.div>
 
         {/* Main Grid: Form + Info */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.2fr 0.8fr",
-            gap: 48,
-            alignItems: "flex-start",
-          }}
-          className="contact-grid"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
           {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="apple-card"
-            style={{
-              background: "#fff",
-              borderRadius: 28,
-              padding: "clamp(20px, 4vw, 40px)",
-              border: "1px solid rgba(0,0,0,0.06)",
-            }}
+            className="apple-card bg-white rounded-[28px] p-4 md:p-6 lg:p-8 border border-black/[0.06]"
           >
             {submitted ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                style={{
-                  textAlign: "center",
-                  padding: "40px 20px",
-                }}
+                className="text-center py-10 px-5"
               >
-                <div
-                  style={{
-                    width: 64,
-                    height: 64,
-                    borderRadius: 20,
-                    background: "rgba(5, 150, 105, 0.1)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    margin: "0 auto 20px",
-                  }}
-                >
-                  <CheckCircle
-                    size={32}
-                    style={{ color: "#059669" }}
-                  />
+                <div className="w-16 h-16 rounded-[20px] bg-[rgba(5,150,105,0.1)] flex items-center justify-center mx-auto mb-5">
+                  <CheckCircle size={32} className="text-[#059669]" />
                 </div>
-                <h3
-                  style={{
-                    fontSize: 24,
-                    fontWeight: 700,
-                    color: "#1d1d1f",
-                    marginBottom: 8,
-                  }}
-                >
+                <h3 className="text-[22px] md:text-[24px] font-bold text-[#1d1d1f] mb-2">
                   ส่งข้อความสำเร็จ!
                 </h3>
-                <p
-                  style={{
-                    fontSize: 16,
-                    color: "#6e6e73",
-                    lineHeight: 1.6,
-                  }}
-                >
+                <p className="text-[15px] md:text-[16px] text-[#6e6e73] leading-relaxed">
                   ขอบคุณที่สนใจบริการของเรา
                   ทีมงานจะติดต่อกลับภายใน 24 ชั่วโมง
                 </p>
@@ -189,48 +117,20 @@ export default function Contact() {
                 action="https://formspree.io/f/mzzeydvp"
                 method="POST"
                 onSubmit={() => setSubmitted(true)}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 20,
-                }}
+                className="flex flex-col gap-5"
               >
-                <div
-                  style={{
-                    fontSize: 13,
-                    fontWeight: 700,
-                    color: "#06c",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    marginBottom: 4,
-                  }}
-                >
+                <div className="text-[13px] font-bold text-[#06c] tracking-[0.06em] uppercase mb-1">
                   ส่งข้อความถึงเรา
                 </div>
 
                 {/* Name + Company Row */}
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: 16,
-                  }}
-                  className="form-row"
-                >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label
                       htmlFor="name"
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 6,
-                        fontSize: 13,
-                        fontWeight: 600,
-                        color: "#1d1d1f",
-                        marginBottom: 8,
-                      }}
+                      className="flex items-center gap-1.5 text-[13px] font-semibold text-[#1d1d1f] mb-2"
                     >
-                      <User size={14} style={{ color: "#86868b" }} />
+                      <User size={14} className="text-[#86868b]" />
                       ชื่อ-นามสกุล
                     </label>
                     <input
@@ -239,37 +139,15 @@ export default function Contact() {
                       type="text"
                       required
                       placeholder="ชื่อของคุณ"
-                      style={{
-                        width: "100%",
-                        padding: "14px 16px",
-                        fontSize: 16,
-                        color: "#1d1d1f",
-                        background: "white",
-                        border: "1px solid rgba(0,0,0,0.08)",
-                        borderRadius: 14,
-                        outline: "none",
-                        transition: "border-color 0.2s",
-                        boxSizing: "border-box",
-                      }}
+                      className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none transition-colors focus:border-[#06c] focus:shadow-[0_0_0_3px_rgba(232,89,12,0.1)] placeholder:text-[#c7c7cc] box-border"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="company"
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 6,
-                        fontSize: 13,
-                        fontWeight: 600,
-                        color: "#1d1d1f",
-                        marginBottom: 8,
-                      }}
+                      className="flex items-center gap-1.5 text-[13px] font-semibold text-[#1d1d1f] mb-2"
                     >
-                      <Building
-                        size={14}
-                        style={{ color: "#86868b" }}
-                      />
+                      <Building size={14} className="text-[#86868b]" />
                       บริษัท
                     </label>
                     <input
@@ -277,45 +155,19 @@ export default function Contact() {
                       name="company"
                       type="text"
                       placeholder="ชื่อบริษัท (ถ้ามี)"
-                      style={{
-                        width: "100%",
-                        padding: "14px 16px",
-                        fontSize: 16,
-                        color: "#1d1d1f",
-                        background: "white",
-                        border: "1px solid rgba(0,0,0,0.08)",
-                        borderRadius: 14,
-                        outline: "none",
-                        transition: "border-color 0.2s",
-                        boxSizing: "border-box",
-                      }}
+                      className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none transition-colors focus:border-[#06c] focus:shadow-[0_0_0_3px_rgba(232,89,12,0.1)] placeholder:text-[#c7c7cc] box-border"
                     />
                   </div>
                 </div>
 
                 {/* Email + Phone Row */}
-                <div
-                  style={{
-                    display: "grid",
-                    gridTemplateColumns: "1fr 1fr",
-                    gap: 16,
-                  }}
-                  className="form-row"
-                >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label
                       htmlFor="email"
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 6,
-                        fontSize: 13,
-                        fontWeight: 600,
-                        color: "#1d1d1f",
-                        marginBottom: 8,
-                      }}
+                      className="flex items-center gap-1.5 text-[13px] font-semibold text-[#1d1d1f] mb-2"
                     >
-                      <Mail size={14} style={{ color: "#86868b" }} />
+                      <Mail size={14} className="text-[#86868b]" />
                       อีเมล
                     </label>
                     <input
@@ -324,34 +176,15 @@ export default function Contact() {
                       type="email"
                       required
                       placeholder="your@email.com"
-                      style={{
-                        width: "100%",
-                        padding: "14px 16px",
-                        fontSize: 16,
-                        color: "#1d1d1f",
-                        background: "white",
-                        border: "1px solid rgba(0,0,0,0.08)",
-                        borderRadius: 14,
-                        outline: "none",
-                        transition: "border-color 0.2s",
-                        boxSizing: "border-box",
-                      }}
+                      className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none transition-colors focus:border-[#06c] focus:shadow-[0_0_0_3px_rgba(232,89,12,0.1)] placeholder:text-[#c7c7cc] box-border"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="phone"
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: 6,
-                        fontSize: 13,
-                        fontWeight: 600,
-                        color: "#1d1d1f",
-                        marginBottom: 8,
-                      }}
+                      className="flex items-center gap-1.5 text-[13px] font-semibold text-[#1d1d1f] mb-2"
                     >
-                      <Phone size={14} style={{ color: "#86868b" }} />
+                      <Phone size={14} className="text-[#86868b]" />
                       เบอร์โทร
                     </label>
                     <input
@@ -359,18 +192,7 @@ export default function Contact() {
                       name="phone"
                       type="tel"
                       placeholder="08X-XXX-XXXX"
-                      style={{
-                        width: "100%",
-                        padding: "14px 16px",
-                        fontSize: 16,
-                        color: "#1d1d1f",
-                        background: "white",
-                        border: "1px solid rgba(0,0,0,0.08)",
-                        borderRadius: 14,
-                        outline: "none",
-                        transition: "border-color 0.2s",
-                        boxSizing: "border-box",
-                      }}
+                      className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none transition-colors focus:border-[#06c] focus:shadow-[0_0_0_3px_rgba(232,89,12,0.1)] placeholder:text-[#c7c7cc] box-border"
                     />
                   </div>
                 </div>
@@ -379,43 +201,16 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="service"
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 6,
-                      fontSize: 13,
-                      fontWeight: 600,
-                      color: "#1d1d1f",
-                      marginBottom: 8,
-                    }}
+                    className="flex items-center gap-1.5 text-[13px] font-semibold text-[#1d1d1f] mb-2"
                   >
-                    <FileText
-                      size={14}
-                      style={{ color: "#86868b" }}
-                    />
+                    <FileText size={14} className="text-[#86868b]" />
                     บริการที่สนใจ
                   </label>
                   <select
                     id="service"
                     name="service"
                     required
-                    style={{
-                      width: "100%",
-                      padding: "14px 16px",
-                      fontSize: 16,
-                      color: "#1d1d1f",
-                      background: "white",
-                      border: "1px solid rgba(0,0,0,0.08)",
-                      borderRadius: 14,
-                      outline: "none",
-                      cursor: "pointer",
-                      appearance: "none",
-                      backgroundImage:
-                        'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'12\' fill=\'%2386868b\' viewBox=\'0 0 16 16\'%3E%3Cpath d=\'M8 12l-6-6h12z\'/%3E%3C/svg%3E")',
-                      backgroundRepeat: "no-repeat",
-                      backgroundPosition: "right 16px center",
-                      boxSizing: "border-box",
-                    }}
+                    className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none cursor-pointer appearance-none bg-[url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20fill%3D%22%2386868b%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20d%3D%22M8%2012l-6-6h12z%22%2F%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[right_16px_center] box-border focus:border-[#06c] focus:shadow-[0_0_0_3px_rgba(232,89,12,0.1)]"
                   >
                     {serviceOptions.map((opt) => (
                       <option key={opt.value} value={opt.value}>
@@ -429,20 +224,9 @@ export default function Contact() {
                 <div>
                   <label
                     htmlFor="message"
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 6,
-                      fontSize: 13,
-                      fontWeight: 600,
-                      color: "#1d1d1f",
-                      marginBottom: 8,
-                    }}
+                    className="flex items-center gap-1.5 text-[13px] font-semibold text-[#1d1d1f] mb-2"
                   >
-                    <MessageSquare
-                      size={14}
-                      style={{ color: "#86868b" }}
-                    />
+                    <MessageSquare size={14} className="text-[#86868b]" />
                     ข้อความ
                   </label>
                   <textarea
@@ -451,21 +235,7 @@ export default function Contact() {
                     required
                     rows={5}
                     placeholder="บอกเราเกี่ยวกับโปรเจ็กต์หรือความต้องการของคุณ..."
-                    style={{
-                      width: "100%",
-                      padding: "14px 16px",
-                      fontSize: 16,
-                      color: "#1d1d1f",
-                      background: "white",
-                      border: "1px solid rgba(0,0,0,0.08)",
-                      borderRadius: 14,
-                      outline: "none",
-                      resize: "vertical",
-                      minHeight: 120,
-                      lineHeight: 1.6,
-                      boxSizing: "border-box",
-                      fontFamily: "inherit",
-                    }}
+                    className="w-full rounded-xl border border-black/10 px-4 py-3 text-[16px] text-[#1d1d1f] bg-white outline-none resize-y min-h-[120px] leading-relaxed box-border font-[inherit] focus:border-[#06c] focus:shadow-[0_0_0_3px_rgba(232,89,12,0.1)] placeholder:text-[#c7c7cc]"
                   />
                 </div>
 
@@ -474,23 +244,9 @@ export default function Contact() {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="py-4 sm:py-[16px]"
+                  className="w-full py-4 rounded-full bg-[#1d1d1f] text-white font-medium flex items-center justify-center gap-2 text-[15px] md:text-[16px] border-none cursor-pointer mt-1"
                   style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: 8,
-                    width: "100%",
-                    padding: "16px 28px",
-                    background:
-                      "linear-gradient(135deg, #06c, #ea580c)",
-                    color: "white",
-                    borderRadius: 16,
-                    fontSize: 16,
-                    fontWeight: 600,
-                    border: "none",
-                    cursor: "pointer",
-                    marginTop: 4,
+                    background: "linear-gradient(135deg, #06c, #ea580c)",
                   }}
                 >
                   <Send size={18} />
@@ -506,11 +262,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: 24,
-            }}
+            className="grid grid-cols-1 gap-3"
           >
             {/* Contact Cards */}
             {contactInfo.map((info, i) => {
@@ -532,68 +284,23 @@ export default function Contact() {
                   viewport={{ once: true }}
                   transition={{ delay: 0.35 + i * 0.08 }}
                   whileHover={{ y: -2 }}
-                  className="apple-card"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 16,
-                    padding: "22px 24px",
-                    minHeight: 44,
-                    background: "#fff",
-                    borderRadius: 20,
-                    border: "1px solid rgba(0,0,0,0.06)",
-                    textDecoration: "none",
-                    cursor: "pointer",
-                    transition: "box-shadow 0.2s",
-                  }}
+                  className="apple-card flex items-center gap-4 p-4 md:p-6 min-h-[44px] bg-white rounded-[20px] border border-black/[0.06] no-underline cursor-pointer transition-shadow"
                 >
                   <div
-                    style={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: 14,
-                      background: `${info.color}12`,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      flexShrink: 0,
-                    }}
+                    className="w-12 h-12 rounded-[14px] flex items-center justify-center shrink-0"
+                    style={{ background: `${info.color}12` }}
                   >
-                    <InfoIcon
-                      size={22}
-                      style={{ color: info.color }}
-                    />
+                    <InfoIcon size={22} style={{ color: info.color }} />
                   </div>
                   <div>
-                    <div
-                      style={{
-                        fontSize: 12,
-                        fontWeight: 600,
-                        color: "#86868b",
-                        letterSpacing: "0.04em",
-                        textTransform: "uppercase",
-                        marginBottom: 2,
-                      }}
-                    >
+                    <div className="text-[12px] font-semibold text-[#86868b] tracking-[0.04em] uppercase mb-0.5">
                       {info.label}
                     </div>
-                    <div
-                      style={{
-                        fontSize: 16,
-                        fontWeight: 600,
-                        color: "#1d1d1f",
-                      }}
-                    >
+                    <div className="text-[15px] md:text-[16px] font-semibold text-[#1d1d1f]">
                       {info.value}
                     </div>
                   </div>
-                  <ArrowRight
-                    size={16}
-                    style={{
-                      color: "#d1d5db",
-                      marginLeft: "auto",
-                    }}
-                  />
+                  <ArrowRight size={16} className="text-[#d1d5db] ml-auto" />
                 </motion.a>
               );
             })}
@@ -604,95 +311,26 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.6 }}
-              className="apple-card"
-              style={{
-                padding: "22px 24px",
-                background: "#fff",
-                borderRadius: 20,
-                border: "1px solid rgba(0,0,0,0.06)",
-              }}
+              className="apple-card p-4 md:p-6 bg-white rounded-[20px] border border-black/[0.06]"
             >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  marginBottom: 14,
-                }}
-              >
-                <Clock
-                  size={18}
-                  style={{ color: "#06c" }}
-                />
-                <span
-                  style={{
-                    fontSize: 14,
-                    fontWeight: 700,
-                    color: "#1d1d1f",
-                  }}
-                >
+              <div className="flex items-center gap-2.5 mb-3.5">
+                <Clock size={18} className="text-[#06c]" />
+                <span className="text-[14px] font-bold text-[#1d1d1f]">
                   เวลาทำการ
                 </span>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 6,
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    fontSize: 14,
-                  }}
-                >
-                  <span style={{ color: "#6e6e73" }}>
-                    จันทร์ - ศุกร์
-                  </span>
-                  <span
-                    style={{
-                      color: "#1d1d1f",
-                      fontWeight: 600,
-                    }}
-                  >
-                    09:00 - 18:00
-                  </span>
+              <div className="flex flex-col gap-1.5">
+                <div className="flex justify-between text-[14px]">
+                  <span className="text-[#6e6e73]">จันทร์ - ศุกร์</span>
+                  <span className="text-[#1d1d1f] font-semibold">09:00 - 18:00</span>
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    fontSize: 14,
-                  }}
-                >
-                  <span style={{ color: "#6e6e73" }}>เสาร์</span>
-                  <span
-                    style={{
-                      color: "#1d1d1f",
-                      fontWeight: 600,
-                    }}
-                  >
-                    09:00 - 15:00
-                  </span>
+                <div className="flex justify-between text-[14px]">
+                  <span className="text-[#6e6e73]">เสาร์</span>
+                  <span className="text-[#1d1d1f] font-semibold">09:00 - 15:00</span>
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    fontSize: 14,
-                  }}
-                >
-                  <span style={{ color: "#6e6e73" }}>อาทิตย์</span>
-                  <span
-                    style={{
-                      color: "#86868b",
-                      fontWeight: 500,
-                    }}
-                  >
-                    ปิดทำการ
-                  </span>
+                <div className="flex justify-between text-[14px]">
+                  <span className="text-[#6e6e73]">อาทิตย์</span>
+                  <span className="text-[#86868b] font-medium">ปิดทำการ</span>
                 </div>
               </div>
             </motion.div>
@@ -703,44 +341,18 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.7 }}
-              className="apple-card"
+              className="apple-card p-4 md:p-6 rounded-[20px] border border-[rgba(232,89,12,0.1)]"
               style={{
-                padding: "22px 24px",
-                background:
-                  "linear-gradient(135deg, rgba(232,89,12,0.04), rgba(232,89,12,0.02))",
-                borderRadius: 20,
-                border: "1px solid rgba(232,89,12,0.1)",
+                background: "linear-gradient(135deg, rgba(232,89,12,0.04), rgba(232,89,12,0.02))",
               }}
             >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 8,
-                  marginBottom: 14,
-                }}
-              >
-                <Sparkles
-                  size={18}
-                  style={{ color: "#06c" }}
-                />
-                <span
-                  style={{
-                    fontSize: 14,
-                    fontWeight: 700,
-                    color: "#1d1d1f",
-                  }}
-                >
+              <div className="flex items-center gap-2 mb-3.5">
+                <Sparkles size={18} className="text-[#06c]" />
+                <span className="text-[14px] font-bold text-[#1d1d1f]">
                   ทำไมต้องติดต่อเรา
                 </span>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 8,
-                }}
-              >
+              <div className="flex flex-col gap-2">
                 {reasons.map((reason, i) => (
                   <motion.div
                     key={reason}
@@ -748,21 +360,9 @@ export default function Contact() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.75 + i * 0.06 }}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 10,
-                      fontSize: 14,
-                      color: "#1d1d1f",
-                    }}
+                    className="flex items-center gap-2.5 text-[14px] text-[#1d1d1f]"
                   >
-                    <CheckCircle
-                      size={16}
-                      style={{
-                        color: "#06c",
-                        flexShrink: 0,
-                      }}
-                    />
+                    <CheckCircle size={16} className="text-[#06c] shrink-0" />
                     {reason}
                   </motion.div>
                 ))}
@@ -771,27 +371,6 @@ export default function Contact() {
           </motion.div>
         </div>
       </div>
-
-      <style jsx>{`
-        @media (max-width: 639px) {
-          .contact-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .form-row {
-            grid-template-columns: 1fr !important;
-          }
-        }
-        input:focus,
-        select:focus,
-        textarea:focus {
-          border-color: #06c !important;
-          box-shadow: 0 0 0 3px rgba(232, 89, 12, 0.1);
-        }
-        input::placeholder,
-        textarea::placeholder {
-          color: #c7c7cc;
-        }
-      `}</style>
     </section>
   );
 }

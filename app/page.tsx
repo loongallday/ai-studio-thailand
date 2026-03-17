@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import ScrollVideo from "@/components/ScrollVideo";
 import Services from "@/components/Services";
 import Workshop from "@/components/Workshop";
 import Development from "@/components/Development";
@@ -14,6 +15,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <ScrollVideo />
         <Services />
         <Workshop />
         <Development />

@@ -5,69 +5,236 @@ import {
   Cpu,
   Server,
   Cloud,
-  ArrowRight,
   ExternalLink,
-  Zap,
-  Shield,
-  Globe,
-  CheckCircle,
   Sparkles,
+  GraduationCap,
+  Code,
+  Megaphone,
+  Shield,
+  Zap,
+  Globe,
+  ArrowRight,
+  Lock,
+  BarChart3,
 } from "lucide-react";
 
-const brands = [
-  {
-    name: "AI Studio Thailand",
-    tagline: "ศูนย์กลาง AI ครบวงจร",
-    description:
-      "แบรนด์แม่ที่รวมทุกบริการ AI ไว้ในที่เดียว ตั้งแต่สอน สร้าง พัฒนา ไปจนถึงเป็น AI Creator",
-    icon: Cpu,
-    color: "#06c",
-    colorLight: "rgba(232, 89, 12, 0.08)",
-    url: null,
-    isParent: true,
-    features: [
-      "AI Workshop & Training",
-      "Custom AI Development",
-      "AI Content Creation",
-      "AI Consulting & Strategy",
-    ],
-  },
-  {
-    name: "LocalAI Thailand",
-    tagline: "On-Premise AI สำหรับองค์กร",
-    description:
-      "โซลูชัน AI ที่รันบนเซิร์ฟเวอร์ขององค์กร ข้อมูลไม่ออกนอกบริษัท เหมาะกับธุรกิจที่ต้องการความปลอดภัยสูง",
-    icon: Server,
-    color: "#06c",
-    colorLight: "rgba(232, 89, 12, 0.08)",
-    url: "https://localaithai.com",
-    isParent: false,
-    features: [
-      "ข้อมูลอยู่ภายในองค์กร 100%",
-      "ไม่มีค่า API รายเดือน",
-      "Compliance & PDPA Ready",
-      "รองรับ Air-gapped",
-    ],
-  },
-  {
-    name: "CloudAI Thailand",
-    tagline: "Cloud AI Automation",
-    description:
-      "ระบบ AI บนคลาวด์ที่ยืดหยุ่น เริ่มต้นได้เร็ว ขยายได้ไม่จำกัด เหมาะกับ startup และ SME",
-    icon: Cloud,
-    color: "#1d4ed8",
-    colorLight: "rgba(29, 78, 216, 0.08)",
-    url: "https://cloudaithai.com",
-    isParent: false,
-    features: [
-      "เริ่มต้นได้ภายใน 1 สัปดาห์",
-      "Scale ได้ตามการใช้งาน",
-      "ใช้ model ล่าสุดเสมอ",
-      "จ่ายตามใช้จริง",
-    ],
-  },
-];
+/* ------------------------------------------------------------------ */
+/*  Brand Card component                                               */
+/* ------------------------------------------------------------------ */
+function BrandCard({
+  name,
+  tagline,
+  description,
+  icon: Icon,
+  features,
+  url,
+  isCenter,
+  color,
+  delay,
+}: {
+  name: string;
+  tagline: string;
+  description: string;
+  icon: React.ComponentType<{ size: number; style: React.CSSProperties }>;
+  features: { icon: React.ComponentType<{ size: number; style: React.CSSProperties }>; text: string }[];
+  url: string | null;
+  isCenter: boolean;
+  color: string;
+  delay: number;
+}) {
+  const isDark = isCenter;
 
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ delay, duration: 0.6 }}
+      whileHover={{ y: -6, transition: { duration: 0.3 } }}
+      className="apple-card"
+      style={{
+        background: isDark
+          ? "linear-gradient(160deg, #1d1d1f, #2d2d2f)"
+          : "white",
+        borderRadius: 28,
+        border: isDark
+          ? "1px solid rgba(255,255,255,0.08)"
+          : "1px solid rgba(0,0,0,0.08)",
+        boxShadow: isDark
+          ? "0 20px 60px rgba(0,0,0,0.3)"
+          : "0 8px 32px rgba(0,0,0,0.06)",
+        padding: "44px 32px 36px",
+        textAlign: "center",
+        position: "relative",
+        overflow: "hidden",
+        flex: 1,
+        minWidth: 0,
+        transform: isDark ? "scale(1.04)" : undefined,
+        zIndex: isDark ? 2 : 1,
+      }}
+    >
+      {/* Glow effect for center card */}
+      {isDark && (
+        <div
+          style={{
+            position: "absolute",
+            top: -40,
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: 200,
+            height: 200,
+            background:
+              "radial-gradient(circle, rgba(0,102,204,0.15), transparent 70%)",
+            pointerEvents: "none",
+          }}
+        />
+      )}
+
+      {/* Icon */}
+      <div
+        style={{
+          width: 64,
+          height: 64,
+          borderRadius: 20,
+          background: isDark
+            ? "linear-gradient(135deg, #06c, #3b82f6)"
+            : `${color}10`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          margin: "0 auto 20px",
+          position: "relative",
+        }}
+      >
+        <Icon
+          size={30}
+          style={{ color: isDark ? "white" : color }}
+        />
+      </div>
+
+      {/* Name */}
+      <h3
+        style={{
+          fontSize: 22,
+          fontWeight: 700,
+          color: isDark ? "white" : "#1d1d1f",
+          marginBottom: 6,
+        }}
+      >
+        {name}
+      </h3>
+
+      {/* Tagline */}
+      <p
+        style={{
+          fontSize: 15,
+          fontWeight: 600,
+          color: isDark ? "rgba(255,255,255,0.7)" : color,
+          marginBottom: 14,
+        }}
+      >
+        {tagline}
+      </p>
+
+      {/* Description */}
+      <p
+        style={{
+          fontSize: 14,
+          color: isDark ? "rgba(255,255,255,0.5)" : "#6e6e73",
+          lineHeight: 1.6,
+          marginBottom: 24,
+          minHeight: 66,
+        }}
+      >
+        {description}
+      </p>
+
+      {/* Features */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 10,
+          marginBottom: 28,
+          textAlign: "left",
+        }}
+      >
+        {features.map((f) => {
+          const FeatureIcon = f.icon;
+          return (
+            <div
+              key={f.text}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 10,
+                fontSize: 13,
+                color: isDark ? "rgba(255,255,255,0.75)" : "#1d1d1f",
+                fontWeight: 500,
+              }}
+            >
+              <FeatureIcon
+                size={15}
+                style={{
+                  color: isDark ? "rgba(255,255,255,0.5)" : color,
+                  flexShrink: 0,
+                }}
+              />
+              {f.text}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* CTA */}
+      {url ? (
+        <motion.a
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.97 }}
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            padding: "10px 22px",
+            background: isDark ? "white" : color,
+            color: isDark ? "#1d1d1f" : "white",
+            borderRadius: 12,
+            fontSize: 13,
+            fontWeight: 600,
+            textDecoration: "none",
+          }}
+        >
+          เยี่ยมชมเว็บไซต์ <ExternalLink size={14} />
+        </motion.a>
+      ) : (
+        <div
+          style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
+            padding: "10px 22px",
+            background: isDark
+              ? "rgba(255,255,255,0.1)"
+              : "rgba(0,0,0,0.04)",
+            color: isDark ? "rgba(255,255,255,0.6)" : "#86868b",
+            borderRadius: 12,
+            fontSize: 13,
+            fontWeight: 600,
+          }}
+        >
+          คุณอยู่ที่นี่
+        </div>
+      )}
+    </motion.div>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/*  Main Ecosystem Component                                           */
+/* ------------------------------------------------------------------ */
 export default function Ecosystem() {
   return (
     <section
@@ -75,10 +242,13 @@ export default function Ecosystem() {
       style={{
         background: "#fff",
         padding: "120px 24px",
+        overflow: "hidden",
       }}
     >
-      <div style={{ maxWidth: 1080, margin: "0 auto" }}>
-        {/* Section Header */}
+      <div style={{ maxWidth: 1120, margin: "0 auto" }}>
+        {/* ========================================================== */}
+        {/*  Header                                                     */}
+        {/* ========================================================== */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -100,331 +270,186 @@ export default function Ecosystem() {
           </div>
           <h2
             style={{
-              fontSize: "clamp(32px, 5vw, 48px)",
+              fontSize: "clamp(34px, 5vw, 56px)",
               fontWeight: 700,
               color: "#1d1d1f",
-              lineHeight: 1.15,
+              lineHeight: 1.1,
               marginBottom: 16,
             }}
           >
-            3 แบรนด์ 1 เป้าหมาย
+            เครือข่าย AI ครบวงจร
           </h2>
           <p
             style={{
-              fontSize: 18,
+              fontSize: 19,
               color: "#86868b",
               maxWidth: 560,
               margin: "0 auto",
               lineHeight: 1.6,
             }}
           >
-            ระบบนิเวศ AI ที่ครบวงจร ตอบโจทย์ทุกความต้องการ
+            3 แบรนด์ 1 เป้าหมาย ระบบนิเวศ AI ที่ตอบโจทย์ทุกความต้องการ
             ไม่ว่าจะ On-Premise หรือ Cloud
           </p>
         </motion.div>
 
-        {/* Brand Connection Visual */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: 0,
-            marginBottom: 80,
-          }}
-        >
-          {/* Parent Brand — AI Studio Thailand */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="apple-card"
+        {/* ========================================================== */}
+        {/*  Connection Lines (SVG)                                     */}
+        {/* ========================================================== */}
+        <div style={{ position: "relative" }}>
+          {/* SVG connection lines behind cards */}
+          <svg
+            className="connection-svg"
             style={{
-              background: "white",
-              borderRadius: 28,
-              border: "2px solid rgba(232, 89, 12, 0.2)",
-              boxShadow: "0 8px 40px rgba(232, 89, 12, 0.08)",
-              padding: "40px 48px",
-              maxWidth: 640,
+              position: "absolute",
+              top: -30,
+              left: 0,
+              right: 0,
               width: "100%",
-              textAlign: "center",
-              position: "relative",
-              zIndex: 2,
+              height: 40,
+              zIndex: 0,
             }}
           >
-            <div
-              style={{
-                width: 64,
-                height: 64,
-                borderRadius: 20,
-                background:
-                  "linear-gradient(135deg, #06c, #ea580c)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                margin: "0 auto 20px",
-              }}
-            >
-              <Cpu size={32} style={{ color: "white" }} />
-            </div>
-            <h3
-              style={{
-                fontSize: 24,
-                fontWeight: 700,
-                color: "#1d1d1f",
-                marginBottom: 6,
-              }}
-            >
-              {brands[0].name}
-            </h3>
-            <p
-              style={{
-                fontSize: 15,
-                color: "#06c",
-                fontWeight: 600,
-                marginBottom: 12,
-              }}
-            >
-              {brands[0].tagline}
-            </p>
-            <p
-              style={{
-                fontSize: 14,
-                color: "#6e6e73",
-                lineHeight: 1.6,
-                maxWidth: 400,
-                margin: "0 auto 20px",
-              }}
-            >
-              {brands[0].description}
-            </p>
-            <div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center",
-                gap: 8,
-              }}
-            >
-              {brands[0].features.map((f) => (
-                <span
-                  key={f}
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 500,
-                    color: "#06c",
-                    background: "rgba(232, 89, 12, 0.06)",
-                    padding: "5px 12px",
-                    borderRadius: 8,
-                  }}
-                >
-                  {f}
-                </span>
-              ))}
-            </div>
-          </motion.div>
+            <line
+              x1="25%"
+              y1="20"
+              x2="50%"
+              y2="20"
+              stroke="rgba(0,102,204,0.15)"
+              strokeWidth="2"
+              strokeDasharray="8,4"
+            />
+            <line
+              x1="50%"
+              y1="20"
+              x2="75%"
+              y2="20"
+              stroke="rgba(0,102,204,0.15)"
+              strokeWidth="2"
+              strokeDasharray="8,4"
+            />
+            {/* Dots at connection points */}
+            <circle cx="25%" cy="20" r="4" fill="#06c" opacity="0.3" />
+            <circle cx="50%" cy="20" r="6" fill="#06c" opacity="0.4" />
+            <circle cx="75%" cy="20" r="4" fill="#1d4ed8" opacity="0.3" />
+          </svg>
 
-          {/* Connection Lines */}
+          {/* ======================================================== */}
+          {/*  Brand Cards Row                                          */}
+          {/* ======================================================== */}
           <div
             style={{
               display: "flex",
-              justifyContent: "center",
-              gap: 200,
+              gap: 24,
+              alignItems: "stretch",
               position: "relative",
-              height: 60,
-              width: "100%",
-              maxWidth: 640,
+              zIndex: 1,
             }}
-            className="connection-lines"
+            className="brand-cards-row"
           >
-            <div
-              style={{
-                position: "absolute",
-                left: "50%",
-                top: 0,
-                width: 2,
-                height: 30,
-                background:
-                  "linear-gradient(to bottom, rgba(232,89,12,0.3), rgba(232,89,12,0.1))",
-              }}
+            {/* Left: LocalAI Thailand */}
+            <BrandCard
+              name="LocalAI Thailand"
+              tagline="AI ส่วนตัว บนเครื่องของคุณ"
+              description="โซลูชัน AI ที่รันบนเซิร์ฟเวอร์ขององค์กร ข้อมูลไม่ออกนอกบริษัท เหมาะกับธุรกิจที่ต้องการความปลอดภัยสูง"
+              icon={Server}
+              color="#06c"
+              url="https://localaithai.com"
+              isCenter={false}
+              delay={0.1}
+              features={[
+                { icon: Lock, text: "ข้อมูลอยู่ภายในองค์กร 100%" },
+                { icon: Zap, text: "ไม่มีค่า API รายเดือน" },
+                { icon: Shield, text: "PDPA & Compliance Ready" },
+              ]}
             />
-            <div
-              style={{
-                position: "absolute",
-                left: "25%",
-                right: "25%",
-                top: 30,
-                height: 2,
-                background:
-                  "linear-gradient(to right, rgba(232,89,12,0.2), rgba(29,78,216,0.2))",
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                left: "25%",
-                top: 30,
-                width: 2,
-                height: 30,
-                background:
-                  "linear-gradient(to bottom, rgba(232,89,12,0.2), rgba(232,89,12,0.1))",
-              }}
-            />
-            <div
-              style={{
-                position: "absolute",
-                right: "25%",
-                top: 30,
-                width: 2,
-                height: 30,
-                background:
-                  "linear-gradient(to bottom, rgba(29,78,216,0.2), rgba(29,78,216,0.1))",
-              }}
-            />
-          </div>
 
-          {/* Sub-brands */}
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "1fr 1fr",
-              gap: 32,
-              maxWidth: 640,
-              width: "100%",
-            }}
-            className="sub-brands-grid"
-          >
-            {brands.slice(1).map((brand, i) => {
-              const BrandIcon = brand.icon;
-              return (
-                <motion.div
-                  key={brand.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 + i * 0.15 }}
-                  className="apple-card"
-                  style={{
-                    background: "white",
-                    borderRadius: 24,
-                    border: `1px solid ${brand.color}20`,
-                    boxShadow: `0 4px 24px ${brand.color}08`,
-                    padding: "32px 28px",
-                    textAlign: "center",
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 52,
-                      height: 52,
-                      borderRadius: 16,
-                      background: brand.colorLight,
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      margin: "0 auto 16px",
-                    }}
-                  >
-                    <BrandIcon
-                      size={26}
-                      style={{ color: brand.color }}
-                    />
-                  </div>
-                  <h4
-                    style={{
-                      fontSize: 18,
-                      fontWeight: 700,
-                      color: "#1d1d1f",
-                      marginBottom: 4,
-                    }}
-                  >
-                    {brand.name}
-                  </h4>
-                  <p
-                    style={{
-                      fontSize: 13,
-                      color: brand.color,
-                      fontWeight: 600,
-                      marginBottom: 12,
-                    }}
-                  >
-                    {brand.tagline}
-                  </p>
-                  <p
-                    style={{
-                      fontSize: 13,
-                      color: "#6e6e73",
-                      lineHeight: 1.55,
-                      marginBottom: 18,
-                    }}
-                  >
-                    {brand.description}
-                  </p>
+            {/* Center: AI Studio Thailand (elevated, dark) */}
+            <BrandCard
+              name="AI Studio Thailand"
+              tagline="สอน สร้าง ให้คำปรึกษา"
+              description="ศูนย์กลาง AI ครบวงจร ตั้งแต่สอน สร้าง พัฒนา ไปจนถึงเป็น AI Creator ให้ธุรกิจของคุณ"
+              icon={Cpu}
+              color="#06c"
+              url={null}
+              isCenter={true}
+              delay={0.2}
+              features={[
+                { icon: GraduationCap, text: "AI Workshop & Training" },
+                { icon: Code, text: "Custom AI Development" },
+                { icon: Megaphone, text: "AI Content Creation" },
+              ]}
+            />
 
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: 6,
-                      marginBottom: 20,
-                      textAlign: "left",
-                    }}
-                  >
-                    {brand.features.map((f) => (
-                      <div
-                        key={f}
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 8,
-                          fontSize: 13,
-                          color: "#1d1d1f",
-                        }}
-                      >
-                        <CheckCircle
-                          size={14}
-                          style={{
-                            color: brand.color,
-                            flexShrink: 0,
-                          }}
-                        />
-                        {f}
-                      </div>
-                    ))}
-                  </div>
-
-                  {brand.url && (
-                    <motion.a
-                      href={brand.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.03 }}
-                      whileTap={{ scale: 0.97 }}
-                      style={{
-                        display: "inline-flex",
-                        alignItems: "center",
-                        gap: 6,
-                        padding: "10px 20px",
-                        background: brand.color,
-                        color: "white",
-                        borderRadius: 12,
-                        fontSize: 13,
-                        fontWeight: 600,
-                        textDecoration: "none",
-                      }}
-                    >
-                      เยี่ยมชมเว็บไซต์{" "}
-                      <ExternalLink size={14} />
-                    </motion.a>
-                  )}
-                </motion.div>
-              );
-            })}
+            {/* Right: CloudAI Thailand */}
+            <BrandCard
+              name="CloudAI Thailand"
+              tagline="AI Automation บน Cloud"
+              description="ระบบ AI บนคลาวด์ที่ยืดหยุ่น เริ่มต้นได้เร็ว ขยายได้ไม่จำกัด เหมาะกับ startup และ SME"
+              icon={Cloud}
+              color="#1d4ed8"
+              url="https://cloudaithai.com"
+              isCenter={false}
+              delay={0.3}
+              features={[
+                { icon: Globe, text: "เริ่มต้นได้ภายใน 1 สัปดาห์" },
+                { icon: BarChart3, text: "Scale ตามการใช้งาน" },
+                { icon: Zap, text: "ใช้ model ล่าสุดเสมอ" },
+              ]}
+            />
           </div>
         </div>
 
-        {/* Philosophy */}
+        {/* ========================================================== */}
+        {/*  Connection indicator between cards                         */}
+        {/* ========================================================== */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 12,
+            marginTop: 40,
+            marginBottom: 80,
+          }}
+        >
+          <div
+            style={{
+              height: 1,
+              flex: 1,
+              maxWidth: 120,
+              background:
+                "linear-gradient(to right, transparent, rgba(0,102,204,0.2))",
+            }}
+          />
+          <div
+            style={{
+              fontSize: 13,
+              fontWeight: 600,
+              color: "#86868b",
+              letterSpacing: "0.04em",
+            }}
+          >
+            CONNECTED ECOSYSTEM
+          </div>
+          <div
+            style={{
+              height: 1,
+              flex: 1,
+              maxWidth: 120,
+              background:
+                "linear-gradient(to left, transparent, rgba(0,102,204,0.2))",
+            }}
+          />
+        </motion.div>
+
+        {/* ========================================================== */}
+        {/*  Philosophy Quote                                           */}
+        {/* ========================================================== */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -432,24 +457,39 @@ export default function Ecosystem() {
           transition={{ duration: 0.7 }}
           className="apple-card"
           style={{
-            background: "white",
+            background: "#f5f5f7",
             borderRadius: 28,
-            padding: "56px 48px",
-            border: "1px solid rgba(0,0,0,0.06)",
-            boxShadow: "0 4px 24px rgba(0,0,0,0.03)",
+            padding: "64px 48px",
             textAlign: "center",
+            position: "relative",
+            overflow: "hidden",
           }}
         >
+          {/* Subtle decorative element */}
+          <div
+            style={{
+              position: "absolute",
+              top: -60,
+              right: -60,
+              width: 200,
+              height: 200,
+              borderRadius: "50%",
+              background:
+                "radial-gradient(circle, rgba(0,102,204,0.04), transparent 70%)",
+              pointerEvents: "none",
+            }}
+          />
+
           <div
             style={{
               width: 56,
               height: 56,
               borderRadius: 16,
-              background: "rgba(232, 89, 12, 0.08)",
+              background: "rgba(0,102,204,0.08)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              margin: "0 auto 24px",
+              margin: "0 auto 28px",
             }}
           >
             <Sparkles size={28} style={{ color: "#06c" }} />
@@ -461,10 +501,12 @@ export default function Ecosystem() {
               fontWeight: 700,
               color: "#1d1d1f",
               lineHeight: 1.25,
-              marginBottom: 16,
+              marginBottom: 20,
             }}
           >
-            ไม่มี solution สำเร็จรูป
+            ไม่ว่าคุณต้องการ AI แบบไหน
+            <br />
+            เราช่วยได้ทั้งหมด
           </h3>
 
           <p
@@ -473,7 +515,7 @@ export default function Ecosystem() {
               color: "#6e6e73",
               lineHeight: 1.7,
               maxWidth: 640,
-              margin: "0 auto 36px",
+              margin: "0 auto 40px",
             }}
           >
             ทุกธุรกิจมีความต้องการที่ต่างกัน เราเชื่อว่า AI ที่ดีต้องออกแบบให้เหมาะกับ
@@ -481,12 +523,13 @@ export default function Ecosystem() {
             แต่เข้าใจปัญหาจริง ออกแบบ solution จริง และส่งมอบผลลัพธ์จริง
           </p>
 
+          {/* Three pillars */}
           <div
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 24,
-              maxWidth: 600,
+              gap: 20,
+              maxWidth: 640,
               margin: "0 auto",
             }}
             className="philosophy-grid"
@@ -495,7 +538,7 @@ export default function Ecosystem() {
               {
                 icon: Zap,
                 title: "เข้าใจปัญหาจริง",
-                desc: "วิเคราะห์ความต้องการเฉพาะ",
+                desc: "วิเคราะห์ความต้องการเฉพาะทาง",
               },
               {
                 icon: Shield,
@@ -515,17 +558,18 @@ export default function Ecosystem() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 + i * 0.1 }}
                 style={{
-                  padding: "20px 16px",
-                  background: "#fff",
-                  borderRadius: 16,
+                  padding: "24px 16px",
+                  background: "white",
+                  borderRadius: 18,
                   border: "1px solid rgba(0,0,0,0.04)",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.02)",
                 }}
               >
                 <item.icon
-                  size={22}
+                  size={24}
                   style={{
                     color: "#06c",
-                    marginBottom: 10,
+                    marginBottom: 12,
                   }}
                 />
                 <div
@@ -533,7 +577,7 @@ export default function Ecosystem() {
                     fontSize: 15,
                     fontWeight: 700,
                     color: "#1d1d1f",
-                    marginBottom: 4,
+                    marginBottom: 6,
                   }}
                 >
                   {item.title}
@@ -542,6 +586,7 @@ export default function Ecosystem() {
                   style={{
                     fontSize: 13,
                     color: "#86868b",
+                    lineHeight: 1.5,
                   }}
                 >
                   {item.desc}
@@ -549,19 +594,49 @@ export default function Ecosystem() {
               </motion.div>
             ))}
           </div>
+
+          {/* Bottom CTA */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.7 }}
+            style={{ marginTop: 40 }}
+          >
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "14px 32px",
+                background: "#06c",
+                color: "white",
+                borderRadius: 14,
+                fontSize: 16,
+                fontWeight: 600,
+                textDecoration: "none",
+                cursor: "pointer",
+              }}
+            >
+              พูดคุยกับเรา <ArrowRight size={18} />
+            </motion.a>
+          </motion.div>
         </motion.div>
       </div>
 
       <style jsx>{`
         @media (max-width: 768px) {
-          .sub-brands-grid {
-            grid-template-columns: 1fr !important;
+          .brand-cards-row {
+            flex-direction: column !important;
+          }
+          .connection-svg {
+            display: none !important;
           }
           .philosophy-grid {
             grid-template-columns: 1fr !important;
-          }
-          .connection-lines {
-            display: none !important;
           }
         }
       `}</style>

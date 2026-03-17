@@ -242,7 +242,7 @@ export default function Contact() {
                       style={{
                         width: "100%",
                         padding: "14px 16px",
-                        fontSize: 15,
+                        fontSize: 16,
                         color: "#1d1d1f",
                         background: "white",
                         border: "1px solid rgba(0,0,0,0.08)",
@@ -280,7 +280,7 @@ export default function Contact() {
                       style={{
                         width: "100%",
                         padding: "14px 16px",
-                        fontSize: 15,
+                        fontSize: 16,
                         color: "#1d1d1f",
                         background: "white",
                         border: "1px solid rgba(0,0,0,0.08)",
@@ -327,7 +327,7 @@ export default function Contact() {
                       style={{
                         width: "100%",
                         padding: "14px 16px",
-                        fontSize: 15,
+                        fontSize: 16,
                         color: "#1d1d1f",
                         background: "white",
                         border: "1px solid rgba(0,0,0,0.08)",
@@ -362,7 +362,7 @@ export default function Contact() {
                       style={{
                         width: "100%",
                         padding: "14px 16px",
-                        fontSize: 15,
+                        fontSize: 16,
                         color: "#1d1d1f",
                         background: "white",
                         border: "1px solid rgba(0,0,0,0.08)",
@@ -402,7 +402,7 @@ export default function Contact() {
                     style={{
                       width: "100%",
                       padding: "14px 16px",
-                      fontSize: 15,
+                      fontSize: 16,
                       color: "#1d1d1f",
                       background: "white",
                       border: "1px solid rgba(0,0,0,0.08)",
@@ -454,7 +454,7 @@ export default function Contact() {
                     style={{
                       width: "100%",
                       padding: "14px 16px",
-                      fontSize: 15,
+                      fontSize: 16,
                       color: "#1d1d1f",
                       background: "white",
                       border: "1px solid rgba(0,0,0,0.08)",
@@ -474,6 +474,7 @@ export default function Contact() {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
+                  className="py-4 sm:py-[16px]"
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -772,7 +773,7 @@ export default function Contact() {
       </div>
 
       <style jsx>{`
-        @media (max-width: 768px) {
+        @media (max-width: 639px) {
           .contact-grid {
             grid-template-columns: 1fr !important;
           }

@@ -16,7 +16,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.7 }}
-          className="text-[32px] sm:text-[64px] md:text-[80px] font-semibold leading-[1.05] tracking-[-0.04em] text-[#1d1d1f] mb-6"
+          className="text-[28px] sm:text-[64px] md:text-[80px] font-semibold leading-[1.05] tracking-[-0.04em] text-[#1d1d1f] mb-6"
         >
           สอน. สร้าง. ให้คำปรึกษา.
           <br />
@@ -28,7 +28,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="text-[19px] sm:text-[21px] text-[#6e6e73] max-w-[640px] mx-auto mb-10 leading-[1.47]"
+          className="text-[15px] sm:text-[21px] text-[#6e6e73] max-w-[640px] mx-auto mb-10 leading-[1.47]"
         >
           เราคือทีมพัฒนาเบื้องหลัง LocalAI Thailand และ CloudAI Thailand — ทั้งสอน workshop
           พัฒนาระบบ AI ขนาดใหญ่ และสร้าง content ด้าน AI สำหรับธุรกิจไทย
@@ -39,15 +39,15 @@ export default function Hero() {
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.55 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-16 sm:mb-20 px-4 sm:px-0"
         >
-          <a href="#contact" className="btn-primary">ปรึกษาฟรี</a>
-          <a href="#contact" className="btn-outline">Request a Demo</a>
+          <a href="#contact" className="btn-primary w-full sm:w-auto">ปรึกษาฟรี</a>
+          <a href="#contact" className="btn-outline w-full sm:w-auto">Request a Demo</a>
           <a href="#services" className="apple-link">ดูบริการทั้งหมด</a>
         </motion.div>
 
         {/* 3 Pillars — Apple Education card style */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+        <div className="flex overflow-x-auto gap-4 snap-x snap-mandatory pb-4 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 sm:gap-6 sm:overflow-visible scrollbar-hide">
           {[
             {
               emoji: "🎓",
@@ -74,7 +74,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 + i * 0.1 }}
-              className="apple-card p-5 sm:p-8 text-center group"
+              className="apple-card p-5 sm:p-8 text-center group min-w-[260px] shrink-0 snap-start sm:min-w-0 sm:shrink"
             >
               <span className="text-4xl mb-4 block">{item.emoji}</span>
               <h3 className="text-[17px] font-semibold text-[#1d1d1f] mb-2 group-hover:text-[#06c] transition-colors">
@@ -92,9 +92,9 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.1 }}
-          className="mt-16 max-w-[560px] mx-auto py-6 border-t border-b border-[#d2d2d7]/50"
+          className="mt-10 sm:mt-16 max-w-[560px] mx-auto py-4 sm:py-6 border-t border-b border-[#d2d2d7]/50"
         >
-          <p className="text-[17px] text-[#1d1d1f] font-medium italic leading-[1.6]">
+          <p className="text-[14px] sm:text-[17px] text-[#1d1d1f] font-medium italic leading-[1.6]">
             "ไม่มี solution สำเร็จรูปที่เหมาะกับทุกคน
             <br className="hidden sm:block" />
             มีแต่ระบบที่สร้างขึ้นให้พอดีกับธุรกิจคุณ"

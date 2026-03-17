@@ -222,7 +222,7 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="lg:hidden bg-white border-t border-gray-100 overflow-hidden"
           >
-            <div className="container-wide py-4 space-y-1 max-h-[calc(100vh-64px)] overflow-y-auto">
+            <div className="container-wide py-4 space-y-1 max-h-[calc(100vh-64px)] overflow-y-auto pb-[calc(16px+env(safe-area-inset-bottom))]">
               {navGroups.map((group) => (
                 <div key={group.label}>
                   <button
@@ -231,7 +231,7 @@ export default function Navbar() {
                         mobileAccordion === group.label ? null : group.label
                       )
                     }
-                    className="flex items-center justify-between w-full px-4 py-3 min-h-[44px] text-sm font-semibold text-[#1d1d1f] rounded-xl hover:bg-[#f0f5ff] transition-colors"
+                    className="flex items-center justify-between w-full px-4 py-3 min-h-[44px] text-base sm:text-sm font-semibold text-[#1d1d1f] rounded-xl hover:bg-[#f0f5ff] transition-colors"
                   >
                     {group.label}
                     <ChevronDown
@@ -295,7 +295,7 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => setMobileOpen(false)}
-                  className="btn-primary w-full text-center text-sm"
+                  className="btn-primary w-full text-center text-sm block py-3.5"
                 >
                   เริ่มต้นใช้ AI
                 </Link>

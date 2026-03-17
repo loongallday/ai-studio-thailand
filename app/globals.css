@@ -28,6 +28,10 @@ html { scroll-behavior: smooth; }
 ::selection { background: rgba(0,102,204,0.15); }
 ::-webkit-scrollbar { width: 0; }
 
+/* ─── Scrollbar hide for carousels ─── */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
 /* ─── Typography ─── */
 p {
   font-weight: 400;

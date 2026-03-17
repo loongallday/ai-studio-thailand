@@ -541,34 +541,16 @@ function BulletPoint({
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ delay }}
-      style={{
-        display: "flex",
-        alignItems: "flex-start",
-        gap: 14,
-        padding: "12px 0",
-      }}
+      className="flex items-start gap-2.5 sm:gap-3.5 py-2 sm:py-3"
     >
       <div
-        style={{
-          width: 40,
-          height: 40,
-          borderRadius: 12,
-          background: `${color}10`,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexShrink: 0,
-        }}
+        className="w-8 h-8 sm:w-10 sm:h-10 rounded-[10px] sm:rounded-[12px] flex items-center justify-center shrink-0"
+        style={{ background: `${color}10` }}
       >
-        <Icon size={20} style={{ color }} />
+        <Icon size={16} style={{ color }} />
       </div>
       <span
-        style={{
-          fontSize: 16,
-          color: "#1d1d1f",
-          lineHeight: 1.55,
-          paddingTop: 8,
-        }}
+        className="text-[14px] sm:text-[16px] text-[#1d1d1f] leading-[1.55] pt-1 sm:pt-2"
       >
         {text}
       </span>
@@ -641,7 +623,7 @@ export default function Services() {
       {/* ============================================================ */}
       {/*  Service 1: AI Workshop & Training — white bg                 */}
       {/* ============================================================ */}
-      <div style={{ background: "#fff", padding: "40px 16px 60px" }}>
+      <div className="py-12 px-4 sm:py-[40px] sm:px-[16px] sm:pb-[60px]" style={{ background: "#fff" }}>
         <div style={{ maxWidth: 1080, margin: "0 auto" }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -764,7 +746,7 @@ export default function Services() {
       {/* ============================================================ */}
       {/*  Service 2: Custom AI Development — #f5f5f7 bg                */}
       {/* ============================================================ */}
-      <div style={{ background: "#f5f5f7", padding: "clamp(48px, 8vw, 100px) 16px" }}>
+      <div className="py-12 px-4 sm:py-[clamp(48px,8vw,100px)] sm:px-4" style={{ background: "#f5f5f7" }}>
         <div style={{ maxWidth: 1080, margin: "0 auto" }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -888,7 +870,7 @@ export default function Services() {
       {/* ============================================================ */}
       {/*  Service 3: AI Content Creation — white bg                    */}
       {/* ============================================================ */}
-      <div style={{ background: "#fff", padding: "clamp(48px, 8vw, 100px) 16px" }}>
+      <div className="py-12 px-4 sm:py-[clamp(48px,8vw,100px)] sm:px-4" style={{ background: "#fff" }}>
         <div style={{ maxWidth: 1080, margin: "0 auto" }}>
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -1092,19 +1074,22 @@ export default function Services() {
       </div>
 
       <style jsx>{`
-        @media (max-width: 768px) {
+        @media (max-width: 639px) {
           .service-row {
             grid-template-columns: 1fr !important;
-            gap: 32px !important;
+            gap: 24px !important;
           }
-          .service-row > div {
-            order: unset !important;
+          .service-row > .service-visual {
+            order: -1 !important;
+            margin-left: -16px !important;
+            margin-right: -16px !important;
           }
-          .stats-grid {
-            grid-template-columns: 1fr !important;
+          .service-row > .service-visual > div {
+            border-radius: 0 !important;
           }
-        }
-        @media (max-width: 480px) {
+          .service-row > .service-text {
+            order: 1 !important;
+          }
           .stats-grid {
             grid-template-columns: 1fr !important;
           }

@@ -43,7 +43,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#1d1d1f] text-white">
       <div className="container-wide py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Brand column */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-4">
@@ -84,7 +84,7 @@ export default function Footer() {
               <h4 className="text-sm font-semibold text-white mb-4 tracking-wide">
                 {col.title}
               </h4>
-              <ul className="space-y-1">
+              <ul className="space-y-0.5 sm:space-y-1">
                 {col.links.map((link) => (
                   <li key={link.href}>
                     {"external" in link && link.external ? (
@@ -92,7 +92,7 @@ export default function Footer() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm text-gray-400 hover:text-[#06c] transition-colors flex items-center gap-1.5 py-1.5 min-h-[44px]"
+                        className="text-sm text-gray-400 hover:text-[#06c] transition-colors flex items-center gap-1.5 py-2 sm:py-1.5 min-h-[44px]"
                       >
                         {link.label}
                         <ExternalLink size={12} />
@@ -100,7 +100,7 @@ export default function Footer() {
                     ) : (
                       <Link
                         href={link.href}
-                        className="text-sm text-gray-400 hover:text-[#06c] transition-colors py-1.5 min-h-[44px] flex items-center"
+                        className="text-sm text-gray-400 hover:text-[#06c] transition-colors py-2 sm:py-1.5 min-h-[44px] flex items-center"
                       >
                         {link.label}
                       </Link>

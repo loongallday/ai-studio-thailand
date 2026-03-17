@@ -1937,7 +1937,7 @@ export default function Workshop() {
       </div>
 
       <style jsx>{`
-        @media (max-width: 768px) {
+        @media (max-width: 639px) {
           .workshop-bottom-grid {
             grid-template-columns: 1fr !important;
           }
@@ -1945,7 +1945,26 @@ export default function Workshop() {
             grid-template-columns: 1fr 1fr !important;
           }
           .workshop-testimonial-grid {
-            grid-template-columns: 1fr !important;
+            display: flex !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            gap: 16px !important;
+            padding-bottom: 16px;
+            margin-left: -16px;
+            margin-right: -16px;
+            padding-left: 16px;
+            padding-right: 16px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+          .workshop-testimonial-grid::-webkit-scrollbar {
+            display: none;
+          }
+          .workshop-testimonial-grid > div {
+            min-width: 280px !important;
+            flex-shrink: 0 !important;
+            scroll-snap-align: start;
           }
           .workshop-expand-grid {
             grid-template-columns: 1fr !important;
@@ -1954,15 +1973,26 @@ export default function Workshop() {
             grid-template-columns: 1fr !important;
           }
           .workshop-schedule-wrapper {
-            overflow-x: auto !important;
-            -webkit-overflow-scrolling: touch;
+            border-radius: 16px !important;
           }
           .workshop-schedule-wrapper > div {
-            min-width: 600px;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 0 !important;
           }
-          .workshop-schedule-header,
+          .workshop-schedule-header {
+            display: none !important;
+          }
           .workshop-schedule-row {
-            min-width: 600px;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 10px !important;
+            padding: 16px 20px !important;
+            border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+            min-width: unset !important;
+          }
+          .workshop-schedule-row > div {
+            width: 100% !important;
           }
         }
         @media (max-width: 480px) {

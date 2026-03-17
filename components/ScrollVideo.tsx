@@ -79,10 +79,10 @@ export default function ScrollVideo() {
   }, [drawFrame]);
 
   return (
-    <section ref={sectionRef} className="relative h-[300vh] sm:h-[400vh]">
+    <section ref={sectionRef} className="relative h-[250vh] sm:h-[400vh]">
       <div className="sticky top-0 h-screen flex items-center justify-center overflow-hidden bg-white px-0">
         {/* Progress bar */}
-        <div className="absolute top-0 left-0 right-0 h-[3px] bg-[#e5e5ea] z-20">
+        <div className="absolute top-0 left-0 right-0 h-[4px] sm:h-[3px] bg-[#e5e5ea] z-20">
           <div
             className="h-full"
             style={{
@@ -99,10 +99,10 @@ export default function ScrollVideo() {
           ref={canvasRef}
           width={WIDTH}
           height={HEIGHT}
+          className="sm:object-contain object-cover"
           style={{
             width: `min(100vw, ${(100 * WIDTH) / HEIGHT}vh)`,
             height: `min(100vh, ${(100 * HEIGHT) / WIDTH}vw)`,
-            objectFit: "contain",
             opacity: loaded ? 1 : 0,
             transition: "opacity 0.5s",
           }}

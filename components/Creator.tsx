@@ -1691,9 +1691,50 @@ export default function Creator() {
             grid-template-columns: repeat(2, 1fr) !important;
           }
         }
-        @media (max-width: 768px) {
+        @media (max-width: 639px) {
+          .portfolio-row {
+            display: flex !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            gap: 16px !important;
+            padding-bottom: 16px;
+            margin-left: -16px;
+            margin-right: -16px;
+            padding-left: 16px;
+            padding-right: 16px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+          .portfolio-row::-webkit-scrollbar {
+            display: none;
+          }
+          .portfolio-row > div {
+            min-width: 280px !important;
+            flex-shrink: 0 !important;
+            scroll-snap-align: start;
+          }
           .portfolio-row-3 {
-            grid-template-columns: 1fr !important;
+            display: flex !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            gap: 16px !important;
+            padding-bottom: 16px;
+            margin-left: -16px;
+            margin-right: -16px;
+            padding-left: 16px;
+            padding-right: 16px;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+          .portfolio-row-3::-webkit-scrollbar {
+            display: none;
+          }
+          .portfolio-row-3 > div {
+            min-width: 280px !important;
+            flex-shrink: 0 !important;
+            scroll-snap-align: start;
           }
           .services-grid {
             grid-template-columns: 1fr !important;
@@ -1703,14 +1744,6 @@ export default function Creator() {
           }
           .social-grid {
             grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-        @media (max-width: 480px) {
-          .stats-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .social-grid {
-            grid-template-columns: 1fr !important;
           }
         }
       `}</style>

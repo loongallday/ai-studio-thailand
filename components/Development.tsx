@@ -1167,10 +1167,10 @@ export default function Development() {
 
       {/* ──────────── SECTION 3: Process (Alternating) ──────────── */}
       <div
+        className="py-16 px-4 sm:py-[120px] sm:px-[24px]"
         style={{
           background: "#f5f5f7",
           margin: "0 -24px",
-          padding: "120px 24px",
         }}
       >
         <div style={{ maxWidth: 1080, margin: "0 auto" }}>
@@ -1867,7 +1867,7 @@ export default function Development() {
             grid-column: span 1 !important;
           }
         }
-        @media (max-width: 768px) {
+        @media (max-width: 639px) {
           .bento-grid {
             grid-template-columns: 1fr !important;
           }
@@ -1881,7 +1881,7 @@ export default function Development() {
           }
           .process-step {
             grid-template-columns: 1fr !important;
-            gap: 24px !important;
+            gap: 16px !important;
           }
           .process-text-left,
           .process-text-right {
@@ -1900,10 +1900,15 @@ export default function Development() {
           .terminal-mockup {
             overflow-x: auto !important;
             -webkit-overflow-scrolling: touch;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+          .terminal-mockup::-webkit-scrollbar {
+            display: none;
           }
           .terminal-mockup pre,
           .terminal-mockup code {
-            font-size: 11px !important;
+            font-size: 10px !important;
           }
         }
       `}</style>

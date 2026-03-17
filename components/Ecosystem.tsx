@@ -408,13 +408,12 @@ export default function Ecosystem() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.6 }}
+          className="mt-6 mb-10 sm:mt-10 sm:mb-20"
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             gap: 12,
-            marginTop: 40,
-            marginBottom: 80,
           }}
         >
           <div
@@ -628,9 +627,14 @@ export default function Ecosystem() {
       </div>
 
       <style jsx>{`
-        @media (max-width: 768px) {
+        @media (max-width: 639px) {
           .brand-cards-row {
             flex-direction: column !important;
+            gap: 16px !important;
+          }
+          .brand-cards-row > div:nth-child(2) {
+            order: -1 !important;
+            transform: none !important;
           }
           .connection-svg {
             display: none !important;

@@ -232,25 +232,23 @@ export default function PricingSection() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
-    <section className="bg-white pt-20 md:pt-[120px] pb-0">
-      <div className="max-w-[1120px] mx-auto px-4 md:px-6">
+    <section className="bg-white apple-section pb-0">
+      <div className="max-w-[980px] mx-auto px-4 md:px-6">
         {/* Section 1: Hero Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16 md:mb-[100px]"
+          className="text-center mb-16"
         >
-          <div className="text-[13px] md:text-[14px] font-semibold text-[#06c] tracking-[0.08em] uppercase mb-3">
-            Pricing
-          </div>
-          <h1 className="text-[36px] md:text-[48px] lg:text-[60px] font-bold text-[#1d1d1f] leading-[1.1] mb-5">
-            ราคาโปร่งใส
-            <br />
-            ไม่มีค่าใช้จ่ายซ่อน
+          <p className="text-[13px] font-semibold text-[#06c] uppercase tracking-widest mb-3">
+            PRICING
+          </p>
+          <h1 className="text-[40px] sm:text-[56px] md:text-[64px] font-semibold tracking-[-0.04em] mb-4">
+            ราคาโปร่งใส.
           </h1>
-          <p className="text-[16px] md:text-[19px] text-[#86868b] max-w-[600px] mx-auto leading-[1.7]">
+          <p className="text-[19px] sm:text-[21px] text-[#6e6e73] max-w-[600px] mx-auto leading-[1.47]">
             ทุกบริการมีราคาชัดเจน ไม่มี hidden fee
             ปรึกษาเบื้องต้นฟรีเสมอ ก่อนตัดสินใจ
           </p>
@@ -271,10 +269,10 @@ export default function PricingSection() {
                 Workshop & Training
               </span>
             </div>
-            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] font-bold text-[#1d1d1f] leading-[1.15] mb-3.5">
+            <h2 className="text-[28px] sm:text-[32px] font-semibold text-[#1d1d1f] tracking-[-0.03em] mb-3.5">
               เรียนรู้ AI จากผู้เชี่ยวชาญ
             </h2>
-            <p className="text-[15px] md:text-[17px] text-[#86868b] max-w-[520px] mx-auto leading-relaxed">
+            <p className="text-[15px] md:text-[17px] text-[#6e6e73] max-w-[520px] mx-auto leading-relaxed">
               หลักสูตรที่ออกแบบมาให้ใช้งานได้จริง ไม่ใช่แค่ทฤษฎี
             </p>
           </motion.div>
@@ -331,13 +329,13 @@ export default function PricingSection() {
                       {plan.price === "ติดต่อราคา" ? plan.price : `฿${plan.price}`}
                     </span>
                     {plan.unit && (
-                      <span className={`text-[14px] ${plan.recommended ? "text-white/60" : "text-[#86868b]"}`}>
+                      <span className={`text-[14px] ${plan.recommended ? "text-white/60" : "text-[#6e6e73]"}`}>
                         {plan.unit}
                       </span>
                     )}
                   </div>
 
-                  <div className={`flex items-center gap-1.5 text-[13px] mb-6 ${plan.recommended ? "text-white/50" : "text-[#86868b]"}`}>
+                  <div className={`flex items-center gap-1.5 text-[13px] mb-6 ${plan.recommended ? "text-white/50" : "text-[#6e6e73]"}`}>
                     <Clock size={14} />
                     {plan.duration}
                   </div>
@@ -393,12 +391,12 @@ export default function PricingSection() {
                 Custom AI Development
               </span>
             </div>
-            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] font-bold text-[#1d1d1f] leading-[1.15] mb-3.5">
+            <h2 className="text-[28px] sm:text-[32px] font-semibold text-[#1d1d1f] tracking-[-0.03em] mb-3.5">
               ทุกโปรเจกต์ราคาต่างกัน
               <br />
               เพราะเราสร้างเฉพาะสำหรับคุณ
             </h2>
-            <p className="text-[15px] md:text-[17px] text-[#86868b] max-w-[600px] mx-auto leading-relaxed">
+            <p className="text-[15px] md:text-[17px] text-[#6e6e73] max-w-[600px] mx-auto leading-relaxed">
               ไม่มีราคาตายตัว เพราะทุกธุรกิจมีความต้องการที่แตกต่าง
               เราออกแบบ solution เฉพาะสำหรับแต่ละองค์กร
             </p>
@@ -409,13 +407,13 @@ export default function PricingSection() {
             variants={fadeUp}
             className="apple-card bg-[#f5f5f7] rounded-3xl p-6 md:p-8 lg:p-10 text-center mb-10 md:mb-12"
           >
-            <p className="text-[14px] font-semibold text-[#86868b] tracking-[0.04em] uppercase mb-3">
+            <p className="text-[14px] font-semibold text-[#6e6e73] tracking-[0.04em] uppercase mb-3">
               Typical Project Range
             </p>
             <div className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-[#1d1d1f] mb-2">
               ฿50,000 — ฿500,000+
             </div>
-            <p className="text-[14px] md:text-[15px] text-[#86868b] leading-relaxed">
+            <p className="text-[14px] md:text-[15px] text-[#6e6e73] leading-relaxed">
               ขึ้นกับ scope, ความซับซ้อน, และระยะเวลาโปรเจกต์
             </p>
           </motion.div>
@@ -445,7 +443,7 @@ export default function PricingSection() {
                     <div className="text-[13px] md:text-[14px] font-bold text-[#1d1d1f] mb-1">
                       {step.label}
                     </div>
-                    <div className="text-[12px] text-[#86868b]">
+                    <div className="text-[12px] text-[#6e6e73]">
                       {step.desc}
                     </div>
                     {i < devProcess.length - 1 && (
@@ -464,7 +462,7 @@ export default function PricingSection() {
             <h3 className="text-[20px] md:text-[22px] font-bold text-[#1d1d1f] text-center mb-3">
               ตัวอย่างโปรเจกต์
             </h3>
-            <p className="text-[14px] md:text-[15px] text-[#86868b] text-center mb-8 md:mb-9">
+            <p className="text-[14px] md:text-[15px] text-[#6e6e73] text-center mb-8 md:mb-9">
               ราคาตัวอย่างเพื่อประกอบการตัดสินใจ (ราคาจริงขึ้นกับรายละเอียด)
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
@@ -487,11 +485,11 @@ export default function PricingSection() {
                     </p>
                     <div className="border-t border-black/[0.04] pt-4 flex flex-col gap-2">
                       <div className="flex justify-between items-center">
-                        <span className="text-[13px] text-[#86868b]">ราคาโดยประมาณ</span>
+                        <span className="text-[13px] text-[#6e6e73]">ราคาโดยประมาณ</span>
                         <span className="text-[14px] md:text-[15px] font-bold text-[#1d1d1f]">{proj.range}</span>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-[13px] text-[#86868b]">ระยะเวลา</span>
+                        <span className="text-[13px] text-[#6e6e73]">ระยะเวลา</span>
                         <span className="text-[13px] md:text-[14px] font-semibold text-[#6e6e73]">{proj.duration}</span>
                       </div>
                     </div>
@@ -530,10 +528,10 @@ export default function PricingSection() {
                 AI Content Creation
               </span>
             </div>
-            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] font-bold text-[#1d1d1f] leading-[1.15] mb-3.5">
+            <h2 className="text-[28px] sm:text-[32px] font-semibold text-[#1d1d1f] tracking-[-0.03em] mb-3.5">
               สร้างคอนเทนต์ด้วย AI
             </h2>
-            <p className="text-[15px] md:text-[17px] text-[#86868b] max-w-[520px] mx-auto leading-relaxed">
+            <p className="text-[15px] md:text-[17px] text-[#6e6e73] max-w-[520px] mx-auto leading-relaxed">
               คอนเทนต์คุณภาพ ส่งมอบตรงเวลา ราคาคุ้มค่า
             </p>
           </motion.div>
@@ -561,7 +559,7 @@ export default function PricingSection() {
                       ฿{plan.price}
                     </span>
                   </div>
-                  <div className="text-[13px] text-[#86868b] mb-6">
+                  <div className="text-[13px] text-[#6e6e73] mb-6">
                     {plan.unit}
                   </div>
 
@@ -605,7 +603,7 @@ export default function PricingSection() {
               <HelpCircle size={18} className="text-[#06c]" />
               <span className="text-[14px] font-semibold text-[#06c]">FAQ</span>
             </div>
-            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] font-bold text-[#1d1d1f] leading-[1.15]">
+            <h2 className="text-[28px] sm:text-[32px] font-semibold text-[#1d1d1f] tracking-[-0.03em]">
               คำถามที่พบบ่อย
             </h2>
           </motion.div>
@@ -628,7 +626,7 @@ export default function PricingSection() {
                     animate={{ rotate: openFaq === i ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <ChevronDown size={20} className="text-[#86868b] shrink-0" />
+                    <ChevronDown size={20} className="text-[#6e6e73] shrink-0" />
                   </motion.div>
                 </button>
                 <AnimatePresence>

@@ -62,24 +62,24 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="bg-white py-16 md:py-24 lg:py-[120px] px-4"
+      className="apple-section bg-white px-4"
     >
-      <div className="max-w-[1080px] mx-auto">
+      <div className="max-w-[980px] mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-16"
         >
-          <div className="text-[13px] md:text-[14px] font-semibold text-[#06c] tracking-[0.08em] uppercase mb-3">
-            Contact Us
-          </div>
-          <h2 className="text-[32px] md:text-[40px] lg:text-[48px] font-bold text-[#1d1d1f] leading-[1.15] mb-4">
+          <p className="text-[13px] font-semibold text-[#06c] uppercase tracking-widest mb-3">
+            CONTACT US
+          </p>
+          <h2 className="text-[40px] sm:text-[56px] md:text-[64px] font-semibold tracking-[-0.04em] mb-4">
             พร้อมเริ่มต้นกับ AI?
           </h2>
-          <p className="text-[16px] md:text-[18px] text-[#86868b] max-w-[520px] mx-auto leading-relaxed">
+          <p className="text-[19px] sm:text-[21px] text-[#6e6e73] max-w-[600px] mx-auto leading-[1.47]">
             ติดต่อเราวันนี้ รับคำปรึกษาเบื้องต้นฟรี
             เราพร้อมช่วยคุณวางแผน AI ที่เหมาะกับธุรกิจ
           </p>
@@ -130,7 +130,7 @@ export default function Contact() {
                       htmlFor="name"
                       className="flex items-center gap-1.5 text-[13px] font-semibold text-[#1d1d1f] mb-2"
                     >
-                      <User size={14} className="text-[#86868b]" />
+                      <User size={14} className="text-[#6e6e73]" />
                       ชื่อ-นามสกุล
                     </label>
                     <input
@@ -147,7 +147,7 @@ export default function Contact() {
                       htmlFor="company"
                       className="flex items-center gap-1.5 text-[13px] font-semibold text-[#1d1d1f] mb-2"
                     >
-                      <Building size={14} className="text-[#86868b]" />
+                      <Building size={14} className="text-[#6e6e73]" />
                       บริษัท
                     </label>
                     <input
@@ -167,7 +167,7 @@ export default function Contact() {
                       htmlFor="email"
                       className="flex items-center gap-1.5 text-[13px] font-semibold text-[#1d1d1f] mb-2"
                     >
-                      <Mail size={14} className="text-[#86868b]" />
+                      <Mail size={14} className="text-[#6e6e73]" />
                       อีเมล
                     </label>
                     <input
@@ -184,7 +184,7 @@ export default function Contact() {
                       htmlFor="phone"
                       className="flex items-center gap-1.5 text-[13px] font-semibold text-[#1d1d1f] mb-2"
                     >
-                      <Phone size={14} className="text-[#86868b]" />
+                      <Phone size={14} className="text-[#6e6e73]" />
                       เบอร์โทร
                     </label>
                     <input
@@ -203,7 +203,7 @@ export default function Contact() {
                     htmlFor="service"
                     className="flex items-center gap-1.5 text-[13px] font-semibold text-[#1d1d1f] mb-2"
                   >
-                    <FileText size={14} className="text-[#86868b]" />
+                    <FileText size={14} className="text-[#6e6e73]" />
                     บริการที่สนใจ
                   </label>
                   <select
@@ -226,7 +226,7 @@ export default function Contact() {
                     htmlFor="message"
                     className="flex items-center gap-1.5 text-[13px] font-semibold text-[#1d1d1f] mb-2"
                   >
-                    <MessageSquare size={14} className="text-[#86868b]" />
+                    <MessageSquare size={14} className="text-[#6e6e73]" />
                     ข้อความ
                   </label>
                   <textarea
@@ -293,7 +293,7 @@ export default function Contact() {
                     <InfoIcon size={22} style={{ color: info.color }} />
                   </div>
                   <div>
-                    <div className="text-[12px] font-semibold text-[#86868b] tracking-[0.04em] uppercase mb-0.5">
+                    <div className="text-[12px] font-semibold text-[#6e6e73] tracking-[0.04em] uppercase mb-0.5">
                       {info.label}
                     </div>
                     <div className="text-[15px] md:text-[16px] font-semibold text-[#1d1d1f]">
@@ -330,7 +330,7 @@ export default function Contact() {
                 </div>
                 <div className="flex justify-between text-[14px]">
                   <span className="text-[#6e6e73]">อาทิตย์</span>
-                  <span className="text-[#86868b] font-medium">ปิดทำการ</span>
+                  <span className="text-[#6e6e73] font-medium">ปิดทำการ</span>
                 </div>
               </div>
             </motion.div>

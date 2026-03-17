@@ -134,7 +134,7 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="container-wide">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-6">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-1.5 group">
@@ -246,7 +246,7 @@ export default function Navbar() {
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="lg:hidden bg-white border-t border-gray-100 overflow-hidden"
           >
-            <div className="container-wide py-4 space-y-1 max-h-[calc(100dvh-56px)] overflow-y-auto overscroll-contain pb-[calc(16px+env(safe-area-inset-bottom))]">
+            <div className="max-w-[1200px] mx-auto px-5 sm:px-6 py-4 space-y-1 max-h-[calc(100dvh-56px)] overflow-y-auto overscroll-contain pb-[calc(16px+env(safe-area-inset-bottom))]">
               {navGroups.map((group, groupIndex) => (
                 <div key={group.label} className={groupIndex > 0 ? "border-t border-black/[0.06] pt-1" : ""}>
                   <button

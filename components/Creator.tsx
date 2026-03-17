@@ -119,7 +119,7 @@ function LINEBubble({
             </p>
           )}
         </div>
-        <span className="text-[10px] text-[#86868b] mt-0.5 block">
+        <span className="text-[10px] text-[#6e6e73] mt-0.5 block">
           {time}
         </span>
       </div>
@@ -134,9 +134,9 @@ export default function Creator() {
   return (
     <section
       id="creator"
-      className="bg-white py-[clamp(60px,10vw,120px)] px-4"
+      className="apple-section bg-white px-4"
     >
-      <div className="max-w-[1080px] mx-auto">
+      <div className="max-w-[980px] mx-auto">
         {/* ════════════════════════════════════════════
             Section 1: Hero
         ════════════════════════════════════════════ */}
@@ -147,16 +147,13 @@ export default function Creator() {
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           className="text-center mb-24"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[rgba(0,102,204,0.06)] mb-5">
-            <PenTool size={14} className="text-[#06c]" />
-            <span className="text-[13px] font-semibold text-[#06c]">
-              AI Creator Studio
-            </span>
-          </div>
-          <h2 className="text-[clamp(36px,6vw,56px)] font-bold text-[#1d1d1f] leading-[1.1] mb-5 tracking-tight">
-            AI Content Creation
+          <p className="text-[13px] font-semibold text-[#06c] uppercase tracking-widest mb-3">
+            AI CREATOR STUDIO
+          </p>
+          <h2 className="text-[40px] sm:text-[56px] md:text-[64px] font-semibold tracking-[-0.04em] mb-4">
+            AI Content Creation.
           </h2>
-          <p className="text-[clamp(17px,2.5vw,21px)] text-[#6e6e73] max-w-[600px] mx-auto leading-relaxed">
+          <p className="text-[19px] sm:text-[21px] text-[#6e6e73] max-w-[600px] mx-auto leading-[1.47]">
             เราสร้าง content ที่ทำให้ AI เข้าถึงได้สำหรับทุกคน
           </p>
         </motion.div>
@@ -171,10 +168,10 @@ export default function Creator() {
           transition={{ duration: 0.6 }}
           className="mb-24"
         >
-          <h3 className="text-sm font-semibold text-[#06c] tracking-widest uppercase mb-3 text-center">
-            Our Content
-          </h3>
-          <h3 className="text-[clamp(28px,4vw,40px)] font-bold text-[#1d1d1f] text-center mb-14 tracking-tight">
+          <p className="text-[13px] font-semibold text-[#06c] uppercase tracking-widest mb-3 text-center">
+            OUR CONTENT
+          </p>
+          <h3 className="text-[40px] sm:text-[56px] md:text-[64px] font-semibold tracking-[-0.04em] text-center mb-14">
             สิ่งที่เราสร้าง
           </h3>
 
@@ -192,7 +189,7 @@ export default function Creator() {
             >
               {/* Article header image placeholder */}
               <div className="h-[180px] bg-gradient-to-br from-[#f5f5f7] to-[#e8e8ed] flex items-center justify-center relative">
-                <PenTool size={48} className="text-[#86868b] opacity-30" />
+                <PenTool size={48} className="text-[#6e6e73] opacity-30" />
                 <div className="absolute top-4 left-4 bg-[#06c] text-white text-[11px] font-bold px-2.5 py-1 rounded-lg">
                   AI Automation
                 </div>
@@ -205,7 +202,7 @@ export default function Creator() {
                   <span className="text-[13px] font-semibold text-[#1d1d1f]">
                     AI Studio Thailand
                   </span>
-                  <span className="text-xs text-[#86868b]">
+                  <span className="text-xs text-[#6e6e73]">
                     14 มี.ค. 2026
                   </span>
                 </div>
@@ -217,7 +214,7 @@ export default function Creator() {
                   บทความนี้จะพาคุณไปรู้จักกับ AI Automation ตั้งแต่พื้นฐาน จนถึงการประยุกต์ใช้จริงในธุรกิจ SME ไทย...
                 </p>
                 <div className="flex items-center justify-between pt-3.5 border-t border-black/5">
-                  <div className="flex items-center gap-3 text-xs text-[#86868b]">
+                  <div className="flex items-center gap-3 text-xs text-[#6e6e73]">
                     <span className="flex items-center gap-1">
                       <Clock size={13} /> 8 min read
                     </span>
@@ -226,8 +223,8 @@ export default function Creator() {
                     </span>
                   </div>
                   <div className="flex gap-2">
-                    <Bookmark size={16} className="text-[#86868b] cursor-pointer" />
-                    <Share2 size={16} className="text-[#86868b] cursor-pointer" />
+                    <Bookmark size={16} className="text-[#6e6e73] cursor-pointer" />
+                    <Share2 size={16} className="text-[#6e6e73] cursor-pointer" />
                   </div>
                 </div>
               </div>
@@ -330,9 +327,9 @@ export default function Creator() {
                   <span className="text-[13px] font-medium text-[#1d1d1f]">
                     AI Studio Thailand
                   </span>
-                  <CheckCircle size={13} className="text-[#86868b]" />
+                  <CheckCircle size={13} className="text-[#6e6e73]" />
                 </div>
-                <div className="text-xs text-[#86868b]">
+                <div className="text-xs text-[#6e6e73]">
                   89K views &middot; 2 สัปดาห์ที่แล้ว
                 </div>
               </div>
@@ -371,7 +368,7 @@ export default function Creator() {
                 </div>
                 {/* Player controls */}
                 <div className="flex items-center justify-center gap-4 mt-auto">
-                  <SkipBack size={18} className="text-[#86868b] cursor-pointer" />
+                  <SkipBack size={18} className="text-[#6e6e73] cursor-pointer" />
                   <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
@@ -384,11 +381,11 @@ export default function Creator() {
                       <Play size={18} className="text-white ml-0.5" />
                     )}
                   </motion.button>
-                  <SkipForward size={18} className="text-[#86868b] cursor-pointer" />
-                  <Volume2 size={16} className="text-[#86868b] ml-2" />
+                  <SkipForward size={18} className="text-[#6e6e73] cursor-pointer" />
+                  <Volume2 size={16} className="text-[#6e6e73] ml-2" />
                 </div>
                 {/* Progress bar */}
-                <div className="flex items-center gap-2 mt-3 text-[10px] text-[#86868b]">
+                <div className="flex items-center gap-2 mt-3 text-[10px] text-[#6e6e73]">
                   <span>12:34</span>
                   <div className="flex-1 h-[3px] bg-black/[0.06] rounded-sm relative">
                     <div className="w-[28%] h-full bg-[#06c] rounded-sm" />
@@ -440,7 +437,7 @@ export default function Creator() {
               </div>
               {/* Bottom bar */}
               <div className="px-3.5 py-3 border-t border-black/[0.06] flex items-center justify-between bg-white">
-                <span className="text-[11px] text-[#86868b]">
+                <span className="text-[11px] text-[#6e6e73]">
                   Broadcast &middot; 12K ผู้รับ
                 </span>
                 <span className="text-[11px] font-semibold text-[#06c] flex items-center gap-1">
@@ -465,13 +462,13 @@ export default function Creator() {
           transition={{ duration: 0.7 }}
           className="mb-24"
         >
-          <h3 className="text-sm font-semibold text-[#06c] tracking-widest uppercase mb-3 text-center">
-            Content Services
-          </h3>
-          <h3 className="text-[clamp(28px,4vw,40px)] font-bold text-[#1d1d1f] text-center mb-4 tracking-tight">
+          <p className="text-[13px] font-semibold text-[#06c] uppercase tracking-widest mb-3 text-center">
+            CONTENT SERVICES
+          </p>
+          <h3 className="text-[40px] sm:text-[56px] md:text-[64px] font-semibold tracking-[-0.04em] text-center mb-4">
             สร้าง Content ให้ธุรกิจคุณ
           </h3>
-          <p className="text-[17px] text-[#6e6e73] text-center max-w-[520px] mx-auto mb-12 leading-relaxed">
+          <p className="text-[19px] sm:text-[21px] text-[#6e6e73] text-center max-w-[600px] mx-auto mb-12 leading-[1.47]">
             เรารับผลิตคอนเทนต์เกี่ยวกับ AI และเทคโนโลยี
             ครบทุกรูปแบบสำหรับธุรกิจของคุณ
           </p>
@@ -617,7 +614,7 @@ export default function Creator() {
           transition={{ duration: 0.7 }}
           className="mb-24 bg-[#f5f5f7] rounded-[28px] py-14 px-8"
         >
-          <h3 className="text-[clamp(28px,4vw,40px)] font-bold text-[#1d1d1f] text-center mb-12 tracking-tight">
+          <h3 className="text-[28px] sm:text-[32px] font-semibold tracking-[-0.03em] text-center mb-12">
             ตัวเลข
           </h3>
 
@@ -661,7 +658,7 @@ export default function Creator() {
           transition={{ duration: 0.7 }}
           className="mb-24"
         >
-          <h3 className="text-[clamp(28px,4vw,40px)] font-bold text-[#1d1d1f] text-center mb-12 tracking-tight">
+          <h3 className="text-[28px] sm:text-[32px] font-semibold tracking-[-0.03em] text-center mb-12">
             ติดตามเรา
           </h3>
 
@@ -752,7 +749,7 @@ export default function Creator() {
           <div className="absolute top-0 left-1/4 w-[300px] h-[300px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(88,86,214,0.15) 0%, transparent 70%)" }} />
           <div className="absolute bottom-0 right-1/4 w-[250px] h-[250px] pointer-events-none" style={{ background: "radial-gradient(circle, rgba(175,82,222,0.12) 0%, transparent 70%)" }} />
           <div className="relative z-[1]">
-            <h3 className="text-[clamp(28px,4vw,40px)] font-bold text-white mb-4 leading-tight">
+            <h3 className="text-[28px] sm:text-[36px] font-semibold text-white mb-4 leading-tight tracking-[-0.03em]">
               พร้อมสร้าง Content
               <br />
               ให้ธุรกิจของคุณ?

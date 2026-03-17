@@ -707,51 +707,20 @@ export default function BlogSection() {
       {/* ============================================================ */}
       {/*  Hero                                                         */}
       {/* ============================================================ */}
-      <div
-        style={{
-          background: "#fff",
-          padding: "160px 24px 80px",
-          textAlign: "center",
-        }}
-      >
-        <div style={{ maxWidth: 800, margin: "0 auto" }}>
+      <div className="apple-section bg-white px-6 pb-0">
+        <div className="max-w-[980px] mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <div
-              style={{
-                fontSize: 14,
-                fontWeight: 600,
-                color: "#06c",
-                letterSpacing: "0.08em",
-                textTransform: "uppercase",
-                marginBottom: 16,
-              }}
-            >
-              Blog
-            </div>
-            <h1
-              style={{
-                fontSize: "clamp(40px, 6vw, 64px)",
-                fontWeight: 700,
-                color: "#1d1d1f",
-                lineHeight: 1.1,
-                marginBottom: 16,
-              }}
-            >
-              Blog
+            <p className="text-[13px] font-semibold text-[#06c] uppercase tracking-widest mb-3">
+              BLOG
+            </p>
+            <h1 className="text-[40px] sm:text-[56px] md:text-[64px] font-semibold tracking-[-0.04em] mb-4">
+              Blog.
             </h1>
-            <p
-              style={{
-                fontSize: "clamp(18px, 2.5vw, 24px)",
-                color: "#6e6e73",
-                lineHeight: 1.5,
-                maxWidth: 600,
-                margin: "0 auto",
-              }}
-            >
+            <p className="text-[19px] sm:text-[21px] text-[#6e6e73] max-w-[600px] mx-auto leading-[1.47]">
               เรื่อง AI ที่เข้าใจง่าย สำหรับธุรกิจไทย
             </p>
           </motion.div>
@@ -784,8 +753,8 @@ export default function BlogSection() {
       {/* ============================================================ */}
       {/*  Article Grid                                                 */}
       {/* ============================================================ */}
-      <div style={{ background: "#f5f5f7", padding: "80px 24px" }}>
-        <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+      <div className="apple-section section-gray px-6">
+        <div className="max-w-[980px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

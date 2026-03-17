@@ -171,3 +171,18 @@ h1, h2, h3, h4 {
 
 /* ─── Smooth transitions ─── */
 * { transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+/* ─── Container ─── */
+.container-wide {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+@media (min-width: 640px) {
+  .container-wide {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}

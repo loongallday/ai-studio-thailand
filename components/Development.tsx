@@ -103,7 +103,7 @@ function ChatMockup() {
         ))}
       </div>
       <div className="flex items-center gap-2 mt-3 bg-white rounded-[20px] px-3 py-2 border border-black/[0.08]">
-        <span className="text-xs text-[#86868b] flex-1">พิมพ์ข้อความ...</span>
+        <span className="text-xs text-[#6e6e73] flex-1">พิมพ์ข้อความ...</span>
         <Send size={14} color="#06c" />
       </div>
     </div>
@@ -317,7 +317,7 @@ function ArchMockup() {
             />
             <div className="flex-1">
               <div className="text-[11px] font-semibold text-[#1d1d1f]">{item.label}</div>
-              <div className="text-[10px] text-[#86868b]">{item.sub}</div>
+              <div className="text-[10px] text-[#6e6e73]">{item.sub}</div>
             </div>
             <div
               className="text-[9px] px-2 py-0.5 rounded-md font-semibold"
@@ -393,7 +393,7 @@ function TestMockup() {
       <div className="flex items-center gap-2 mb-3.5">
         <TestTube size={14} color="#059669" />
         <span className="text-[11px] font-bold text-[#059669] uppercase tracking-wide">All Tests Passed</span>
-        <span className="text-[10px] text-[#86868b] ml-auto">5/5</span>
+        <span className="text-[10px] text-[#6e6e73] ml-auto">5/5</span>
       </div>
       {tests.map((t, i) => (
         <motion.div
@@ -408,7 +408,7 @@ function TestMockup() {
         >
           <CircleCheck size={12} color="#059669" />
           <span className="text-[10px] text-[#1d1d1f] font-mono flex-1">{t.name}</span>
-          <span className="text-[9px] text-[#86868b]">{t.ms}ms</span>
+          <span className="text-[9px] text-[#6e6e73]">{t.ms}ms</span>
         </motion.div>
       ))}
     </div>
@@ -434,7 +434,7 @@ function DashboardMockup() {
             key={stat.label}
             className="bg-white rounded-[10px] px-3 py-2.5 border border-black/[0.04]"
           >
-            <div className="text-[9px] text-[#86868b] mb-0.5">{stat.label}</div>
+            <div className="text-[9px] text-[#6e6e73] mb-0.5">{stat.label}</div>
             <div className="text-base font-bold" style={{ color: stat.color }}>{stat.value}</div>
           </div>
         ))}
@@ -584,7 +584,7 @@ export default function Development() {
   return (
     <section id="development" className="bg-white px-4 md:px-6 overflow-hidden">
       {/* ──────────── SECTION 1: Hero ──────────── */}
-      <div className="max-w-[1080px] mx-auto pt-20 md:pt-[120px] pb-16 md:pb-[100px] text-center">
+      <div className="max-w-[980px] mx-auto apple-section text-center">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -592,17 +592,16 @@ export default function Development() {
           variants={fadeUp}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-2 bg-[rgba(0,102,204,0.06)] rounded-[20px] px-4 py-1.5 mb-6">
-            <Code2 size={14} color="#06c" />
-            <span className="text-[13px] font-semibold text-[#06c]">Engineering Lab</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-[56px] font-bold text-[#1d1d1f] leading-[1.1] mb-5 tracking-tight">
-            Custom AI Development
+          <p className="text-[13px] font-semibold text-[#06c] uppercase tracking-widest mb-3">
+            ENGINEERING LAB
+          </p>
+          <h2 className="text-[40px] sm:text-[56px] md:text-[64px] font-semibold tracking-[-0.04em] mb-4">
+            Custom AI Development.
           </h2>
-          <p className="text-lg md:text-xl lg:text-2xl text-[#6e6e73] max-w-[640px] mx-auto leading-relaxed font-normal">
+          <p className="text-[19px] sm:text-[21px] text-[#6e6e73] max-w-[600px] mx-auto leading-[1.47] mb-4">
             ออกแบบและสร้างระบบ AI ที่พอดีกับธุรกิจคุณ
           </p>
-          <p className="text-base text-[#86868b] max-w-[520px] mx-auto mt-4 leading-[1.7]">
+          <p className="text-[17px] text-[#6e6e73] max-w-[520px] mx-auto leading-[1.7]">
             ไม่ใช่แค่ใช้เครื่องมือสำเร็จรูป — เราออกแบบ พัฒนา และดูแลระบบ AI
             ที่สร้างขึ้นเฉพาะสำหรับกระบวนการทำงานของคุณ ทั้ง On-Premise และ Cloud
           </p>
@@ -610,7 +609,7 @@ export default function Development() {
       </div>
 
       {/* ──────────── SECTION 2: Bento Grid ──────────── */}
-      <div className="max-w-[1080px] mx-auto pb-20 md:pb-[120px]">
+      <div className="max-w-[980px] mx-auto pb-20 md:pb-[120px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -619,10 +618,10 @@ export default function Development() {
           transition={{ duration: 0.7 }}
           className="text-center mb-14"
         >
-          <h3 className="text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-3 tracking-tight">
+          <h3 className="text-[28px] sm:text-[32px] font-semibold text-[#1d1d1f] mb-3 tracking-[-0.03em]">
             สิ่งที่เราสร้าง
           </h3>
-          <p className="text-[17px] text-[#86868b] max-w-[480px] mx-auto leading-relaxed">
+          <p className="text-[17px] text-[#6e6e73] max-w-[480px] mx-auto leading-relaxed">
             ครอบคลุมทุก AI use case ที่องค์กรต้องการ
           </p>
         </motion.div>
@@ -645,7 +644,7 @@ export default function Development() {
                 <h4 className="text-lg font-bold text-[#1d1d1f]">
                   AI Chatbot & Customer Service
                 </h4>
-                <p className="text-[13px] text-[#86868b]">
+                <p className="text-[13px] text-[#6e6e73]">
                   แชทบอทอัจฉริยะ ตอบคำถาม 24/7 รองรับภาษาไทย
                 </p>
               </div>
@@ -669,7 +668,7 @@ export default function Development() {
             <h4 className="text-[15px] font-bold text-[#1d1d1f] mb-1">
               RAG Knowledge Base
             </h4>
-            <p className="text-xs text-[#86868b] leading-relaxed">
+            <p className="text-xs text-[#6e6e73] leading-relaxed">
               ค้นหาข้อมูลจากเอกสารองค์กร
             </p>
             <SearchMockup />
@@ -690,7 +689,7 @@ export default function Development() {
             <h4 className="text-[15px] font-bold text-[#1d1d1f] mb-1">
               Workflow Automation
             </h4>
-            <p className="text-xs text-[#86868b] leading-relaxed">
+            <p className="text-xs text-[#6e6e73] leading-relaxed">
               อัตโนมัติกระบวนการด้วย n8n + AI
             </p>
             <WorkflowMockup />
@@ -711,7 +710,7 @@ export default function Development() {
             <h4 className="text-[15px] font-bold text-[#1d1d1f] mb-1">
               Data Analytics
             </h4>
-            <p className="text-xs text-[#86868b] leading-relaxed">
+            <p className="text-xs text-[#6e6e73] leading-relaxed">
               แดชบอร์ดและรายงานอัจฉริยะ
             </p>
             <MiniChart />
@@ -732,7 +731,7 @@ export default function Development() {
             <h4 className="text-[15px] font-bold text-[#1d1d1f] mb-1">
               System Integration
             </h4>
-            <p className="text-xs text-[#86868b] leading-relaxed">
+            <p className="text-xs text-[#6e6e73] leading-relaxed">
               เชื่อมต่อ ERP, CRM, LINE
             </p>
             <ApiDiagram />
@@ -755,7 +754,7 @@ export default function Development() {
                 <h4 className="text-lg font-bold text-[#1d1d1f]">
                   Enterprise AI Infrastructure
                 </h4>
-                <p className="text-[13px] text-[#86868b]">
+                <p className="text-[13px] text-[#6e6e73]">
                   วางโครงสร้าง AI ระดับองค์กร ทั้ง On-Premise และ Cloud
                 </p>
               </div>
@@ -768,7 +767,7 @@ export default function Development() {
 
       {/* ──────────── SECTION 3: Process ──────────── */}
       <div className="bg-[#f5f5f7] -mx-4 md:-mx-6 px-4 md:px-6 py-16 md:py-[120px]">
-        <div className="max-w-[1080px] mx-auto">
+        <div className="max-w-[980px] mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -777,10 +776,10 @@ export default function Development() {
             transition={{ duration: 0.7 }}
             className="text-center mb-16 md:mb-20"
           >
-            <h3 className="text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-3 tracking-tight">
+            <h3 className="text-[28px] sm:text-[32px] font-semibold text-[#1d1d1f] mb-3 tracking-[-0.03em]">
               กระบวนการพัฒนา
             </h3>
-            <p className="text-[17px] text-[#86868b] max-w-[480px] mx-auto leading-relaxed">
+            <p className="text-[17px] text-[#6e6e73] max-w-[480px] mx-auto leading-relaxed">
               6 ขั้นตอนที่พิสูจน์แล้วว่าส่งมอบคุณค่าได้จริง
             </p>
           </motion.div>
@@ -811,7 +810,7 @@ export default function Development() {
                         <div className="text-xs font-bold text-[#06c] uppercase tracking-widest flex items-center gap-1.5">
                           <StepIcon size={14} color="#06c" /> Step {i + 1} — {step.label}
                         </div>
-                        <div className="text-[13px] text-[#86868b] font-medium">{step.thai}</div>
+                        <div className="text-[13px] text-[#6e6e73] font-medium">{step.thai}</div>
                       </div>
                     </div>
                     <h4 className="text-2xl font-bold text-[#1d1d1f] mb-3 leading-tight">
@@ -841,7 +840,7 @@ export default function Development() {
       </div>
 
       {/* ──────────── SECTION 4: On-Premise vs Cloud ──────────── */}
-      <div className="max-w-[1080px] mx-auto py-20 md:py-[120px]">
+      <div className="max-w-[980px] mx-auto py-20 md:py-[120px]">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -850,10 +849,10 @@ export default function Development() {
           transition={{ duration: 0.7 }}
           className="text-center mb-14"
         >
-          <h3 className="text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-3 tracking-tight">
+          <h3 className="text-[28px] sm:text-[32px] font-semibold text-[#1d1d1f] mb-3 tracking-[-0.03em]">
             On-Premise vs Cloud
           </h3>
-          <p className="text-[17px] text-[#86868b] max-w-[520px] mx-auto leading-relaxed">
+          <p className="text-[17px] text-[#6e6e73] max-w-[520px] mx-auto leading-relaxed">
             เราทำได้ทั้งสองแบบ เลือกแบบที่เหมาะกับองค์กรของคุณ
           </p>
         </motion.div>
@@ -940,7 +939,7 @@ export default function Development() {
                 </div>
                 <div>
                   <div className="text-[22px] font-bold text-[#1d1d1f]">Cloud AI</div>
-                  <div className="text-[13px] text-[#86868b]">CloudAI Thailand</div>
+                  <div className="text-[13px] text-[#6e6e73]">CloudAI Thailand</div>
                 </div>
               </div>
 
@@ -993,7 +992,7 @@ export default function Development() {
           <p className="text-[17px] text-[#1d1d1f] font-semibold mb-1">
             ไม่แน่ใจ? ปรึกษาเราฟรี
           </p>
-          <p className="text-sm text-[#86868b] mb-4">
+          <p className="text-sm text-[#6e6e73] mb-4">
             เราช่วยวิเคราะห์ว่าแบบไหนเหมาะกับองค์กรคุณ ไม่มีค่าใช้จ่าย
           </p>
           <motion.a
@@ -1009,7 +1008,7 @@ export default function Development() {
 
       {/* ──────────── SECTION 5: Case Studies ──────────── */}
       <div className="bg-[#f5f5f7] -mx-4 md:-mx-6 px-4 md:px-6 py-20 md:py-[120px]">
-        <div className="max-w-[1080px] mx-auto">
+        <div className="max-w-[980px] mx-auto">
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -1018,10 +1017,10 @@ export default function Development() {
             transition={{ duration: 0.7 }}
             className="text-center mb-14"
           >
-            <h3 className="text-3xl md:text-4xl font-bold text-[#1d1d1f] mb-3 tracking-tight">
+            <h3 className="text-[28px] sm:text-[32px] font-semibold text-[#1d1d1f] mb-3 tracking-[-0.03em]">
               ผลงาน
             </h3>
-            <p className="text-[17px] text-[#86868b] max-w-[480px] mx-auto leading-relaxed">
+            <p className="text-[17px] text-[#6e6e73] max-w-[480px] mx-auto leading-relaxed">
               ตัวอย่างโปรเจกต์จริงที่เราส่งมอบให้ลูกค้า
             </p>
           </motion.div>
@@ -1048,7 +1047,7 @@ export default function Development() {
                   >
                     {ex.tag}
                   </span>
-                  <span className="text-xs text-[#86868b]">{ex.industry}</span>
+                  <span className="text-xs text-[#6e6e73]">{ex.industry}</span>
                 </div>
 
                 <h4 className="text-[19px] font-bold text-[#1d1d1f] mb-2.5 leading-tight">
@@ -1089,7 +1088,7 @@ export default function Development() {
       </div>
 
       {/* ──────────── SECTION 6: CTA ──────────── */}
-      <div className="max-w-[1080px] mx-auto py-20 md:py-[120px]">
+      <div className="max-w-[980px] mx-auto py-20 md:py-[120px]">
         <motion.div
           initial="hidden"
           whileInView="visible"

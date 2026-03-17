@@ -131,7 +131,7 @@ function BrandCard({
       ) : (
         <div
           className={`inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-[13px] font-semibold ${
-            isDark ? "bg-white/10 text-white/60" : "bg-black/[0.04] text-[#86868b]"
+            isDark ? "bg-white/10 text-white/60" : "bg-black/[0.04] text-[#6e6e73]"
           }`}
         >
           คุณอยู่ที่นี่
@@ -148,24 +148,24 @@ export default function Ecosystem() {
   return (
     <section
       id="ecosystem"
-      className="bg-white py-16 md:py-24 lg:py-[120px] px-4 overflow-hidden"
+      className="apple-section bg-white px-4 overflow-hidden"
     >
-      <div className="max-w-[1120px] mx-auto">
+      <div className="max-w-[980px] mx-auto">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16 md:mb-20"
+          className="text-center mb-16"
         >
-          <div className="text-[13px] md:text-[14px] font-semibold text-[#06c] tracking-[0.08em] uppercase mb-3">
-            Our Ecosystem
-          </div>
-          <h2 className="text-[34px] md:text-[44px] lg:text-[56px] font-bold text-[#1d1d1f] leading-[1.1] mb-4">
+          <p className="text-[13px] font-semibold text-[#06c] uppercase tracking-widest mb-3">
+            OUR ECOSYSTEM
+          </p>
+          <h2 className="text-[40px] sm:text-[56px] md:text-[64px] font-semibold tracking-[-0.04em] mb-4">
             เครือข่าย AI ครบวงจร
           </h2>
-          <p className="text-[16px] md:text-[19px] text-[#86868b] max-w-[560px] mx-auto leading-relaxed">
+          <p className="text-[19px] sm:text-[21px] text-[#6e6e73] max-w-[600px] mx-auto leading-[1.47]">
             3 แบรนด์ 1 เป้าหมาย ระบบนิเวศ AI ที่ตอบโจทย์ทุกความต้องการ
             ไม่ว่าจะ On-Premise หรือ Cloud
           </p>
@@ -267,7 +267,7 @@ export default function Ecosystem() {
           className="mt-6 mb-10 md:mt-10 md:mb-20 flex justify-center items-center gap-3"
         >
           <div className="h-px flex-1 max-w-[120px] bg-gradient-to-r from-transparent to-[rgba(0,102,204,0.2)]" />
-          <div className="text-[13px] font-semibold text-[#86868b] tracking-[0.04em]">
+          <div className="text-[13px] font-semibold text-[#6e6e73] tracking-[0.04em]">
             CONNECTED ECOSYSTEM
           </div>
           <div className="h-px flex-1 max-w-[120px] bg-gradient-to-l from-transparent to-[rgba(0,102,204,0.2)]" />
@@ -331,7 +331,7 @@ export default function Ecosystem() {
                 <div className="text-[14px] md:text-[15px] font-bold text-[#1d1d1f] mb-1.5">
                   {item.title}
                 </div>
-                <div className="text-[12px] md:text-[13px] text-[#86868b] leading-normal">
+                <div className="text-[12px] md:text-[13px] text-[#6e6e73] leading-normal">
                   {item.desc}
                 </div>
               </motion.div>

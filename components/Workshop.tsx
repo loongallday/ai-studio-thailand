@@ -275,9 +275,9 @@ export default function Workshop() {
   return (
     <section
       id="workshop"
-      className="bg-white py-16 md:py-24 lg:py-[120px] px-4 md:px-6"
+      className="apple-section bg-white px-4 md:px-6"
     >
-      <div className="max-w-[1080px] mx-auto">
+      <div className="max-w-[980px] mx-auto">
         {/* ───── Section 1: Hero ───── */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -286,31 +286,15 @@ export default function Workshop() {
           transition={{ duration: 0.7 }}
           className="text-center mb-16 md:mb-20"
         >
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5"
-            style={{ background: "rgba(0,102,204,0.06)" }}
-          >
-            <GraduationCap size={16} style={{ color: "#06c" }} />
-            <span
-              className="text-[13px] font-semibold tracking-wider"
-              style={{ color: "#06c" }}
-            >
-              AI ACADEMY
-            </span>
-          </div>
+          <p className="text-[13px] font-semibold text-[#06c] uppercase tracking-widest mb-3">
+            AI ACADEMY
+          </p>
 
-          <h2
-            className="text-[28px] md:text-[40px] lg:text-[56px] font-bold leading-[1.1] mb-4"
-            style={{ color: "#1d1d1f" }}
-          >
-            AI Workshop & Training
+          <h2 className="text-[40px] sm:text-[56px] md:text-[64px] font-semibold tracking-[-0.04em] mb-4">
+            AI Workshop & Training.
           </h2>
-          <p
-            className="text-[15px] md:text-[17px] lg:text-[21px] max-w-[620px] mx-auto leading-relaxed"
-            style={{ color: "#6e6e73" }}
-          >
+          <p className="text-[19px] sm:text-[21px] text-[#6e6e73] max-w-[600px] mx-auto leading-[1.47]">
             เรียนรู้ AI แบบ hands-on จากผู้เชี่ยวชาญที่สร้างระบบ AI จริง
-            <br />
             ออกแบบมาสำหรับคนไทย ใช้ได้จริงตั้งแต่วันแรก
           </p>
 
@@ -345,8 +329,7 @@ export default function Workshop() {
           className="text-center mb-8 md:mb-12"
         >
           <h3
-            className="text-[24px] md:text-[30px] lg:text-[36px] font-bold mb-2"
-            style={{ color: "#1d1d1f" }}
+            className="text-[28px] sm:text-[32px] font-semibold tracking-[-0.03em] mb-2 text-[#1d1d1f]"
           >
             เลือก Workshop ที่เหมาะกับคุณ
           </h3>
@@ -1007,8 +990,7 @@ export default function Workshop() {
         >
           <div className="text-center mb-8 md:mb-10">
             <h3
-              className="text-[24px] md:text-[30px] lg:text-[36px] font-bold mb-2"
-              style={{ color: "#1d1d1f" }}
+              className="text-[28px] sm:text-[32px] font-semibold tracking-[-0.03em] mb-2 text-[#1d1d1f]"
             >
               หลักสูตรแต่ละวัน
             </h3>
@@ -1039,8 +1021,7 @@ export default function Workshop() {
         >
           <div className="text-center mb-8 md:mb-10">
             <h3
-              className="text-[24px] md:text-[30px] lg:text-[36px] font-bold mb-2"
-              style={{ color: "#1d1d1f" }}
+              className="text-[28px] sm:text-[32px] font-semibold tracking-[-0.03em] mb-2 text-[#1d1d1f]"
             >
               ทำไมเลือกเรียนกับเรา
             </h3>
@@ -1096,8 +1077,7 @@ export default function Workshop() {
         >
           <div className="text-center mb-8 md:mb-10">
             <h3
-              className="text-[24px] md:text-[30px] lg:text-[36px] font-bold mb-2"
-              style={{ color: "#1d1d1f" }}
+              className="text-[28px] sm:text-[32px] font-semibold tracking-[-0.03em] mb-2 text-[#1d1d1f]"
             >
               ผู้เข้าร่วมพูดถึงเรา
             </h3>
@@ -1168,8 +1148,7 @@ export default function Workshop() {
         >
           <div className="text-center mb-8 md:mb-10">
             <h3
-              className="text-[24px] md:text-[30px] lg:text-[36px] font-bold mb-2"
-              style={{ color: "#1d1d1f" }}
+              className="text-[28px] sm:text-[32px] font-semibold tracking-[-0.03em] mb-2 text-[#1d1d1f]"
             >
               ตารางอบรมที่จะถึง
             </h3>
@@ -1276,8 +1255,7 @@ export default function Workshop() {
           }}
         >
           <h3
-            className="text-[24px] md:text-[30px] lg:text-[36px] font-bold mb-3"
-            style={{ color: "#1d1d1f" }}
+            className="text-[28px] sm:text-[32px] font-semibold tracking-[-0.03em] mb-3 text-[#1d1d1f]"
           >
             พร้อมเริ่มเรียนรู้ AI แล้วหรือยัง?
           </h3>

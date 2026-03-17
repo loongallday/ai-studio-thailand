@@ -42,7 +42,7 @@ const footerColumns = [
 export default function Footer() {
   return (
     <footer className="bg-[#1d1d1f] text-white">
-      <div className="container-wide py-16 lg:py-20">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-6 py-16 lg:py-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-10">
           {/* Brand column */}
           <div className="lg:col-span-2">

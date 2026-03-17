@@ -63,7 +63,7 @@ function WorkshopVisual() {
       <div className="text-base font-semibold mb-1.5" style={{ color: "#1d1d1f" }}>
         AI Workshop 2026
       </div>
-      <div className="text-[13px]" style={{ color: "#86868b" }}>
+      <div className="text-[13px]" style={{ color: "#6e6e73" }}>
         Hands-on Training Experience
       </div>
 
@@ -125,7 +125,7 @@ function ArchitectureVisual() {
           <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#febc2e" }} />
           <div className="w-2.5 h-2.5 rounded-full" style={{ background: "#28c840" }} />
         </div>
-        <span className="text-xs font-medium ml-2" style={{ color: "#86868b" }}>
+        <span className="text-xs font-medium ml-2" style={{ color: "#6e6e73" }}>
           system-architecture.diagram
         </span>
       </div>
@@ -368,8 +368,8 @@ function ServiceSection({
   reversed?: boolean;
 }) {
   return (
-    <div className={`py-16 md:py-28 px-4 md:px-6 ${bgClass}`} style={bgColor ? { background: bgColor } : undefined}>
-      <div className="max-w-[1080px] mx-auto">
+    <div className={`apple-section px-4 md:px-6 ${bgClass}`} style={bgColor ? { background: bgColor } : undefined}>
+      <div className="max-w-[980px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -393,15 +393,11 @@ function ServiceSection({
               </span>
             </motion.div>
 
-            <h3 className="text-[28px] md:text-[40px] font-bold leading-[1.15] mb-3"
-              style={{ color: "#1d1d1f" }}
-            >
+            <h3 className="text-[28px] md:text-[40px] font-semibold leading-[1.15] tracking-[-0.03em] mb-3 text-[#1d1d1f]">
               {headline}
             </h3>
 
-            <p className="text-[15px] md:text-[17px] leading-relaxed mb-8 max-w-[420px]"
-              style={{ color: "#6e6e73" }}
-            >
+            <p className="text-[17px] leading-relaxed mb-8 max-w-[420px] text-[#6e6e73]">
               {description}
             </p>
 
@@ -469,7 +465,7 @@ export default function Services() {
       {/* ============================================================ */}
       {/*  Section Header                                               */}
       {/* ============================================================ */}
-      <div className="bg-white pt-16 md:pt-28 pb-10 md:pb-20 px-4">
+      <div className="apple-section bg-white px-4">
         <div className="max-w-[980px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -478,19 +474,13 @@ export default function Services() {
             transition={{ duration: 0.7 }}
             className="text-center"
           >
-            <div className="text-sm font-semibold tracking-widest uppercase mb-3"
-              style={{ color: "#06c" }}
-            >
-              Our Services
-            </div>
-            <h2 className="text-[34px] md:text-[52px] font-bold leading-tight mb-4"
-              style={{ color: "#1d1d1f" }}
-            >
+            <p className="text-[13px] font-semibold text-[#06c] uppercase tracking-widest mb-3">
+              OUR SERVICES
+            </p>
+            <h2 className="text-[40px] sm:text-[56px] md:text-[64px] font-semibold tracking-[-0.04em] mb-4">
               เราทำอะไรบ้าง
             </h2>
-            <p className="text-[17px] md:text-[19px] max-w-[540px] mx-auto leading-relaxed"
-              style={{ color: "#86868b" }}
-            >
+            <p className="text-[19px] sm:text-[21px] text-[#6e6e73] max-w-[600px] mx-auto leading-[1.47]">
               ครบวงจรด้าน AI ตั้งแต่สอน สร้าง พัฒนา
               จนถึงเป็น AI Creator ให้ธุรกิจของคุณ
             </p>
@@ -572,8 +562,8 @@ export default function Services() {
       {/* ============================================================ */}
       {/*  Bottom Stats Bar                                             */}
       {/* ============================================================ */}
-      <div className="py-10 md:py-20 px-4 md:px-6" style={{ background: "#f5f5f7" }}>
-        <div className="max-w-[1080px] mx-auto">
+      <div className="apple-section section-gray px-4 md:px-6">
+        <div className="max-w-[980px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -601,7 +591,7 @@ export default function Services() {
                   {stat.value}
                 </div>
                 <div className="text-[13px] md:text-[15px] mt-2"
-                  style={{ color: "#86868b" }}
+                  style={{ color: "#6e6e73" }}
                 >
                   {stat.label}
                 </div>

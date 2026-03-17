@@ -325,7 +325,7 @@ export default function PricingSection() {
                   <div className="flex items-baseline gap-1 mb-1">
                     <span
                       className={`font-bold ${plan.recommended ? "text-white" : "text-[#1d1d1f]"} ${
-                        plan.price === "ติดต่อราคา" ? "text-[22px] md:text-[24px]" : "text-[32px] md:text-[40px]"
+                        plan.price === "ติดต่อราคา" ? "text-[24px] md:text-[28px]" : "text-[36px] md:text-[48px]"
                       }`}
                     >
                       {plan.price === "ติดต่อราคา" ? plan.price : `฿${plan.price}`}
@@ -557,7 +557,7 @@ export default function PricingSection() {
                   </h3>
 
                   <div className="flex items-baseline gap-1 mb-1">
-                    <span className="text-[24px] md:text-[28px] font-bold text-[#1d1d1f]">
+                    <span className="text-[28px] md:text-[36px] font-bold text-[#1d1d1f]">
                       ฿{plan.price}
                     </span>
                   </div>

@@ -36,19 +36,25 @@ const navGroups: NavGroup[] = [
         label: "Workshop & Training",
         href: "/workshop",
         icon: <GraduationCap size={20} />,
-        desc: "อบรม AI สำหรับทีมและองค์กร",
+        desc: "อบรม AI 1-5 วัน สำหรับทีม",
       },
       {
         label: "AI Development",
         href: "/development",
         icon: <Code2 size={20} />,
-        desc: "พัฒนาระบบ AI สำหรับธุรกิจ",
+        desc: "พัฒนาระบบ AI ขนาดใหญ่",
       },
       {
         label: "AI Content Creation",
         href: "/creator",
         icon: <Video size={20} />,
-        desc: "สร้างคอนเทนต์ด้วย AI",
+        desc: "Blog, Social, Video, Podcast",
+      },
+      {
+        label: "ราคา",
+        href: "/pricing",
+        icon: <DollarSign size={20} />,
+        desc: "Workshop, Development, Content",
       },
     ],
   },
@@ -59,21 +65,27 @@ const navGroups: NavGroup[] = [
         label: "Case Studies",
         href: "/case-studies",
         icon: <BookOpen size={20} />,
-        desc: "ตัวอย่างผลงานและความสำเร็จ",
+        desc: "ตัวอย่างผลงานจริง",
       },
       {
         label: "Blog",
         href: "/blog",
         icon: <FileText size={20} />,
-        desc: "บทความและความรู้ AI",
+        desc: "บทความ AI สำหรับธุรกิจไทย",
+      },
+      {
+        label: "Ecosystem",
+        href: "/ecosystem",
+        icon: <MessageCircle size={20} />,
+        desc: "LocalAI + CloudAI + Studio",
       },
     ],
   },
 ];
 
 const directLinks = [
-  { label: "ราคา", href: "/pricing", icon: <DollarSign size={18} /> },
-  { label: "ติดต่อ", href: "/contact", icon: <MessageCircle size={18} /> },
+  { label: "เกี่ยวกับเรา", href: "/about", icon: <BookOpen size={18} /> },
+  { label: "ติดต่อ", href: "/#contact", icon: <MessageCircle size={18} /> },
 ];
 
 export default function Navbar() {

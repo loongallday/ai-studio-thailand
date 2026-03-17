@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 const footerColumns = [
   {
@@ -34,7 +34,7 @@ const footerColumns = [
       { label: "เกี่ยวกับเรา", href: "/about" },
       { label: "Case Studies", href: "/case-studies" },
       { label: "Blog", href: "/blog" },
-      { label: "นโยบายความเป็นส่วนตัว", href: "/privacy" },
+      { label: "Ecosystem", href: "/ecosystem" },
     ],
   },
 ];
@@ -58,18 +58,18 @@ export default function Footer() {
             </p>
             <div className="space-y-3 text-sm text-gray-400">
               <a
-                href="mailto:contact@aistudiothailand.com"
+                href="mailto:chavin@pace-design.co.th"
                 className="flex items-center gap-2 py-2 hover:text-[#06c] transition-colors min-h-[44px]"
               >
                 <Mail size={16} />
-                contact@aistudiothailand.com
+                chavin@pace-design.co.th
               </a>
               <a
-                href="tel:+66XXXXXXXX"
+                href="tel:0827047606"
                 className="flex items-center gap-2 py-2 hover:text-[#06c] transition-colors min-h-[44px]"
               >
                 <Phone size={16} />
-                +66-XX-XXX-XXXX
+                082-704-7606
               </a>
               <div className="flex items-center gap-2">
                 <MapPin size={16} />
@@ -117,10 +117,10 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} AI Studio Thailand. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-sm text-gray-500">
-            <Link href="/privacy" className="hover:text-gray-300 transition-colors min-h-[44px] flex items-center">
+            <Link href="/privacy" className="py-2 hover:text-[#06c] transition-colors min-h-[44px] flex items-center">
               Privacy
             </Link>
-            <Link href="/terms" className="hover:text-gray-300 transition-colors min-h-[44px] flex items-center">
+            <Link href="/terms" className="py-2 hover:text-[#06c] transition-colors min-h-[44px] flex items-center">
               Terms
             </Link>
           </div>

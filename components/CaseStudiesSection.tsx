@@ -566,11 +566,9 @@ function StatsBar() {
             transition={{ delay: 0.15 + i * 0.1 }}
             className="apple-card bg-white rounded-[20px] p-4 md:p-6 lg:p-8 text-center border border-black/[0.06] shadow-[0_2px_12px_rgba(0,0,0,0.03)]"
           >
-            <StatIcon
-              size={24}
-              className="mb-3"
-              style={{ color: stat.color }}
-            />
+            <div className="w-10 h-10 rounded-xl mx-auto mb-3 flex items-center justify-center" style={{ background: stat.color + "10" }}>
+              <StatIcon size={20} style={{ color: stat.color }} />
+            </div>
             <div className="text-[28px] md:text-[36px] font-bold text-[#1d1d1f] leading-[1.1]">
               {stat.value}
             </div>

@@ -300,39 +300,27 @@ export default function Ecosystem() {
             แต่เข้าใจปัญหาจริง ออกแบบ solution จริง และส่งมอบผลลัพธ์จริง
           </p>
 
-          {/* Three pillars */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-[640px] mx-auto">
+          {/* Three pillars — compact horizontal layout */}
+          <div className="flex flex-col sm:flex-row gap-3 max-w-[700px] mx-auto">
             {[
-              {
-                icon: Zap,
-                title: "เข้าใจปัญหาจริง",
-                desc: "วิเคราะห์ความต้องการเฉพาะทาง",
-              },
-              {
-                icon: Shield,
-                title: "ออกแบบเฉพาะทาง",
-                desc: "ไม่ใช่ one-size-fits-all",
-              },
-              {
-                icon: Globe,
-                title: "ส่งมอบผลลัพธ์",
-                desc: "วัดผลได้ ใช้งานจริง",
-              },
+              { icon: Zap, title: "เข้าใจปัญหาจริง", desc: "วิเคราะห์ความต้องการเฉพาะทาง" },
+              { icon: Shield, title: "ออกแบบเฉพาะทาง", desc: "ไม่ใช่ one-size-fits-all" },
+              { icon: Globe, title: "ส่งมอบผลลัพธ์", desc: "วัดผลได้ ใช้งานจริง" },
             ].map((item, i) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 16 }}
+                initial={{ opacity: 0, y: 12 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 + i * 0.1 }}
-                className="p-4 md:p-6 bg-white rounded-[18px] border border-black/[0.04] shadow-[0_2px_12px_rgba(0,0,0,0.02)]"
+                className="flex items-center gap-3 px-4 py-3 bg-white rounded-xl border border-black/[0.04] flex-1"
               >
-                <item.icon size={24} className="text-[#06c] mb-3" />
-                <div className="text-[14px] md:text-[15px] font-bold text-[#1d1d1f] mb-1.5">
-                  {item.title}
+                <div className="w-10 h-10 rounded-xl bg-[#06c]/[0.06] flex items-center justify-center shrink-0">
+                  <item.icon size={20} className="text-[#06c]" />
                 </div>
-                <div className="text-[12px] md:text-[13px] text-[#6e6e73] leading-normal">
-                  {item.desc}
+                <div>
+                  <div className="text-[14px] font-semibold text-[#1d1d1f]">{item.title}</div>
+                  <div className="text-[12px] text-[#6e6e73]">{item.desc}</div>
                 </div>
               </motion.div>
             ))}

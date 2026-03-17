@@ -434,7 +434,7 @@ function CaseStudyCard({
         transition={{ delay: 0.6 }}
         className="px-4 md:px-6 lg:px-10 py-4 md:py-5 flex flex-wrap gap-1.5 items-center"
       >
-        <span className="text-[12px] font-semibold text-[#86868b] mr-1">
+        <span className="text-[12px] font-semibold text-[#6e6e73] mr-1">
           Tech Stack:
         </span>
         {study.techStack.map((tech) => (
@@ -466,7 +466,7 @@ function CaseStudyCard({
           <DollarSign size={20} style={{ color: study.accentColor }} />
         </div>
         <div>
-          <span className="text-[11px] font-semibold text-[#86868b] block mb-0.5 tracking-[0.04em] uppercase">
+          <span className="text-[11px] font-semibold text-[#6e6e73] block mb-0.5 tracking-[0.04em] uppercase">
             ROI Highlight
           </span>
           <span className="text-[15px] md:text-[16px] font-bold text-[#1d1d1f]">
@@ -506,7 +506,7 @@ function CaseStudyCard({
               <div className="text-[14px] font-semibold text-[#1d1d1f]">
                 {study.testimonial.author}
               </div>
-              <div className="text-[12px] text-[#86868b]">
+              <div className="text-[12px] text-[#6e6e73]">
                 {study.testimonial.role}
               </div>
             </div>
@@ -574,7 +574,7 @@ function StatsBar() {
             <div className="text-[28px] md:text-[36px] font-bold text-[#1d1d1f] leading-[1.1]">
               {stat.value}
             </div>
-            <div className="text-[13px] md:text-[14px] text-[#86868b] mt-1.5">
+            <div className="text-[13px] md:text-[14px] text-[#6e6e73] mt-1.5">
               {stat.label}
             </div>
           </motion.div>
@@ -648,20 +648,20 @@ export default function CaseStudiesSection() {
   return (
     <section>
       {/* Hero */}
-      <div className="bg-white px-4 md:px-6 pt-28 md:pt-40 pb-16 md:pb-20 text-center">
-        <div className="max-w-[800px] mx-auto">
+      <div className="apple-section bg-white px-4 md:px-6 pb-0 text-center">
+        <div className="max-w-[980px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <div className="text-[13px] md:text-[14px] font-semibold text-[#06c] tracking-[0.08em] uppercase mb-4">
-              Case Studies
-            </div>
-            <h1 className="text-[40px] md:text-[52px] lg:text-[64px] font-bold text-[#1d1d1f] leading-[1.1] mb-4">
-              ผลงาน
+            <p className="text-[13px] font-semibold text-[#06c] uppercase tracking-widest mb-3">
+              CASE STUDIES
+            </p>
+            <h1 className="text-[40px] sm:text-[56px] md:text-[64px] font-semibold tracking-[-0.04em] mb-4">
+              ผลงาน.
             </h1>
-            <p className="text-[18px] md:text-[21px] lg:text-[24px] text-[#6e6e73] leading-[1.5] max-w-[600px] mx-auto">
+            <p className="text-[19px] sm:text-[21px] text-[#6e6e73] max-w-[600px] mx-auto leading-[1.47]">
               ตัวอย่างจากธุรกิจจริงที่เราช่วย
             </p>
           </motion.div>
@@ -669,15 +669,15 @@ export default function CaseStudiesSection() {
       </div>
 
       {/* Stats Bar */}
-      <div className="bg-[#f5f5f7] px-4 md:px-6 pt-12 md:pt-16">
-        <div className="max-w-[1080px] mx-auto">
+      <div className="section-gray px-4 md:px-6 pt-16 md:pt-20">
+        <div className="max-w-[980px] mx-auto">
           <StatsBar />
         </div>
       </div>
 
       {/* Case Studies */}
-      <div className="bg-[#f5f5f7] px-4 md:px-6 pb-12 md:pb-16">
-        <div className="max-w-[1080px] mx-auto space-y-8">
+      <div className="section-gray px-4 md:px-6 pb-16 md:pb-20">
+        <div className="max-w-[980px] mx-auto space-y-8">
           {caseStudies.map((study, i) => (
             <CaseStudyCard key={study.id} study={study} index={i} />
           ))}
@@ -685,8 +685,8 @@ export default function CaseStudiesSection() {
       </div>
 
       {/* CTA */}
-      <div className="bg-white px-4 md:px-6 py-16 md:py-20 lg:py-[120px]">
-        <div className="max-w-[800px] mx-auto">
+      <div className="apple-section bg-white px-4 md:px-6">
+        <div className="max-w-[980px] mx-auto">
           <CTASection />
         </div>
       </div>

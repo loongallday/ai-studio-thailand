@@ -114,7 +114,7 @@ function SearchMockup() {
   return (
     <div className="mt-4">
       <div className="bg-[#f5f5f7] rounded-xl px-3.5 py-2.5 flex items-center gap-2 mb-2.5">
-        <Search size={14} color="#86868b" />
+        <Search size={14} color="#6e6e73" />
         <span className="text-xs text-[#1d1d1f]">นโยบายการคืนสินค้า</span>
       </div>
       {["คู่มือนโยบาย v3.2 — หน้า 14", "ข้อกำหนดการคืนสินค้า 2024", "FAQ — การคืนสินค้าออนไลน์"].map(
@@ -129,7 +129,7 @@ function SearchMockup() {
               i === 0 ? "bg-[rgba(0,102,204,0.06)]" : ""
             }`}
           >
-            <FileText size={12} color={i === 0 ? "#06c" : "#86868b"} />
+            <FileText size={12} color={i === 0 ? "#06c" : "#6e6e73"} />
             <span className={`text-[11px] ${i === 0 ? "text-[#06c]" : "text-[#6e6e73]"}`}>{r}</span>
             {i === 0 && (
               <span className="text-[9px] bg-[#06c] text-white px-1.5 py-px rounded-md font-semibold ml-auto">

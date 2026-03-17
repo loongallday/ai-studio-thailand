@@ -143,7 +143,7 @@ function ArchitectureVisual() {
               refY="3"
               orient="auto"
             >
-              <polygon points="0 0, 8 3, 0 6" fill="#86868b" />
+              <polygon points="0 0, 8 3, 0 6" fill="#6e6e73" />
             </marker>
           </defs>
           <line

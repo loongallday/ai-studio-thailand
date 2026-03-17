@@ -140,23 +140,23 @@ const contactDetails = [
 /* ================================================================== */
 export default function AboutSection() {
   return (
-    <section className="bg-white pt-20 md:pt-[120px] pb-0">
-      <div className="max-w-[1120px] mx-auto px-4 md:px-6">
+    <section className="apple-section bg-white pb-0 px-4 sm:px-6">
+      <div className="max-w-[980px] mx-auto px-4 md:px-6">
         {/* Hero: เราคือใคร */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16 md:mb-[100px]"
+          className="text-center mb-16"
         >
-          <div className="text-[13px] md:text-[14px] font-semibold text-[#06c] tracking-[0.08em] uppercase mb-3">
-            About Us
-          </div>
-          <h1 className="text-[36px] md:text-[48px] lg:text-[60px] font-bold text-[#1d1d1f] leading-[1.1] mb-6">
-            เราคือใคร
+          <p className="text-[13px] font-semibold text-[#06c] uppercase tracking-widest mb-3">
+            ABOUT US
+          </p>
+          <h1 className="text-[40px] sm:text-[56px] md:text-[64px] font-semibold tracking-[-0.04em] mb-4">
+            เราคือใคร.
           </h1>
-          <p className="text-[16px] md:text-[19px] text-[#86868b] max-w-[680px] mx-auto leading-[1.7]">
+          <p className="text-[19px] sm:text-[21px] text-[#6e6e73] max-w-[600px] mx-auto leading-[1.47]">
             AI Studio Thailand คือทีมพัฒนาเบื้องหลัง{" "}
             <span className="text-[#1d1d1f] font-semibold">
               LocalAI Thailand
@@ -194,7 +194,7 @@ export default function AboutSection() {
                   <div className="text-[14px] md:text-[15px] font-bold text-[#1d1d1f]">
                     {v.label}
                   </div>
-                  <div className="text-[12px] md:text-[13px] text-[#86868b]">
+                  <div className="text-[12px] md:text-[13px] text-[#6e6e73]">
                     {v.sublabel}
                   </div>
                 </div>
@@ -212,10 +212,10 @@ export default function AboutSection() {
           className="mb-16 md:mb-[100px]"
         >
           <motion.div variants={fadeUp} className="text-center mb-10 md:mb-14">
-            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] font-bold text-[#1d1d1f] leading-[1.15] mb-3.5">
+            <h2 className="text-[28px] sm:text-[32px] font-semibold text-[#1d1d1f] tracking-[-0.03em] mb-3.5">
               3 สิ่งที่เราทำ
             </h2>
-            <p className="text-[15px] md:text-[17px] text-[#86868b] max-w-[520px] mx-auto leading-relaxed">
+            <p className="text-[15px] md:text-[17px] text-[#6e6e73] max-w-[520px] mx-auto leading-relaxed">
               สอน สร้าง และสร้างสรรค์ AI ให้กับธุรกิจไทย
             </p>
           </motion.div>
@@ -268,10 +268,10 @@ export default function AboutSection() {
           className="mb-16 md:mb-[100px]"
         >
           <motion.div variants={fadeUp} className="text-center mb-10 md:mb-14">
-            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] font-bold text-[#1d1d1f] leading-[1.15] mb-3.5">
+            <h2 className="text-[28px] sm:text-[32px] font-semibold text-[#1d1d1f] tracking-[-0.03em] mb-3.5">
               หลักการของเรา
             </h2>
-            <p className="text-[15px] md:text-[17px] text-[#86868b] max-w-[520px] mx-auto leading-relaxed">
+            <p className="text-[15px] md:text-[17px] text-[#6e6e73] max-w-[520px] mx-auto leading-relaxed">
               สิ่งที่เราเชื่อและยึดมั่นในทุกโปรเจกต์
             </p>
           </motion.div>
@@ -309,10 +309,10 @@ export default function AboutSection() {
           className="mb-16 md:mb-[100px]"
         >
           <motion.div variants={fadeUp} className="text-center mb-10 md:mb-14">
-            <h2 className="text-[28px] md:text-[36px] lg:text-[44px] font-bold text-[#1d1d1f] leading-[1.15] mb-3.5">
+            <h2 className="text-[28px] sm:text-[32px] font-semibold text-[#1d1d1f] tracking-[-0.03em] mb-3.5">
               Ecosystem
             </h2>
-            <p className="text-[15px] md:text-[17px] text-[#86868b] max-w-[600px] mx-auto leading-relaxed">
+            <p className="text-[15px] md:text-[17px] text-[#6e6e73] max-w-[600px] mx-auto leading-relaxed">
               AI Studio Thailand เป็นศูนย์กลางที่เชื่อมโยง LocalAI และ CloudAI
               เข้าด้วยกัน เพื่อตอบโจทย์ทุกรูปแบบของ AI
             </p>
@@ -398,10 +398,10 @@ export default function AboutSection() {
           >
             <div className="absolute -top-[60px] -right-[60px] w-[200px] h-[200px] rounded-full bg-[radial-gradient(circle,rgba(0,102,204,0.04),transparent_70%)] pointer-events-none" />
 
-            <h2 className="text-[24px] md:text-[30px] lg:text-[36px] font-bold text-[#1d1d1f] mb-3">
+            <h2 className="text-[28px] sm:text-[32px] font-semibold text-[#1d1d1f] tracking-[-0.03em] mb-3">
               ติดต่อเรา
             </h2>
-            <p className="text-[15px] md:text-[17px] text-[#86868b] max-w-[500px] mx-auto mb-8 md:mb-10 leading-relaxed">
+            <p className="text-[15px] md:text-[17px] text-[#6e6e73] max-w-[500px] mx-auto mb-8 md:mb-10 leading-relaxed">
               พร้อมรับฟังและช่วยเหลือ ปรึกษาเบื้องต้นฟรี
             </p>
 
@@ -429,7 +429,7 @@ export default function AboutSection() {
                     <div className="w-11 h-11 rounded-[14px] bg-[rgba(0,102,204,0.06)] flex items-center justify-center">
                       <CIcon size={20} className="text-[#06c]" />
                     </div>
-                    <div className="text-[12px] font-semibold text-[#86868b] uppercase tracking-[0.04em]">
+                    <div className="text-[12px] font-semibold text-[#6e6e73] uppercase tracking-[0.04em]">
                       {c.label}
                     </div>
                     <div className="text-[14px] font-semibold text-[#1d1d1f]">

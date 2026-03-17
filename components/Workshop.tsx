@@ -231,7 +231,7 @@ function DayTimeline({
                     >
                       <div
                         className="min-w-[110px] text-[13px] font-semibold tabular-nums"
-                        style={{ color: slot.type === "break" ? "#86868b" : "#1d1d1f" }}
+                        style={{ color: slot.type === "break" ? "#6e6e73" : "#1d1d1f" }}
                       >
                         {slot.time}
                       </div>
@@ -245,7 +245,7 @@ function DayTimeline({
                         <div
                           className="text-sm leading-relaxed"
                           style={{
-                            color: slot.type === "break" ? "#86868b" : "#1d1d1f",
+                            color: slot.type === "break" ? "#6e6e73" : "#1d1d1f",
                             fontStyle: slot.type === "break" ? "italic" : "normal",
                           }}
                         >
@@ -379,7 +379,7 @@ export default function Workshop() {
                   <span className="text-[24px] md:text-[28px] font-bold" style={{ color: "#1d1d1f" }}>
                     ฿9,900
                   </span>
-                  <span className="text-sm" style={{ color: "#86868b" }}>/คน</span>
+                  <span className="text-sm" style={{ color: "#6e6e73" }}>/คน</span>
                 </div>
               </div>
             </div>
@@ -422,7 +422,7 @@ export default function Workshop() {
                     <div>
                       <div
                         className="text-xs font-bold tracking-widest uppercase mb-3.5"
-                        style={{ color: "#86868b" }}
+                        style={{ color: "#6e6e73" }}
                       >
                         ตารางเรียน
                       </div>
@@ -464,7 +464,7 @@ export default function Workshop() {
                       {/* What you'll learn */}
                       <div
                         className="text-xs font-bold tracking-widest uppercase mb-3.5"
-                        style={{ color: "#86868b" }}
+                        style={{ color: "#6e6e73" }}
                       >
                         สิ่งที่จะได้เรียนรู้
                       </div>
@@ -495,7 +495,7 @@ export default function Workshop() {
                       {/* Who it's for */}
                       <div
                         className="text-xs font-bold tracking-widest uppercase mb-2.5"
-                        style={{ color: "#86868b" }}
+                        style={{ color: "#6e6e73" }}
                       >
                         เหมาะสำหรับ
                       </div>
@@ -512,7 +512,7 @@ export default function Workshop() {
                       {/* What you get */}
                       <div
                         className="text-xs font-bold tracking-widest uppercase mb-2.5"
-                        style={{ color: "#86868b" }}
+                        style={{ color: "#6e6e73" }}
                       >
                         สิ่งที่ได้รับ
                       </div>
@@ -593,7 +593,7 @@ export default function Workshop() {
                   <span className="text-[26px] md:text-[32px] font-bold" style={{ color: "#1d1d1f" }}>
                     ฿19,900
                   </span>
-                  <span className="text-sm" style={{ color: "#86868b" }}>/คน</span>
+                  <span className="text-sm" style={{ color: "#6e6e73" }}>/คน</span>
                 </div>
               </div>
             </div>
@@ -613,7 +613,7 @@ export default function Workshop() {
             >
               <div
                 className="text-[11px] font-bold tracking-widest uppercase mb-3 md:mb-4"
-                style={{ color: "#86868b" }}
+                style={{ color: "#6e6e73" }}
               >
                 ตัวอย่าง Workflow ที่จะสร้างในคอร์ส
               </div>
@@ -698,7 +698,7 @@ export default function Workshop() {
               >
                 <div
                   className="flex items-center gap-1.5 text-[11px] font-bold tracking-wider uppercase mb-2"
-                  style={{ color: "#86868b" }}
+                  style={{ color: "#6e6e73" }}
                 >
                   <Users size={13} />
                   เหมาะสำหรับ
@@ -713,7 +713,7 @@ export default function Workshop() {
               >
                 <div
                   className="flex items-center gap-1.5 text-[11px] font-bold tracking-wider uppercase mb-2"
-                  style={{ color: "#86868b" }}
+                  style={{ color: "#6e6e73" }}
                 >
                   <Award size={13} />
                   สิ่งที่ได้รับ
@@ -781,7 +781,7 @@ export default function Workshop() {
               </p>
               <div className="flex items-baseline gap-1 mb-5">
                 <span className="text-[24px] md:text-[28px] font-bold" style={{ color: "#1d1d1f" }}>฿14,900</span>
-                <span className="text-sm" style={{ color: "#86868b" }}>/คน</span>
+                <span className="text-sm" style={{ color: "#6e6e73" }}>/คน</span>
               </div>
 
               {/* Executive focus: ROI + case studies */}
@@ -821,7 +821,7 @@ export default function Workshop() {
               {/* Case study snippets */}
               <div
                 className="text-xs font-bold tracking-widest uppercase mb-2.5"
-                style={{ color: "#86868b" }}
+                style={{ color: "#6e6e73" }}
               >
                 Case Studies
               </div>

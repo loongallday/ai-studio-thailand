@@ -212,7 +212,7 @@ function FeaturedCard({ article }: { article: Article }) {
           style={{
             fontSize: 14,
             fontWeight: 600,
-            color: "#86868b",
+            color: "#6e6e73",
             letterSpacing: "0.04em",
           }}
         >
@@ -311,7 +311,7 @@ function FeaturedCard({ article }: { article: Article }) {
               alignItems: "center",
               gap: 6,
               fontSize: 13,
-              color: "#86868b",
+              color: "#6e6e73",
               fontWeight: 500,
             }}
           >
@@ -324,7 +324,7 @@ function FeaturedCard({ article }: { article: Article }) {
               alignItems: "center",
               gap: 6,
               fontSize: 13,
-              color: "#86868b",
+              color: "#6e6e73",
               fontWeight: 500,
             }}
           >
@@ -481,7 +481,7 @@ function ArticleCard({
                 alignItems: "center",
                 gap: 5,
                 fontSize: 12,
-                color: "#86868b",
+                color: "#6e6e73",
                 fontWeight: 500,
               }}
             >
@@ -494,7 +494,7 @@ function ArticleCard({
                 alignItems: "center",
                 gap: 5,
                 fontSize: 12,
-                color: "#86868b",
+                color: "#6e6e73",
                 fontWeight: 500,
               }}
             >
@@ -502,7 +502,7 @@ function ArticleCard({
               {article.date}
             </span>
           </div>
-          <ArrowRight size={14} style={{ color: "#86868b" }} />
+          <ArrowRight size={14} style={{ color: "#6e6e73" }} />
         </div>
       </div>
     </motion.article>
@@ -730,8 +730,8 @@ export default function BlogSection() {
       {/* ============================================================ */}
       {/*  Category Filters                                             */}
       {/* ============================================================ */}
-      <div style={{ background: "#fff", padding: "0 24px" }}>
-        <div style={{ maxWidth: 980, margin: "0 auto" }}>
+      <div className="bg-white px-6">
+        <div className="max-w-[980px] mx-auto">
           <CategoryFilter
             activeCategory={activeCategory}
             onSelect={setActiveCategory}
@@ -743,8 +743,8 @@ export default function BlogSection() {
       {/*  Featured Article                                             */}
       {/* ============================================================ */}
       {(activeCategory === "all" || activeCategory === "basics") && (
-        <div style={{ background: "#fff", padding: "0 24px 60px" }}>
-          <div style={{ maxWidth: 1080, margin: "0 auto" }}>
+        <div className="bg-white px-6 pb-16">
+          <div className="max-w-[980px] mx-auto">
             <FeaturedCard article={featuredArticle} />
           </div>
         </div>
@@ -779,7 +779,7 @@ export default function BlogSection() {
             <span
               style={{
                 fontSize: 14,
-                color: "#86868b",
+                color: "#6e6e73",
                 fontWeight: 500,
               }}
             >
@@ -817,7 +817,7 @@ export default function BlogSection() {
               }}
             >
               <Bot size={48} style={{ color: "#c7c7cc", marginBottom: 16 }} />
-              <p style={{ fontSize: 17, color: "#86868b" }}>
+              <p style={{ fontSize: 17, color: "#6e6e73" }}>
                 ยังไม่มีบทความในหมวดนี้
               </p>
             </motion.div>
@@ -828,8 +828,8 @@ export default function BlogSection() {
       {/* ============================================================ */}
       {/*  Newsletter CTA                                               */}
       {/* ============================================================ */}
-      <div style={{ background: "#fff", padding: "80px 24px 120px" }}>
-        <div style={{ maxWidth: 800, margin: "0 auto" }}>
+      <div className="apple-section bg-white px-6">
+        <div className="max-w-[980px] mx-auto">
           <NewsletterCTA />
         </div>
       </div>

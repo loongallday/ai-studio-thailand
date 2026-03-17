@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function AnimatedLogo({ className = "" }: { className?: string }) {
   return (
-    <div className={`flex items-center justify-center gap-0 ${className}`}>
+    <div className={`flex items-center justify-center gap-0 overflow-visible pr-4 ${className}`}>
       {/* "AI" */}
       <motion.span
         initial={{ opacity: 0, y: 15 }}
@@ -45,7 +45,7 @@ export default function AnimatedLogo({ className = "" }: { className?: string })
 
       {/* Dot */}
       <motion.div
-        className="relative ml-1 self-start mt-[12px] sm:mt-[22px] md:mt-[28px]"
+        className="relative ml-2 self-start mt-[12px] sm:mt-[22px] md:mt-[28px]"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ delay: 1.2, type: "spring", stiffness: 300, damping: 15 }}

@@ -1,19 +1,15 @@
 "use client";
 import { motion } from "framer-motion";
+import AnimatedLogo from "./AnimatedLogo";
 
 export default function Hero() {
   return (
     <section className="bg-white pt-28 sm:pt-36 pb-20 sm:pb-28">
       <div className="max-w-[980px] mx-auto px-6 text-center">
-        {/* Overline */}
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-[#6e6e73] text-[17px] mb-4"
-        >
-          AI Studio Thailand
-        </motion.p>
+        {/* Animated Logo */}
+        <div className="flex justify-center mb-8">
+          <AnimatedLogo size={1.2} />
+        </div>
 
         {/* Main headline — Apple Education K-12 size */}
         <motion.h1

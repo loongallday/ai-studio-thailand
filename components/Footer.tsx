@@ -59,14 +59,14 @@ export default function Footer() {
             <div className="space-y-3 text-sm text-gray-400">
               <a
                 href="mailto:contact@aistudiothailand.com"
-                className="flex items-center gap-2 hover:text-[#06c] transition-colors min-h-[44px]"
+                className="flex items-center gap-2 py-2 hover:text-[#06c] transition-colors min-h-[44px]"
               >
                 <Mail size={16} />
                 contact@aistudiothailand.com
               </a>
               <a
                 href="tel:+66XXXXXXXX"
-                className="flex items-center gap-2 hover:text-[#06c] transition-colors min-h-[44px]"
+                className="flex items-center gap-2 py-2 hover:text-[#06c] transition-colors min-h-[44px]"
               >
                 <Phone size={16} />
                 +66-XX-XXX-XXXX
@@ -92,15 +92,14 @@ export default function Footer() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm text-gray-400 hover:text-[#06c] transition-colors flex items-center gap-1.5 py-2 sm:py-1.5 min-h-[44px]"
+                        className="text-sm text-gray-400 py-2 hover:text-[#06c] transition-colors flex items-center gap-1.5 min-h-[44px]"
                       >
-                        {link.label}
-                        <ExternalLink size={12} />
+                        {link.label} <span className="text-[11px]">&rarr;</span>
                       </a>
                     ) : (
                       <Link
                         href={link.href}
-                        className="text-sm text-gray-400 hover:text-[#06c] transition-colors py-2 sm:py-1.5 min-h-[44px] flex items-center"
+                        className="text-sm text-gray-400 py-2 hover:text-[#06c] transition-colors min-h-[44px] flex items-center"
                       >
                         {link.label}
                       </Link>

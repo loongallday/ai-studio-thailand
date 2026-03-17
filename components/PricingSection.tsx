@@ -289,7 +289,7 @@ export default function PricingSection() {
                   whileHover={{ y: -6, transition: { duration: 0.3 } }}
                   className={`apple-card rounded-2xl p-6 md:p-8 relative overflow-hidden flex flex-col ${
                     plan.recommended
-                      ? "bg-gradient-to-br from-[#1d1d1f] to-[#2d2d2f] border border-white/[0.08] ring-2 ring-[#06c] shadow-[0_12px_48px_rgba(0,102,204,0.2)]"
+                      ? "bg-gradient-to-br from-[#1d1d1f] to-[#2d2d2f] border border-white/[0.08] ring-2 ring-[#06c]/20 shadow-lg"
                       : "bg-white border border-black/[0.04] hover:shadow-[0_4px_24px_rgba(0,0,0,0.06)] transition-shadow"
                   }`}
                 >

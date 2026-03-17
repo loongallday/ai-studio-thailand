@@ -422,7 +422,7 @@ export default function AboutSection() {
                   <Wrapper
                     key={c.label}
                     {...linkProps}
-                    className={`flex flex-col items-center gap-2.5 p-4 md:p-6 bg-white rounded-[18px] no-underline shadow-[0_2px_8px_rgba(0,0,0,0.03)] ${
+                    className={`flex flex-col items-center gap-2.5 p-4 md:p-6 bg-white rounded-xl no-underline shadow-[0_2px_8px_rgba(0,0,0,0.03)] hover:bg-black/[0.02] rounded-xl transition-all ${
                       c.href ? "cursor-pointer" : "cursor-default"
                     }`}
                   >

@@ -46,6 +46,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20"
         >
           <a href="#contact" className="btn-primary">ปรึกษาฟรี</a>
+          <a href="#contact" className="btn-outline">Request a Demo</a>
           <a href="#services" className="apple-link">ดูบริการทั้งหมด</a>
         </motion.div>
 

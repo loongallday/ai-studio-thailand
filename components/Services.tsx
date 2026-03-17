@@ -1077,21 +1077,37 @@ export default function Services() {
         @media (max-width: 639px) {
           .service-row {
             grid-template-columns: 1fr !important;
-            gap: 24px !important;
+            gap: 16px !important;
           }
           .service-row > .service-visual {
             order: -1 !important;
             margin-left: -16px !important;
             margin-right: -16px !important;
+            overflow: hidden !important;
+            max-width: calc(100% + 32px) !important;
           }
           .service-row > .service-visual > div {
             border-radius: 0 !important;
+            max-width: 100% !important;
+            overflow: hidden !important;
           }
           .service-row > .service-text {
             order: 1 !important;
           }
+          .service-row > .service-text h2 {
+            font-size: 28px !important;
+          }
+          .service-row > .service-text p {
+            font-size: 14px !important;
+          }
           .stats-grid {
-            grid-template-columns: 1fr !important;
+            grid-template-columns: 1fr 1fr !important;
+            gap: 12px !important;
+          }
+          .bullet-icon {
+            width: 28px !important;
+            height: 28px !important;
+            min-width: 28px !important;
           }
         }
       `}</style>

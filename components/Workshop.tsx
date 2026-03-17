@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
   GraduationCap,
   Clock,
@@ -28,6 +28,16 @@ import {
   Lightbulb,
   Shield,
   Quote,
+  Brain,
+  Database,
+  Workflow,
+  PieChart,
+  Bot,
+  FileText,
+  Play,
+  Sparkles,
+  Send,
+  ChevronRight,
 } from "lucide-react";
 
 /* ─────────────────────────────────────────────
@@ -148,6 +158,84 @@ const whyUs = [
     color: "#8b5cf6",
   },
 ];
+
+/* ─────────────────────────────────────────────
+   INTERACTIVE DATA
+───────────────────────────────────────────── */
+
+const workshopSimulatorSteps = [
+  {
+    step: "Step 1",
+    title: "สร้าง Webhook Trigger",
+    desc: "รับข้อความจาก LINE Messaging API → n8n Webhook node",
+    color: "#06c755",
+  },
+  {
+    step: "Step 2",
+    title: "เชื่อม AI ประมวลผล",
+    desc: "ส่งข้อความไปยัง GPT/Claude → วิเคราะห์ intent → สร้างคำตอบ",
+    color: "#06c",
+  },
+  {
+    step: "Step 3",
+    title: "ตอบกลับ LINE อัตโนมัติ",
+    desc: "HTTP Request node → LINE Reply API → ลูกค้าได้รับคำตอบใน 2 วินาที",
+    color: "#34c759",
+  },
+];
+
+type TopicKey = "prompt" | "rag" | "n8n" | "strategy" | "chatbot" | "data";
+
+const topicPills: { key: TopicKey; label: string; icon: React.ElementType; color: string }[] = [
+  { key: "prompt", label: "Prompt Engineering", icon: Brain, color: "#06c" },
+  { key: "rag", label: "RAG Pipeline", icon: Database, color: "#34c759" },
+  { key: "n8n", label: "n8n Automation", icon: Workflow, color: "#f59e0b" },
+  { key: "strategy", label: "AI Strategy", icon: TrendingUp, color: "#059669" },
+  { key: "chatbot", label: "Chatbot Development", icon: Bot, color: "#7c3aed" },
+  { key: "data", label: "Data Analysis", icon: PieChart, color: "#ef4444" },
+];
+
+/* ─── Animated Counter ─── */
+function AnimatedCounter({
+  target,
+  prefix = "",
+  suffix = "",
+  decimals = 0,
+}: {
+  target: number;
+  prefix?: string;
+  suffix?: string;
+  decimals?: number;
+}) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!isInView) return;
+    let start = 0;
+    const duration = 2000;
+    const step = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) {
+        setCount(target);
+        clearInterval(timer);
+      } else {
+        setCount(decimals > 0 ? parseFloat(start.toFixed(decimals)) : Math.floor(start));
+      }
+    }, 16);
+    return () => clearInterval(timer);
+  }, [isInView, target, decimals]);
+
+  return (
+    <span ref={ref}>
+      {prefix}
+      {decimals > 0 ? count.toFixed(decimals) : count.toLocaleString()}
+      {suffix}
+    </span>
+  );
+}
 
 /* ─────────────────────────────────────────────
    COMPONENTS
@@ -271,6 +359,7 @@ function DayTimeline({
 export default function Workshop() {
   const [expandedCard, setExpandedCard] = useState<number | null>(null);
   const [openDay, setOpenDay] = useState<number>(0);
+  const [selectedTopic, setSelectedTopic] = useState<TopicKey>("prompt");
 
   return (
     <section
@@ -1240,6 +1329,477 @@ export default function Workshop() {
               );
             })}
           </div>
+        </motion.div>
+
+        {/* ───── Interactive: Animated Stats Counter ───── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16 md:mb-20"
+        >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
+            {[
+              { target: 500, suffix: "+", label: "ผู้เรียน", color: "#06c" },
+              { target: 50, suffix: "+", label: "Workshop", color: "#34c759" },
+              { target: 4.9, suffix: "/5", label: "Rating", color: "#f59e0b", decimals: 1 },
+              { target: 98, suffix: "%", label: "แนะนำ", color: "#7c3aed" },
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="apple-card rounded-[20px] border border-black/[0.06] p-5 md:p-6 text-center"
+              >
+                <p
+                  className="text-[36px] sm:text-[44px] font-bold tracking-tight"
+                  style={{ color: stat.color }}
+                >
+                  <AnimatedCounter
+                    target={stat.target}
+                    suffix={stat.suffix}
+                    decimals={stat.decimals ?? 0}
+                  />
+                </p>
+                <p className="text-[13px] font-medium text-[#6e6e73] mt-1">{stat.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* ───── Interactive: Live Workshop Simulator ───── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16 md:mb-20"
+        >
+          <div className="text-center mb-8 md:mb-10">
+            <h3 className="text-[28px] sm:text-[32px] font-semibold tracking-[-0.03em] mb-2 text-[#1d1d1f]">
+              Workshop Simulator
+            </h3>
+            <p className="text-base text-[#6e6e73]">
+              สัมผัสประสบการณ์เรียนจริง ก่อนตัดสินใจ
+            </p>
+          </div>
+
+          <div className="apple-card rounded-[20px] border border-black/[0.06] overflow-hidden">
+            {/* Classroom header */}
+            <div className="flex items-center gap-3 px-5 py-3.5 bg-[#1d1d1f] text-white">
+              <div className="flex gap-1.5">
+                <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                <div className="w-3 h-3 rounded-full bg-[#28c840]" />
+              </div>
+              <span className="text-[12px] font-mono text-white/60 ml-2">AI Workshop - Live Session</span>
+              <div className="ml-auto flex items-center gap-1.5">
+                <div className="w-2 h-2 rounded-full bg-[#ff3b30] animate-pulse" />
+                <span className="text-[10px] text-white/60 font-mono">REC</span>
+              </div>
+            </div>
+
+            {/* Classroom view: Instructor + Student */}
+            <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-black/[0.06]">
+              {/* Instructor prompt */}
+              <div className="p-5 md:p-6">
+                <div className="flex items-center gap-2.5 mb-4">
+                  <div className="w-9 h-9 rounded-full bg-[#06c]/10 flex items-center justify-center">
+                    <GraduationCap size={18} className="text-[#06c]" />
+                  </div>
+                  <div>
+                    <p className="text-[13px] font-bold text-[#1d1d1f]">Instructor</p>
+                    <p className="text-[10px] text-[#6e6e73]">AI Studio Thailand</p>
+                  </div>
+                </div>
+
+                <div className="rounded-xl bg-[#06c]/[0.04] border border-[#06c]/10 p-4">
+                  <div className="flex items-center gap-1.5 mb-2">
+                    <Play size={12} className="text-[#06c]" />
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#06c]">Challenge</span>
+                  </div>
+                  <p className="text-[14px] font-semibold text-[#1d1d1f] leading-relaxed">
+                    &ldquo;สร้าง n8n workflow ที่ตอบ LINE อัตโนมัติ&rdquo;
+                  </p>
+                  <p className="text-[12px] text-[#6e6e73] mt-2">
+                    เมื่อลูกค้าส่งข้อความเข้า LINE OA → AI วิเคราะห์คำถาม → สร้างคำตอบ → ส่งกลับทันที
+                  </p>
+                </div>
+              </div>
+
+              {/* Student response - step by step */}
+              <div className="p-5 md:p-6">
+                <div className="flex items-center gap-2.5 mb-4">
+                  <div className="w-9 h-9 rounded-full bg-[#34c759]/10 flex items-center justify-center">
+                    <Sparkles size={18} className="text-[#34c759]" />
+                  </div>
+                  <div>
+                    <p className="text-[13px] font-bold text-[#1d1d1f]">Solution</p>
+                    <p className="text-[10px] text-[#6e6e73]">Step-by-step workflow</p>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-3">
+                  {workshopSimulatorSteps.map((s, i) => (
+                    <motion.div
+                      key={s.step}
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.3 + i * 0.4 }}
+                      className="rounded-xl border p-3.5"
+                      style={{
+                        borderColor: s.color + "25",
+                        background: s.color + "08",
+                      }}
+                    >
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span
+                          className="text-[10px] font-bold px-2 py-0.5 rounded-full"
+                          style={{ background: s.color + "15", color: s.color }}
+                        >
+                          {s.step}
+                        </span>
+                        <span className="text-[13px] font-bold text-[#1d1d1f]">{s.title}</span>
+                      </div>
+                      <p className="text-[12px] text-[#6e6e73] leading-relaxed">{s.desc}</p>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Connection lines */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 1.8 }}
+                  className="mt-4 flex items-center justify-center gap-2"
+                >
+                  <div className="w-2 h-2 rounded-full bg-[#34c759] animate-pulse" />
+                  <span className="text-[11px] font-semibold text-[#34c759]">Workflow Complete! ใช้เวลาจริงในคลาส ~45 นาที</span>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ───── Interactive: Topic Explorer ───── */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mb-16 md:mb-20"
+        >
+          <div className="text-center mb-8 md:mb-10">
+            <h3 className="text-[28px] sm:text-[32px] font-semibold tracking-[-0.03em] mb-2 text-[#1d1d1f]">
+              สำรวจหัวข้อที่สอน
+            </h3>
+            <p className="text-base text-[#6e6e73]">
+              เลือกหัวข้อเพื่อดูตัวอย่างสิ่งที่จะได้เรียนรู้
+            </p>
+          </div>
+
+          {/* Topic pills */}
+          <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-6 md:mb-8">
+            {topicPills.map((t) => {
+              const Icon = t.icon;
+              const isActive = selectedTopic === t.key;
+              return (
+                <motion.button
+                  key={t.key}
+                  onClick={() => setSelectedTopic(t.key)}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.96 }}
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-full text-[13px] font-semibold border cursor-pointer transition-all"
+                  style={{
+                    background: isActive ? t.color : "transparent",
+                    color: isActive ? "#fff" : t.color,
+                    borderColor: isActive ? t.color : t.color + "30",
+                  }}
+                >
+                  <Icon size={15} />
+                  {t.label}
+                </motion.button>
+              );
+            })}
+          </div>
+
+          {/* Topic preview panel */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedTopic}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="apple-card rounded-[20px] border border-black/[0.06] overflow-hidden"
+            >
+              {/* Prompt Engineering */}
+              {selectedTopic === "prompt" && (
+                <div className="p-5 md:p-7">
+                  <div className="flex items-center gap-2 mb-5">
+                    <Brain size={20} className="text-[#06c]" />
+                    <h4 className="text-[17px] font-bold text-[#1d1d1f]">Prompt Engineering</h4>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* Before */}
+                    <div className="rounded-xl border border-[#ff3b30]/15 bg-[#ff3b30]/[0.03] p-4">
+                      <div className="flex items-center gap-1.5 mb-3">
+                        <div className="w-2 h-2 rounded-full bg-[#ff3b30]" />
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-[#ff3b30]">Before</span>
+                      </div>
+                      <div className="rounded-lg bg-white p-3 border border-black/[0.04]">
+                        <p className="text-[13px] text-[#1d1d1f] font-mono leading-relaxed">
+                          &ldquo;สรุปบทความนี้ให้หน่อย&rdquo;
+                        </p>
+                      </div>
+                      <p className="text-[11px] text-[#ff3b30] mt-2 font-medium">ไม่ระบุรูปแบบ, ความยาว, กลุ่มเป้าหมาย</p>
+                    </div>
+                    {/* After */}
+                    <div className="rounded-xl border border-[#34c759]/15 bg-[#34c759]/[0.03] p-4">
+                      <div className="flex items-center gap-1.5 mb-3">
+                        <div className="w-2 h-2 rounded-full bg-[#34c759]" />
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-[#34c759]">After</span>
+                      </div>
+                      <div className="rounded-lg bg-white p-3 border border-black/[0.04]">
+                        <p className="text-[13px] text-[#1d1d1f] font-mono leading-relaxed">
+                          &ldquo;สรุปบทความนี้เป็น 3 bullet points สำหรับ CEO ที่มีเวลาอ่าน 30 วินาที เน้น ROI และ action items&rdquo;
+                        </p>
+                      </div>
+                      <p className="text-[11px] text-[#34c759] mt-2 font-medium">ชัดเจน, วัดผลได้, ตรงกลุ่มเป้าหมาย</p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* RAG Pipeline */}
+              {selectedTopic === "rag" && (
+                <div className="p-5 md:p-7">
+                  <div className="flex items-center gap-2 mb-5">
+                    <Database size={20} className="text-[#34c759]" />
+                    <h4 className="text-[17px] font-bold text-[#1d1d1f]">RAG Pipeline</h4>
+                  </div>
+                  <div className="flex items-center overflow-x-auto pb-2 gap-2 scrollbar-hide">
+                    {[
+                      { label: "Documents", sub: "PDF, CSV, Web", color: "#6e6e73", icon: FileText },
+                      { label: "Embedding", sub: "Vector แปลงข้อความ", color: "#06c", icon: Brain },
+                      { label: "Vector DB", sub: "ChromaDB จัดเก็บ", color: "#34c759", icon: Database },
+                      { label: "Query", sub: "ค้นหา Semantic", color: "#f59e0b", icon: Send },
+                      { label: "Answer", sub: "AI สร้างคำตอบ", color: "#7c3aed", icon: Sparkles },
+                    ].map((node, i, arr) => {
+                      const NodeIcon = node.icon;
+                      return (
+                        <motion.div
+                          key={node.label}
+                          initial={{ opacity: 0, y: 15 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: i * 0.15 }}
+                          className="flex items-center shrink-0"
+                        >
+                          <div
+                            className="rounded-xl border-2 p-3.5 text-center min-w-[110px]"
+                            style={{ borderColor: node.color + "40", background: node.color + "08" }}
+                          >
+                            <NodeIcon size={20} className="mx-auto mb-1.5" style={{ color: node.color }} />
+                            <p className="text-[12px] font-bold" style={{ color: node.color }}>{node.label}</p>
+                            <p className="text-[10px] text-[#6e6e73] mt-0.5">{node.sub}</p>
+                          </div>
+                          {i < arr.length - 1 && (
+                            <ChevronRight size={16} className="mx-1 text-[#d2d2d7] shrink-0" />
+                          )}
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* n8n Automation */}
+              {selectedTopic === "n8n" && (
+                <div className="p-5 md:p-7">
+                  <div className="flex items-center gap-2 mb-5">
+                    <Workflow size={20} className="text-[#f59e0b]" />
+                    <h4 className="text-[17px] font-bold text-[#1d1d1f]">n8n Automation</h4>
+                  </div>
+                  <div className="flex items-center overflow-x-auto pb-2 scrollbar-hide">
+                    {[
+                      { label: "Trigger", sub: "Webhook / Schedule", color: "#EA4335" },
+                      { label: "IF/Switch", sub: "Route ตาม Logic", color: "#f59e0b" },
+                      { label: "AI Node", sub: "GPT / Claude", color: "#06c" },
+                      { label: "Database", sub: "Read/Write", color: "#34c759" },
+                      { label: "Notify", sub: "LINE / Slack / Email", color: "#7c3aed" },
+                    ].map((node, i, arr) => (
+                      <motion.div
+                        key={node.label}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.12 }}
+                        className="flex items-center shrink-0"
+                      >
+                        <div
+                          className="px-4 py-3 bg-white rounded-xl text-center border-2 min-w-[100px]"
+                          style={{ borderColor: node.color }}
+                        >
+                          <p className="text-[12px] font-bold" style={{ color: node.color }}>{node.label}</p>
+                          <p className="text-[10px] text-[#6e6e73] mt-0.5">{node.sub}</p>
+                        </div>
+                        {i < arr.length - 1 && (
+                          <div className="w-6 h-[2px] bg-black/10 relative shrink-0">
+                            <ArrowRight size={10} className="absolute -right-0.5 -top-[4px] text-black/20" />
+                          </div>
+                        )}
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* AI Strategy */}
+              {selectedTopic === "strategy" && (
+                <div className="p-5 md:p-7">
+                  <div className="flex items-center gap-2 mb-5">
+                    <TrendingUp size={20} className="text-[#059669]" />
+                    <h4 className="text-[17px] font-bold text-[#1d1d1f]">AI Strategy & ROI</h4>
+                  </div>
+                  <div className="rounded-xl bg-[#059669]/[0.04] border border-[#059669]/15 p-5">
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-[#059669] mb-4">ROI Calculator Preview</p>
+                    <div className="grid grid-cols-3 gap-4 text-center">
+                      <div>
+                        <p className="text-[10px] text-[#6e6e73] mb-1">ลงทุน AI</p>
+                        <p className="text-[22px] font-bold text-[#ff3b30]">฿50K</p>
+                        <p className="text-[10px] text-[#6e6e73]">ค่า setup + ปีแรก</p>
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-[#6e6e73] mb-1">ประหยัด/ปี</p>
+                        <p className="text-[22px] font-bold text-[#34c759]">฿360K</p>
+                        <p className="text-[10px] text-[#6e6e73]">ลดคน 2 ตำแหน่ง</p>
+                      </div>
+                      <div>
+                        <p className="text-[10px] text-[#6e6e73] mb-1">ROI</p>
+                        <p className="text-[22px] font-bold text-[#059669]">620%</p>
+                        <p className="text-[10px] text-[#6e6e73]">ปีแรก</p>
+                      </div>
+                    </div>
+                    <div className="mt-4 pt-3 border-t border-[#059669]/10 flex items-center justify-center gap-1.5">
+                      <TrendingUp size={12} className="text-[#059669]" />
+                      <span className="text-[11px] font-medium text-[#059669]">คืนทุนภายใน 1.6 เดือน</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Chatbot Development */}
+              {selectedTopic === "chatbot" && (
+                <div className="p-5 md:p-7">
+                  <div className="flex items-center gap-2 mb-5">
+                    <Bot size={20} className="text-[#7c3aed]" />
+                    <h4 className="text-[17px] font-bold text-[#1d1d1f]">Chatbot Development</h4>
+                  </div>
+                  <div className="rounded-xl bg-[#f5f5f7] p-4 max-w-sm mx-auto">
+                    {/* Chat header */}
+                    <div className="flex items-center gap-2 mb-3 pb-2 border-b border-black/[0.06]">
+                      <div className="w-7 h-7 rounded-full bg-[#7c3aed]/10 flex items-center justify-center">
+                        <Bot size={14} className="text-[#7c3aed]" />
+                      </div>
+                      <div>
+                        <p className="text-[12px] font-bold text-[#1d1d1f]">AI Customer Support</p>
+                        <div className="flex items-center gap-1">
+                          <div className="w-1.5 h-1.5 rounded-full bg-[#34c759]" />
+                          <span className="text-[9px] text-[#34c759]">Online</span>
+                        </div>
+                      </div>
+                    </div>
+                    {/* Chat messages */}
+                    <div className="space-y-2.5">
+                      <div className="flex justify-end">
+                        <div className="bg-[#06c] text-white text-[12px] px-3 py-2 rounded-2xl rounded-br-sm max-w-[80%]">
+                          สินค้าส่งกี่วันคะ?
+                        </div>
+                      </div>
+                      <div className="flex justify-start">
+                        <div className="bg-white text-[#1d1d1f] text-[12px] px-3 py-2 rounded-2xl rounded-bl-sm max-w-[80%] shadow-sm">
+                          สินค้าจัดส่งภายใน 1-3 วันทำการค่ะ กรุงเทพฯ-ปริมณฑลรับภายในวันถัดไป ต่างจังหวัด 2-3 วันค่ะ
+                        </div>
+                      </div>
+                      <div className="flex justify-end">
+                        <div className="bg-[#06c] text-white text-[12px] px-3 py-2 rounded-2xl rounded-br-sm max-w-[80%]">
+                          มีเก็บเงินปลายทางไหม?
+                        </div>
+                      </div>
+                      <motion.div
+                        initial={{ opacity: 0, y: 5 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.5 }}
+                        className="flex justify-start"
+                      >
+                        <div className="bg-white text-[#1d1d1f] text-[12px] px-3 py-2 rounded-2xl rounded-bl-sm max-w-[80%] shadow-sm">
+                          รับ COD ค่ะ ค่าธรรมเนียม ฿20 สำหรับออเดอร์ต่ำกว่า ฿500 ค่ะ
+                        </div>
+                      </motion.div>
+                    </div>
+                    <div className="mt-3 pt-2 border-t border-black/[0.04] flex items-center gap-1">
+                      <Sparkles size={10} className="text-[#7c3aed]" />
+                      <span className="text-[9px] text-[#6e6e73]">Powered by Flowise + RAG</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Data Analysis */}
+              {selectedTopic === "data" && (
+                <div className="p-5 md:p-7">
+                  <div className="flex items-center gap-2 mb-5">
+                    <PieChart size={20} className="text-[#ef4444]" />
+                    <h4 className="text-[17px] font-bold text-[#1d1d1f]">Data Analysis with AI</h4>
+                  </div>
+                  <div className="rounded-xl bg-[#f5f5f7] p-5">
+                    <p className="text-[11px] font-bold uppercase tracking-wider text-[#6e6e73] mb-4">Sales Dashboard Preview</p>
+                    {/* Mock bar chart */}
+                    <div className="flex items-end gap-3 justify-center h-[120px] mb-4">
+                      {[
+                        { label: "ม.ค.", h: 45, color: "#06c" },
+                        { label: "ก.พ.", h: 62, color: "#06c" },
+                        { label: "มี.ค.", h: 38, color: "#06c" },
+                        { label: "เม.ย.", h: 75, color: "#06c" },
+                        { label: "พ.ค.", h: 88, color: "#34c759" },
+                        { label: "มิ.ย.", h: 95, color: "#34c759" },
+                      ].map((bar, i) => (
+                        <motion.div
+                          key={bar.label}
+                          className="flex flex-col items-center gap-1"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: i * 0.1 }}
+                        >
+                          <motion.div
+                            className="w-8 sm:w-10 rounded-t-md"
+                            style={{ background: bar.color }}
+                            initial={{ height: 0 }}
+                            whileInView={{ height: bar.h }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: i * 0.1 }}
+                          />
+                          <span className="text-[10px] text-[#6e6e73]">{bar.label}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+                    <div className="flex items-center justify-center gap-1.5">
+                      <TrendingUp size={12} className="text-[#34c759]" />
+                      <span className="text-[11px] font-medium text-[#34c759]">AI ทำนายยอดขาย พ.ค.-มิ.ย. เพิ่มขึ้น 26%</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </motion.div>
+          </AnimatePresence>
         </motion.div>
 
         {/* ───── Section 7: CTA ───── */}

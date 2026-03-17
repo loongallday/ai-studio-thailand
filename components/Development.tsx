@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   MessageSquare,
   Database,
@@ -37,6 +38,13 @@ import {
   MonitorDot,
   Gauge,
   Code2,
+  Plus,
+  Box,
+  MousePointerClick,
+  SlidersHorizontal,
+  Users,
+  Calendar,
+  DollarSign,
 } from "lucide-react";
 
 /* ─── Animation Variants ─── */
@@ -485,6 +493,544 @@ function MonitorMockup() {
 }
 
 /* ─── Main Component ─── */
+
+/* ─── Interactive: Live Architecture Builder ─── */
+function ArchitectureBuilder() {
+  const [nodes, setNodes] = useState<string[]>([]);
+
+  const allNodes = [
+    { id: "ai", label: "AI Model (GPT-5)", icon: Cpu, color: "#6366f1", description: "โมเดล AI หลักสำหรับประมวลผลภาษา" },
+    { id: "rag", label: "RAG Pipeline", icon: Database, color: "#06c", description: "ค้นหาข้อมูลจากฐานความรู้องค์กร", connectsTo: ["ai"] },
+    { id: "line", label: "LINE Bot", icon: MessageSquare, color: "#00b900", description: "แชทบอทรับคำถามจากลูกค้า 24/7", connectsTo: ["ai", "rag"] },
+    { id: "n8n", label: "n8n Workflow", icon: Workflow, color: "#f97316", description: "ระบบ automation เชื่อมทุกอย่างเข้าด้วยกัน", connectsTo: ["ai", "rag", "line"] },
+    { id: "dashboard", label: "Dashboard", icon: BarChart3, color: "#059669", description: "แดชบอร์ดติดตามผลแบบ real-time", connectsTo: ["ai", "n8n"] },
+  ];
+
+  const toggleNode = (id: string) => {
+    setNodes((prev) =>
+      prev.includes(id) ? prev.filter((n) => n !== id) : [...prev, id]
+    );
+  };
+
+  const resetAll = () => setNodes([]);
+  const addAll = () => setNodes(allNodes.map((n) => n.id));
+
+  return (
+    <div className="max-w-[980px] mx-auto py-20 md:py-[120px]">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeUp}
+        transition={{ duration: 0.7 }}
+        className="text-center mb-10"
+      >
+        <p className="text-[13px] font-semibold text-[#6366f1] uppercase tracking-widest mb-3">
+          INTERACTIVE BUILDER
+        </p>
+        <h3 className="text-[28px] sm:text-[32px] font-semibold text-[#1d1d1f] mb-3 tracking-[-0.03em]">
+          ลองสร้าง Architecture ของคุณ
+        </h3>
+        <p className="text-[17px] text-[#6e6e73] max-w-[520px] mx-auto leading-relaxed">
+          คลิกเลือก component ที่ต้องการ แล้วดูว่าระบบเชื่อมต่อกันอย่างไร
+        </p>
+      </motion.div>
+
+      {/* Button Row */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={stagger}
+        className="flex flex-wrap justify-center gap-2 mb-8"
+      >
+        {allNodes.map((node) => {
+          const isActive = nodes.includes(node.id);
+          return (
+            <motion.button
+              key={node.id}
+              variants={fadeUp}
+              onClick={() => toggleNode(node.id)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold border-2 transition-all duration-300 cursor-pointer ${
+                isActive
+                  ? "text-white shadow-lg"
+                  : "bg-white text-[#1d1d1f] border-black/10 hover:border-black/20"
+              }`}
+              style={
+                isActive
+                  ? { background: node.color, borderColor: node.color }
+                  : {}
+              }
+            >
+              <Plus
+                size={14}
+                className={`transition-transform duration-300 ${isActive ? "rotate-45" : ""}`}
+              />
+              {node.label}
+            </motion.button>
+          );
+        })}
+        <div className="flex gap-2 ml-2">
+          <button
+            onClick={addAll}
+            className="text-xs text-[#06c] font-semibold px-3 py-2 rounded-lg hover:bg-[#06c]/5 transition-colors cursor-pointer bg-transparent border-none"
+          >
+            เลือกทั้งหมด
+          </button>
+          <button
+            onClick={resetAll}
+            className="text-xs text-[#86868b] font-semibold px-3 py-2 rounded-lg hover:bg-black/5 transition-colors cursor-pointer bg-transparent border-none"
+          >
+            รีเซ็ต
+          </button>
+        </div>
+      </motion.div>
+
+      {/* Canvas */}
+      <div className="relative bg-[#f5f5f7] rounded-3xl p-6 md:p-10 min-h-[320px] border border-black/[0.06] overflow-hidden">
+        {nodes.length === 0 && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="absolute inset-0 flex flex-col items-center justify-center text-[#86868b]"
+          >
+            <MousePointerClick size={40} className="mb-3 opacity-40" />
+            <p className="text-sm font-medium">คลิกปุ่มด้านบนเพื่อเพิ่ม component</p>
+          </motion.div>
+        )}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          <AnimatePresence mode="popLayout">
+            {allNodes
+              .filter((n) => nodes.includes(n.id))
+              .map((node) => {
+                const Icon = node.icon;
+                const connections = node.connectsTo?.filter((c) => nodes.includes(c)) || [];
+                return (
+                  <motion.div
+                    key={node.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.8, y: -20 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    className="bg-white rounded-2xl p-5 shadow-[0_2px_20px_rgba(0,0,0,0.06)] border border-black/[0.04]"
+                  >
+                    <div className="flex items-center gap-3 mb-3">
+                      <div
+                        className="w-10 h-10 rounded-xl flex items-center justify-center"
+                        style={{ background: `${node.color}12` }}
+                      >
+                        <Icon size={20} style={{ color: node.color }} />
+                      </div>
+                      <span className="text-sm font-bold text-[#1d1d1f]">{node.label}</span>
+                    </div>
+                    <p className="text-xs text-[#6e6e73] leading-relaxed mb-3">
+                      {node.description}
+                    </p>
+                    {connections.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5">
+                        {connections.map((c) => {
+                          const target = allNodes.find((n) => n.id === c);
+                          return (
+                            <span
+                              key={c}
+                              className="text-[10px] font-semibold px-2 py-0.5 rounded-md"
+                              style={{
+                                color: target?.color,
+                                background: `${target?.color}10`,
+                              }}
+                            >
+                              → {target?.label}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </motion.div>
+                );
+              })}
+          </AnimatePresence>
+        </div>
+
+        {/* Live connection count */}
+        {nodes.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="mt-6 flex items-center justify-center gap-6 text-xs text-[#6e6e73]"
+          >
+            <span className="flex items-center gap-1.5">
+              <Box size={12} /> {nodes.length} components
+            </span>
+            <span className="flex items-center gap-1.5">
+              <GitBranch size={12} />{" "}
+              {allNodes
+                .filter((n) => nodes.includes(n.id))
+                .reduce(
+                  (acc, n) =>
+                    acc + (n.connectsTo?.filter((c) => nodes.includes(c)).length || 0),
+                  0
+                )}{" "}
+              connections
+            </span>
+          </motion.div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/* ─── Interactive: Code Preview Toggle ─── */
+function CodePreviewToggle() {
+  const [activeTab, setActiveTab] = useState<"python" | "docker" | "n8n">("python");
+
+  const tabs = [
+    { id: "python" as const, label: "Python", icon: Code2 },
+    { id: "docker" as const, label: "Docker", icon: Box },
+    { id: "n8n" as const, label: "n8n", icon: Workflow },
+  ];
+
+  const codeSnippets = {
+    python: {
+      filename: "inference.py",
+      lines: [
+        { text: "from langchain.chat_models import ChatOpenAI", color: "#c084fc" },
+        { text: "from langchain.vectorstores import Chroma", color: "#c084fc" },
+        { text: "from langchain.chains import RetrievalQA", color: "#c084fc" },
+        { text: "", color: "" },
+        { text: "# โหลด AI Model + เชื่อมฐานความรู้องค์กร", color: "#6b7280" },
+        { text: 'llm = ChatOpenAI(model="gpt-4o", temperature=0)', color: "#fbbf24" },
+        { text: 'vectordb = Chroma(persist_directory="./company_data")', color: "#fbbf24" },
+        { text: "", color: "" },
+        { text: "qa_chain = RetrievalQA.from_chain_type(", color: "#34d399" },
+        { text: "    llm=llm,", color: "#34d399" },
+        { text: '    chain_type="stuff",', color: "#34d399" },
+        { text: "    retriever=vectordb.as_retriever()", color: "#34d399" },
+        { text: ")", color: "#34d399" },
+        { text: "", color: "" },
+        { text: '# ถามคำถาม → AI ตอบจากข้อมูลจริง', color: "#6b7280" },
+        { text: 'result = qa_chain.run("สินค้า A250 มีสต็อกกี่ชิ้น?")', color: "#60a5fa" },
+        { text: "print(result)", color: "#60a5fa" },
+      ],
+    },
+    docker: {
+      filename: "docker-compose.yml",
+      lines: [
+        { text: 'version: "3.8"', color: "#fbbf24" },
+        { text: "services:", color: "#c084fc" },
+        { text: "  ai-api:", color: "#34d399" },
+        { text: "    build: ./api", color: "#e5e7eb" },
+        { text: "    ports:", color: "#e5e7eb" },
+        { text: '      - "8000:8000"', color: "#fbbf24" },
+        { text: "    environment:", color: "#e5e7eb" },
+        { text: "      - OPENAI_API_KEY=${OPENAI_KEY}", color: "#60a5fa" },
+        { text: "    depends_on:", color: "#e5e7eb" },
+        { text: "      - chromadb", color: "#60a5fa" },
+        { text: "", color: "" },
+        { text: "  chromadb:", color: "#34d399" },
+        { text: "    image: chromadb/chroma:latest", color: "#e5e7eb" },
+        { text: "    ports:", color: "#e5e7eb" },
+        { text: '      - "8001:8000"', color: "#fbbf24" },
+        { text: "    volumes:", color: "#e5e7eb" },
+        { text: "      - chroma_data:/chroma/chroma", color: "#60a5fa" },
+      ],
+    },
+    n8n: {
+      filename: "workflow.json",
+      lines: [
+        { text: "{", color: "#e5e7eb" },
+        { text: '  "name": "AI Customer Service",', color: "#fbbf24" },
+        { text: '  "nodes": [', color: "#c084fc" },
+        { text: "    {", color: "#e5e7eb" },
+        { text: '      "type": "n8n-nodes-base.webhook",', color: "#34d399" },
+        { text: '      "name": "LINE Webhook",', color: "#fbbf24" },
+        { text: '      "parameters": {', color: "#e5e7eb" },
+        { text: '        "path": "/line-bot",', color: "#60a5fa" },
+        { text: '        "method": "POST"', color: "#60a5fa" },
+        { text: "      }", color: "#e5e7eb" },
+        { text: "    },", color: "#e5e7eb" },
+        { text: "    {", color: "#e5e7eb" },
+        { text: '      "type": "n8n-nodes-base.openAi",', color: "#34d399" },
+        { text: '      "name": "AI Response",', color: "#fbbf24" },
+        { text: '      "parameters": {', color: "#e5e7eb" },
+        { text: '        "model": "gpt-4o"', color: "#60a5fa" },
+        { text: "      }", color: "#e5e7eb" },
+      ],
+    },
+  };
+
+  const currentCode = codeSnippets[activeTab];
+
+  return (
+    <div className="bg-[#f5f5f7] -mx-4 md:-mx-6 px-4 md:px-6 py-20 md:py-[120px]">
+      <div className="max-w-[980px] mx-auto">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          transition={{ duration: 0.7 }}
+          className="text-center mb-10"
+        >
+          <p className="text-[13px] font-semibold text-[#059669] uppercase tracking-widest mb-3">
+            CODE PREVIEW
+          </p>
+          <h3 className="text-[28px] sm:text-[32px] font-semibold text-[#1d1d1f] mb-3 tracking-[-0.03em]">
+            ดูโค้ดจริงที่เราเขียน
+          </h3>
+          <p className="text-[17px] text-[#6e6e73] max-w-[520px] mx-auto leading-relaxed">
+            ตัวอย่างโค้ดจาก stack ที่เราใช้จริงในโปรเจกต์ — สลับแท็บเพื่อดูแต่ละส่วน
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUp}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="rounded-2xl overflow-hidden shadow-[0_8px_40px_rgba(0,0,0,0.12)]"
+        >
+          {/* Terminal header */}
+          <div className="bg-[#1e1e1e] px-4 py-3 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="flex gap-1.5">
+                <div className="w-3 h-3 rounded-full bg-[#ff5f57]" />
+                <div className="w-3 h-3 rounded-full bg-[#febc2e]" />
+                <div className="w-3 h-3 rounded-full bg-[#28c840]" />
+              </div>
+              <span className="text-[11px] text-[#6b7280] ml-2 font-mono">
+                {currentCode.filename}
+              </span>
+            </div>
+            <Terminal size={14} className="text-[#6b7280]" />
+          </div>
+
+          {/* Tabs */}
+          <div className="bg-[#252526] flex border-b border-[#333]">
+            {tabs.map((tab) => {
+              const Icon = tab.icon;
+              const isActive = activeTab === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center gap-1.5 px-5 py-2.5 text-xs font-semibold transition-all duration-200 border-b-2 cursor-pointer bg-transparent border-l-0 border-r-0 border-t-0 ${
+                    isActive
+                      ? "text-white border-[#06c] bg-[#1e1e1e]"
+                      : "text-[#6b7280] border-transparent hover:text-[#9ca3af] hover:bg-[#2a2a2a]"
+                  }`}
+                >
+                  <Icon size={12} />
+                  {tab.label}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Code area */}
+          <div className="bg-[#1e1e1e] p-5 md:p-6 overflow-x-auto">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.2 }}
+                className="font-mono text-[12px] md:text-[13px] leading-[1.8]"
+              >
+                {currentCode.lines.map((line, i) => (
+                  <div key={i} className="flex">
+                    <span className="text-[#4b5563] w-8 text-right mr-4 select-none shrink-0">
+                      {i + 1}
+                    </span>
+                    <span style={{ color: line.color || "#e5e7eb" }}>
+                      {line.text || "\u00A0"}
+                    </span>
+                  </div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── Interactive: Project Timeline Calculator ─── */
+function TimelineCalculator() {
+  const [workflowCount, setWorkflowCount] = useState(5);
+
+  // Calculate estimates based on workflow count
+  const getTimeline = (count: number) => {
+    if (count <= 3) return { weeks: "1-2", label: "สัปดาห์" };
+    if (count <= 7) return { weeks: "2-4", label: "สัปดาห์" };
+    if (count <= 12) return { weeks: "4-6", label: "สัปดาห์" };
+    return { weeks: "6-8", label: "สัปดาห์" };
+  };
+
+  const getCost = (count: number) => {
+    const base = 50000;
+    const perWorkflow = 30000;
+    const min = base + count * perWorkflow * 0.8;
+    const max = base + count * perWorkflow * 1.3;
+    return {
+      min: Math.round(min / 1000) * 1000,
+      max: Math.round(max / 1000) * 1000,
+    };
+  };
+
+  const getTeam = (count: number) => {
+    if (count <= 3) return { size: "1-2", roles: "Dev + PM" };
+    if (count <= 8) return { size: "2-3", roles: "Dev + AI Engineer + PM" };
+    if (count <= 14) return { size: "3-4", roles: "2 Dev + AI Engineer + PM" };
+    return { size: "4-5", roles: "2 Dev + AI Engineer + DevOps + PM" };
+  };
+
+  const timeline = getTimeline(workflowCount);
+  const cost = getCost(workflowCount);
+  const team = getTeam(workflowCount);
+
+  const formatNumber = (n: number) => n.toLocaleString("th-TH");
+
+  return (
+    <div className="max-w-[980px] mx-auto py-20 md:py-[120px]">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeUp}
+        transition={{ duration: 0.7 }}
+        className="text-center mb-10"
+      >
+        <p className="text-[13px] font-semibold text-[#f97316] uppercase tracking-widest mb-3">
+          PROJECT CALCULATOR
+        </p>
+        <h3 className="text-[28px] sm:text-[32px] font-semibold text-[#1d1d1f] mb-3 tracking-[-0.03em]">
+          ประเมินโปรเจกต์ของคุณ
+        </h3>
+        <p className="text-[17px] text-[#6e6e73] max-w-[520px] mx-auto leading-relaxed">
+          เลื่อน slider เพื่อดูประมาณการ timeline, งบประมาณ และทีมที่ต้องใช้
+        </p>
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={fadeUp}
+        transition={{ duration: 0.7, delay: 0.2 }}
+        className="bg-[#f5f5f7] rounded-3xl p-8 md:p-12 border border-black/[0.06]"
+      >
+        {/* Slider section */}
+        <div className="text-center mb-10">
+          <label className="text-sm font-semibold text-[#1d1d1f] mb-1 block">
+            จำนวน Workflow / AI Features
+          </label>
+          <p className="text-xs text-[#86868b] mb-6">
+            เช่น Chatbot, OCR, Automation, Dashboard, API ฯลฯ
+          </p>
+          <div className="flex items-center justify-center gap-6 max-w-[500px] mx-auto">
+            <span className="text-xs text-[#86868b] font-mono w-6 text-right">1</span>
+            <input
+              type="range"
+              min={1}
+              max={20}
+              value={workflowCount}
+              onChange={(e) => setWorkflowCount(Number(e.target.value))}
+              className="flex-1 h-2 rounded-full appearance-none cursor-pointer"
+              style={{
+                background: `linear-gradient(to right, #f97316 0%, #f97316 ${((workflowCount - 1) / 19) * 100}%, #d1d5db ${((workflowCount - 1) / 19) * 100}%, #d1d5db 100%)`,
+              }}
+            />
+            <span className="text-xs text-[#86868b] font-mono w-6">20</span>
+          </div>
+          <motion.div
+            key={workflowCount}
+            initial={{ scale: 1.2, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 400, damping: 20 }}
+            className="mt-4"
+          >
+            <span className="text-[48px] md:text-[56px] font-bold text-[#f97316] tracking-tight">
+              {workflowCount}
+            </span>
+            <span className="text-lg text-[#86868b] ml-2">workflows</span>
+          </motion.div>
+        </div>
+
+        {/* Results grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <motion.div
+            key={`timeline-${workflowCount}`}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0 }}
+            className="bg-white rounded-2xl p-6 text-center shadow-[0_2px_12px_rgba(0,0,0,0.04)]"
+          >
+            <div className="w-12 h-12 rounded-xl bg-[#dbeafe] flex items-center justify-center mx-auto mb-3">
+              <Calendar size={22} className="text-[#2563eb]" />
+            </div>
+            <p className="text-xs font-semibold text-[#86868b] uppercase tracking-wider mb-1">
+              Timeline
+            </p>
+            <p className="text-[28px] font-bold text-[#1d1d1f]">
+              {timeline.weeks}
+            </p>
+            <p className="text-sm text-[#6e6e73]">{timeline.label}</p>
+          </motion.div>
+
+          <motion.div
+            key={`cost-${workflowCount}`}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="bg-white rounded-2xl p-6 text-center shadow-[0_2px_12px_rgba(0,0,0,0.04)]"
+          >
+            <div className="w-12 h-12 rounded-xl bg-[#fef3c7] flex items-center justify-center mx-auto mb-3">
+              <DollarSign size={22} className="text-[#d97706]" />
+            </div>
+            <p className="text-xs font-semibold text-[#86868b] uppercase tracking-wider mb-1">
+              งบประมาณโดยประมาณ
+            </p>
+            <p className="text-[28px] font-bold text-[#1d1d1f]">
+              {formatNumber(cost.min)}-{formatNumber(cost.max)}
+            </p>
+            <p className="text-sm text-[#6e6e73]">บาท</p>
+          </motion.div>
+
+          <motion.div
+            key={`team-${workflowCount}`}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="bg-white rounded-2xl p-6 text-center shadow-[0_2px_12px_rgba(0,0,0,0.04)]"
+          >
+            <div className="w-12 h-12 rounded-xl bg-[#d1fae5] flex items-center justify-center mx-auto mb-3">
+              <Users size={22} className="text-[#059669]" />
+            </div>
+            <p className="text-xs font-semibold text-[#86868b] uppercase tracking-wider mb-1">
+              ทีมที่ต้องใช้
+            </p>
+            <p className="text-[28px] font-bold text-[#1d1d1f]">
+              {team.size}
+            </p>
+            <p className="text-sm text-[#6e6e73]">{team.roles}</p>
+          </motion.div>
+        </div>
+
+        {/* Disclaimer */}
+        <p className="text-[11px] text-[#86868b] text-center mt-6">
+          * ตัวเลขเป็นการประมาณการเบื้องต้น ราคาจริงขึ้นอยู่กับความซับซ้อนและ requirement ของโปรเจกต์
+        </p>
+      </motion.div>
+    </div>
+  );
+}
 
 export default function Development() {
   /* Process steps data */
@@ -1005,6 +1551,15 @@ export default function Development() {
           </motion.a>
         </motion.div>
       </div>
+
+      {/* ──────────── INTERACTIVE: Live Architecture Builder ──────────── */}
+      <ArchitectureBuilder />
+
+      {/* ──────────── INTERACTIVE: Code Preview Toggle ──────────── */}
+      <CodePreviewToggle />
+
+      {/* ──────────── INTERACTIVE: Project Timeline Calculator ──────────── */}
+      <TimelineCalculator />
 
       {/* ──────────── SECTION 5: Case Studies ──────────── */}
       <div className="bg-[#f5f5f7] -mx-4 md:-mx-6 px-4 md:px-6 py-20 md:py-[120px]">

@@ -414,7 +414,7 @@ function CaseStudyCard({
                 key={i}
                 className="bg-[#f5f5f7] rounded-[14px] p-3.5 md:p-4 flex items-center gap-3.5"
               >
-                <span className="text-[22px] md:text-[24px] font-bold text-[#1d1d1f] min-w-[60px]">
+                <span className="text-[26px] md:text-[30px] font-bold text-[#1d1d1f] min-w-[60px]">
                   {metric.value}
                 </span>
                 <span className="text-[13px] text-[#6e6e73] leading-[1.4]">

@@ -186,7 +186,7 @@ function FeaturedCard({ article }: { article: Article }) {
           alignItems: "center",
           justifyContent: "center",
           padding: 48,
-          minHeight: 320,
+          minHeight: 360,
           position: "relative",
         }}
       >

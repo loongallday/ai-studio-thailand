@@ -118,5 +118,26 @@ h1, h2, h3, h4 {
   -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
 
+/* ─── Section spacing — Apple uses HUGE spacing ─── */
+.apple-section {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+@media (max-width: 768px) {
+  .apple-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+/* ─── Gradient text ─── */
+.gradient-text {
+  background: linear-gradient(90deg, #2997ff, #5856d6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* ─── Smooth transitions ─── */
 * { transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); }
